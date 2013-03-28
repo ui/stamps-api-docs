@@ -4,10 +4,10 @@ User API
 
 1. Querying for total stamps amount
 =======================================
-URL endpoint: https://stamps.co.id/api/users/stamp
-Allowed Method: POST
-Require Authentication: Yes
-Expected content type: application/json
+| URL endpoint: https://stamps.co.id/api/users/stamp
+| Allowed Method: POST
+| Require Authentication: Yes
+| Expected content type: application/json
 
 A. Request
 -----------------------------

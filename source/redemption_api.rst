@@ -4,10 +4,10 @@ Redemption API
 
 1. Adding new redemption
 =============================
-URL endpoint: https://stamps.co.id/api/redemptions/add
-Allowed Method: POST
-Require Authentication: Yes
-Expected content type: application/json
+| URL endpoint: https://stamps.co.id/api/redemptions/add
+| Allowed Method: POST
+| Require Authentication: Yes
+| Expected content type: application/json
 
 A. Request
 -----------------------------

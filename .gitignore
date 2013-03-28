@@ -33,7 +33,3 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-
-#sphinx generate html
-Makefile
-make.bat

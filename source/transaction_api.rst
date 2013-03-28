@@ -84,21 +84,21 @@ B. Response
 
     With these possible HTTP headers:
 
-    =================== ===========================
+    =================== ==============================
     Code                Description
-    =================== ===========================
+    =================== ==============================
     200                 Everything worked as expected
     400                 Bad Request - Often missing a
                         required parameter
-    401                 Unauthorized – Often missing
-                        or wrong authentication token
+    401                 Unauthorized – Often missing or
+                        wrong authentication token
     403                 Forbidden – You do not have
                         permission for this request
-    405                 HTTP method not allowed -
-                        The requested resources cannot be called with the specified HTTP method
-    500, 502, 503, 504  Server Errors - something is wrong
-                        on Stamps’ end
-    =================== ===========================
+    405                 HTTP method not allowed - The
+                        requested resources cannot be called with the specified HTTP method
+    500, 502, 503, 504  Server Errors - something is
+                        wrong on Stamps’ end
+    =================== ==============================
 
     Here’s an example on how the Stamps API will response to the call
 
@@ -108,7 +108,7 @@ B. Response
     | Vary: Accept
     | Content-Type: application/json
     | Allow: POST, OPTIONS
-    | [Redacted Header]
+    |  [Redacted Header]
 
 
     {“detail”: “Your transaction cannot be completed due to the following error(s)”, “errors”: [{“price”: “This field is required.”}, {“invoice_number”: “Store does not exist”}]}
@@ -119,7 +119,7 @@ B. Response
     | Vary: Accept
     | Content-Type: application/json
     | Allow: POST, OPTIONS
-    | [Redacted Header]
+    |  [Redacted Header]
 
     {“detail”: “Please use https instead of http”}
 
@@ -129,6 +129,6 @@ B. Response
     | Vary: Accept
     | Content-Type: application/json
     | Allow: POST, OPTIONS
-    | [Redacted Header]
+    |  [Redacted Header]
 
     {“detail”: “Authentication credentials were not provided.”}

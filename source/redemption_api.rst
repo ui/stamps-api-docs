@@ -72,39 +72,43 @@ B. Response
 
     Here’s an example on how the Stamps API will response to the call
 
-    | **If transaction is successful:**
-    | HTTP/1.0 200 OK
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+    **If transaction is successful:** ::
 
-    {“redemption_id”: 3513}
+        HTTP/1.0 200 OK
+        Vary: Accept
+        Content-Type: application/json
+        Allow: POST, OPTIONS
+         [Redacted Header]
 
-    | **If transaction is unsuccessful (often missing parameters):**
-    | HTTP/1.0 400 BAD REQUEST
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+        {“redemption_id”: 3513}
 
-    {“detail”: “Your transaction cannot be completed due to the following error(s)”, “errors”: [{“reward”: “This field is required”}]}
+    **If transaction is unsuccessful (often missing parameters):** ::
 
-    | **If using http:**
-    | HTTP/1.0 403 FORBIDDEN
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+        HTTP/1.0 400 BAD REQUEST
+        Vary: Accept
+        Content-Type: application/json
+        Allow: POST, OPTIONS
+         [Redacted Header]
 
-    {“detail”: “Please use https instead of http”}
+        {“detail”: “Your transaction cannot be completed due to the following error(s)”, “errors”: [{“reward”: “This field is required”}]}
+
+    **If using http:** ::
+
+        HTTP/1.0 403 FORBIDDEN
+        Vary: Accept
+        Content-Type: application/json
+        Allow: POST, OPTIONS
+         [Redacted Header]
+
+        {“detail”: “Please use https instead of http”}
 
 
-    | **If missing or wrong authentication token:**
-    | HTTP/1.0 403 FORBIDDEN
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+    **If missing or wrong authentication token:** ::
+    
+        HTTP/1.0 403 FORBIDDEN
+        Vary: Accept
+        Content-Type: application/json
+        Allow: POST, OPTIONS
+         [Redacted Header]
 
-    {“detail”: “Authentication credentials were not provided.”}
+        {“detail”: “Authentication credentials were not provided.”}

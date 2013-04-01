@@ -103,32 +103,35 @@ B. Response
     Here’s an example on how the Stamps API will response to the call
 
 
-    | **If transaction is successful:**
-    | HTTP/1.0 400 BAD REQUEST
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+    **If transaction is successful:** ::
+    
+      HTTP/1.0 400 BAD REQUEST
+      Vary: Accept
+      Content-Type: application/json
+      Allow: POST, OPTIONS
+       [Redacted Header]
 
 
-    {“detail”: “Your transaction cannot be completed due to the following error(s)”, “errors”: [{“price”: “This field is required.”}, {“invoice_number”: “Store does not exist”}]}
+      {“detail”: “Your transaction cannot be completed due to the following error(s)”, “errors”: [{“price”: “This field is required.”}, {“invoice_number”: “Store does not exist”}]}
 
 
-    | **If using http:**
-    | HTTP/1.0 403 FORBIDDEN
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+    **If using http:** ::
 
-    {“detail”: “Please use https instead of http”}
+      HTTP/1.0 403 FORBIDDEN
+      Vary: Accept
+      Content-Type: application/json
+      Allow: POST, OPTIONS
+       [Redacted Header]
+
+      {“detail”: “Please use https instead of http”}
 
 
-    | **If missing or wrong authentication token:**
-    | HTTP/1.0 403 FORBIDDEN
-    | Vary: Accept
-    | Content-Type: application/json
-    | Allow: POST, OPTIONS
-    |  [Redacted Header]
+    **If missing or wrong authentication token:** ::
 
-    {“detail”: “Authentication credentials were not provided.”}
+      HTTP/1.0 403 FORBIDDEN
+      Vary: Accept
+      Content-Type: application/json
+      Allow: POST, OPTIONS
+       [Redacted Header]
+
+      {“detail”: “Authentication credentials were not provided.”}

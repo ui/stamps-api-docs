@@ -34,7 +34,9 @@ A. Request
             "reward": 1
         }
 
-    Example of API call request using cURL::
+    Example of API call request using cURL
+
+.. code-block :: bash
 
     $ curl –X POST –H “Content-Type: application/json” –d ‘{ “token”: “aaabbbcccdddeeefff”, “user_email”: “Customer@stamps.co.id”, “store”: 32, “reward”: 12}’ https://stamps.co.id/api/transaction/add 
 

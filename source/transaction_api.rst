@@ -41,7 +41,7 @@ You can add a new transaction on stamps by calling the API with these parameters
     =============== =========== =======================
 
 
-Here's an example of how the API call might look like in JSON format::
+Here's an example of how the API call might look like in JSON format:
 
 .. code-block:: javascript
 

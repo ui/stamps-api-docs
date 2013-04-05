@@ -12,7 +12,8 @@ Transaction API
 
 A. Request
 -----------------------------
-    You can add a new transaction on stamps by calling the API with these parameters
+
+You can add a new transaction on stamps by calling the API with these parameters
 
 
     =============== =========== =======================
@@ -39,7 +40,8 @@ A. Request
                                 product_name, price and qty
     =============== =========== =======================
 
-    Here's an example of how the API call might look like in JSON format::
+
+Here's an example of how the API call might look like in JSON format::
 
 .. code-block:: javascript
 
@@ -67,7 +69,8 @@ A. Request
            ]
         }
 
-    Example of API call request using cURL
+
+Example of API call request using cURL
 
 .. code-block :: bash
 
@@ -76,7 +79,8 @@ A. Request
 
 B. Response
 -----------------------------
-    In response to this API call, Stamps will return response with the following data (in JSON):
+
+In response to this API call, Stamps will return response with the following data (in JSON):
 
     =================== ==================
     Variable            Description
@@ -86,7 +90,7 @@ B. Response
     validation_errors   Errors encountered when parsing data (if any)
     =================== ==================
 
-    With these possible HTTP headers:
+Depending on the request, responses may return these status codes:
 
     =================== ==============================
     Code                Description
@@ -104,9 +108,10 @@ B. Response
                         wrong on Stamps' end
     =================== ==============================
 
-    Below are a few examples responses on successful API calls.
+Below are a few examples responses on successful API calls.
 
-    If transaction is successful:
+
+If transaction is successful:
 
 .. code-block :: bash
 
@@ -118,7 +123,8 @@ B. Response
       {“transaction_id”: 3513}
 
 
-    When some fields don't validate:
+
+When some fields don't validate:
 
 .. code-block :: bash
 
@@ -132,7 +138,7 @@ B. Response
       {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"price": "This field is required."}, {"invoice_number": "Store does not exist"}]}
 
 
-    If HTTP is used instead of HTTPS:
+If HTTP is used instead of HTTPS:
 
 .. code-block :: bash
 
@@ -145,7 +151,7 @@ B. Response
       {"detail": "Please use https instead of http"}
 
 
-    If missing or wrong authentication token:
+If missing or wrong authentication token:
 
 .. code-block :: bash
 

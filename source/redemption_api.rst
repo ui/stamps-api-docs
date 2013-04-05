@@ -25,7 +25,7 @@ A. Request
                             reward's ID
     =========== =========== =========================
 
-    Here's an example of how the API call might look like in JSON format::
+Here's an example of how the API call might look like in JSON format::
 
         {
             "token": "aaaabbbbccccddddeeeefffff",
@@ -34,7 +34,7 @@ A. Request
             "reward": 1
         }
 
-    Example of API call request using cURL
+Example of API call request using cURL
 
 .. code-block :: bash
 
@@ -42,7 +42,8 @@ A. Request
 
 B. Response
 -----------------------------
-    In response to this API call, Stamps will return response with the following data (in JSON):
+
+In response to this API call, Stamps will return response with the following data (in JSON):
 
     =================== ==============================
     Variable            Description
@@ -54,7 +55,7 @@ B. Response
                         data (if any)
     =================== ==============================
 
-    With these possible HTTP headers:
+Depending on the request, responses may return these status codes:
 
     =================== ==============================
     Code                Description
@@ -72,7 +73,7 @@ B. Response
                         wrong on Stamps' end
     =================== ==============================
 
-    Here's an example on how the Stamps API will response to the call
+Here's an example on how the Stamps API will response to the call
 
     **If transaction is successful:** ::
 

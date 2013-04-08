@@ -17,32 +17,33 @@ A. Request
     Parameter   Required    Description
     =========== =========== =========================
     token       Yes         Authentication string
-    user_email  Yes         A string indicating user’s
-                            email address 
+    user_email  Yes         A string indicating user's
+                            email address
     store       Yes         A number indicating
-                            Merchant’s store id where the transaction is initiated
+                            Merchant's store id where the transaction is initiated
     reward      Yes         A number indicating the
-                            reward’s ID 
+                            reward's ID
     =========== =========== =========================
 
-    Here’s an example of how the API call might look like in JSON format::
+Here's an example of how the API call might look like in JSON format::
 
         {
-            "token": “aaaabbbbccccddddeeeefffff”,
-            "user_email": “Customer@stamps.co.id”,
+            "token": "aaaabbbbccccddddeeeefffff",
+            "user_email": "Customer@stamps.co.id",
             "store": 32,
             "reward": 1
         }
 
-    Example of API call request using cURL
+Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl –X POST –H “Content-Type: application/json” –d ‘{ “token”: “aaabbbcccdddeeefff”, “user_email”: “Customer@stamps.co.id”, “store”: 32, “reward”: 12}’ https://stamps.co.id/api/transaction/add 
+    $ curl –X POST –H "Content-Type: application/json" –d '{ "token": "aaabbbcccdddeeefff", "user_email": "Customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/transaction/add
 
 B. Response
 -----------------------------
-    In response to this API call, Stamps will return response with the following data (in JSON):
+
+In response to this API call, Stamps will return response with the following data (in JSON):
 
     =================== ==============================
     Variable            Description
@@ -54,7 +55,7 @@ B. Response
                         data (if any)
     =================== ==============================
 
-    With these possible HTTP headers:
+Depending on the request, responses may return these status codes:
 
     =================== ==============================
     Code                Description
@@ -69,10 +70,10 @@ B. Response
     405                 HTTP method not allowed - The
                         requested resources cannot be called with the specified HTTP method
     500, 502, 503, 504  Server Errors - something is
-                        wrong on Stamps’ end
+                        wrong on Stamps' end
     =================== ==============================
 
-    Here’s an example on how the Stamps API will response to the call
+Here's an example on how the Stamps API will response to the call
 
     **If transaction is successful:** ::
 
@@ -82,7 +83,7 @@ B. Response
         Allow: POST, OPTIONS
          [Redacted Header]
 
-        {“redemption_id”: 3513}
+        {"redemption_id": 3513}
 
     **If transaction is unsuccessful (often missing parameters):** ::
 
@@ -92,7 +93,7 @@ B. Response
         Allow: POST, OPTIONS
          [Redacted Header]
 
-        {“detail”: “Your transaction cannot be completed due to the following error(s)”, “errors”: [{“reward”: “This field is required”}]}
+        {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"reward": "This field is required"}]}
 
     **If using http:** ::
 
@@ -102,15 +103,15 @@ B. Response
         Allow: POST, OPTIONS
          [Redacted Header]
 
-        {“detail”: “Please use https instead of http”}
+        {"detail": "Please use https instead of http"}
 
 
     **If missing or wrong authentication token:** ::
-    
+
         HTTP/1.0 403 FORBIDDEN
         Vary: Accept
         Content-Type: application/json
         Allow: POST, OPTIONS
          [Redacted Header]
 
-        {“detail”: “Authentication credentials were not provided.”}
+        {"detail": "Authentication credentials were not provided."}

@@ -1,5 +1,5 @@
 Welcome to Stamps Transaction API's documentation!
-======================================================
+******************************************************
 Last updated: 26 March 2013
 
 Stamps’ transaction API is built on HTTP and allows third party systems to easily initiate a transaction. Our API are:

@@ -121,7 +121,8 @@ If transaction is successful:
       Vary: Accept
       Content-Type: application/json
       Allow: POST, OPTIONS
-      [Redacted Header]
+       [Redacted Header]
+
       {“transaction_id”: 3513}
 
 

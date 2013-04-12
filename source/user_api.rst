@@ -23,6 +23,7 @@ A. Request
     Example of API call request using cURL
 
 .. code-block :: bash
+
     # Please note that for cURL command you need to escape special characters
     $ curl https://stamps.co.id/api/memberships/status?token=aaabbbcccdddeeefff\&user_email=Customer@stamps.co.id
 

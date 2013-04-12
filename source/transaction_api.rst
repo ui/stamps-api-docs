@@ -74,7 +74,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transaction/add -i -d '{ "token": "aaabbbcccdddeeeffff", "user_email": "Customer@stamps.co.id", "store": 2, "invoice_number": "abc123", "total_value": 50000, "subtotal": 40000, "discount": 0, "service_charge": 5000, "tax": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "aaabbbcccdddeeeffff", "user_email": "Customer@stamps.co.id", "store": 2, "invoice_number": "abc123", "total_value": 50000, "subtotal": 40000, "discount": 0, "service_charge": 5000, "tax": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 
 

@@ -4,10 +4,9 @@ User API
 
 1. Querying for customer data
 =======================================
-| URL endpoint: https://stamps.co.id/api/users/stamp
-| Allowed Method: POST
+| URL endpoint: https://stamps.co.id/api/memberships/status
+| Allowed Method: GET
 | Require Authentication: Yes
-| Expected content type: application/json
 
 A. Request
 -----------------------------
@@ -21,18 +20,11 @@ A. Request
                             email address to be queried
     =========== =========== =========================
 
-    Here's an example of how the API call might look like in JSON format::
-
-        {
-            "token": "aaaabbbbccccddddeeeefffff",
-            "user_email": "Customer@stamps.co.id",
-        }
-
     Example of API call request using cURL
 
 .. code-block :: bash
-
-    $ curl –X POST –H "Content-Type: application/json" –d '{ "token": "aaabbbcccdddeeefff", "user_email": "Customer@stamps.co.id"}' https://stamps.co.id/api/users/add
+    # Please note that for cURL command you need to escape special characters
+    $ curl https://stamps.co.id/api/memberships/status?token=aaabbbcccdddeeefff\&user_email=Customer@stamps.co.id
 
 B. Response
 -----------------------------
@@ -43,6 +35,7 @@ B. Response
     =================== ==============================
     stamps              Total stamps amount the
                         particular user has
+    membership_status   Membership status of the user
     detail              Description of error (if any)
     validation_errors   Errors encountered when parsing
                         data (if any)
@@ -76,7 +69,7 @@ B. Response
         Allow: POST, OPTIONS
          [Redacted Header]
 
-        {"stamps": 70}
+        {"stamps": 8917, "membership_status": "Gold"}
 
     **If transaction is unsuccessful (often missing parameters):** ::
 

@@ -1,11 +1,11 @@
 
-Welcome to Stamps Transaction API's documentation!
-==================================================
+Welcome to Stamps' API documentation!
+=====================================
 
 Last updated: 11 April 2013
 
-Stamps’ transaction API is built on HTTP and allows third party systems to easily initiate a transaction. Our API are:
-    - Secured using SSL
+Our API is built on HTTP and allows third party systems to easily initiate a transaction. All our APIs are:
+    - Secured using SSL (uses HTTPS)
     - Real time
     - Uses JSON as data interchange format
 

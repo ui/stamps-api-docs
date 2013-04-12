@@ -2,7 +2,7 @@
 User API
 ************************************
 
-1. Querying for total stamps amount
+1. Querying for customer data
 =======================================
 | URL endpoint: https://stamps.co.id/api/users/stamp
 | Allowed Method: POST
@@ -11,7 +11,7 @@ User API
 
 A. Request
 -----------------------------
-    You can add a new transaction on stamps by calling the API with these parameters
+    You can query for a customer's data on Stamps .
 
     =========== =========== =========================
     Parameter   Required    Description

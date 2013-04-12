@@ -10,22 +10,23 @@ User API
 
 A. Request
 -----------------------------
-    You can query for a customer's data on Stamps .
 
-    =========== =========== =========================
-    Parameter   Required    Description
-    =========== =========== =========================
-    token       Yes         Authentication string
-    user_email  Yes         A string indicating user's
-                            email address to be queried
-    =========== =========== =========================
+You can query for a customer's data on Stamps .
 
-    Example of API call request using cURL
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+user_email  Yes         A string indicating user's
+                        email address to be queried
+=========== =========== =========================
+
+Example of API call request using cURL
 
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl https://stamps.co.id/api/memberships/status?token=aaabbbcccdddeeefff\&user_email=Customer@stamps.co.id
+    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user_email=customer@stamps.co.id'
 
 B. Response
 -----------------------------

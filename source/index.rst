@@ -15,8 +15,8 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   content_type.rst
+   introduction.rst
    transaction_api.rst
    redemption_api.rst
-   user_api.rst
+   customer_api.rst
 

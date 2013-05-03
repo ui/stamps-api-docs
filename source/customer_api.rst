@@ -183,17 +183,18 @@ A successful API call:
     Vary: Accept
     Content-Type: application/json
     Allow: POST, OPTIONS
-     [Redacted Header]
+    [Redacted Header]
 
     {"eligible_rewards": [{"name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"name": "Teh Tarik", "stamps_required": 20}, "image_url": "http://foo.com"]}
 
 If transaction is unsuccessful (often missing parameters):
 
 .. code-block :: bash
+
     HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
     Allow: POST, OPTIONS
-     [Redacted Header]
+    [Redacted Header]
 
     {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"reward": "This field is required"}]}

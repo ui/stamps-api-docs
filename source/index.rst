@@ -1,8 +1,5 @@
-
 Welcome to Stamps' API documentation!
 =====================================
-
-Last updated: 11 April 2013
 
 Our API is built on HTTP and allows third party systems to easily initiate a transaction. All our APIs are:
     - Secured using SSL (uses HTTPS)

@@ -7,7 +7,8 @@ Transaction API
 | URL endpoint: https://stamps.co.id/api/transactions/add
 | Allowed Method: POST
 | Require Authentication: Yes
-| Expected content type: application/json
+| Expected Content Type: application/json, application/xml
+| Response Content Type: application/json(default), application/xml
 
 
 A. Request
@@ -70,19 +71,44 @@ Here's an example of how the API call might look like in JSON format:
         }
 
 
-Example of API call request using cURL
+Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "aaabbbcccdddeeeffff", "user_email": "Customer@stamps.co.id", "store": 2, "invoice_number": "abc123", "total_value": 50000, "subtotal": 40000, "discount": 0, "service_charge": 5000, "tax": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
+Example of API call request using cURL (XML)
 
+.. code-block :: bash
 
+    $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
+    <root>
+        <token>36376a3c87ad2e272be2babbf38dd6dadc52539c</token>
+        <user_email>newest_email@user.com</user_email>
+        <store>84</store>
+        <total_value>50000</total_value>
+        <subtotal>40000</subtotal>
+        <discount>0</discount>
+        <service_charge>5000</service_charge>
+        <tax>5000</tax>
+        <items>
+            <list-item>
+                <product_name>Cappucino</product_name>
+                <quantity>2</quantity>
+                <price>10000</price>
+            </list-item>
+            <list-item>
+                <product_name>Iced Tea</product_name>
+                <quantity>4</quantity>
+                <price>5000</price>
+            </list-item>
+        </items>
+    </root>'
 
 B. Response
 -----------------------------
 
-In response to this API call, Stamps will return response with the following data (in JSON):
+In response to this API call, Stamps will return response with the following data (in JSON by default):
 
     =================== ==================
     Variable            Description
@@ -91,6 +117,13 @@ In response to this API call, Stamps will return response with the following dat
     detail              Description of error (if any)
     validation_errors   Errors encountered when parsing data (if any)
     =================== ==================
+
+Response content type can be set using the `Accept` header made in the request :
+
+.. code-block :: bash
+
+  $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" # Response will be in XML
+  $ curl -X POST -H "Content-Type: application/xml" # Response will be in JSON(default)
 
 Depending on the request, responses may return these status codes:
 
@@ -113,7 +146,7 @@ Depending on the request, responses may return these status codes:
 Below are a few examples responses on successful API calls.
 
 
-If transaction is successful:
+If transaction is successful(JSON):
 
 .. code-block :: bash
 
@@ -125,9 +158,23 @@ If transaction is successful:
 
       {“transaction_id”: 3513}
 
+If transaction is successful(XML):
+
+.. code-block :: bash
+
+      HTTP/1.0 200 OK
+      Vary: Accept
+      Content-Type: application/xml
+      Allow: POST, OPTIONS
+       [Redacted Header]
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <root>
+        <transaction_id>39174</transaction_id>
+      </root>
 
 
-When some fields don't validate:
+When some fields don't validate (JSON):
 
 .. code-block :: bash
 
@@ -139,6 +186,32 @@ When some fields don't validate:
 
 
       {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"price": "This field is required."}, {"invoice_number": "Store does not exist"}]}
+
+
+When some fields don't validate(XML):
+
+.. code-block :: bash
+
+      HTTP/1.0 400 BAD REQUEST
+      Vary: Accept
+      Content-Type: application/json
+      Allow: POST, OPTIONS
+       [Redacted Header]
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <root>
+        <validation_errors>
+          <list-item>
+            <price>This field is required.</price>
+          </list-item>
+          <list-item>
+            <store>Select a valid choice. That choice is not one of the available choices.</store>
+          </list-item>
+        </validation_errors>
+        <detail>
+          Your transaction cannot be completed due to the following error(s)
+        </detail>
+      </root>
 
 
 If HTTP is used instead of HTTPS:

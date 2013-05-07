@@ -83,8 +83,8 @@ Example of API call request using cURL (XML)
 
     $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
     <root>
-        <token>36376a3c87ad2e272be2babbf38dd6dadc52539c</token>
-        <user_email>newest_email@user.com</user_email>
+        <token>aaaabbbbccccddddeeeefffff</token>
+        <user_email>customer@stamps.co.id</user_email>
         <store>84</store>
         <total_value>50000</total_value>
         <subtotal>40000</subtotal>

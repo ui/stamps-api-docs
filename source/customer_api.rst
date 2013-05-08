@@ -109,9 +109,9 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-2. Querying for customer's eligible rewards
+2. Querying for Available Redemptions
 =======================================
-| URL endpoint: https://stamps.co.id/api/memberships/eligible-rewards
+| URL endpoint: https://stamps.co.id/api/memberships/available-redemptions
 | Allowed Method: GET
 | Require Authentication: Yes
 
@@ -134,7 +134,8 @@ Example of API call request using cURL:
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/memberships/eligible-rewards?token=abc&user_email=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/memberships/available-redemptions?token=abc&user_email=customer@stamps.co.id'
+
 
 B. Response Data
 ----------------
@@ -143,9 +144,9 @@ Stamps responds to this API call with the following data (in JSON):
 =================== ==============================
 Variable            Description
 =================== ==============================
-eligible rewards    List of rewards which customer
-                    is eligible to redeem. Contain
-                    name, stamps_required, and image_url
+rewards             List of rewards available for redemption.
+                    Contains name, stamps_required, and image_url
+vouchers            List of vouchers available for redemption.
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing
                     data (if any)

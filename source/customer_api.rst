@@ -148,7 +148,7 @@ rewards             List of rewards available for redemption.
                     Contains name, stamps_required, and image_url
 vouchers            List of vouchers available for redemption.
 detail              Description of error (if any)
-validation_errors   Errors encountered when parsing
+errors              Errors encountered when parsing
                     data (if any)
 =================== ==============================
 
@@ -186,7 +186,7 @@ A successful API call:
     Allow: POST, OPTIONS
     [Redacted Header]
 
-    {"eligible_rewards": [{"name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"name": "Teh Tarik", "stamps_required": 20}, "image_url": "http://foo.com"]}
+    {"rewards": [{"name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"name": "Teh Tarik", "stamps_required": 20}, "image_url": "http://foo.com"]}
 
 If transaction is unsuccessful (often missing parameters):
 

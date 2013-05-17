@@ -145,8 +145,9 @@ Stamps responds to this API call with the following data (in JSON):
 Variable            Description
 =================== ==============================
 rewards             List of rewards available for redemption.
-                    Contains name, stamps_required, and image_url
+                    Contains id, name, stamps_required, and image_url
 vouchers            List of vouchers available for redemption.
+                    Contains id, name, quantity, image_url, and expires_on
 detail              Description of error (if any)
 errors              Errors encountered when parsing
                     data (if any)
@@ -186,7 +187,7 @@ A successful API call:
     Allow: POST, OPTIONS
     [Redacted Header]
 
-    {"rewards": [{"name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"name": "Teh Tarik", "stamps_required": 20}, "image_url": "http://foo.com"]}
+    {"rewards": [{"id": 56, "name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"name": "Teh Tarik", "stamps_required": 20, "image_url": "http://foo.com"}]}
 
 If transaction is unsuccessful (often missing parameters):
 

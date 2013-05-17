@@ -1,5 +1,5 @@
 ************************************
-User API
+Reward API
 ************************************
 
 1. Querying for Available Rewards

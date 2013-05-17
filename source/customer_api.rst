@@ -187,7 +187,7 @@ A successful API call:
     Allow: POST, OPTIONS
     [Redacted Header]
 
-    {"rewards": [{"id": 56, "name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"name": "Teh Tarik", "stamps_required": 20, "image_url": "http://foo.com"}]}
+    {"rewards": [{"id": 56, "name": "Kopi Tarik", "stamps_required": 50, "image_url": "http://foo.com"}, {"id": 67, "name": "Teh Tarik", "stamps_required": 20, "image_url": "http://foo.com"}], "vouchers": [{"id": 34, "name": "Birthday Promotion", "quantity": 1, "image_url": "http://bar.com", "expires_on": "5-12-2013 23:59"}]}
 
 If transaction is unsuccessful (often missing parameters):
 

@@ -200,3 +200,95 @@ If transaction is unsuccessful (often missing parameters):
     [Redacted Header]
 
     {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"reward": "This field is required"}]}
+
+
+3. Querying for User suggestions
+=======================================
+| URL endpoint: https://stamps.co.id/api/memberships/suggestions
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+If you're planning on building an autocomplete processing interface into your
+system, you can use this API to give suggestions.
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+query       Yes         A string indicating query
+                        to be processed for the suggestions API
+=========== =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/membershipssuggestions?token=abc&query=steve'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+suggestions         List of suggestions.
+                    Contains id, name, stamps, email, and membership
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "suggestions": [
+        {
+          "membership": "Gold",
+          "email": "customer_gold@stamps.co.id",
+          "stamps": 100,
+          "id": 12,
+          "name": "Customer Gold"
+        },
+        {
+          "membership": "Blue",
+          "email": "blue_customer@stamps.co.id",
+          "stamps": 15,
+          "id": 13,
+          "name": "Customer Blue"
+        }
+      ]
+    }

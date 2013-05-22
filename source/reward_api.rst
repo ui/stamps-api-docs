@@ -4,7 +4,7 @@ Reward API
 
 1. Querying for Available Rewards
 =======================================
-| URL endpoint: https://stamps.co.id/api/rewards/index
+| URL endpoint: https://stamps.co.id/api/rewards/
 | Allowed Method: GET
 | Require Authentication: Yes
 
@@ -25,7 +25,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/index?token=abc&user_email=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user_email=customer@stamps.co.id'
 
 
 B. Response Data

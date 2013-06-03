@@ -60,12 +60,12 @@ Here's an example of how the API call might look like in JSON format:
               {
                  "product_name": "Cappucino",
                  "quantity": 2,
-                 "price": 10000,
+                 "price": 10000
               },
               {
                  "product_name": "Iced Tea",
                  "quantity": 4,
-                 "price": 5000,
+                 "price": 5000
               }
            ]
         }

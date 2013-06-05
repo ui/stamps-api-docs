@@ -48,13 +48,12 @@ In response to this API call, Stamps will return response with the following dat
     =================== ==============================
     Variable            Description
     =================== ==============================
-    redemption_id       Redemption ID that is
-                        successfully created
-    reward              Name of reward redeemed
-    stamps_used         Number of Stamps which are used
-                        in this redemption
-    stamps_remaining    Number of Stamps remaining on
-                        User
+    redemption          Redemption which is
+                        successfully created.
+                        Contains id, reward, and stamps_used
+    customer            Customer information after successful
+                        redemption. Contains id and stamps_remaining.
+
     detail              Description of error (if any)
     validation_errors   Errors encountered when parsing
                         data (if any)
@@ -88,7 +87,18 @@ Here's an example on how the Stamps API will response to the call
         Allow: POST, OPTIONS
          [Redacted Header]
 
-        {"reward": "Free Scoop of Ice Cream", "redemption_id": 3513, "stamps_remaining": 60, "stamps_used": 10}
+        {
+          "customer": {
+            "id": 6,
+            "stamps_remaining": 60
+          },
+          "redemption": {
+            "reward": "Free Scoop of Ice Cream",
+            "id": 1,
+            "stamps_used": 10
+          }
+        }
+
 
     **If transaction is unsuccessful (often missing parameters):** ::
 

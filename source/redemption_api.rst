@@ -48,7 +48,7 @@ In response to this API call, Stamps will return response with the following dat
     =================== ==============================
     Variable            Description
     =================== ==============================
-    redemption          Redemption which is
+    redemption          Redemption information which is
                         successfully created.
                         Contains id, reward, and stamps_used
     customer            Customer information after successful

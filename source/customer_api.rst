@@ -226,7 +226,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/membershipssuggestions?token=abc&query=steve'
+    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve'
 
 
 B. Response Data

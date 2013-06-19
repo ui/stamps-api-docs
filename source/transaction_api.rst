@@ -60,12 +60,12 @@ Here's an example of how the API call might look like in JSON format:
               {
                  "product_name": "Cappucino",
                  "quantity": 2,
-                 "price": 10000,
+                 "price": 10000
               },
               {
                  "product_name": "Iced Tea",
                  "quantity": 4,
-                 "price": 5000,
+                 "price": 5000
               }
            ]
         }
@@ -113,7 +113,11 @@ In response to this API call, Stamps will return response with the following dat
     =================== ==================
     Variable            Description
     =================== ==================
-    transaction_id      Stamps transaction ID that is successfully created
+    transaction         Stamps transaction information
+                        that is successfully created.
+                        Contains id, value, and stamps_earned.
+    customer            Customer information after successful
+                        transaction. Contains id, stamps_remaining, and status.
     detail              Description of error (if any)
     validation_errors   Errors encountered when parsing data (if any)
     =================== ==================
@@ -156,7 +160,18 @@ If transaction is successful(JSON):
       Allow: POST, OPTIONS
        [Redacted Header]
 
-      {“transaction_id”: 3513}
+      {
+        "customer": {
+          "status": "Blue",
+          "id": 17,
+          "stamps_remaining": 11
+        },
+        "transaction": {
+          "stamps_earned": 1,
+          "id": 2,
+          "value": 15000
+        }
+      }
 
 If transaction is successful(XML):
 
@@ -170,8 +185,18 @@ If transaction is successful(XML):
 
       <?xml version="1.0" encoding="utf-8"?>
       <root>
-        <transaction_id>39174</transaction_id>
+        <customer>
+          <status>Blue</status>
+          <id>16</id>
+          <stamps_remaining>5</stamps_remaining>
+        </customer>
+        <transaction>
+          <stamps_earned>5.0</stamps_earned>
+          <id>1</id>
+          <value>50000</value>
+        </transaction>
       </root>
+
 
 
 When some fields don't validate (JSON):

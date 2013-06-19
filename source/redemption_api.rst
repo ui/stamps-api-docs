@@ -25,20 +25,22 @@ A. Request
                             reward's ID
     =========== =========== =========================
 
-Here's an example of how the API call might look like in JSON format::
+Here's an example of how the API call might look like in JSON format
 
-        {
-            "token": "aaaabbbbccccddddeeeefffff",
-            "user_email": "Customer@stamps.co.id",
-            "store": 32,
-            "reward": 1
-        }
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "user_email": "customer@stamps.co.id",
+        "store": 32,
+        "reward": 1
+    }
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "aaabbbcccdddeeefff", "user_email": "Customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/redemptions/add
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user_email": "customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/redemptions/add
 
 B. Response
 -----------------------------

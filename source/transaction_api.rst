@@ -47,7 +47,7 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
         {
-           "token": "aaaabbbbccccddddeeeefffff",
+           "token": "abc",
            "user_email": "customer@stamps.co.id",
            "store": 32,
            "invoice_number": "abc123456",
@@ -75,7 +75,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "aaabbbcccdddeeeffff", "user_email": "Customer@stamps.co.id", "store": 2, "invoice_number": "abc123", "total_value": 50000, "subtotal": 40000, "discount": 0, "service_charge": 5000, "tax": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "abc", "user_email": "customer@stamps.co.id", "store": 2, "invoice_number": "abc123", "total_value": 50000, "subtotal": 40000, "discount": 0, "service_charge": 5000, "tax": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 Example of API call request using cURL (XML)
 
@@ -83,7 +83,7 @@ Example of API call request using cURL (XML)
 
     $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
     <root>
-        <token>aaaabbbbccccddddeeeefffff</token>
+        <token>abc</token>
         <user_email>customer@stamps.co.id</user_email>
         <store>84</store>
         <total_value>50000</total_value>

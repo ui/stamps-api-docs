@@ -180,7 +180,7 @@ On successful redemption:
         "stamps_remaining": 60
       },
       "redemption": {
-        "reward": "Kaya Toast Voucher",
+        "voucher": "Kaya Toast Voucher",
         "id": 1
       }
     }

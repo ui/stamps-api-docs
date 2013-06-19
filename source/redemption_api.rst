@@ -2,11 +2,14 @@
 Redemption API
 ************************************
 
-1. Adding new redemption
-=============================
+1. Adding Reward Redemption
+===========================
 | URL endpoint: https://stamps.co.id/api/redemptions/add
+
 | Allowed Method: POST
+
 | Require Authentication: Yes
+
 | Expected content type: application/json
 
 A. Request
@@ -61,6 +64,9 @@ In response to this API call, Stamps will return response with the following dat
                         data (if any)
     =================== ==============================
 
+C. Response Headers
+-------------------
+
 Depending on the request, responses may return these status codes:
 
     =================== ==============================
@@ -79,56 +85,29 @@ Depending on the request, responses may return these status codes:
                         wrong on Stamps' end
     =================== ==============================
 
-Here's an example on how the Stamps API will response to the call
+D. Examples
+-----------
 
-    **If transaction is successful:** ::
+On successful redemption:
 
-        HTTP/1.0 200 OK
-        Vary: Accept
-        Content-Type: application/json
-        Allow: POST, OPTIONS
-         [Redacted Header]
+.. code-block :: bash
 
-        {
-          "customer": {
-            "id": 6,
-            "stamps_remaining": 60
-          },
-          "redemption": {
-            "reward": "Free Scoop of Ice Cream",
-            "id": 1,
-            "stamps_used": 10
-          }
-        }
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
 
-
-    **If transaction is unsuccessful (often missing parameters):** ::
-
-        HTTP/1.0 400 BAD REQUEST
-        Vary: Accept
-        Content-Type: application/json
-        Allow: POST, OPTIONS
-         [Redacted Header]
-
-        {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"reward": "This field is required"}]}
-
-    **If using http:** ::
-
-        HTTP/1.0 403 FORBIDDEN
-        Vary: Accept
-        Content-Type: application/json
-        Allow: POST, OPTIONS
-         [Redacted Header]
-
-        {"detail": "Please use https instead of http"}
+    {
+      "customer": {
+        "id": 6,
+        "stamps_remaining": 60
+      },
+      "redemption": {
+        "reward": "Free Scoop of Ice Cream",
+        "id": 1,
+        "stamps_used": 10
+      }
+    }
 
 
-    **If missing or wrong authentication token:** ::
-
-        HTTP/1.0 403 FORBIDDEN
-        Vary: Accept
-        Content-Type: application/json
-        Allow: POST, OPTIONS
-         [Redacted Header]
-
-        {"detail": "Authentication credentials were not provided."}

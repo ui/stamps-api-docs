@@ -17,9 +17,9 @@ A. Request
 You can add a new transaction on stamps by calling the API with these parameters
 
 
-===============     =========== =======================
+=================== =========== =======================
 Parameter           Required    Description
-===============     =========== =======================
+=================== =========== =======================
 token               Yes         Authentication string
 user_email          Yes         An email address indicating customer
 store               Yes         A number (id) indicating store where transaction
@@ -32,7 +32,7 @@ service_change      Optional    A number indicating service charge (in Rp.)
 tax                 Optional    A number indicating transaction tax (in Rp.)
 items               Optional    List of items containing product name, price & qty
 secondary_merchant  Optional    An additional merchant id to file this transaction on
-===============     =========== =======================
+=================== =========== =======================
 
 
 Here's an example of how the API call might look like in JSON format:

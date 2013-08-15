@@ -31,7 +31,8 @@ discount            Optional    A number indicating transaction discount (in Rp.
 service_change      Optional    A number indicating service charge (in Rp.)
 tax                 Optional    A number indicating transaction tax (in Rp.)
 items               Optional    List of items containing product name, price & qty
-secondary_merchant  Optional    An additional merchant id to file this transaction on
+secondary_merchant  Optional    A merchant id to attach this transaction to
+secondary_store     Optional    If specified, transaction will be assigned to this secondary merchant's store
 =================== =========== =======================
 
 

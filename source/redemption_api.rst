@@ -55,6 +55,8 @@ redemption          Redemption information which is
                     Contains id, reward, and stamps_used
 customer            Customer information after successful
                     redemption. Contains id and stamps_remaining.
+vouchers            Voucher information if redemption is generating one. This field
+                    do not exist if redemption is not creating voucher.
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -102,6 +104,36 @@ On successful redemption:
       }
     }
 
+
+On successful redemption that generate voucher:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "customer": {
+        "id": 6,
+        "stamps_remaining": 60
+      },
+      "redemption": {
+        "reward": "Free Scoop of Ice Cream voucher",
+        "id": 1,
+        "stamps_used": 10
+      },
+      "voucher": {
+          "id": 2034,
+          "name": "Free Scoop of Ice Cream voucher",
+          "type": "Voucher #2034",
+          "quantity": 1,
+          "image_url": "http://foo.com",
+          "expires_on": "5-12-2013 23:59"
+      }
+    }
 
 2. Adding Voucher Redemption
 ============================

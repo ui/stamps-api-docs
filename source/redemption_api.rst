@@ -55,8 +55,8 @@ redemption          Redemption information which is
                     Contains id, reward, and stamps_used
 customer            Customer information after successful
                     redemption. Contains id and stamps_remaining.
-vouchers            Voucher information if redemption is generating one. This field
-                    do not exist if redemption is not creating voucher.
+vouchers            Voucher information if redemption is generating one,
+                    This field do not exist if redemption is not creating voucher.
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 

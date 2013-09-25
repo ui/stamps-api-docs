@@ -133,7 +133,7 @@ Code                Description
 401                 Unauthorized, usually missing or wrong authentication token
 403                 Forbidden – You do not have permission for this request
 405                 HTTP method not allowed
-500, 502, 503, 504  Server rrrors - something is wrong on Stamps' end
+500, 502, 503, 504  Server errors - something is wrong on Stamps' end
 =================== ==============================
 
 Below are a few examples responses on successful API calls.
@@ -226,6 +226,143 @@ When some fields don't validate(XML):
         Your transaction cannot be completed due to the following error(s)
       </detail>
     </root>
+
+
+If HTTP is used instead of HTTPS:
+
+.. code-block :: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {"detail": "Please use https instead of http"}
+
+
+If missing or wrong authentication token:
+
+.. code-block :: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {"detail": "Authentication credentials were not provided."}
+
+
+
+2. Cancel existing transaction
+=============================
+| URL endpoint: https://stamps.co.id/api/transactions/cancel
+| Allowed Method: POST
+| Require Authentication: Yes
+| Expected Content Type: application/json, application/xml
+| Response Content Type: application/json(default), application/xml
+
+
+A. Request
+-----------------------------
+
+You can add a new transaction on stamps by calling the API with these parameters
+
+
+=================== =========== =======================
+Parameter           Required    Description
+=================== =========== =======================
+token               Yes         Authentication string
+id                  Yes         Transaction id
+=================== =========== =======================
+
+
+Here's an example of how the API call might look like in JSON format:
+
+.. code-block:: javascript
+
+    {
+       "token": "abc",
+       "id": 1
+    }
+
+
+Example of API call request using cURL (JSON)
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "abc", "id": 1 }'
+
+Example of API call request using cURL (XML)
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/cancel -i -d '<?xml version="1.0" encoding="UTF-8" ?>
+    <root>
+        <token>abc</token>
+        <id>1</id>
+    </root>'
+
+B. Response
+-----------------------------
+
+In response to this API call, Stamps will return response with the following data (in JSON by default):
+
+    =================== ==================
+    Variable            Description
+    =================== ==================
+    errors              Errors encountered when canceling a transaction (if any)
+    =================== ==================
+
+Response content type can be set using the `Accept` header made in the request :
+
+.. code-block :: bash
+
+  $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" # Response will be in XML
+  $ curl -X POST -H "Content-Type: application/xml" # Response will be in JSON(default)
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+404                 Cannot find transaction of the requested transaction id
+405                 HTTP method not allowed
+500, 502, 503, 504  Server errors - something is wrong on Stamps' end
+=================== ==============================
+
+Below are a few examples responses on successful API calls.
+
+
+If transaction is successful(JSON):
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {}
+
+
+When some fields don't validate (JSON):
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {"errors": {"info": "Transaction can't be canceled due to insufficient Stamps"}}
 
 
 If HTTP is used instead of HTTPS:

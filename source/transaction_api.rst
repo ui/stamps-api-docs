@@ -308,13 +308,6 @@ In response to this API call, Stamps will return response with the following dat
     errors              Errors encountered when canceling a transaction (if any)
     =================== ==================
 
-Response content type can be set using the `Accept` header made in the request :
-
-.. code-block :: bash
-
-  $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" # Response will be in XML
-  $ curl -X POST -H "Content-Type: application/xml" # Response will be in JSON(default)
-
 Depending on the request, responses may return these status codes:
 
 =================== ==============================

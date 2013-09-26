@@ -294,15 +294,6 @@ Example of API call request using cURL (JSON)
 
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "abc", "id": 1 }'
 
-Example of API call request using cURL (XML)
-
-.. code-block :: bash
-
-    $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/cancel -i -d '<?xml version="1.0" encoding="UTF-8" ?>
-    <root>
-        <token>abc</token>
-        <id>1</id>
-    </root>'
 
 B. Response
 -----------------------------
@@ -312,6 +303,8 @@ In response to this API call, Stamps will return response with the following dat
     =================== ==================
     Variable            Description
     =================== ==================
+    id                  Transaction id
+    is_canceled         A boolean that is True if the transaction is successfully canceled
     errors              Errors encountered when canceling a transaction (if any)
     =================== ==================
 
@@ -349,7 +342,7 @@ If transaction is successful(JSON):
     Allow: POST, OPTIONS
      [Redacted Header]
 
-    {}
+    {'id': 1, 'is_canceled': True}
 
 
 When some fields don't validate (JSON):

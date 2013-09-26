@@ -4,11 +4,9 @@ Transaction API
 
 1. Adding new transaction
 =============================
-| URL endpoint: https://stamps.co.id/api/transactions/add
-| Allowed Method: POST
-| Require Authentication: Yes
-| Expected Content Type: application/json, application/xml
-| Response Content Type: application/json(default), application/xml
+URL endpoint: https://stamps.co.id/api/transactions/add
+Allowed method: POST
+Requires authentication: Yes
 
 
 A. Request
@@ -41,10 +39,10 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "abc",
+       "token": "secret",
        "user_email": "customer@stamps.co.id",
        "store": 32,
-       "invoice_number": "abc123456",
+       "invoice_number": "secret123456",
        "total_value": 50000,
        "subtotal": 40000,
        "discount": 0,
@@ -69,7 +67,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "abc", "user_email": "customer@stamps.co.id", "store": 2, "invoice_number": "abc123", "total_value": 50000, "subtotal": 40000, "discount": 0, "service_charge": 5000, "tax": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user_email": "customer@stamps.co.id", "store": 2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 Example of API call request using cURL (XML)
 
@@ -77,7 +75,7 @@ Example of API call request using cURL (XML)
 
     $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
     <root>
-        <token>abc</token>
+        <token>secret</token>
         <user_email>customer@stamps.co.id</user_email>
         <store>84</store>
         <total_value>50000</total_value>
@@ -255,13 +253,11 @@ If missing or wrong authentication token:
 
 
 
-2. Cancel existing transaction
+2. Canceling a Transaction
 =============================
-| URL endpoint: https://stamps.co.id/api/transactions/cancel
-| Allowed Method: POST
-| Require Authentication: Yes
-| Expected Content Type: application/json, application/xml
-| Response Content Type: application/json(default), application/xml
+URL endpoint: https://stamps.co.id/api/transactions/cancel
+Allowed method: POST
+Requires authentication: Yes
 
 
 A. Request
@@ -274,7 +270,7 @@ You can add a new transaction on stamps by calling the API with these parameters
 Parameter           Required    Description
 =================== =========== =======================
 token               Yes         Authentication string
-id                  Yes         Transaction id
+id                  Yes         Transaction ID
 =================== =========== =======================
 
 
@@ -283,7 +279,7 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "abc",
+       "token": "secret",
        "id": 1
     }
 
@@ -292,7 +288,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "abc", "id": 1 }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "secret", "id": 1 }'
 
 
 B. Response
@@ -300,13 +296,13 @@ B. Response
 
 In response to this API call, Stamps will return response with the following data (in JSON by default):
 
-    =================== ==================
-    Variable            Description
-    =================== ==================
-    id                  Transaction id
-    status              Transaction status
-    errors              Errors encountered when canceling a transaction (if any)
-    =================== ==================
+=================== ==================
+Variable            Description
+=================== ==================
+id                  Transaction ID
+status              Transaction status
+errors              Errors encountered when canceling a transaction (if any)
+=================== ==================
 
 Depending on the request, responses may return these status codes:
 
@@ -325,7 +321,7 @@ Code                Description
 Below are a few examples responses on successful API calls.
 
 
-If transaction is successful(JSON):
+If transaction is successfully canceled:
 
 .. code-block :: bash
 
@@ -338,7 +334,7 @@ If transaction is successful(JSON):
     {'id': 1, 'status': 'canceled'}
 
 
-When some fields don't validate (JSON):
+When some fields don't validate:
 
 .. code-block :: bash
 
@@ -349,29 +345,3 @@ When some fields don't validate (JSON):
      [Redacted Header]
 
     {"errors": {"info": "Transaction can't be canceled due to insufficient Stamps"}}
-
-
-If HTTP is used instead of HTTPS:
-
-.. code-block :: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-     [Redacted Header]
-
-    {"detail": "Please use https instead of http"}
-
-
-If missing or wrong authentication token:
-
-.. code-block :: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-     [Redacted Header]
-
-    {"detail": "Authentication credentials were not provided."}

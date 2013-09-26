@@ -6,9 +6,8 @@ Redemption API
 ===========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/add
-| Allowed Method: POST
-| Require Authentication: Yes
-| Expected content type: application/json
+| Allowed method: POST
+| Require authentication: Yes
 
 A. Parameters
 -------------
@@ -139,9 +138,8 @@ On successful redemption that generate voucher:
 ============================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/add-voucher
-| Allowed Method: POST
-| Require Authentication: Yes
-| Expected content type: application/json
+| Allowed method: POST
+| Requires authentication: Yes
 
 
 A. Parameters

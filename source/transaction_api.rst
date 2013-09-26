@@ -4,9 +4,9 @@ Transaction API
 
 1. Adding new transaction
 =============================
-URL endpoint: https://stamps.co.id/api/transactions/add
-Allowed method: POST
-Requires authentication: Yes
+| URL endpoint: https://stamps.co.id/api/transactions/add
+| Allowed method: POST
+| Requires authentication: Yes
 
 
 A. Request
@@ -255,9 +255,9 @@ If missing or wrong authentication token:
 
 2. Canceling a Transaction
 =============================
-URL endpoint: https://stamps.co.id/api/transactions/cancel
-Allowed method: POST
-Requires authentication: Yes
+| URL endpoint: https://stamps.co.id/api/transactions/cancel
+| Allowed method: POST
+| Requires authentication: Yes
 
 
 A. Request

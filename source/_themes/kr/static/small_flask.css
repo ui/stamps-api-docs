@@ -39,6 +39,10 @@ div.sphinxsidebar p.logo {
     display: none;
 }
 
+div.line {
+    line-height: 1.6em;
+}
+
 div.document {
     width: 100%;
     margin: 0;

@@ -86,6 +86,10 @@ div.sphinxsidebar {
     line-height: 1.5;
 }
 
+div.line {
+    line-height: 1.6em;
+}
+
 div.sphinxsidebarwrapper {
     padding: 18px 10px;
 }

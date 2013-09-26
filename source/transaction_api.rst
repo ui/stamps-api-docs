@@ -304,7 +304,7 @@ In response to this API call, Stamps will return response with the following dat
     Variable            Description
     =================== ==================
     id                  Transaction id
-    is_canceled         A boolean that is True if the transaction is successfully canceled
+    status              Transaction status
     errors              Errors encountered when canceling a transaction (if any)
     =================== ==================
 
@@ -342,7 +342,7 @@ If transaction is successful(JSON):
     Allow: POST, OPTIONS
      [Redacted Header]
 
-    {'id': 1, 'is_canceled': True}
+    {'id': 1, 'status': 'canceled'}
 
 
 When some fields don't validate (JSON):

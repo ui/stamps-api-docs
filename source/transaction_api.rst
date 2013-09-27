@@ -263,7 +263,7 @@ If missing or wrong authentication token:
 A. Request
 -----------------------------
 
-You can add a new transaction on stamps by calling the API with these parameters
+You can cancel a transaction on stamps by calling the API with these parameters
 
 
 =================== =========== =======================
@@ -299,8 +299,11 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==================
 Variable            Description
 =================== ==================
-id                  Transaction ID
-status              Transaction status
+transaction         Transaction information which is
+                    successfully canceled.
+                    Contains stamps_earned, id, and value
+customer            Customer information after successful
+                    redemption. Contains id, status, and stamps_remaining.
 errors              Errors encountered when canceling a transaction (if any)
 =================== ==================
 

@@ -214,3 +214,93 @@ On successful redemption:
         "id": 1
       }
     }
+
+3. Cancel Existing Redemption
+==============================
+
+| URL endpoint: https://stamps.co.id/api/redemptions/cancel
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can cancel a redemption by calling the API with these parameters.
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+id          Yes         Redemption id
+=========== =========== =========================
+
+Here's an example of how the API call might look like in JSON format
+
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "id": 1
+    }
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "id": 1 }' https://stamps.co.id/api/redemptions/cancel
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+redemption          Redemption information which is
+                    successfully canceled.
+                    Contains id and status
+customer            Customer information after successful
+                    redemption. Contains id and stamps_remaining.
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a required parameter
+401                 Unauthorized – Often missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful cancel redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "customer": {
+        "id": 6,
+        "stamps_remaining": 60
+      },
+      "redemption": {
+        "id": 1,
+        "status": "canceled"
+      }
+    }
+

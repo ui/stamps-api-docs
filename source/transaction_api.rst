@@ -335,7 +335,18 @@ If transaction is successful(JSON):
     Allow: POST, OPTIONS
      [Redacted Header]
 
-    {'id': 1, 'status': 'canceled'}
+    {
+      "customer": {
+        "status": "Silver",
+        "id": 28354,
+        "stamps_remaining": 62
+      },
+      "transaction": {
+        "stamps_earned": 43,
+        "id": 39182,
+        "value": 430859
+      }
+    }
 
 
 When some fields don't validate (JSON):

@@ -334,13 +334,13 @@ If transaction is successfully canceled:
     {
       "customer": {
         "status": "Silver",
-        "id": 28354,
+        "id": 5,
         "stamps_remaining": 62
       },
       "transaction": {
-        "stamps_earned": 43,
-        "id": 39182,
-        "value": 430859
+        "stamps_earned": 3,
+        "id": 1,
+        "value": 30000
       }
     }
 

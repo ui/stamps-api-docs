@@ -230,7 +230,7 @@ You can cancel a redemption by calling the API with these parameters.
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
-id          Yes         Redemption id
+id          Yes         Redemption ID
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -238,7 +238,7 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "abc",
+        "token": "secret",
         "id": 1
     }
 
@@ -246,7 +246,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "id": 1 }' https://stamps.co.id/api/redemptions/cancel
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "id": 1 }' https://stamps.co.id/api/redemptions/cancel
 
 B. Response
 -----------
@@ -276,6 +276,7 @@ Code                Description
 400                 Bad Request - Often missing a required parameter
 401                 Unauthorized – Often missing or wrong authentication token
 403                 Forbidden – You do not have permission for this request
+404                 Cannot find redemption of the requested redemption id
 405                 HTTP method not allowed
 500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
 =================== ==============================
@@ -283,7 +284,10 @@ Code                Description
 D. Example Response
 -------------------
 
-On successful cancel redemption:
+Below are a few examples responses on successful API calls.
+
+
+If redemption is successfully canceled:
 
 .. code-block :: bash
 
@@ -303,4 +307,3 @@ On successful cancel redemption:
         "status": "canceled"
       }
     }
-

@@ -307,6 +307,9 @@ customer            Customer information after successful
 errors              Errors encountered when canceling a transaction (if any)
 =================== ==================
 
+C. Response Headers
+-------------------
+
 Depending on the request, responses may return these status codes:
 
 =================== ==============================
@@ -320,6 +323,9 @@ Code                Description
 405                 HTTP method not allowed
 500, 502, 503, 504  Server errors - something is wrong on Stamps' end
 =================== ==============================
+
+D. Example Response
+-------------------
 
 Below are a few examples responses on successful API calls.
 

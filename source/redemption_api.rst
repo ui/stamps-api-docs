@@ -13,18 +13,21 @@ A. Parameters
 -------------
 You can initiate a redemption by calling the API with these parameters.
 
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-token       Yes         Authentication string
-user_email  Yes         A string indicating user's
-                        email address
-store       Yes         Merchant's store id where transaction is initiated
-reward      Yes         A number indicating the
-                        reward's ID
-=========== =========== =========================
+=============== ========================================= =========================
+Parameter       Required            Description
+=============== ========================================= =========================
+token           Yes                                       Authentication string
+user_email      Yes                                       A string indicating user's
+                                                          email address
+store           Yes                                       Merchant's store id where
+                                                          transaction is initiated
+reward          Yes (if reward_by_code is not specified)  A number indicating the
+                                                          reward's ID
 
-Here's an example of how the API call might look like in JSON format
+reward_by_code  Yes (if reward is not specified)          A string of the reward's code
+=============== ========================================= =========================
+
+Here's an example of how the API call might look like in JSON format with specified reward
 
 .. code-block :: bash
 
@@ -35,11 +38,28 @@ Here's an example of how the API call might look like in JSON format
         "reward": 1
     }
 
-Example of API call request using cURL
+Here's an example of how the API call might look like in JSON format with specified reward_by_code
+
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "user_email": "customer@stamps.co.id",
+        "store": 32,
+        "reward_by_code": "100"
+    }
+
+Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
     $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user_email": "customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/redemptions/add
+
+Example of API call request using cURL with specified reward_by_code
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user_email": "customer@stamps.co.id", "store": 32, "reward_by_code": "100"}' https://stamps.co.id/api/redemptions/add
 
 B. Response
 -----------

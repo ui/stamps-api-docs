@@ -298,12 +298,13 @@ If redemption is successfully canceled:
      [Redacted Header]
 
     {
-      "customer": {
-        "id": 6,
-        "stamps_remaining": 60
-      },
       "redemption": {
         "id": 1,
-        "status": "canceled"
+        "status": "Canceled"
+      },
+      "customer": {
+        "status": "Blue",
+        "id": 6,
+        "stamps_remaining": 60
       }
     }

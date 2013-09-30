@@ -341,15 +341,16 @@ If transaction is successfully canceled:
      [Redacted Header]
 
     {
-      "customer": {
-        "status": "Silver",
-        "id": 5,
-        "stamps_remaining": 62
-      },
       "transaction": {
         "stamps_earned": 3,
         "id": 1,
         "value": 30000
+        "status": "Canceled"
+      },
+      "customer": {
+        "status": "Blue",
+        "id": 5,
+        "stamps_remaining": 62
       }
     }
 

@@ -219,6 +219,9 @@ Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
 name        Yes         Customer's name
+email       Yes         Customer's email
+member_id   Yes         Customer's member id
+phone       Yes         Customer's phone number
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
 gender      Yes         Customer's gender ('male' or 'female')
 =========== =========== =========================
@@ -227,7 +230,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "birthday": "1991-10-19", gender: "female" }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "0215600010", "birthday": "1991-10-19", "gender": "female", }'
 
 
 B. Response Data
@@ -237,8 +240,9 @@ Stamps responds to this API call with the following data (in JSON):
 =================== ==============================
 Variable            Description
 =================== ==============================
-suggestions         List of suggestions.
-                    Contains id, name, stamps, email, and membership
+customer            List of suggestions.
+                    Contains customer's id, name, email, membership id, phone number,
+                    birthday, gender
 =================== ==============================
 
 
@@ -279,8 +283,10 @@ A successful API call:
       "customer": {
         "id": 3,
         "name": "me",
+        "email": "me@mail.com",
+        "member_id": "123412341234",
+        "phone": "0215600010",
         "birthday": "1991-10-19",
         "gender": "female",
-        "status": "registered",
       }
     }

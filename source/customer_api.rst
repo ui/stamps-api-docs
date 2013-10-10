@@ -199,3 +199,88 @@ A successful API call:
         }
       ]
     }
+
+
+
+3. Customer Registration
+=======================================
+| URL endpoint: https://stamps.co.id/api/memberships/register
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+If you're planning on building an autocomplete processing interface into your
+system, you can use this API to give suggestions.
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+name        Yes         Customer's name
+birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
+gender      Yes         Customer's gender ('male' or 'female')
+=========== =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "birthday": "1991-10-19", gender: "female" }'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+suggestions         List of suggestions.
+                    Contains id, name, stamps, email, and membership
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "customer": {
+        "id": 3,
+        "name": "me",
+        "birthday": "1991-10-19",
+        "gender": "female",
+        "status": "registered",
+      }
+    }

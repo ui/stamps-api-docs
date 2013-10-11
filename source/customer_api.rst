@@ -1,8 +1,8 @@
 ************************************
-User API
+Membership API
 ************************************
 
-1. Querying for Customer Data
+1. Querying for Member Data
 =======================================
 | URL endpoint: https://stamps.co.id/api/memberships/status
 | Allowed Method: GET
@@ -109,7 +109,7 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-2. Querying for User suggestions
+2. Querying for Member Suggestions
 =======================================
 | URL endpoint: https://stamps.co.id/api/memberships/suggestions
 | Allowed Method: GET
@@ -201,9 +201,8 @@ A successful API call:
     }
 
 
-
-3. Customer Registration
-=======================================
+3. Registration
+===============
 | URL endpoint: https://stamps.co.id/api/memberships/register
 | Allowed Method: POST
 | Require Authentication: Yes
@@ -211,8 +210,9 @@ A successful API call:
 A. Request
 -----------------------------
 
-If you're planning on building an autocomplete processing interface into your
-system, you can use this API to give suggestions.
+You can use this API to register your customer through Point of Sales
+or other websites. On successful redemption, Stamps will send an email
+containing an automatically generated password.
 
 =========== =========== =========================
 Parameter   Required    Description
@@ -240,9 +240,7 @@ Stamps responds to this API call with the following data (in JSON):
 =================== ==============================
 Variable            Description
 =================== ==============================
-customer            List of suggestions.
-                    Contains customer's id, name, email, membership id, phone number,
-                    birthday, gender
+customer            Various customer data
 =================== ==============================
 
 

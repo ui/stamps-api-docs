@@ -88,7 +88,8 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 6,
           "redeemable": true,
-          "name": "Mee Goreng"
+          "name": "Mee Goreng",
+          "code": "A001"
         },
         {
           "stamps_to_redeem": 60,
@@ -96,6 +97,7 @@ On a successful API call:
           "id": 5,
           "redeemable": true,
           "name": "Curry Chicken"
+          "code": "A002"
         },
         {
           "stamps_to_redeem": 120,
@@ -103,6 +105,7 @@ On a successful API call:
           "id": 8,
           "redeemable": false,
           "name": "Nasi Lemak"
+          "code": "A003"
         },
         {
           "stamps_to_redeem": 10,
@@ -110,6 +113,7 @@ On a successful API call:
           "id": 7,
           "redeemable": false,
           "name": "Nasi Lemak"
+          "code": "A004"
         }
       ]
     }

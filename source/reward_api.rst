@@ -96,7 +96,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 5,
           "redeemable": true,
-          "name": "Curry Chicken"
+          "name": "Curry Chicken",
           "code": "A002"
         },
         {
@@ -104,7 +104,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 8,
           "redeemable": false,
-          "name": "Nasi Lemak"
+          "name": "Nasi Lemak",
           "code": "A003"
         },
         {
@@ -112,7 +112,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 7,
           "redeemable": false,
-          "name": "Nasi Lemak"
+          "name": "Nasi Lemak",
           "code": "A004"
         }
       ]

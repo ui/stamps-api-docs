@@ -42,6 +42,9 @@ Variable            Description
 =================== ==============================
 rewards             List of rewards available for redemption.
                     Contains id, name, stamps_required, image_url, and redeemable(If user_email is provided)
+vouchers            List of rewards available for redemption by user.
+                    Contains  id, name, type, quantity, image_url,
+                    landscape_url, and expires_on.
 detail              Description of error (if any)
 errors              Errors encountered when parsing
                     data (if any)
@@ -114,6 +117,26 @@ On a successful API call:
           "redeemable": false,
           "name": "Nasi Lemak",
           "code": "A004"
+        }
+      ],
+      "vouchers": [
+        {
+          "name": "Birthday Voucher",
+          "landscape_url": "foo-landscape.png",
+          "image_url": "foo.png",
+          "type": "promotion 1",
+          "id": 110827,
+          "expires_on": "13-02-2013 00:00",
+          "quantity": 1
+        },
+        {
+          "name": "10 Year celebration promo",
+          "landscape_url": "foo-landscape.png",
+          "image_url": "foo.png",
+          "type": "promotion 1",
+          "id": 110214,
+          "expires_on": "24-01-2014 00:00",
+          "quantity": 2
         }
       ]
     }

@@ -24,7 +24,8 @@ store               Yes         A number (id) indicating store where transaction
                                 is created
 invoice_number      Yes         POS transaction number (must be unique daily)
 total_value         Yes         A number indicating transaction's grand total
-created             Optional    ISO 8601 date time format to indicate transaction's created date (e.g. 2013-02-15T13:01:01+07)
+created             Optional    ISO 8601 date time format to indicate transaction's
+                                created date (e.g. 2013-02-15T13:01:01+07)
 subtotal            Optional    A number indicating transaction subtotal
 discount            Optional    A number indicating transaction discount (in Rp.)
 service_change      Optional    A number indicating service charge (in Rp.)

@@ -23,8 +23,8 @@ store           Yes                                       Merchant's store id wh
                                                           transaction is initiated
 reward          Yes (if reward_by_code is not specified)  A number indicating the
                                                           reward's ID
-
 reward_by_code  Yes (if reward is not specified)          A string of the reward's code
+invoice_number  No                                        POS invoice number
 =============== ========================================= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward

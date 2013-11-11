@@ -66,17 +66,17 @@ Here's an example of how the API call might look like in JSON format:
     }
 
 
-Example of API call request using cURL (JSON)
+Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user_email": "customer@stamps.co.id", "store": 2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user_email": "customer@stamps.co.id", "store": 2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 Example of API call request using cURL (XML)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
+    $ curl -X POST -H "Content-Type: application/xml"  -H "Accept: application/xml" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
     <root>
         <token>secret</token>
         <user_email>customer@stamps.co.id</user_email>
@@ -121,8 +121,8 @@ Response content type can be set using the `Accept` header made in the request :
 
 .. code-block :: bash
 
-  $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" # Response will be in XML
-  $ curl -X POST -H "Content-Type: application/xml" # Response will be in JSON(default)
+  $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" -H "Expect:" # Response will be in XML
+  $ curl -X POST -H "Content-Type: application/xml" -H "Expect:" # Response will be in JSON(default)
 
 Depending on the request, responses may return these status codes:
 

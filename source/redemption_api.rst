@@ -25,6 +25,9 @@ reward          Yes (if reward_by_code is not specified)  A number indicating th
                                                           reward's ID
 reward_by_code  Yes (if reward is not specified)          A string of the reward's code
 invoice_number  No                                        POS invoice number
+type            No                                        Redemption type which by default is
+                                                          'reward'. The choices are
+                                                          'reward' and 'promotion'
 =============== ========================================= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward

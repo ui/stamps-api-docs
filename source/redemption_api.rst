@@ -20,7 +20,6 @@ token           Yes       Authentication string
 user_email      Yes       A string indicating user's email address
 store           Yes       Merchant's store id where redemption is initiated
 reward          Yes       A number indicating the reward's ID
-.. reward_by_code  No        A string of the reward's code
 invoice_number  No        POS invoice number
 type            No        Choices are "reward" or "promotion". Defaults to "reward". 
 =============== ========= =========================

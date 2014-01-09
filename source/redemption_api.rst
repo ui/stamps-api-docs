@@ -13,22 +13,17 @@ A. Parameters
 -------------
 You can initiate a redemption by calling the API with these parameters.
 
-=============== ========================================= =========================
-Parameter       Required            Description
-=============== ========================================= =========================
-token           Yes                                       Authentication string
-user_email      Yes                                       A string indicating user's
-                                                          email address
-store           Yes                                       Merchant's store id where
-                                                          transaction is initiated
-reward          Yes (if reward_by_code is not specified)  A number indicating the
-                                                          reward's ID
-reward_by_code  Yes (if reward is not specified)          A string of the reward's code
-invoice_number  No                                        POS invoice number
-type            No                                        Redemption type which by default is
-                                                          'reward'. The choices are
-                                                          'reward' and 'promotion'
-=============== ========================================= =========================
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+user_email      Yes       A string indicating user's email address
+store           Yes       Merchant's store id where redemption is initiated
+reward          Yes       A number indicating the reward's ID
+.. reward_by_code  No        A string of the reward's code
+invoice_number  No        POS invoice number
+type            No        Choices are "reward" or "promotion". Defaults to "reward". 
+=============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
 

@@ -19,7 +19,7 @@ You can add a new transaction on stamps by calling the API with these parameters
 Parameter           Required    Description
 =================== =========== =======================
 token               Yes         Authentication string
-user_email          Yes         An email address indicating customer
+user                Yes         Email address / Member ID indicating customer
 store               Yes         A number (id) indicating store where transaction
                                 is created
 invoice_number      Yes         POS transaction number (must be unique daily)
@@ -43,7 +43,7 @@ Here's an example of how the API call might look like in JSON format:
 
     {
        "token": "secret",
-       "user_email": "customer@stamps.co.id",
+       "user": "customer@stamps.co.id",
        "store": 32,
        "invoice_number": "secret123456",
        "total_value": 50000,
@@ -70,7 +70,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user_email": "customer@stamps.co.id", "store": 2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 Example of API call request using cURL (XML)
 
@@ -79,7 +79,7 @@ Example of API call request using cURL (XML)
     $ curl -X POST -H "Content-Type: application/xml"  -H "Accept: application/xml" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
     <root>
         <token>secret</token>
-        <user_email>customer@stamps.co.id</user_email>
+        <user>customer@stamps.co.id</user>
         <store>84</store>
         <total_value>50000</total_value>
         <subtotal>40000</subtotal>

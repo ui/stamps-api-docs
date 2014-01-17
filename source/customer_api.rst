@@ -40,6 +40,7 @@ Variable            Description
 stamps              Total stamps amount the
                     particular user has
 membership_status   Membership status of the user
+is_active           Whether user is registered on Stamps
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing
                     data (if any)

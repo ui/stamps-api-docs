@@ -72,22 +72,22 @@ On successful balance update:
       }
     }
 
-2. Reduce Balance
+2. Deduct Balance
 =======================================
-| URL endpoint: https://stamps.co.id/api/balances/reduce
+| URL endpoint: https://stamps.co.id/api/balances/deduct
 | Allowed Method: POST
 | Require Authentication: Yes
 
 A. Request
 -----------------------------
-You can reduce an amount from a balance by calling the API with these parameters.
+You can deduct an amount from a balance by calling the API with these parameters.
 
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address
-amount      Yes         A number indicating the amount to be reduced from the balance
+amount      Yes         A number indicating the amount to be deducted from the balance
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -104,7 +104,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100}' https://stamps.co.id/api/balances/reduce
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100}' https://stamps.co.id/api/balances/deduct
 
 
 B. Response
@@ -115,7 +115,7 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==============================
 Variable            Description
 =================== ==============================
-customer            An object containing customer information after successful reduction
+customer            An object containing customer information after successful deduction
                     from the balance. Contains id, current balance and membership status.
 errors              Errors encountered when processing request (if any)
 =================== ==============================

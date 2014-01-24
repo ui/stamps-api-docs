@@ -232,8 +232,8 @@ On successful redemption:
       }
     }
 
-3. Cancel Existing Redemption
-==============================
+3. Canceling a Redemption
+=========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/cancel
 | Allowed method: POST

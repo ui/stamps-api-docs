@@ -2,8 +2,8 @@
 Transaction API
 ************************************
 
-1. Adding new transaction
-=============================
+1. Adding a Transaction
+=======================
 | URL endpoint: https://stamps.co.id/api/transactions/add
 | Allowed method: POST
 | Requires authentication: Yes

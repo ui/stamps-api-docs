@@ -1,5 +1,5 @@
 ************************************
-Customer Balance API
+Balance API
 ************************************
 
 1. Add Balance
@@ -16,8 +16,8 @@ You can add an amount to a balance by calling the API with these parameters.
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
-user        Yes         A string indicating user's email address
-amount      Yes         A number indicating the amount to be added to the balance
+user        Yes         A string indicating user's email address or member ID
+amount      Yes         A positive number indicating the amount to be added to customer's balance
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -86,8 +86,8 @@ You can deduct an amount from a balance by calling the API with these parameters
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
-user        Yes         A string indicating user's email address
-amount      Yes         A number indicating the amount to be deducted from the balance
+user        Yes         A string indicating user's email address or member ID
+amount      Yes         A positive number indicating amount to be deducted from customer's balance
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format

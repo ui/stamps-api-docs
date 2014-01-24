@@ -2,7 +2,7 @@
 Membership API
 ************************************
 
-1. Querying for Member Data
+1. Getting Member Data
 =======================================
 | URL endpoint: https://stamps.co.id/api/memberships/status
 | Allowed Method: GET
@@ -110,8 +110,8 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-2. Querying for Member Suggestions
-=======================================
+2. Member Suggestions
+=====================
 | URL endpoint: https://stamps.co.id/api/memberships/suggestions
 | Allowed Method: GET
 | Require Authentication: Yes
@@ -119,8 +119,9 @@ If missing or wrong authentication token:
 A. Request
 -----------------------------
 
-If you're planning on building an autocomplete processing interface into your
-system, you can use this API to give suggestions.
+Manual inputs are time consuming and prone to errors. Member entry interfaces 
+can be made easier to use by offering autocompletions. Given a sequence of
+characters, this API returns a list of possible member matches.
 
 =========== =========== =========================
 Parameter   Required    Description

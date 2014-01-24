@@ -222,7 +222,7 @@ token       Yes         Authentication string
 name        Yes         Customer's name
 email       Yes         Customer's email
 member_id   No          Customer's member id
-phone       Yes         Customer's phone number
+phone       No          Customer's phone number
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
 gender      Yes         Customer's gender ('Male' or 'Female')
 =========== =========== =========================

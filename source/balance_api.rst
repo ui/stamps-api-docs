@@ -4,7 +4,7 @@ Balance API
 
 1. Crediting to a Customer's Balance
 ====================================
-| URL endpoint: https://stamps.co.id/api/balances/add
+| URL endpoint: https://stamps.co.id/api/balances/credit
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -34,7 +34,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000}' https://stamps.co.id/api/balances/add
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000}' https://stamps.co.id/api/balances/credit
 
 
 B. Response
@@ -74,7 +74,7 @@ On successful balance update:
 
 2. Debiting from a Customer's Balance
 =====================================
-| URL endpoint: https://stamps.co.id/api/balances/deduct
+| URL endpoint: https://stamps.co.id/api/balances/debit
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -104,7 +104,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100}' https://stamps.co.id/api/balances/deduct
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100}' https://stamps.co.id/api/balances/debit
 
 
 B. Response

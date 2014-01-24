@@ -2,8 +2,8 @@
 Balance API
 ************************************
 
-1. Add Balance
-=======================================
+1. Crediting to a Customer's Balance
+====================================
 | URL endpoint: https://stamps.co.id/api/balances/add
 | Allowed Method: POST
 | Require Authentication: Yes
@@ -72,8 +72,8 @@ On successful balance update:
       }
     }
 
-2. Deduct Balance
-=======================================
+2. Debiting from a Customer's Balance
+=====================================
 | URL endpoint: https://stamps.co.id/api/balances/deduct
 | Allowed Method: POST
 | Require Authentication: Yes

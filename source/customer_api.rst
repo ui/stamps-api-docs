@@ -232,7 +232,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "0215600010", "birthday": "1991-10-19", "gender": "Female", }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "0215600010", "birthday": "1991-10-19", "gender": "Female"}'
 
 
 B. Response Data

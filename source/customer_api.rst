@@ -19,6 +19,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user_email  Yes         A string indicating user's
                         email address to be queried
+merchant    No          Integer indicating merchant ID to use
 =========== =========== =========================
 
 Example of API call request using cURL
@@ -129,6 +130,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 query       Yes         A string indicating query
                         to be processed for the suggestions API
+merchant    No          Integer indicating merchant ID to use
 =========== =========== =========================
 
 Example of API call request using cURL:

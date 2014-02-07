@@ -18,6 +18,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating the amount to be added to customer's balance
+merchant    Yes         ID of merchant
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -34,7 +35,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000}' https://stamps.co.id/api/balances/credit
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000, "merchant": 14}' https://stamps.co.id/api/balances/credit
 
 
 B. Response
@@ -88,6 +89,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating amount to be deducted from customer's balance
+merchant    Yes         ID of merchant
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -104,7 +106,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100}' https://stamps.co.id/api/balances/debit
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100, "merchant": 14}' https://stamps.co.id/api/balances/debit
 
 
 B. Response

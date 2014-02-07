@@ -19,7 +19,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user_email  No          A string indicating user's
                         email address to be queried
-merchant    Yes         ID of merchant to be queried for reward
+merchant    Yes         Integer indicating merchant ID to be queried for reward
 =========== =========== =========================
 
 Example of API call request using cURL

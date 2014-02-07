@@ -18,7 +18,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating the amount to be added to customer's balance
-merchant    Yes         ID of merchant
+merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -90,7 +90,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating amount to be deducted from customer's balance
-merchant    Yes         ID of merchant
+merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format

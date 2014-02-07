@@ -19,7 +19,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user_email  Yes         A string indicating user's
                         email address to be queried
-merchant    No          Integer indicating merchant ID to use
+merchant    Yes          Integer indicating merchant ID to use
 =========== =========== =========================
 
 Example of API call request using cURL
@@ -27,7 +27,7 @@ Example of API call request using cURL
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user_email=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user_email=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data
@@ -120,7 +120,7 @@ If missing or wrong authentication token:
 A. Request
 -----------------------------
 
-Manual inputs are time consuming and prone to errors. Member entry interfaces 
+Manual inputs are time consuming and prone to errors. Member entry interfaces
 can be made easier to use by offering autocompletions. Given a sequence of
 characters, this API returns a list of possible member matches.
 
@@ -130,14 +130,14 @@ Parameter   Required    Description
 token       Yes         Authentication string
 query       Yes         A string indicating query
                         to be processed for the suggestions API
-merchant    No          Integer indicating merchant ID to use
+merchant    Yes          Integer indicating merchant ID to use
 =========== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve'
+    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve&merchant=14'
 
 
 B. Response Data

@@ -26,10 +26,6 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    # Query reward index of your own
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user_email=customer@stamps.co.id'
-
-    # Query reward index of other merchant, if you have access
     $ curl 'https://stamps.co.id/api/rewards/?token=abc&user_email=customer@stamps.co.id&merchant=14'
 
 

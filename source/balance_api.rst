@@ -29,6 +29,7 @@ Here's an example of how the API call might look like in JSON format
         "token": "secret",
         "user": "customer@stamps.co.id",
         "amount": 1000,
+        "merchant": 14
     }
 
 Example of API call request using cURL
@@ -100,6 +101,7 @@ Here's an example of how the API call might look like in JSON format
         "token": "secret",
         "user": "customer@stamps.co.id",
         "amount": 100,
+        "merchant": 14
     }
 
 Example of API call request using cURL

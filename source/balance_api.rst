@@ -18,6 +18,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating the amount to be added to customer's balance
+type        Yes         Balance type (available types: 'stamps')
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
@@ -29,6 +30,7 @@ Here's an example of how the API call might look like in JSON format
         "token": "secret",
         "user": "customer@stamps.co.id",
         "amount": 1000,
+        "type": "stamps",
         "merchant": 14
     }
 
@@ -90,6 +92,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating amount to be deducted from customer's balance
+type        Yes         Balance type (available types: 'stamps')
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
@@ -101,6 +104,7 @@ Here's an example of how the API call might look like in JSON format
         "token": "secret",
         "user": "customer@stamps.co.id",
         "amount": 100,
+        "type": "stamps",
         "merchant": 14
     }
 

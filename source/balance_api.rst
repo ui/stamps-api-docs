@@ -18,7 +18,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating the amount to be added to customer's balance
-type        Yes         Balance type (available types: 'stamps')
+type        Yes         Balance type (available type: 'stamps')
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
@@ -92,7 +92,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating amount to be deducted from customer's balance
-type        Yes         Balance type (available types: 'stamps')
+type        Yes         Balance type (available type: 'stamps')
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 

@@ -20,6 +20,7 @@ user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating the amount to be added to customer's balance
 type        Yes         Balance type (available type: 'stamps')
 merchant    Yes         Integer indicating merchant ID
+store       Yes         Integer indicating the store from which request originated
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -31,7 +32,8 @@ Here's an example of how the API call might look like in JSON format
         "user": "customer@stamps.co.id",
         "amount": 1000,
         "type": "stamps",
-        "merchant": 14
+        "merchant": 14,
+        "store": 3
     }
 
 Example of API call request using cURL
@@ -94,6 +96,7 @@ user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating amount to be deducted from customer's balance
 type        Yes         Balance type (available type: 'stamps')
 merchant    Yes         Integer indicating merchant ID
+store       Yes         Integer indicating the store from which request originated
 =========== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -105,7 +108,8 @@ Here's an example of how the API call might look like in JSON format
         "user": "customer@stamps.co.id",
         "amount": 100,
         "type": "stamps",
-        "merchant": 14
+        "merchant": 14,
+        "store": 3
     }
 
 Example of API call request using cURL

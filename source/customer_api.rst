@@ -2,7 +2,7 @@
 Membership API
 ************************************
 
-1. Querying for Member Data
+1. Getting Member Data
 =======================================
 | URL endpoint: https://stamps.co.id/api/memberships/status
 | Allowed Method: GET
@@ -19,6 +19,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user_email  Yes         A string indicating user's
                         email address to be queried
+merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
 Example of API call request using cURL
@@ -26,7 +27,7 @@ Example of API call request using cURL
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user_email=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user_email=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data
@@ -40,6 +41,7 @@ Variable            Description
 stamps              Total stamps amount the
                     particular user has
 membership_status   Membership status of the user
+is_active           Whether user is registered on Stamps
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing
                     data (if any)
@@ -109,8 +111,8 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-2. Querying for Member Suggestions
-=======================================
+2. Member Suggestions
+=====================
 | URL endpoint: https://stamps.co.id/api/memberships/suggestions
 | Allowed Method: GET
 | Require Authentication: Yes
@@ -118,8 +120,9 @@ If missing or wrong authentication token:
 A. Request
 -----------------------------
 
-If you're planning on building an autocomplete processing interface into your
-system, you can use this API to give suggestions.
+Manual inputs are time consuming and prone to errors. Member entry interfaces
+can be made easier to use by offering autocompletions. Given a sequence of
+characters, this API returns a list of possible member matches.
 
 =========== =========== =========================
 Parameter   Required    Description
@@ -127,13 +130,14 @@ Parameter   Required    Description
 token       Yes         Authentication string
 query       Yes         A string indicating query
                         to be processed for the suggestions API
+merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve'
+    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve&merchant=14'
 
 
 B. Response Data
@@ -221,16 +225,17 @@ token       Yes         Authentication string
 name        Yes         Customer's name
 email       Yes         Customer's email
 member_id   No          Customer's member id
-phone       Yes         Customer's phone number
+phone       No          Customer's phone number
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
 gender      Yes         Customer's gender ('Male' or 'Female')
+merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "0215600010", "birthday": "1991-10-19", "gender": "Female", }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "0215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14}'
 
 
 B. Response Data

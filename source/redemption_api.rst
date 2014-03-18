@@ -2,8 +2,8 @@
 Redemption API
 ************************************
 
-1. Adding Reward Redemption
-===========================
+1. Adding a Redemption
+======================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/add
 | Allowed method: POST
@@ -232,8 +232,8 @@ On successful redemption:
       }
     }
 
-3. Cancel Existing Redemption
-==============================
+3. Canceling a Redemption
+=========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/cancel
 | Allowed method: POST

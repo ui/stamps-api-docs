@@ -19,17 +19,13 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user_email  No          A string indicating user's
                         email address to be queried
-merchant    No          User ID of merchant to be queried for reward index(If you have access)
+merchant    Yes         Integer indicating merchant ID to be queried for reward
 =========== =========== =========================
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    # Query reward index of your own
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user_email=customer@stamps.co.id'
-
-    # Query reward index of other merchant, if you have access
     $ curl 'https://stamps.co.id/api/rewards/?token=abc&user_email=customer@stamps.co.id&merchant=14'
 
 

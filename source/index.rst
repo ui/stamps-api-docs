@@ -17,4 +17,5 @@ Contents
    redemption_api.rst
    reward_api.rst
    customer_api.rst
+   balance_api.rst
 

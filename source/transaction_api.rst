@@ -72,33 +72,6 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
     $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
-Example of API call request using cURL (XML)
-
-.. code-block :: bash
-
-    $ curl -X POST -H "Content-Type: application/xml"  -H "Accept: application/xml" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '<?xml version="1.0" encoding="UTF-8" ?>
-    <root>
-        <token>secret</token>
-        <user>customer@stamps.co.id</user>
-        <store>84</store>
-        <total_value>50000</total_value>
-        <subtotal>40000</subtotal>
-        <discount>0</discount>
-        <service_charge>5000</service_charge>
-        <tax>5000</tax>
-        <items>
-            <list-item>
-                <product_name>Cappucino</product_name>
-                <quantity>2</quantity>
-                <price>10000</price>
-            </list-item>
-            <list-item>
-                <product_name>Iced Tea</product_name>
-                <quantity>4</quantity>
-                <price>5000</price>
-            </list-item>
-        </items>
-    </root>'
 
 B. Response
 -----------------------------
@@ -116,13 +89,6 @@ In response to this API call, Stamps will return response with the following dat
     detail              Description of error (if any)
     validation_errors   Errors encountered when parsing data (if any)
     =================== ==================
-
-Response content type can be set using the `Accept` header made in the request :
-
-.. code-block :: bash
-
-  $ curl -X POST -H "Content-Type: application/xml" -H "Accept: application/xml" -H "Expect:" # Response will be in XML
-  $ curl -X POST -H "Content-Type: application/xml" -H "Expect:" # Response will be in JSON(default)
 
 Depending on the request, responses may return these status codes:
 
@@ -163,31 +129,6 @@ If transaction is successful(JSON):
       }
     }
 
-If transaction is successful(XML):
-
-.. code-block :: bash
-
-    HTTP/1.0 200 OK
-    Vary: Accept
-    Content-Type: application/xml
-    Allow: POST, OPTIONS
-     [Redacted Header]
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <root>
-      <customer>
-        <status>Blue</status>
-        <id>16</id>
-        <stamps_remaining>5</stamps_remaining>
-      </customer>
-      <transaction>
-        <stamps_earned>5.0</stamps_earned>
-        <id>1</id>
-        <value>50000</value>
-      </transaction>
-    </root>
-
-
 
 When some fields don't validate (JSON):
 
@@ -201,32 +142,6 @@ When some fields don't validate (JSON):
 
 
     {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"price": "This field is required."}, {"invoice_number": "Store does not exist"}]}
-
-
-When some fields don't validate(XML):
-
-.. code-block :: bash
-
-    HTTP/1.0 400 BAD REQUEST
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-     [Redacted Header]
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <root>
-      <validation_errors>
-        <list-item>
-          <price>This field is required.</price>
-        </list-item>
-        <list-item>
-          <store>Select a valid choice. That choice is not one of the available choices.</store>
-        </list-item>
-      </validation_errors>
-      <detail>
-        Your transaction cannot be completed due to the following error(s)
-      </detail>
-    </root>
 
 
 If HTTP is used instead of HTTPS:

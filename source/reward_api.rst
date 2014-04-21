@@ -17,8 +17,7 @@ You can query for all available rewards on stamps with optional checking to user
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
-user_email  No          A string indicating user's
-                        email address to be queried
+user        No          A string indicating customer's email or Member ID
 merchant    Yes         Integer indicating merchant ID to be queried for reward
 =========== =========== =========================
 
@@ -26,7 +25,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user_email=customer@stamps.co.id&merchant=14'
+    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data
@@ -37,7 +36,7 @@ Stamps responds to this API call with the following data (in JSON):
 Variable            Description
 =================== ==============================
 rewards             List of rewards available for redemption.
-                    Contains id, name, stamps_required, image_url, and redeemable(If user_email is provided)
+                    Contains id, name, stamps_required, image_url, and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url,
                     landscape_url, and expires_on.

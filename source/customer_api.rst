@@ -17,8 +17,7 @@ You can query for a customer's data on Stamps .
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
-user_email  Yes         A string indicating user's
-                        email address to be queried
+user        Yes         A string indicating customer's email or Member ID
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 
@@ -27,7 +26,7 @@ Example of API call request using cURL
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user_email=customer@stamps.co.id&merchant=14'
+    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data

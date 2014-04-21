@@ -222,20 +222,21 @@ containing an automatically generated password.
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
+merchant    Yes         Integer indicating merchant ID
 name        Yes         Customer's name
 email       Yes         Customer's email
-member_id   No          Customer's member id
-phone       No          Customer's phone number
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
 gender      Yes         Customer's gender ('Male' or 'Female')
-merchant    Yes         Integer indicating merchant ID
+member_id   No          Customer's member (card) id
+phone       No          Customer's phone number
+address     No          Customer's address
 =========== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "0215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
 
 
 B. Response Data

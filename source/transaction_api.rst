@@ -12,7 +12,7 @@ Transaction API
 A. Request
 -----------------------------
 
-You can add a new transaction on stamps by calling the API with these parameters
+You can add a new transaction on Stamps by calling the API with these parameters
 
 
 =================== =========== =======================
@@ -76,19 +76,19 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 B. Response
 -----------------------------
 
-In response to this API call, Stamps will return response with the following data (in JSON by default):
+In response to this API call, Stamps will reply with the following data in JSON:
 
-    =================== ==================
-    Variable            Description
-    =================== ==================
-    transaction         Stamps transaction information
-                        that is successfully created.
-                        Contains id, value, and stamps_earned.
-    customer            Customer information after successful
-                        transaction. Contains id, stamps_remaining, and status.
-    detail              Description of error (if any)
-    validation_errors   Errors encountered when parsing data (if any)
-    =================== ==================
+=================== ==================
+Variable            Description
+=================== ==================
+transaction         Stamps transaction information
+                    that is successfully created.
+                    Contains id, value, and stamps_earned.
+customer            Customer information after successful
+                    transaction. Contains id, stamps_remaining, and status.
+detail              Description of error (if any)
+validation_errors   Errors encountered when parsing data (if any)
+=================== ==================
 
 Depending on the request, responses may return these status codes:
 
@@ -114,7 +114,7 @@ If transaction is successful(JSON):
     Vary: Accept
     Content-Type: application/json
     Allow: POST, OPTIONS
-     [Redacted Header]
+    [Redacted Header]
 
     {
       "customer": {

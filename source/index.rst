@@ -18,4 +18,5 @@ Contents
    reward_api.rst
    customer_api.rst
    balance_api.rst
+   booking_api.rst
 

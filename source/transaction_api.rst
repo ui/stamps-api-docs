@@ -183,12 +183,14 @@ A. Request
 You can cancel a transaction on stamps by calling the API with these parameters
 
 
-=================== =========== =======================
-Parameter           Required    Description
-=================== =========== =======================
-token               Yes         Authentication string
-id                  Yes         Transaction ID
-=================== =========== =======================
+========================== =========== =========================================================
+Parameter                  Required    Description
+========================== =========== =========================================================
+token                      Yes         Authentication string
+id                         Yes         Transaction ID
+cancel_related_redemptions No          When "true", cancels all redemptions registered in under
+                                       this transaction's "invoice_number". Defaults to "false"
+========================== =========== =========================================================
 
 
 Here's an example of how the API call might look like in JSON format:

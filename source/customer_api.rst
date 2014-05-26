@@ -225,7 +225,7 @@ merchant    Yes         Integer indicating merchant ID
 name        Yes         Customer's name
 email       Yes         Customer's email
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
-gender      Yes         Customer's gender ('Male' or 'Female')
+gender      Yes         Customer's gender ("male" or "female")
 member_id   No          Customer's member (card) id
 phone       No          Customer's phone number
 address     No          Customer's address

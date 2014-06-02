@@ -21,7 +21,8 @@ user            Yes       A string indicating customer's email or Member ID
 store           Yes       Merchant's store id where redemption is initiated
 reward          Yes       A number indicating the reward's ID
 invoice_number  No        POS invoice number
-type            No        Choices are "reward" or "promotion". Defaults to "reward". 
+type            No        Choices are "reward", "voucher" or "promotion".
+                          Defaults to "reward". 
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward

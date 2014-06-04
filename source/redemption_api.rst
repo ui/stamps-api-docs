@@ -152,88 +152,8 @@ On successful redemption that generate voucher:
       }
     }
 
-2. Adding Voucher Redemption
-============================
 
-| URL endpoint: https://stamps.co.id/api/redemptions/add-voucher
-| Allowed method: POST
-| Requires authentication: Yes
-
-
-A. Parameters
--------------
-
-You can initiate a voucher redemption by calling the API with these parameters.
-
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-token       Yes         Authentication string
-user        Yes         A string indicating customer's email address
-store       Yes         Merchant's store id where redemption is initiated
-voucher     Yes         A number indicating the voucher's id
-=========== =========== =========================
-
-Here's an example of how the API call might look like in JSON format
-
-.. code-block :: bash
-
-    {
-        "token": "abc",
-        "user": "customer@stamps.co.id",
-        "store": 32,
-        "voucher": 1
-    }
-
-Example of API call request using cURL
-
-.. code-block :: bash
-
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12}' https://stamps.co.id/api/redemptions/add-voucher
-
-
-B. Response
------------
-
-In response to this API call, Stamps will return response with the following data (in JSON):
-
-=================== ==============================
-Variable            Description
-=================== ==============================
-redemption          An object containing various redemption information
-                    Contains redemption id and name of voucher redeemed
-customer            An object containing customer information after successful
-                    redemption. Contains id and remaining Stamps.
-detail              Description of error (if any)
-errors              Errors encountered when processing request (if any)
-=================== ==============================
-
-
-C. Example Response
--------------------
-
-On successful redemption:
-
-.. code-block :: bash
-
-    HTTP/1.0 200 OK
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-     [Redacted Header]
-
-    {
-      "customer": {
-        "id": 6,
-        "stamps_remaining": 60
-      },
-      "redemption": {
-        "voucher": "Kaya Toast Voucher",
-        "id": 1
-      }
-    }
-
-3. Canceling a Redemption
+2. Canceling a Redemption
 =========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/cancel

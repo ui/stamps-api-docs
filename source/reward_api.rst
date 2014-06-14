@@ -19,6 +19,8 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        No          A string indicating customer's email or Member ID
 merchant    Yes         Integer indicating merchant ID to be queried for reward
+..store       No          Integer indicating store ID to be queried for reward,
+..                        If not specified rewards on all store will be returned
 =========== =========== =========================
 
 Example of API call request using cURL
@@ -35,10 +37,13 @@ Stamps responds to this API call with the following data (in JSON):
 =================== ==============================
 Variable            Description
 =================== ==============================
+customer            Customer information after successful query.
+                    Contains id, stamps_remaining, and status.
 rewards             List of rewards available for redemption.
-                    Contains id, name, stamps_required, image_url, and redeemable(If user is provided)
+                    Contains id, name, stamps_required, extra_data,
+                    image_url, and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
-                    Contains  id, name, type, quantity, image_url,
+                    Contains  id, name, type, quantity, image_url, extra_data
                     landscape_url, and expires_on.
 detail              Description of error (if any)
 errors              Errors encountered when parsing
@@ -87,7 +92,10 @@ On a successful API call:
           "id": 6,
           "redeemable": true,
           "name": "Mee Goreng",
-          "code": "A001"
+          "code": "A001",
+          "extra_data": {
+             "SKU": "A001SKU"
+          }
         },
         {
           "stamps_to_redeem": 60,
@@ -95,7 +103,8 @@ On a successful API call:
           "id": 5,
           "redeemable": true,
           "name": "Curry Chicken",
-          "code": "A002"
+          "code": "A002",
+          "extra_data": {}
         },
         {
           "stamps_to_redeem": 120,
@@ -103,7 +112,8 @@ On a successful API call:
           "id": 8,
           "redeemable": false,
           "name": "Nasi Lemak",
-          "code": "A003"
+          "code": "A003",
+          "extra_data": {}
         },
         {
           "stamps_to_redeem": 10,
@@ -111,7 +121,8 @@ On a successful API call:
           "id": 7,
           "redeemable": false,
           "name": "Nasi Lemak",
-          "code": "A004"
+          "code": "A004",
+          "extra_data": {}
         }
       ],
       "vouchers": [
@@ -122,7 +133,10 @@ On a successful API call:
           "type": "promotion 1",
           "id": 110827,
           "expires_on": "13-02-2013 00:00",
-          "quantity": 1
+          "quantity": 1,
+          "extra_data": {
+             "SKU": "PROMO-birthday-20-off"
+          }
         },
         {
           "name": "10 Year celebration promo",
@@ -131,9 +145,15 @@ On a successful API call:
           "type": "promotion 1",
           "id": 110214,
           "expires_on": "24-01-2014 00:00",
-          "quantity": 2
+          "quantity": 2,
+          "extra_data": {}
         }
-      ]
+      ],
+      "customer": {
+          "id": 114807,
+          "stamps": 18,
+          "membership_status": "Blue"
+      }
     }
 
 

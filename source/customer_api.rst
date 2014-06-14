@@ -293,3 +293,94 @@ A successful API call:
         "gender": "Female",
       }
     }
+
+
+
+4. Change Member Info
+===============
+| URL endpoint: https://stamps.co.id/api/memberships/change
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to update your customer's profile through Point of Sales
+or other websites.
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+merchant    Yes         Integer indicating merchant ID
+name        Yes         Customer's name
+email       Yes         Customer's email
+birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
+gender      Yes         Customer's gender ("male" or "female")
+member_id   No          Customer's member (card) id
+phone       No          Customer's phone number
+address     No          Customer's address
+=========== =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/change -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+customer            Various customer data
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "customer": {
+        "id": 3,
+        "name": "me",
+        "email": "me@mail.com",
+        "member_id": "123412341234",
+        "phone": "0215600010",
+        "birthday": "1991-10-19",
+        "gender": "Female",
+      }
+    }

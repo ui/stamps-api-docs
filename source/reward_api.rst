@@ -19,6 +19,8 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        No          A string indicating customer's email or Member ID
 merchant    Yes         Integer indicating merchant ID to be queried for reward
+..store       No          Integer indicating store ID to be queried for reward,
+..                        If not specified rewards on all store will be returned
 =========== =========== =========================
 
 Example of API call request using cURL

@@ -19,7 +19,8 @@ You can add a new transaction on Stamps by calling the API with these parameters
 Parameter           Required    Description
 =================== =========== =======================
 token               Yes         Authentication string
-user                Yes         Email address / Member ID indicating customer
+user                No          Email address / Member ID indicating customer.
+                                Leaving this empty creates an ``open`` transaction.
 store               Yes         A number (id) indicating store where transaction
                                 is created
 invoice_number      Yes         POS transaction number (must be unique daily)
@@ -32,7 +33,8 @@ subtotal            No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
 service_change      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
-items               No          List of items containing product name, price & qty
+items               No          List of items containing product name, quantity & price.
+                                ``price`` is the combined price of products (qty * unit price).
 secondary_merchant  No          A merchant id to attach this transaction to
 secondary_store     No          If specified, transaction will be assigned to this secondary merchant's store
 =================== =========== =======================

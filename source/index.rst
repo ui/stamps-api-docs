@@ -20,4 +20,5 @@ Contents
    balance_api.rst
    feedback_api.rst
    booking_api.rst
+   testing.rst
 

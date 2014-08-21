@@ -15,7 +15,7 @@ This endpoint accepts a single ``token`` argument. Here's an example:
 
 .. code-block :: bash
 
-    $ curl "https://stamps.co.id/api/memberships/status?token=abc"
+    $ curl "https://stamps.co.id/api/ping?token=abc"
 
 If the right token is supplied, you'll receive a response similar to this:
 

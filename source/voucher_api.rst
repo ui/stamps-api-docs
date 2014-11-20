@@ -1,5 +1,5 @@
 ************************************
-Balance API
+Voucher API
 ************************************
 
 1. Issuing a voucher to user

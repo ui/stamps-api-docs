@@ -32,7 +32,7 @@ Here's an example of how the API call might look like in JSON format
         "token": "secret",
         "user": "customer@stamps.co.id",
         "voucher_template": 1,
-        "start-date": "2013-02-15T13:01:01+07",
+        "start-date": "2013-02-15",
         "quantity": 1,
         "notes": "Special voucher for e-magazine readers"
     }
@@ -41,7 +41,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15T13:01:01+07", "quantity": 1, "notes": "Special voucher for e-magazine readers"}' https://stamps.co.id/api/vouchers/issue/
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers"}' https://stamps.co.id/api/vouchers/issue/
 
 
 B. Response

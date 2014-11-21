@@ -4,7 +4,7 @@ Voucher API
 
 1. Issuing a voucher to user
 ====================================
-| URL endpoint: https://stamps.co.id/api/vouchers/issue/
+| URL endpoint: https://stamps.co.id/api/vouchers/issue
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -41,7 +41,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers"}' https://stamps.co.id/api/vouchers/issue/
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers"}' https://stamps.co.id/api/vouchers/issue
 
 
 B. Response

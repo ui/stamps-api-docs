@@ -86,7 +86,7 @@ transaction         Stamps transaction information
                     that is successfully created.
                     Contains id, value, and stamps_earned.
 customer            Customer information after successful
-                    transaction. Contains id, stamps_remaining, and status.
+                    transaction. Contains id, stamps_remaining, balance and status.
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing data (if any)
 =================== ==================
@@ -121,7 +121,8 @@ If transaction is successful(JSON):
       "customer": {
         "status": "Blue",
         "id": 17,
-        "stamps_remaining": 11
+        "stamps_remaining": 11,
+        "balance": 15
       },
       "transaction": {
         "stamps_earned": 1,

@@ -37,10 +37,15 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==============================
 Variable            Description
 =================== ==============================
-stamps              Total stamps amount the
-                    particular user has
+name                Member's name
+birthday            Member's birthday (if known)
+stamps              Total stamps this user has
 membership_status   Membership status of the user
 is_active           Whether user is registered on Stamps
+member_ids          List of card numbers associated with member
+gender              "1" means male, "2" means female
+phone               Member's phone number (if any)
+address             Member's address (if any)
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing
                     data (if any)
@@ -80,7 +85,16 @@ On a successful API call:
     Allow: POST, OPTIONS
     [Redacted Header]
 
-    {"stamps": 8917, "membership_status": "Gold"}
+    {
+      "stamps": 10,
+      "membership_status": "Gold",
+      "phone": "+6281111111",
+      "birthday": "2000-09-15",
+      "address": "Baker Street 221B",
+      "name": "Alice",
+      "gender": 2,
+      "member_ids": ["123456789012", "123456789011"]
+    }
 
 
 API call with missing parameters:
@@ -146,8 +160,10 @@ Stamps responds to this API call with the following data (in JSON):
 =================== ==============================
 Variable            Description
 =================== ==============================
-suggestions         List of suggestions.
-                    Contains id, name, stamps, email, and membership
+suggestions         List of user suggestions.
+                    Contains id, name, stamps, email, membership
+                    and other customer data similar to those
+                    returned by member details API in section 1.
 =================== ==============================
 
 
@@ -188,17 +204,25 @@ A successful API call:
       "suggestions": [
         {
           "membership": "Gold",
-          "email": "customer_gold@stamps.co.id",
+          "email": "alice@stamps.co.id",
           "stamps": 100,
           "id": 12,
-          "name": "Customer Gold"
+          "name": "Customer Gold",
+          "phone": "+6281123123",
+          "address": "Baker Street 221B",
+          "gender": 2,
+          "member_ids": ["123456789012", "123456789011"]
         },
         {
           "membership": "Blue",
-          "email": "blue_customer@stamps.co.id",
+          "email": "bob@stamps.co.id",
           "stamps": 15,
           "id": 13,
-          "name": "Customer Blue"
+          "name": "Customer Blue",
+          "phone": "+62811231232",
+          "address": "Baker Street 221B",
+          "gender": 1,
+          "member_ids": []
         }
       ]
     }

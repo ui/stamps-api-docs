@@ -18,6 +18,7 @@ Contents
    reward_api.rst
    customer_api.rst
    balance_api.rst
+   voucher_api.rst
    feedback_api.rst
    booking_api.rst
    testing.rst

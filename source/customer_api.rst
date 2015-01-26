@@ -46,6 +46,7 @@ member_ids          List of card numbers associated with member
 gender              "1" means male, "2" means female
 phone               Member's phone number (if any)
 address             Member's address (if any)
+balance             Amount of member's Stamps balance
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing
                     data (if any)
@@ -93,7 +94,8 @@ On a successful API call:
       "address": "Baker Street 221B",
       "name": "Alice",
       "gender": 2,
-      "member_ids": ["123456789012", "123456789011"]
+      "member_ids": ["123456789012", "123456789011"],
+      "balance": 2000
     }
 
 

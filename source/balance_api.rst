@@ -40,7 +40,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000, "merchant": 14}' https://stamps.co.id/api/balances/credit
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000, "merchant": 14, "store": 3}' https://stamps.co.id/api/balances/credit
 
 
 B. Response
@@ -53,6 +53,7 @@ Variable            Description
 =================== ==============================
 customer            An object containing customer information after successful addition
                     to the balance. Contains id, current balance and membership status.
+balance_update      An object containing details of the balance update activity.
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -75,6 +76,10 @@ On successful balance update:
         "id": 6,
         "balance": 1000,
         "status": "Blue"
+      },
+      "balance_update": {
+        "id": 2,
+        "amount": 10000
       }
     }
 
@@ -116,7 +121,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100, "merchant": 14}' https://stamps.co.id/api/balances/debit
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100, "merchant": 14, "store": 3}' https://stamps.co.id/api/balances/debit
 
 
 B. Response
@@ -129,6 +134,7 @@ Variable            Description
 =================== ==============================
 customer            An object containing customer information after successful deduction
                     from the balance. Contains id, current balance and membership status.
+balance_update      An object containing details of the balance update activity.
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -151,5 +157,9 @@ On successful balance update:
         "id": 6,
         "balance": 900,
         "status": "Blue"
+      },
+      "balance_update": {
+        "id": 2,
+        "amount": 10000
       }
     }

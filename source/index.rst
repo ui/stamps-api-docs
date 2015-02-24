@@ -21,5 +21,6 @@ Contents
    voucher_api.rst
    feedback_api.rst
    booking_api.rst
+   stamps_api.rst
    testing.rst
 

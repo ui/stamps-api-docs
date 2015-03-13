@@ -163,3 +163,65 @@ On successful balance update:
         "amount": 10000
       }
     }
+
+
+3. Canceling a Balance Update
+=====================================
+| URL endpoint: https://stamps.co.id/api/balances/cancel
+| Allowed Method: POST
+| Require Authentication: Yes
+
+
+A. Request
+-----------------------------
+You can deduct an amount from a balance by calling the API with these parameters.
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+id          Yes         ID of balance update to cancel
+=========== =========== =========================
+
+
+Here's an example of how the API call might look like in JSON format
+
+.. code-block :: bash
+
+    {
+        "token": "secret",
+        "id": "123",
+    }
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "id": 123 }' https://stamps.co.id/api/balances/cancel
+
+
+C. Example Response
+-------------------
+
+On successful balance update:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "customer": {
+        "id": 6,
+        "balance": 900,
+        "status": "Blue"
+      },
+      "balance_update": {
+        "id": 2,
+        "amount": 10000,
+        "status": "Canceled"
+      }
+    }

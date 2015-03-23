@@ -19,14 +19,14 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        No          A string indicating customer's email or Member ID
 merchant    Yes         Integer indicating merchant ID to be queried for reward
-store       No          Integer indicating store ID to be queried for reward
+store       Yes          Integer indicating store ID to be queried for reward
 =========== =========== =========================
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14'
+    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1'
 
 
 B. Response Data

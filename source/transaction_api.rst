@@ -26,12 +26,12 @@ store               Yes         A number (id) indicating store where transaction
 invoice_number      Yes         POS transaction number (must be unique daily)
 total_value         Yes         A number indicating transaction's grand total
 number_of_people    Yes         An integer indicating the number of people involved in transaction
-created             No          ISO 8601 date time format to indicate transaction's
+created             Yes         ISO 8601 date time format to indicate transaction's
                                 created date
                                 (e.g. 2013-02-15T13:01:01+07)
 subtotal            No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
-service_change      No          A number indicating service charge (in Rp.)
+service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
 items               No          List of items containing product name, quantity & price.
                                 ``price`` is the combined price of products (qty * unit price).
@@ -52,6 +52,7 @@ Here's an example of how the API call might look like in JSON format:
        "total_value": 50000,
        "number_of_people": 8,
        "tax": 5000,
+       "created": "2013-02-15T13:01:01+07",
        "items": [
           {
              "product_name": "Cappucino",
@@ -71,7 +72,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "created": "2013-02-15T13:01:01+07", "user": "customer@stamps.co.id", "store": 2, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 
 B. Response

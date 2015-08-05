@@ -40,6 +40,8 @@ Variable            Description
 name                Member's name
 birthday            Member's birthday (if known)
 stamps              Total stamps this user has
+email               Member's email
+identifier          Member's identifier (can be email or phone)
 membership_status   Membership status of the user
 is_active           Whether user is registered on Stamps
 member_ids          List of card numbers associated with member
@@ -314,6 +316,7 @@ A successful API call:
         "id": 3,
         "name": "me",
         "email": "me@mail.com",
+        "identifier": "me@mail.com"
         "member_id": "123412341234",
         "phone": "0215600010",
         "birthday": "1991-10-19",

@@ -17,7 +17,7 @@ You can query for a customer's data on Stamps .
 Parameter   Required    Description
 =========== =========== =========================
 token       Yes         Authentication string
-user        Yes         A string indicating customer's email or Member ID
+user        Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
 

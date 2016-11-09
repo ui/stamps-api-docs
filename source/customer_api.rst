@@ -341,10 +341,11 @@ or other websites.
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
+id          Yes         Customer's integer primary key ID
+email       No          Customer's email, used to identify customer if `id` is not present
 token       Yes         Authentication string
 merchant    Yes         Integer indicating merchant ID
 name        Yes         Customer's name
-email       Yes         Customer's email
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
 gender      Yes         Customer's gender ("male" or "female")
 member_id   No          Customer's member (card) id
@@ -356,7 +357,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/change -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/change -i -d '{ "token": "secret", "id": 123, "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
 
 
 B. Response Data

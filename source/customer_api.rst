@@ -89,6 +89,7 @@ On a successful API call:
     [Redacted Header]
 
     {
+      "id": 2456,
       "stamps": 10,
       "membership_status": "Gold",
       "phone": "+6281111111",
@@ -342,12 +343,12 @@ or other websites.
 Parameter   Required    Description
 =========== =========== =========================
 id          Yes         Customer's integer primary key ID
-email       No          Customer's email, used to identify customer if `id` is not present
 token       Yes         Authentication string
 merchant    Yes         Integer indicating merchant ID
 name        Yes         Customer's name
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
 gender      Yes         Customer's gender ("male" or "female")
+email       No          Customer's email
 member_id   No          Customer's member (card) id
 phone       No          Customer's phone number
 address     No          Customer's address

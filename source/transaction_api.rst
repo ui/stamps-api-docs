@@ -35,8 +35,6 @@ service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
 items               No          List of items containing product name, quantity & price.
                                 ``price`` is the combined price of products (qty * unit price).
-secondary_merchant  No          A merchant id to attach this transaction to
-secondary_store     No          If specified, transaction will be assigned to this secondary merchant's store
 =================== =========== =======================
 
 
@@ -72,8 +70,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "created": "2013-02-15T13:01:01+07", "user": "customer@stamps.co.id", "store": 2, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
-
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 B. Response
 -----------------------------
@@ -121,14 +118,16 @@ If transaction is successful(JSON):
     {
       "customer": {
         "status": "Blue",
-        "id": 17,
-        "stamps_remaining": 11,
-        "balance": 15
+        "balance": 150000,
+        "mobile_phone": "+6281314811365",
+        "id": 8120,
+        "stamps_remaining": 401
       },
       "transaction": {
-        "stamps_earned": 1,
-        "id": 2,
-        "value": 15000
+        "stamps_earned": 5,
+        "id": 2374815,
+        "value": 50000.0,
+        "number_of_people": 8
       }
     }
 

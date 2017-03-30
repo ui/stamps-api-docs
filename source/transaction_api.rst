@@ -5,7 +5,7 @@ Transaction API V2
 1. Legacy transaction API
 =========================
 
-On 1st of April, we introduced version 2 of our transction API. The documentation of the legacy API
+On March 2017 , we introduced our 2nd revision of Stamps' transaction API.  The documentation of the legacy API
 is still available on `Legacy transaction API <http://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
 
 2. Adding a Transaction

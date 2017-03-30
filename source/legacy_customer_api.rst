@@ -4,7 +4,7 @@ Membership API
 
 1. Getting Member Data
 =======================================
-| URL endpoint: https://stamps.co.id/api/v2/memberships/details
+| URL endpoint: https://stamps.co.id/api/memberships/status
 | Allowed Method: GET
 | Require Authentication: Yes
 
@@ -26,7 +26,7 @@ Example of API call request using cURL
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/v2/memberships/details?token=abc&user=customer@stamps.co.id&merchant=14'
+    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data
@@ -37,8 +37,21 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==============================
 Variable            Description
 =================== ==============================
-memberships         Membership related information
-users               User related information
+name                Member's name
+birthday            Member's birthday (if known)
+stamps              Total stamps this user has
+email               Member's email
+identifier          Member's identifier (can be email or phone)
+membership_status   Membership status of the user
+is_active           Whether user is registered on Stamps
+member_ids          List of card numbers associated with member
+gender              "1" means male, "2" means female
+phone               Member's phone number (if any)
+address             Member's address (if any)
+balance             Amount of member's Stamps balance
+detail              Description of error (if any)
+validation_errors   Errors encountered when parsing
+                    data (if any)
 =================== ==============================
 
 
@@ -76,26 +89,16 @@ On a successful API call:
     [Redacted Header]
 
     {
-      "membership": {
-        "status": 100,
-        "stamps": 401,
-        "balance": 150000,
-        "start_date": "2014-08-08",
-        "created": "2014-08-08"
-      },
-      "user": {
-        "member_ids": [],
-        "is_active": true,
-        "phone": "+6281314811365",
-        "protected_redemption": false,
-        "birthday": "1990-11-26",
-        "address": "",
-        "id": "8120",
-        "name": "Customer",
-        "gender": "male",
-        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-        "email": "customer@stamps.co.id"
-      }
+      "id": 2456,
+      "stamps": 10,
+      "membership_status": "Gold",
+      "phone": "+6281111111",
+      "birthday": "2000-09-15",
+      "address": "Baker Street 221B",
+      "name": "Alice",
+      "gender": 2,
+      "member_ids": ["123456789012", "123456789011"],
+      "balance": 2000
     }
 
 
@@ -110,14 +113,7 @@ API call with missing parameters:
     Allow: POST, OPTIONS
     [Redacted Header]
 
-    {
-      "errors": {
-        "__all__": "User not found"
-      },
-      "error_message": "User not found",
-      "error_code": "invalid_data",
-      "detail": "__all__: User not found"
-    }
+    {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"reward": "This field is required"}]}
 
 
 If missing or wrong authentication token:
@@ -131,13 +127,6 @@ If missing or wrong authentication token:
     [Redacted Header]
 
     {"detail": "Authentication credentials were not provided."}
-
-
-E. Legacy API
--------------
-
-Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
-
 
 
 2. Member Suggestions

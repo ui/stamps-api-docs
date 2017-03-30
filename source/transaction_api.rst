@@ -1,16 +1,10 @@
 ************************************
-Transaction API V2
+Transaction API
 ************************************
 
-1. Legacy transaction API
-=========================
-
-On March 2017 , we introduced our 2nd revision of Stamps' transaction API.  The documentation of the legacy API
-is still available on `Legacy transaction API <http://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
-
-2. Adding a Transaction
+1. Adding a Transaction
 =======================
-| URL endpoint: https://stamps.co.id/api/transactions/add
+| URL endpoint: https://stamps.co.id/api/v2/transactions/add
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -179,8 +173,13 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
+C. Legacy Endpoint
+------------------
+Legacy endpoint's documentation is available at `Legacy transaction API <http://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
 
-3. Canceling a Transaction
+
+
+2. Canceling a Transaction
 =============================
 | URL endpoint: https://stamps.co.id/api/transactions/cancel
 | Allowed method: POST

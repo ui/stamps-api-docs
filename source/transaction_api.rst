@@ -6,7 +6,7 @@ Transaction API V2
 =========================
 
 On 1st of April, we introduced version 2 of our transction API. The documentation of the legacy API
-is still available on `Legacy transaction API <https://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
+is still available on `Legacy transaction API <http://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
 
 2. Adding a Transaction
 =======================

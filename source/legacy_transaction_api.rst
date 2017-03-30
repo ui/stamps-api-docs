@@ -2,7 +2,12 @@
 Transaction API (LEGACY)
 ************************************
 
-1. Adding a Transaction
+1. Legacy status
+================
+This legacy API is still supported, but we highly recommend using our latest API on `Transaction API <http://docs.stamps.co.id/en/latest/transaction_api.html>`_
+
+
+2. Adding a Transaction
 =======================
 | URL endpoint: https://stamps.co.id/api/transactions/add
 | Allowed method: POST

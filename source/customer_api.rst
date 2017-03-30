@@ -265,8 +265,8 @@ merchant        Yes         Integer indicating merchant ID
 name            Yes         Customer's name
 email           No          Customer's email
 mobile_number   No          Customer's mobile number
-birthday        Yes         Customer's birthday (with format YYYY-MM-DD)
-gender          Yes         Customer's gender ("male" or "female")
+birthday        No          Customer's birthday (with format YYYY-MM-DD)
+gender          No          Customer's gender ("male" or "female")
 store           Yes         Integer representing store ID where customer is registered
 member_id       No          Customer's member (card) id
 address         No          Customer's address
@@ -276,7 +276,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street", "store": 2}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "phone": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412}'
 
 
 B. Response Data
@@ -347,10 +347,9 @@ Legacy endpoint's documentation is available at `Legacy Membership API <http://d
 
 
 
-
 4. Change Member Info
 ===============
-| URL endpoint: https://stamps.co.id/api/memberships/change
+| URL endpoint: https://stamps.co.id/api/v2/memberships/change-profile
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -360,26 +359,25 @@ A. Request
 You can use this API to update your customer's profile through Point of Sales
 or other websites.
 
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-id          Yes         Customer's integer primary key ID
-token       Yes         Authentication string
-merchant    Yes         Integer indicating merchant ID
-name        Yes         Customer's name
-birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
-gender      Yes         Customer's gender ("male" or "female")
-email       No          Customer's email
-member_id   No          Customer's member (card) id
-phone       No          Customer's phone number
-address     No          Customer's address
-=========== =========== =========================
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+use           Yes         Customer's integer primary key or Card number
+token         Yes         Authentication string
+merchant      Yes         Integer indicating merchant ID
+name          Yes         Customer's name
+birthday      Yes         Customer's birthday (with format YYYY-MM-DD)
+gender        Yes         Customer's gender ("male" or "female")
+email         No          Customer's email
+mobile number No          Customer's phone number
+address       No          Customer's address
+============= =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/change -i -d '{ "token": "secret", "id": 123, "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street"}'
 
 
 B. Response Data
@@ -427,13 +425,23 @@ A successful API call:
     [Redacted Header]
 
     {
-      "customer": {
-        "id": 3,
-        "name": "me",
-        "email": "me@mail.com",
-        "member_id": "123412341234",
-        "phone": "0215600010",
-        "birthday": "1991-10-19",
-        "gender": "Female",
-      }
+        "id": "123",
+        "name": "Customer",
+        "gender": "male",
+        "address": "Jl MK raya",
+        "is_active": true,
+        "email": "customer@stamps.co.id",
+        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+        "birthday": "1989-10-1",
+        "phone": "+62812398712",
+        "protected_redemption": true,
     }
+
+
+
+E. Legacy API
+-------------
+
+Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
+
+

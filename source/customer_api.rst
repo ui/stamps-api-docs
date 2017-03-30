@@ -246,7 +246,7 @@ A successful API call:
 
 3. Registration
 ===============
-| URL endpoint: https://stamps.co.id/api/memberships/register
+| URL endpoint: https://stamps.co.id/api/v2/memberships/register
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -257,26 +257,26 @@ You can use this API to register your customer through Point of Sales
 or other websites. On successful redemption, Stamps will send an email
 containing an automatically generated password.
 
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-token       Yes         Authentication string
-merchant    Yes         Integer indicating merchant ID
-name        Yes         Customer's name
-email       Yes         Customer's email
-birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
-gender      Yes         Customer's gender ("male" or "female")
-store       Yes         Integer representing store ID where customer is registered
-member_id   No          Customer's member (card) id
-phone       No          Customer's phone number
-address     No          Customer's address
-=========== =========== =========================
+=============== =========== =========================
+Parameter       Required    Description
+=============== =========== =========================
+token           Yes         Authentication string
+merchant        Yes         Integer indicating merchant ID
+name            Yes         Customer's name
+email           No          Customer's email
+mobile_number   No          Customer's mobile number
+birthday        Yes         Customer's birthday (with format YYYY-MM-DD)
+gender          Yes         Customer's gender ("male" or "female")
+store           Yes         Integer representing store ID where customer is registered
+member_id       No          Customer's member (card) id
+address         No          Customer's address
+=============== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street", "store": 2}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street", "store": 2}'
 
 
 B. Response Data
@@ -324,17 +324,27 @@ A successful API call:
     [Redacted Header]
 
     {
-      "customer": {
-        "id": 3,
-        "name": "me",
-        "email": "me@mail.com",
-        "identifier": "me@mail.com"
-        "member_id": "123412341234",
-        "phone": "0215600010",
-        "birthday": "1991-10-19",
-        "gender": "Female",
-      }
+        "id": "123",
+        "name": "Customer",
+        "gender": "male",
+        "address": "Jl MK raya",
+        "is_active": true,
+        "email": "customer@stamps.co.id",
+        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+        "birthday": "1989-10-1",
+        "phone": "+62812398712",
+        "protected_redemption": true,
     }
+
+
+
+
+
+E. Legacy API
+-------------
+
+Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
+
 
 
 

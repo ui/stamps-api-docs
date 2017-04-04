@@ -362,7 +362,7 @@ or other websites.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-use           Yes         Customer's integer primary key or Card number
+user          Yes         Customer's integer primary key or Card number
 token         Yes         Authentication string
 merchant      Yes         Integer indicating merchant ID
 name          Yes         Customer's name

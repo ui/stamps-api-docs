@@ -32,7 +32,7 @@ Here's an example of how the API call might look like in JSON format
         "token": "secret",
         "user": "customer@stamps.co.id",
         "voucher_template": 1,
-        "start-date": "2013-02-15",
+        "start_date": "2013-02-15",
         "quantity": 1,
         "notes": "Special voucher for e-magazine readers"
     }

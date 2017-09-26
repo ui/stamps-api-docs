@@ -11,12 +11,25 @@ a tricky thing to do. To this end, we provide a few endpoints to make your lives
 | URL endpoint: https://stamps.co.id/api/ping
 | Allowed method: POST
 
+A. Request
+-----------------------------
+
+You can query for a customer's data on Stamps .
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+=========== =========== =========================
+
 This endpoint accepts a single ``token`` argument. Here's an example:
 
 .. code-block :: bash
 
     $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/ping -i -d '{"token": "abc"}'
 
+B. Response
+-----------------------------
 If the right token is supplied, you'll receive a response similar to this:
 
 .. code-block :: bash

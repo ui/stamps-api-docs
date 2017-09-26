@@ -9,7 +9,7 @@ a tricky thing to do. To this end, we provide a few endpoints to make your lives
 1. Account Verification
 =======================
 | URL endpoint: https://stamps.co.id/api/ping
-| Allowed method: GET
+| Allowed method: POST
 
 This endpoint accepts a single ``token`` argument. Here's an example:
 

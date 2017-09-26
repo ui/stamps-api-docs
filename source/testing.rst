@@ -14,7 +14,7 @@ a tricky thing to do. To this end, we provide a few endpoints to make your lives
 A. Request
 -----------------------------
 
-You can query for a customer's data on Stamps .
+You can query for a merchant's data on Stamps .
 
 =========== =========== =========================
 Parameter   Required    Description

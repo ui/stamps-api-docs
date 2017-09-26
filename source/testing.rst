@@ -15,7 +15,7 @@ This endpoint accepts a single ``token`` argument. Here's an example:
 
 .. code-block :: bash
 
-    $ curl "https://stamps.co.id/api/ping?token=abc"
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/ping -i -d '{"token": "abc"}'
 
 If the right token is supplied, you'll receive a response similar to this:
 

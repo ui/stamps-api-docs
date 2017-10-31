@@ -107,32 +107,31 @@ On successful redemption:
     Content-Type: application/json
     Allow: POST, OPTIONS
      [Redacted Header]
-
-{
-    "redemption": {
-        "id": 161984,
-        "reward": "Kaya Bun",
-        "stamps_used": 2,
-        "extra_data": null
-    },
-    "membership": {
-        "tags": [],
-        "status": 100,
-        "stamps": 828,
-        "balance": 0,
-        "referral_code": "9121682",
-        "start_date": "2016-07-25",
-        "created": "2016-07-25"
-    },
-    "reward": {
-        "id": 517,
-        "name": "Kaya Bun",
-        "stamps_to_redeem": 2,
-        "extra_data": {},
-        "code": "MI0017   ",
-        "type": "reward"
+    {
+        "redemption": {
+            "id": 161984,
+            "reward": "Kaya Bun",
+            "stamps_used": 2,
+            "extra_data": null
+        },
+        "membership": {
+            "tags": [],
+            "status": 100,
+            "stamps": 828,
+            "balance": 0,
+            "referral_code": "9121682",
+            "start_date": "2016-07-25",
+            "created": "2016-07-25"
+        },
+        "reward": {
+            "id": 517,
+            "name": "Kaya Bun",
+            "stamps_to_redeem": 2,
+            "extra_data": {},
+            "code": "MI0017   ",
+            "type": "reward"
+        }
     }
-}
 
 
 E. Legacy Endpoint
@@ -245,30 +244,29 @@ On successful redemption:
     Content-Type: application/json
     Allow: POST, OPTIONS
      [Redacted Header]
-
-{
-   "redemption": {
-        "id": 161986,
-        "reward": "Discount Rp 100,000",
-        "stamps_used": 0,
-        "extra_data": null
-    },
-    "membership": {
-        "tags": [],
-        "status": 100,
-        "stamps": 828,
-        "balance": 0,
-        "referral_code": "9121682",
-        "start_date": "2016-07-25",
-        "created": "2016-07-25"
-    },
-    "voucher": {
-        "id": 3577579,
-        "name": "Discount Rp 100,000",
-        "code": "PZ633ECV",
-        "type": "voucher"
+    {
+       "redemption": {
+            "id": 161986,
+            "reward": "Discount Rp 100,000",
+            "stamps_used": 0,
+            "extra_data": null
+        },
+        "membership": {
+            "tags": [],
+            "status": 100,
+            "stamps": 828,
+            "balance": 0,
+            "referral_code": "9121682",
+            "start_date": "2016-07-25",
+            "created": "2016-07-25"
+        },
+        "voucher": {
+            "id": 3577579,
+            "name": "Discount Rp 100,000",
+            "code": "PZ633ECV",
+            "type": "voucher"
+        }
     }
-}
 
 E. Legacy Endpoint
 ------------------

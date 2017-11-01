@@ -2,7 +2,7 @@
 Redemption API
 ************************************
 
-1. Redeem reward
+1. Adding Reward Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/v2/redemptions/redeem-reward
@@ -35,29 +35,12 @@ Here's an example of how the API call might look like in JSON format with specif
         "invoice_number": "POS-1020123"
     }
 
-Here's an example of how the API call might look like in JSON format with specified reward_by_code
-
-.. code-block :: bash
-
-    {
-        "token": "abc",
-        "user": "customer@stamps.co.id",
-        "store": 32,
-        "reward_by_code": "100"
-        "invoice_number": "POS-1020123"
-    }
-
 Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
     $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/v2/redemptions/redeem-reward
 
-Example of API call request using cURL with specified reward_by_code
-
-.. code-block :: bash
-
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward_by_code": "100"}' https://stamps.co.id/api/v2/redemptions/redeem-reward
 
 B. Response
 -----------
@@ -109,26 +92,28 @@ On successful redemption:
      [Redacted Header]
     {
         "redemption": {
-            "id": 161984,
+            "id": 3,
             "reward": "Kaya Bun",
             "stamps_used": 2,
-            "extra_data": null
+            "extra_data": {
+                "discount": "10%"
+            }
         },
         "membership": {
             "tags": [],
             "status": 100,
-            "stamps": 828,
+            "stamps": 250,
             "balance": 0,
             "referral_code": "9121682",
             "start_date": "2016-07-25",
             "created": "2016-07-25"
         },
         "reward": {
-            "id": 517,
+            "id": 1,
             "name": "Kaya Bun",
             "stamps_to_redeem": 2,
             "extra_data": {},
-            "code": "MI0017   ",
+            "code": "MI0017",
             "type": "reward"
         }
     }
@@ -139,7 +124,7 @@ E. Legacy Endpoint
 Legacy endpoint's documentation is available at `Legacy redemption API <http://docs.stamps.co.id/en/latest/legacy_redemption_api.html>`_
 
 
-2. Redeem voucher
+2. Adding Voucher Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/v2/redemptions/redeem-voucher
@@ -155,12 +140,12 @@ Parameter       Required  Description
 =============== ========= =========================
 token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
-voucher         Yes       A string indicating the voucher'ID or code
+voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
 =============== ========= =========================
 
-Here's an example of how the API call might look like in JSON format with specified voucher
+Here's an example of how the API call might look like in JSON format with specified voucher.
 
 .. code-block :: bash
 
@@ -172,29 +157,12 @@ Here's an example of how the API call might look like in JSON format with specif
         "invoice_number": "POS-1020123"
     }
 
-Here's an example of how the API call might look like in JSON format with specified voucher (with code)
-
-.. code-block :: bash
-
-    {
-        "token": "abc",
-        "user": "customer@stamps.co.id",
-        "store": 32,
-        "voucher": "ik-12395"
-        "invoice_number": "POS-1020123"
-    }
-
-Example of API call request using cURL with specified reward
+API call example:
 
 .. code-block :: bash
 
     $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12}' https://stamps.co.id/api/v2/redemptions/redeem-voucher
 
-Example of API call request using cURL with specified voucher(code)
-
-.. code-block :: bash
-
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": "vc-12345"}' https://stamps.co.id/api/v2/redemptions/redeem-voucher
 
 B. Response
 -----------
@@ -209,7 +177,7 @@ redemption          Redemption information which is
                     Contains id, reward, and stamps_used
 membership          Customer information after successful
                     redemption. Contains id and stamps_remaining.
-vouchers            Voucher used in redemption
+voucher             Voucher used in redemption
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -246,22 +214,24 @@ On successful redemption:
      [Redacted Header]
     {
        "redemption": {
-            "id": 161986,
+            "id": 2,
             "reward": "Discount Rp 100,000",
             "stamps_used": 0,
-            "extra_data": null
+            "extra_data": {
+                "discount": "10%"
+            }
         },
         "membership": {
             "tags": [],
             "status": 100,
-            "stamps": 828,
+            "stamps": 250,
             "balance": 0,
             "referral_code": "9121682",
             "start_date": "2016-07-25",
             "created": "2016-07-25"
         },
         "voucher": {
-            "id": 3577579,
+            "id": 4,
             "name": "Discount Rp 100,000",
             "code": "PZ633ECV",
             "type": "voucher"

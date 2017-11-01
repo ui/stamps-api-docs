@@ -99,7 +99,7 @@ Code                Description
 401                 Unauthorized, usually missing or wrong authentication token
 403                 Forbidden – You do not have permission for this request
 405                 HTTP method not allowed
-500, 502, 503, 504  Server errors - something is wrong on Stamps' end
+500, 502, 503, 504  Something went wrong on Stamps' server
 =================== ==============================
 
 Below are a few examples responses on successful API calls.
@@ -248,7 +248,7 @@ Code                Description
 403                 Forbidden – You do not have permission for this request
 404                 Cannot find transaction of the requested transaction id
 405                 HTTP method not allowed
-500, 502, 503, 504  Server errors - something is wrong on Stamps' end
+500, 502, 503, 504  Something went wrong on Stamps' server
 =================== ==============================
 
 D. Example Response

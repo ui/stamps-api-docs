@@ -263,10 +263,10 @@ Parameter       Required    Description
 token           Yes         Authentication string
 merchant        Yes         Integer indicating merchant ID
 name            Yes         Customer's name
-email           No          Customer's email
-mobile_number   No          Customer's mobile number
-birthday        No          Customer's birthday (with format YYYY-MM-DD)
-gender          No          Customer's gender ("male" or "female")
+email           Yes         Customer's email
+mobile_number   Yes         Customer's mobile number
+birthday        Yes         Customer's birthday (with format YYYY-MM-DD)
+gender          Yes         Customer's gender ("male" or "female")
 store           Yes         Integer representing store ID where customer is registered
 member_id       No          Customer's member (card) id
 address         No          Customer's address

@@ -241,7 +241,7 @@ E. Legacy Endpoint
 ------------------
 Legacy endpoint's documentation is available at `Legacy redemption API <http://docs.stamps.co.id/en/latest/legacy_redemption_api.html>`_
 
-3. Adding Voucher Code Redemption
+3. Adding Redemption by Voucher Code
 ======================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/by-voucher-code

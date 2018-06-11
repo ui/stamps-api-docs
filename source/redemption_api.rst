@@ -340,10 +340,6 @@ On successful redemption:
         }
     }
 
-E. Legacy Endpoint
-------------------
-Legacy endpoint's documentation is available at `Legacy redemption API <http://docs.stamps.co.id/en/latest/legacy_redemption_api.html>`_
-
 4. Canceling a Redemption
 =========================
 

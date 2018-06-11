@@ -123,7 +123,6 @@ E. Legacy Endpoint
 ------------------
 Legacy endpoint's documentation is available at `Legacy redemption API <http://docs.stamps.co.id/en/latest/legacy_redemption_api.html>`_
 
-
 2. Adding Voucher Redemption
 ======================
 
@@ -242,8 +241,106 @@ E. Legacy Endpoint
 ------------------
 Legacy endpoint's documentation is available at `Legacy redemption API <http://docs.stamps.co.id/en/latest/legacy_redemption_api.html>`_
 
+3. Adding Redemption by Voucher Code
+======================
 
-3. Canceling a Redemption
+| URL endpoint: https://stamps.co.id/api/redemptions/by-voucher-code
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can initiate a reward redemption by calling the API with these parameters.
+
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+identifier      Yes       A string indicating customer's email or phone
+voucher_code    Yes       An string that indicating a voucher code
+voucher_template Yes      An integer indicating the voucher's ID
+store           Yes       Merchant's store id where redemption is initiated
+=============== ========= =========================
+
+Here's an example of how the API call might look like in JSON format with specified voucher.
+
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "identifier": "customer@stamps.co.id",
+        "voucher_code": "ABCD100k",
+        "voucher_template": 12,
+        "store": 32
+    }
+
+API call example:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "voucher_code": "ABCD100k", "voucher_template": 12, "store": 32}' https://stamps.co.id/api/redemptions/by-voucher-code
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+redemption          Redemption information which is
+                    successfully created.
+                    Contains id, reward, and stamps_used
+customer            Customer information after successful
+                    redemption. Contains id, membership status, and stamps_remaining.
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+    {
+        "redemption": {
+        "id": 199061,
+        "status": "Created"
+        },
+        "customer": {
+        "id": 401791,
+        "status": "Blue",
+        "stamps_remaining": 0
+        }
+    }
+
+4. Canceling a Redemption
 =========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/cancel

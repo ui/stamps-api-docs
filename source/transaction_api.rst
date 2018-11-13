@@ -34,9 +34,10 @@ discount            No          A number indicating transaction discount (in Rp.
 service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
 items               No          List of items containing product name, quantity, price &
-                                stamps_subtotal.
+                                stamps_subtotal (optional).
                                 ``price`` is the combined price of products (qty * unit price),
-                                ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps).
+                                ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
+                                this field is optional.
 =================== =========== =======================
 
 

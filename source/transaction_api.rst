@@ -29,12 +29,14 @@ number_of_people    Yes         An integer indicating the number of people invol
 created             Yes         ISO 8601 date time format to indicate transaction's
                                 created date
                                 (e.g. 2013-02-15T13:01:01+07)
-sub_total            No          A number indicating transaction subtotal
+sub_total           No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
 service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
-items               No          List of items containing product name, quantity & price.
-                                ``price`` is the combined price of products (qty * unit price).
+items               No          List of items containing product name, quantity, price &
+                                stamps_subtotal.
+                                ``price`` is the combined price of products (qty * unit price),
+                                ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps).
 =================== =========== =======================
 
 
@@ -55,12 +57,14 @@ Here's an example of how the API call might look like in JSON format:
           {
              "product_name": "Cappucino",
              "quantity": 2,
-             "price": 10000
+             "price": 10000,
+             "stamps_subtotal": 4
           },
           {
              "product_name": "Iced Tea",
              "quantity": 4,
-             "price": 5000
+             "price": 5000,
+             "stamps_subtotal": 4
           }
        ]
     }

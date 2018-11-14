@@ -309,7 +309,7 @@ When some fields don't validate:
 A. Request
 -----------------------------
 
-You can modify transaction's value or items detail on stamps by callin the API with these parameters
+You can modify transaction's value or items detail on stamps by calling the API with these parameters
 
 
 ========================== =========== =========================================================

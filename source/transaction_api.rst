@@ -309,7 +309,7 @@ When some fields don't validate:
 A. Request
 -----------------------------
 
-You can cancel a transaction on stamps by calling the API with these parameters
+You can modify qty item in a transaction on stamps by calling the API with these parameters
 
 
 ========================== =========== =========================================================
@@ -357,7 +357,7 @@ In response to this API call, Stamps will return response with the following dat
 Variable            Description
 =================== ==================
 transaction         Transaction information which is
-                    successfully canceled.
+                    successfully modified.
                     Contains stamps_earned, id, and value
 customer            Customer information after successful
                     redemption. Contains id, status, and stamps_remaining.

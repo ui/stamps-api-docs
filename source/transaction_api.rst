@@ -298,3 +298,130 @@ When some fields don't validate:
      [Redacted Header]
 
     {"errors": {"info": "Transaction can't be canceled due to insufficient Stamps"}}
+ 
+3. Modify Transaction's Value or Items
+=============================
+| URL endpoint: https://stamps.co.id/api/v2/transactions/modify
+| Allowed method: POST
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+You can modify transaction's value or items detail on stamps by calling the API with these parameters
+
+
+========================== =========== =========================================================
+Parameter                  Required    Description
+========================== =========== =========================================================
+token                      Yes         Authentication string
+id                         Yes         Transaction ID
+total_value                Yes         Total value that want to deduct from a transaction
+subtotal                   Yes         Sub total value that want to deduct from a transaction
+items                      Yes         Items detail that want to deduct from a transaction
+========================== =========== =========================================================
+
+
+Here's an example of how the API call might look like in JSON format:
+
+.. code-block:: javascript
+
+    {
+       "token": "secret",
+       "id": 1,
+       "total_value": -4000,
+       "subtotal": -3000,
+       "items": [
+            {
+                "product_name": "AQUA",
+                "quantity": -1
+            }
+        ]
+    }
+
+
+Example of API call request using cURL (JSON)
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "secret", "id": 1, "total_value": -4000,"subtotal": -3000,"items": [{"product_name": "AQUA","quantity": -1}]'
+
+
+B. Response
+-----------------------------
+
+In response to this API call, Stamps will return response with the following data (in JSON by default):
+
+=================== ==================
+Variable            Description
+=================== ==================
+transaction         Transaction information which is
+                    successfully modified.
+                    Contains stamps_earned, id, and value
+customer            Customer information after successful
+                    redemption. Contains id, status, and stamps_remaining.
+errors              Errors encountered when canceling a transaction (if any)
+=================== ==================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+404                 Cannot find transaction of the requested transaction id
+405                 HTTP method not allowed
+500, 502, 503, 504  Something went wrong on Stamps' server
+=================== ==============================
+
+D. Example Response
+-------------------
+
+Below are a few examples responses on successful API calls.
+
+
+If transaction is successfully canceled:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "transaction": {
+        "id": 1,
+        "value": 30000,
+        "stamps_earned": 3,
+        "number_of_people": 1
+      },
+      "customer": {
+        "id": 5,
+        "mobile_phone":null,
+        "stamps_remaining": 62,
+        "status": "Blue",
+        "balance":0       
+      }
+    }
+
+
+When some fields don't validate:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {"detail":"product_name: Product does not exists","error_message":"product_name: Product does not exists","error_code":"product_not_found","errors":{"product_name":"Product does not exists"}}

@@ -299,7 +299,7 @@ When some fields don't validate:
 
     {"errors": {"info": "Transaction can't be canceled due to insufficient Stamps"}}
  
-3. Modify Qty Item in a Transaction
+3. Modify Transaction's Value or Items
 =============================
 | URL endpoint: https://stamps.co.id/api/v2/transactions/modify
 | Allowed method: POST
@@ -309,7 +309,7 @@ When some fields don't validate:
 A. Request
 -----------------------------
 
-You can modify qty item in a transaction on stamps by calling the API with these parameters
+You can modify transaction's value or items detail on stamps by callin the API with these parameters
 
 
 ========================== =========== =========================================================

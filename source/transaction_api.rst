@@ -33,7 +33,7 @@ sub_total           No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
 service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
-items               No          List of items containing product name, quantity, price &
+items               No          List of items containing product name, quantity, subtotal &
                                 stamps_subtotal (optional).
                                 ``price`` is the combined price of products (qty * unit price),
                                 ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
@@ -58,13 +58,13 @@ Here's an example of how the API call might look like in JSON format:
           {
              "product_name": "Cappucino",
              "quantity": 2,
-             "price": 10000,
+             "subtotal": 10000,
              "stamps_subtotal": 4
           },
           {
              "product_name": "Iced Tea",
              "quantity": 4,
-             "price": 5000,
+             "subtotal": 5000,
              "stamps_subtotal": 4
           }
        ]
@@ -75,7 +75,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}'
 
 B. Response
 -----------------------------
@@ -148,7 +148,7 @@ When some fields don't validate (JSON):
      [Redacted Header]
 
 
-    {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"price": "This field is required."}, {"invoice_number": "Store does not exist"}]}
+    {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"subtotal": "This field is required."}, {"invoice_number": "Store does not exist"}]}
 
 
 If HTTP is used instead of HTTPS:

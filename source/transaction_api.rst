@@ -56,7 +56,7 @@ Here's an example of how the API call might look like in JSON format:
        "number_of_people": 8,
        "tax": 5000,
        "channel": "PoS",
-       "type": "Dine In",
+       "type": "Dine-in",
        "created": "2013-02-15T13:01:01+07",
        "items": [
           {

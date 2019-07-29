@@ -11,6 +11,10 @@ Order Status API
 
 `4. Cancel Order`_
 
+`B. Generic Response`_ - Common across all API calls
+
+`C. Specific Responses`_ - Lists down specific behaviors and responses of each API call
+
 The various API calls contain similar headers and body. The differences will be highlighted within each API call
 
 
@@ -61,9 +65,15 @@ Here's an example of how the API call might look like in JSON format:
 
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
-.. code-block :: bash
+.. code-block:: bash
 
     $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
+    
+
+Response
+----------
+
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Confirm Order`_
 
 
 2. Paid Order
@@ -113,9 +123,15 @@ Here's an example of how the API call might look like in JSON format:
 
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
-.. code-block :: bash
+.. code-block:: bash
 
     $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
+    
+Response
+----------
+
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Paid Order`_
+
 
 3. Complete Order
 ==================
@@ -164,9 +180,15 @@ Here's an example of how the API call might look like in JSON format:
 
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
-.. code-block :: bash
+.. code-block:: bash
 
     $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
+    
+Response
+----------
+
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Complete Order`_
+
 
 4. Cancel Order
 ==================
@@ -215,13 +237,18 @@ Here's an example of how the API call might look like in JSON format:
 
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
-.. code-block :: bash
+.. code-block:: bash
 
     $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
+    
+Response
+----------
+
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Cancel Order`_
 
 
-B. Response
-------------
+B. Generic Response
+---------------------
 
 The various order status API calls return responses with similar fields. Hence, its differences will be highlighted instead.
 
@@ -270,7 +297,7 @@ Here are examples of API responses:
 
 If call to order status API is successful (JSON):
 
-.. code-block :: bash
+.. code-block:: bash
 
     HTTP/1.0 200 OK
     Vary: Accept
@@ -306,7 +333,7 @@ If call to order status API is successful (JSON):
 
 When some fields don't validate (JSON):
 
-.. code-block :: bash
+.. code-block:: bash
 
     HTTP/1.0 400 BAD REQUEST
     Vary: Accept
@@ -324,7 +351,7 @@ When some fields don't validate (JSON):
 
 If missing or wrong authentication token:
 
-.. code-block :: bash
+.. code-block:: bash
 
     HTTP/1.0 401 UNAUTHORIZED
     Vary: Accept
@@ -336,7 +363,7 @@ If missing or wrong authentication token:
 
 If HTTP is used instead of HTTPS:
 
-.. code-block :: bash
+.. code-block:: bash
 
     HTTP/1.0 403 FORBIDDEN
     Vary: Accept
@@ -352,21 +379,78 @@ C. Specific Responses
 
 These are the specific behaviors and responses caused by specific API calls
 
-1. Confirm Order
-Confirm Order changes the "status" field from 1 (new) to 10 (confirmed) and the "statusText" from "New" to "Confirmed"
+
+Confirm Order Response
+
+Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
+
 If an order is already confirmed, complete, or cancelled, the API call will return an error response stating that.
 
-2. Paid Order
 
-Paid Order changes the "paymentStatus" field from 1 (unpaid) to 2 (paid)
+Paid Order Response
+
+Paid Order changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
+
 If an order is already paid or cancelled, the API call will return an error response stating that.
 
-3. Complete Order
 
-Complete Order changes the "paymentStatus" field to 2 (paid), "status" field to 20 (complete) and the "statusText" field to "Complete" regardless of the values within the fields beforehand.
+Complete Order Response
+
+Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
+
 If an order is already complete or cancelled, the API call will return an error response stating that.
 
-4. Cancel Order
 
-Cancel Order changes the "status" field to 30 (cancelled) and the "statusText" field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and cannot be reversed.
+Cancel Order Response
+
+Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
+
 If an order is already cancelled, the API call will return an error response stating that.
+
+These are various examples of the error responses returned by failed API calls described above:
+
+Header
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+Body
+
+.. code-block:: json
+
+    {
+        "error_message": "Order has been confirmed",
+        "error_code": "invalid_status",
+        "errors": {
+            "number": "Order has been confirmed"
+        }
+    }
+
+    {
+        "error_message": "Order already paid",
+        "error_code": "already_paid",
+        "errors": {
+            "order": "Order already paid"
+        }
+    }
+
+    {
+        "error_message": "Order already completed",
+        "error_code": "order_already_completed",
+        "errors": {
+            "order": "Order already completed"
+        }
+    }
+
+    {
+        "error_message": "Order already canceled",
+        "error_code": "order_already_canceled",
+        "errors": {
+            "order": "Order already canceled"
+        }
+    }

@@ -20,7 +20,7 @@ The various API calls contain similar headers and body. The differences will be 
 
 1. Confirm Order
 ==================
-| URL endpoint: localhost:8000/api/store/orders/confirm
+| URL endpoint: https://orders.upnormal.co.id/api/store/orders/confirm
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -67,7 +67,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
     
 
 Response
@@ -78,7 +78,7 @@ The data returned by this API call can be checked here `B. Generic Response`_ an
 
 2. Paid Order
 ==================
-| URL endpoint: localhost:8000/api/store/orders/paid
+| URL endpoint: https://orders.upnormal.co.id/api/store/orders/paid
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -125,7 +125,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -135,7 +135,7 @@ The data returned by this API call can be checked here `B. Generic Response`_ an
 
 3. Complete Order
 ==================
-| URL endpoint: localhost:8000/api/store/orders/complete
+| URL endpoint: https://orders.upnormal.co.id/api/store/orders/complete
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -182,7 +182,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -192,7 +192,7 @@ The data returned by this API call can be checked here `B. Generic Response`_ an
 
 4. Cancel Order
 ==================
-| URL endpoint: localhost:8000/api/store/orders/cancel
+| URL endpoint: https://orders.upnormal.co.id/api/store/orders/cancel
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -239,7 +239,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" localhost:8000/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -254,7 +254,7 @@ The various order status API calls return responses with similar fields.
 
 Hence, its differences will be highlighted instead in `C. Specific Responses`_.
 
-In response to these API calls, Stamps will reply with the following data in JSON:
+In response to these API calls, Omni will reply with the following data in JSON:
 
 =================== ==================
 Variable            Description
@@ -290,7 +290,7 @@ Code                Description
 401                 Unauthorized, usually missing or wrong authentication token
 403                 Forbidden – You do not have permission for this request
 405                 HTTP method not allowed
-500, 502, 503, 504  Something went wrong on Stamps' server
+500, 502, 503, 504  Something went wrong on Omni's end
 =================== ==============================
 
 

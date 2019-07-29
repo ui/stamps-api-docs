@@ -251,6 +251,7 @@ B. Generic Response
 ---------------------
 
 The various order status API calls return responses with similar fields.
+
 Hence, its differences will be highlighted instead in `C. Specific Responses`_.
 
 In response to these API calls, Stamps will reply with the following data in JSON:
@@ -406,6 +407,7 @@ If an order is already complete or cancelled, the API call will return an error 
 
 
 Cancel Order Response
+_______________________
 
 Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
 
@@ -413,7 +415,7 @@ If an order is already cancelled, the API call will return an error response sta
 
 These are various examples of the error responses returned by failed API calls described above:
 
-Header
+Common Header
 
 .. code-block:: bash
 
@@ -423,7 +425,7 @@ Header
     Allow: POST, OPTIONS
     [Redacted Header]
     
-Body
+Body (Confirmed Order, Paid Order, Complete Order, Cancelled Order errors)
 
 .. code-block:: json
 

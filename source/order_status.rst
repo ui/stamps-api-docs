@@ -73,7 +73,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Confirm Order`_
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Confirm Order Response`_
 
 
 2. Paid Order
@@ -130,7 +130,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Paid Order`_
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Paid Order Response`_
 
 
 3. Complete Order
@@ -187,7 +187,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Complete Order`_
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Complete Order Response`_
 
 
 4. Cancel Order
@@ -244,7 +244,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Cancel Order`_
+The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Cancel Order Response`_
 
 
 B. Generic Response
@@ -381,6 +381,7 @@ These are the specific behaviors and responses caused by specific API calls
 
 
 Confirm Order Response
+_______________________
 
 Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
 
@@ -388,6 +389,7 @@ If an order is already confirmed, complete, or cancelled, the API call will retu
 
 
 Paid Order Response
+_______________________
 
 Paid Order changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
 
@@ -395,6 +397,7 @@ If an order is already paid or cancelled, the API call will return an error resp
 
 
 Complete Order Response
+_______________________
 
 Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
 

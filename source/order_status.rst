@@ -250,7 +250,8 @@ The data returned by this API call can be checked here `B. Generic Response`_ an
 B. Generic Response
 ---------------------
 
-The various order status API calls return responses with similar fields. Hence, its differences will be highlighted instead.
+The various order status API calls return responses with similar fields.
+Hence, its differences will be highlighted instead in `C. Specific Responses`_.
 
 In response to these API calls, Stamps will reply with the following data in JSON:
 

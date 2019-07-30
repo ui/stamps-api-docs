@@ -342,7 +342,7 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You sync up to 100 orders at a time by calling the API with these parameters
+You sync orders which have not been synced by calling the API with these parameters
 
 Header
 ______

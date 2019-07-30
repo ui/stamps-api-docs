@@ -359,9 +359,6 @@ Authorization       Yes         store token string
     Content-Type: application/json
     Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
 
-
-.. _store:
-
 Body
 ____
 
@@ -432,7 +429,7 @@ If call to order status API is successful (JSON):
 
 When some fields don't validate:
 
-**NOTE**: Even if the `store`_ field contains an "invalid" value, it would still return an empty array :code:`{ "orders" : [] }`
+**NOTE**: Even if the store field within the request body contains an "invalid" value, it would still return an empty array :code:`{ "orders" : [] }`
 
 If missing or wrong authentication token:
 

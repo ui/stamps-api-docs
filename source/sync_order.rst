@@ -134,7 +134,7 @@ If call to order status API is successful (JSON):
             "status": 1,
             "deliveryStatus": 10,
             "statusText": "New",
-            "storeName": "store test",
+            "storeName": "BURGER GOD",
             "userID": 1,
             "created": 1564045835,
             "paymentMethod": 1,
@@ -246,7 +246,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/details?last_order_id=0
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/get/?last_order_id=0
     
 
 B. Response
@@ -260,7 +260,144 @@ Variable            Description
 orders              An array of order objects
 =================== ==================
 
-Omni replies with an array of the recent 25 order objects wherein each order object has the following `fields`_. (Click the link to view the order object fields)
+Omni replies with an array of the recent 25 order objects wherein each order object has the following `fields`_.
+
+
+Here are examples of API responses:
+
+
+If call to order status API is successful (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "orders": [
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content]
+            }
+        ]
+    }
+
+When some fields don't validate (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "error_message": "Invalid last order id",
+        "error_code": "invalid_last_order_id",
+        "errors": {
+            "last_order_id": "Invalid last order id"
+        }
+    }
+
+If missing or wrong authentication token:
+
+.. code-block:: bash
+
+    HTTP/1.0 401 UNAUTHORIZED
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {"detail": "Invalid token"}
+
+If HTTP is used instead of HTTPS:
+
+.. code-block:: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {"detail": "Please use https instead of http"}
+
+
+3. Sync Order
+====================
+| URL endpoint: https://orders.upnormal.co.id/api/store/orders/sync
+| Allowed method: GET
+| Requires authentication: Yes
+
+A. Request
+----------
+
+You can get a specific order's details by calling the API with these parameters
+
+Header
+______
+
+=================== =========== =======================
+Parameter           Required    Description
+=================== =========== =======================
+Content-Type        Yes         application/json
+Authorization       Yes         store token string
+=================== =========== =======================
+
+.. code-block::
+
+    Content-Type: application/json
+    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+
+Body
+____
+
+=================== =========== =======================
+Parameter           Required    Description
+=================== =========== =======================
+store               Yes         store id string
+=================== =========== =======================
+
+Here's an example of how the API call might look like in JSON format:
+
+.. code-block::
+
+    {
+        "store": "Store1"
+    }
+
+
+Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
+
+.. code-block:: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/sync -i -d '{ "store": "Store1" }'
+    
+
+B. Response
+-----------
+
+In response to these API calls, Omni will reply with the following data in JSON:
+
+=================== ==================
+Variable            Description
+=================== ==================
+orders              An array of order objects
+=================== ==================
+
+Omni replies with an array of up to 100 order objects which have not been synced, and each order object has the following `fields`_.
+
+If all orders are synced, it returns an empty array :code:`{ "orders" : [] }`
 
 
 Here are examples of API responses:

@@ -64,7 +64,7 @@ Variable            Description
 order               Order object
 =================== ==================
 
-.. _parameters:
+.. _fields:
 
 Omni replies with an order object that contains the following data:
 

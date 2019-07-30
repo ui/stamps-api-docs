@@ -246,7 +246,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/get/?last_order_id=0
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/get?last_order_id=0
     
 
 B. Response

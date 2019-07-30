@@ -359,6 +359,8 @@ Authorization       Yes         store token string
     Content-Type: application/json
     Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
 
+.. _store:
+
 Body
 ____
 
@@ -427,23 +429,9 @@ If call to order status API is successful (JSON):
         ]
     }
 
-When some fields don't validate (JSON):
+When some fields don't validate:
 
-.. code-block:: bash
-
-    HTTP/1.0 400 BAD REQUEST
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-
-    {
-        "error_message": "Invalid last order id",
-        "error_code": "invalid_last_order_id",
-        "errors": {
-            "last_order_id": "Invalid last order id"
-        }
-    }
+**NOTE**: Even if the `store`_ field contains an "invalid" value, it would still return an empty array :code:`{ "orders" : [] }`
 
 If missing or wrong authentication token:
 

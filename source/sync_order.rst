@@ -215,7 +215,7 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can get a specific order's details by calling the API with these parameters
+You can retrieve the latest 15 orders by calling the API with these parameters
 
 Header
 ______
@@ -260,7 +260,7 @@ Variable            Description
 orders              An array of order objects
 =================== ==================
 
-Omni replies with an array of the recent 25 order objects wherein each order object has the following `fields`_.
+Omni replies with an array of the latest 15 order objects wherein each order object has the following `fields`_.
 
 
 Here are examples of API responses:
@@ -342,7 +342,7 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can get a specific order's details by calling the API with these parameters
+You sync up to 100 orders at a time by calling the API with these parameters
 
 Header
 ______

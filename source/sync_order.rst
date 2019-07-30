@@ -260,4 +260,74 @@ Variable            Description
 orders              An array of order objects
 =================== ==================
 
-Omni replies with an array of up to 25 order objects wherein each order object has the following `parameters`_. (Click the parameters link to view the order object parameters)
+Omni replies with an array of the recent 25 order objects wherein each order object has the following `fields`_. (Click the link to view the order object fields)
+
+
+Here are examples of API responses:
+
+
+If call to order status API is successful (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "orders": [
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content]
+            }
+        ]
+    }
+
+When some fields don't validate (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "error_message": "Invalid last order id",
+        "error_code": "invalid_last_order_id",
+        "errors": {
+            "last_order_id": "Invalid last order id"
+        }
+    }
+
+If missing or wrong authentication token:
+
+.. code-block:: bash
+
+    HTTP/1.0 401 UNAUTHORIZED
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {"detail": "Invalid token"}
+
+If HTTP is used instead of HTTPS:
+
+.. code-block:: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {"detail": "Please use https instead of http"}

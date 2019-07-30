@@ -259,4 +259,4 @@ Variable            Description
 orders              An array of order objects
 =================== ==================
 
-Omni replies with an array of up to 25 order objects wherein each order object has the following `parameters <parameters>`_. (Click the parameters link to view the order object parameters)
+Omni replies with an array of up to 25 order objects wherein each order object has the following `parameters`_. (Click the parameters link to view the order object parameters)

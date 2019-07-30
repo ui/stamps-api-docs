@@ -359,6 +359,7 @@ Authorization       Yes         store token string
     Content-Type: application/json
     Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
 
+
 .. _store:
 
 Body

@@ -248,7 +248,7 @@ The data returned by this API call can be checked here `B. Generic Response`_ an
 
 
 B. Generic Response
----------------------
+=====================
 
 The various order status API calls return responses with similar fields.
 
@@ -377,13 +377,13 @@ If HTTP is used instead of HTTPS:
 
 
 C. Specific Responses
------------------------
+=======================
 
 These are the specific behaviors and responses caused by specific API calls
 
 
 Confirm Order Response
-_______________________
+-----------------------
 
 Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
 
@@ -391,7 +391,7 @@ If an order is already confirmed, complete, or cancelled, the API call will retu
 
 
 Paid Order Response
-_______________________
+-----------------------
 
 Paid Order changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
 
@@ -399,7 +399,7 @@ If an order is already paid or cancelled, the API call will return an error resp
 
 
 Complete Order Response
-_______________________
+-----------------------
 
 Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
 
@@ -407,11 +407,15 @@ If an order is already complete or cancelled, the API call will return an error 
 
 
 Cancel Order Response
-_______________________
+-----------------------
 
 Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
 
 If an order is already cancelled, the API call will return an error response stating that.
+
+
+Examples of failed API call responses
+_______________________________________
 
 These are various examples of the error responses returned by failed API calls described above:
 

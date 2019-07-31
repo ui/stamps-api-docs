@@ -3,12 +3,12 @@ Sync Order API
 ************************************
 
 
-`1. Add/Update Inventory`_
+`1. Add / Update Inventory`_
 
 `2. Update Out of Stock Inventory`_
 
 
-1. Confirm Order
+1. Add / Update Inventory
 ==================
 | URL endpoint: https://host.com/api/backend/inventories/update
 | Allowed method: POST
@@ -57,29 +57,31 @@ is_active           No          boolean, defaults to false
 
 Here's an example of how the API call might look like in JSON format:
 
-{
-    "store_code": "Store1",
-    "inventories": [
-        {
-            "variant_code": "BURGER01",
-            "price": 36364,
-            "out_of_stock": false,
-            "is_active": true
-        },
-        {
-            [Redacted Content]
-        },
-        {
-            [Redacted Content]
-        },
-        {
-            [Redacted Content]
-        },
-        {
-            [Redacted Content[
-        }
-    ]
-}
+.. code-block:: json
+
+    {
+        "store_code": "Store1",
+        "inventories": [
+            {
+                "variant_code": "BURGER01",
+                "price": 36364,
+                "out_of_stock": false,
+                "is_active": true
+            },
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content]
+            },
+            {
+                [Redacted Content[
+            }
+        ]
+    }
 
 
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
@@ -92,11 +94,6 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 B. Response
 -----------
 
-In response to these API calls, Omni will reply with the following data:
-
-.. code-block:: json
-
-    "status: 'ok'"
 
 Depending on the request, responses may return these status codes:
 
@@ -115,7 +112,7 @@ Code                Description
 Here are examples of API responses:
 
 
-If call to order status API is successful (JSON):
+If call to inventory API is successful (JSON):
 
 .. code-block:: bash
 

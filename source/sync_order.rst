@@ -50,7 +50,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/details?number=FR9TL74P
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/details?number=FR9TL74P
     
 
 B. Response
@@ -117,7 +117,7 @@ If call to order status API is successful (JSON):
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {
@@ -173,7 +173,7 @@ When some fields don't validate (JSON):
     HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {
@@ -188,7 +188,7 @@ If missing or wrong authentication token:
     HTTP/1.0 401 UNAUTHORIZED
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
     
     {"detail": "Invalid token"}
@@ -200,7 +200,7 @@ If HTTP is used instead of HTTPS:
     HTTP/1.0 403 FORBIDDEN
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {"detail": "Please use https instead of http"}
@@ -246,7 +246,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
     
 
 B. Response
@@ -273,7 +273,7 @@ If call to order status API is successful (JSON):
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {
@@ -297,7 +297,7 @@ When some fields don't validate (JSON):
     HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {
@@ -315,7 +315,7 @@ If missing or wrong authentication token:
     HTTP/1.0 401 UNAUTHORIZED
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
     
     {"detail": "Invalid token"}
@@ -327,7 +327,7 @@ If HTTP is used instead of HTTPS:
     HTTP/1.0 403 FORBIDDEN
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {"detail": "Please use https instead of http"}
@@ -365,7 +365,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/sync
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/sync
     
 
 B. Response
@@ -394,7 +394,7 @@ If call to order status API is successful (JSON):
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {
@@ -418,7 +418,7 @@ If missing or wrong authentication token:
     HTTP/1.0 401 UNAUTHORIZED
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
     
     {"detail": "Invalid token"}
@@ -430,7 +430,7 @@ If HTTP is used instead of HTTPS:
     HTTP/1.0 403 FORBIDDEN
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: GET, OPTIONS
     [Redacted Header]
 
     {"detail": "Please use https instead of http"}

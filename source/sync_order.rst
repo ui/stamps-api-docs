@@ -110,7 +110,7 @@ Code                Description
 Here are examples of API responses:
 
 
-If call to order status API is successful (JSON):
+If call to sync order API is successful (JSON):
 
 .. code-block:: bash
 
@@ -266,7 +266,7 @@ Omni replies with an array of the latest 15 order objects wherein each order obj
 Here are examples of API responses:
 
 
-If call to order status API is successful (JSON):
+If call to sync order API is successful (JSON):
 
 .. code-block:: bash
 
@@ -387,7 +387,7 @@ If all orders are synced, it returns an empty array :code:`{ "orders" : [] }`
 Here are examples of API responses:
 
 
-If call to order status API is successful (JSON):
+If call to sync order API is successful (JSON):
 
 .. code-block:: bash
 

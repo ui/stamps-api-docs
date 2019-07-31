@@ -342,7 +342,9 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You sync orders which have not been synced by calling the API with these parameters
+You sync orders which have not been synced before by calling the API with these parameters
+
+The store is derived from the store token string.
 
 Header
 ______
@@ -359,29 +361,11 @@ Authorization       Yes         store token string
     Content-Type: application/json
     Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
 
-Body
-____
-
-=================== =========== =======================
-Parameter           Required    Description
-=================== =========== =======================
-store               Yes         Store Code string
-=================== =========== =======================
-
-Here's an example of how the API call might look like in JSON format:
-
-.. code-block::
-
-    {
-        "store": "Store1"
-    }
-
-
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/sync -i -d '{ "store": "Store1" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/sync
     
 
 B. Response
@@ -426,10 +410,6 @@ If call to order status API is successful (JSON):
             }
         ]
     }
-
-When some fields don't validate:
-
-**NOTE**: Even if the store field within the request body contains an "invalid" value, it would still return an empty array :code:`{ "orders" : [] }`
 
 If missing or wrong authentication token:
 

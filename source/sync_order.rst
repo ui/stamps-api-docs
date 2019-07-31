@@ -12,7 +12,7 @@ Sync Order API
 
 1. Get Order Details
 ====================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/details
+| URL endpoint: https://host.com/api/store/orders/details
 | Allowed method: GET
 | Requires authentication: Yes
 
@@ -50,7 +50,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/details?number=FR9TL74P
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/details?number=FR9TL74P
     
 
 B. Response
@@ -208,7 +208,7 @@ If HTTP is used instead of HTTPS:
     
 2. Get Order
 ====================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/get
+| URL endpoint: https://host.com/api/store/orders/get
 | Allowed method: GET
 | Requires authentication: Yes
 
@@ -246,7 +246,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/get?last_order_id=0
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
     
 
 B. Response
@@ -335,7 +335,7 @@ If HTTP is used instead of HTTPS:
 
 3. Sync Order
 ====================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/sync
+| URL endpoint: https://host.com/api/store/orders/sync
 | Allowed method: GET
 | Requires authentication: Yes
 
@@ -365,7 +365,7 @@ ____
 =================== =========== =======================
 Parameter           Required    Description
 =================== =========== =======================
-store               Yes         store id string
+store               Yes         Store Code string
 =================== =========== =======================
 
 Here's an example of how the API call might look like in JSON format:
@@ -381,7 +381,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/sync -i -d '{ "store": "Store1" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/sync -i -d '{ "store": "Store1" }'
     
 
 B. Response

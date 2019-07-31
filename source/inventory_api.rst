@@ -57,7 +57,7 @@ is_active           No          boolean, defaults to false
 
 Here's an example of how the API call might look like in JSON format:
 
-.. code-block:: json
+.. code-block::
 
     {
         "store_code": "Store1",

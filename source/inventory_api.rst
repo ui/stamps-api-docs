@@ -265,7 +265,7 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can add or update a product variant in the store inventory by calling the API with these parameters
+You can update the out of stock status of a product variant in the store inventory by calling the API with these parameters
 
 Header
 ______

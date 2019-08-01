@@ -177,6 +177,24 @@ Invalid variant_code field
         }
     }
     
+Invalid code field (too long)
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "error_message": "Ensure this value has at most 10 characters (it has 13).",
+        "error_code": "max_length",
+        "errors": {
+            "variant_code": "Ensure this value has at most 10 characters (it has 13)."
+        }
+    }
+    
 Empty price field
 
 .. code-block:: bash

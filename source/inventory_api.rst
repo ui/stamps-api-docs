@@ -17,7 +17,7 @@ Inventory API
 A. Request
 ----------
 
-You can add or update a variant in the store inventory by calling the API with these parameters
+You can add new variants into the store's inventory, or update already existing variants in the store's inventory by calling the API with these parameters
 
 Header
 ______

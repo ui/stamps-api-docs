@@ -17,7 +17,7 @@ Inventory API
 A. Request
 ----------
 
-You can add or update a product variant in the store inventory by calling the API with these parameters
+You can add or update a variant in the store inventory by calling the API with these parameters
 
 Header
 ______
@@ -41,10 +41,10 @@ ______
 Parameter           Required    Description
 =================== =========== =======================
 store_code          Yes         Store Code string
-inventories         Yes         An array of product variant objects
+inventories         Yes         An array of variant objects
 =================== =========== =======================
 
-Each product variant object in the array has the following parameters 
+Each variant object in the array has the following parameters 
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -265,7 +265,7 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can update the out of stock status of a product variant in the store inventory by calling the API with these parameters
+You can update the out of stock status of a variant in the store inventory by calling the API with these parameters
 
 Header
 ______

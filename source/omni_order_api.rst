@@ -509,7 +509,37 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Confirm Order Response`_
+In response to these API calls, Omni will reply with the following data in JSON:
+
+=================== ==================
+Variable            Description
+=================== ==================
+id                  Order ID
+number              Order number string
+total               Total value before tax, service charge, delivery fee, discount and promotion
+tax                 Tax value
+serviceCharge       Service charge
+grandTotal          Total value after tax, service charge, delivery fee, discount and promotion
+tableNumber         Table number string
+channel             An int representing where order was created (Mobile App, POS, Kiosk, Web)
+notes               Customer notes string (example: no lettuce)
+status              An int representing the order status ID
+deliveryStatus      An int representing the delivery status ID
+statusText          Order status string
+storeName           Store name string
+userID              ID of user making the order
+created             Time when order is created in UNIX time
+paymentMethod       An int representing the payment method ID
+paymentStatus       An int representing the payment status ID
+user                Contains the user's id, name and phone number
+delivery_info       null
+=================== ==================
+
+An example of the response in JSON is found `here`_.
+
+Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
+
+If an order is already confirmed, complete, or cancelled, the API call will return an error response stating that.
 
 
 5. Mark Order as Paid
@@ -566,7 +596,37 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Mark Order as Paid Response`_
+In response to these API calls, Omni will reply with the following data in JSON:
+
+=================== ==================
+Variable            Description
+=================== ==================
+id                  Order ID
+number              Order number string
+total               Total value before tax, service charge, delivery fee, discount and promotion
+tax                 Tax value
+serviceCharge       Service charge
+grandTotal          Total value after tax, service charge, delivery fee, discount and promotion
+tableNumber         Table number string
+channel             An int representing where order was created (Mobile App, POS, Kiosk, Web)
+notes               Customer notes string (example: no lettuce)
+status              An int representing the order status ID
+deliveryStatus      An int representing the delivery status ID
+statusText          Order status string
+storeName           Store name string
+userID              ID of user making the order
+created             Time when order is created in UNIX time
+paymentMethod       An int representing the payment method ID
+paymentStatus       An int representing the payment status ID
+user                Contains the user's id, name and phone number
+delivery_info       null
+=================== ==================
+
+An example of the response in JSON is found `here`_.
+
+Mark Order as Paid changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
+
+If an order is already paid or cancelled, the API call will return an error response stating that.
 
 
 6. Complete Order
@@ -623,7 +683,37 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Complete Order Response`_
+In response to these API calls, Omni will reply with the following data in JSON:
+
+=================== ==================
+Variable            Description
+=================== ==================
+id                  Order ID
+number              Order number string
+total               Total value before tax, service charge, delivery fee, discount and promotion
+tax                 Tax value
+serviceCharge       Service charge
+grandTotal          Total value after tax, service charge, delivery fee, discount and promotion
+tableNumber         Table number string
+channel             An int representing where order was created (Mobile App, POS, Kiosk, Web)
+notes               Customer notes string (example: no lettuce)
+status              An int representing the order status ID
+deliveryStatus      An int representing the delivery status ID
+statusText          Order status string
+storeName           Store name string
+userID              ID of user making the order
+created             Time when order is created in UNIX time
+paymentMethod       An int representing the payment method ID
+paymentStatus       An int representing the payment status ID
+user                Contains the user's id, name and phone number
+delivery_info       null
+=================== ==================
+
+An example of the response in JSON is found `here`_.
+
+Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
+
+If an order is already complete or cancelled, the API call will return an error response stating that.
 
 
 7. Cancel Order
@@ -680,16 +770,6 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
-The data returned by this API call can be checked here `B. Generic Response`_ and its specific behavior can be checked here `C. Specific Responses`_ under `Cancel Order Response`_
-
-
-B. Generic Response
-=====================
-
-The various order status API calls return responses with similar fields.
-
-Hence, its differences will be highlighted instead in `C. Specific Responses`_.
-
 In response to these API calls, Omni will reply with the following data in JSON:
 
 =================== ==================
@@ -716,7 +796,16 @@ user                Contains the user's id, name and phone number
 delivery_info       null
 =================== ==================
 
-Depending on the request, responses may return these status codes:
+An example of the response in JSON is found `here`_.
+
+Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
+
+If an order is already cancelled, the API call will return an error response stating that.
+
+.. _here:
+
+9. Response Example
+=====================
 
 =================== ==============================
 Code                Description
@@ -810,45 +899,6 @@ If HTTP is used instead of HTTPS:
     [Redacted Header]
 
     {"detail": "Please use https instead of http"}
-
-
-C. Specific Responses
-=======================
-
-These are the specific behaviors and responses caused by specific API calls
-
-
-Confirm Order Response
------------------------
-
-Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
-
-If an order is already confirmed, complete, or cancelled, the API call will return an error response stating that.
-
-
-Mark Order as Paid Response
------------------------
-
-Mark Order as Paid changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
-
-If an order is already paid or cancelled, the API call will return an error response stating that.
-
-
-Complete Order Response
------------------------
-
-Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
-
-If an order is already complete or cancelled, the API call will return an error response stating that.
-
-
-Cancel Order Response
------------------------
-
-Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
-
-If an order is already cancelled, the API call will return an error response stating that.
-
 
 Examples of failed API call responses
 _______________________________________

@@ -50,13 +50,13 @@ Authorization       Yes         store token string
 .. code-block::
 
     Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+    Authorization: token example-store-token
 
 Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
 .. code-block:: bash
 
-    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/sync
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/sync
     
 
 B. Response
@@ -152,7 +152,7 @@ If call to sync order API is successful (JSON):
     .. code-block::
 
         Content-Type: application/json
-        Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+        Authorization: token example-store-token
 
     Query Parameter
     _______________
@@ -168,7 +168,7 @@ If call to sync order API is successful (JSON):
 
     .. code-block:: bash
 
-        $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
+        $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
         
 
     B. Response
@@ -278,7 +278,7 @@ Authorization       Yes         store token string
 .. code-block::
 
     Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+    Authorization: token example-store-token
 
 Query Parameter
 _______________
@@ -294,7 +294,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/details?number=FR9TL74P
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/details?number=FR9TL74P
     
 
 B. Response
@@ -450,7 +450,7 @@ Authorization       Yes         token string
 .. code-block::
 
     Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+    Authorization: token example-store-token
 
 Body
 ______
@@ -475,7 +475,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
     
 
 Response
@@ -627,7 +627,7 @@ Authorization       Yes         token string
 .. code-block::
 
     Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+    Authorization: token example-store-token
 
 Body
 ______
@@ -652,7 +652,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -803,7 +803,7 @@ Authorization       Yes         token string
 .. code-block::
 
     Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+    Authorization: token example-store-token
 
 Body
 ______
@@ -828,7 +828,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -979,7 +979,7 @@ Authorization       Yes         token string
 .. code-block::
 
     Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
+    Authorization: token example-store-token
 
 Body
 ______
@@ -1004,7 +1004,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------

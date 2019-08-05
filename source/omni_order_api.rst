@@ -5,17 +5,19 @@ Omni Order API
 
 `1. Sync Order`_
 
-`2. Get Order`_
+`2. Get Order Details`_
 
-`3. Get Order Details`_
+`3. Confirm Order`_
 
-`4. Confirm Order`_
+`4. Mark Order as Paid`_
 
-`5. Mark Order as Paid`_
+`5. Complete Order`_
 
-`6. Complete Order`_
+`6. Cancel Order`_
 
-`7. Cancel Order`_
+`7. Status Code Mappings`_
+
+`8. Error Responses`_
 
 
 1. Sync Order
@@ -27,14 +29,16 @@ Omni Order API
 A. Request
 ----------
 
-You get all new orders which have not been synced before by calling the API with these parameters
+This API endpoint should used by POS terminals to fetch incoming orders from OMNI. This API is lightweight and suitable to be used for polling for new orders.
+
+This endpoint will only return said orders exactly **once**.
 
 It will only return said orders only **once**.
 
 The store is derived from the store token string.
 
-Header
-______
+HTTP Header
+___________
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -66,11 +70,11 @@ Variable            Description
 orders              An array of order objects
 =================== ==================
 
-**ALL** new orders will be synced, but Omni only replies with an array of up to 100 order objects which have not been synced, and each order object has the following `fields`_.
+Up to 100 new orders will be returned, each order object has the following `fields`_.
 
 The order objects will only be returned **once**.
 
-If all orders are synced, it returns an empty array :code:`{ "orders" : [] }`
+If there are no new orders, it returns an empty array :code:`{ "orders" : [] }`
 
 
 Here are examples of API responses:
@@ -95,164 +99,162 @@ If call to sync order API is successful (JSON):
                 [Redacted Content]
             },
             {
-                [Redacted Content]
+                "id": 1,
+                "number": "FR9TL74P",
+                "total": 36364.0,
+                "tax": 3636.0,
+                "serviceCharge": 0.0,
+                "grandTotal": 41000.0,
+                "tableNumber": "A1",
+                "channel": 2,
+                "notes": "No lettuce",
+                "status": 1,
+                "deliveryStatus": 10,
+                "statusText": "New",
+                "storeName": "store test",
+                "userID": 1,
+                "created": 1564045835,
+                "paymentMethod": 1,
+                "paymentStatus": 1,
+                "user": {
+                    "id": 1,
+                    "name": "test",
+                    "phone": "+628111111111"
+                },
+                "items": [],
+                "delivery_info": null
             }
         ]
     }
 
-If missing or wrong authentication token:
-
-.. code-block:: bash
-
-    HTTP/1.0 401 UNAUTHORIZED
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
     
-    {"detail": "Invalid token"}
+..  Get Order
+    ====================
+    | URL endpoint: https://host.com/api/store/orders/get
+    | Allowed method: GET
+    | Requires authentication: Yes
 
-If HTTP is used instead of HTTPS:
+    A. Request
+    ----------
 
-.. code-block:: bash
+    You can retrieve the latest 15 orders by calling the API with these parameters:
 
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
+    HTTP Header
+    ___________
 
-    {"detail": "Please use https instead of http"}
+    =================== =========== =======================
+    Parameter           Required    Description
+    =================== =========== =======================
+    Content-Type        Yes         application/json
+    Authorization       Yes         store token string
+    =================== =========== =======================
 
-    
-2. Get Order
-====================
-| URL endpoint: https://host.com/api/store/orders/get
-| Allowed method: GET
-| Requires authentication: Yes
+    .. code-block::
 
-A. Request
-----------
+        Content-Type: application/json
+        Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
 
-You can retrieve the latest 15 orders by calling the API with these parameters
+    Query Parameter
+    _______________
 
-Header
-______
-
-=================== =========== =======================
-Parameter           Required    Description
-=================== =========== =======================
-Content-Type        Yes         application/json
-Authorization       Yes         store token string
-=================== =========== =======================
-
-.. code-block::
-
-    Content-Type: application/json
-    Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF
-
-Query Parameter
-_______________
-
-=================== =========== =======================
-Parameter           Required    Description
-=================== =========== =======================
-last_order_id       Yes         last order id
-=================== =========== =======================
+    =================== =========== =======================
+    Parameter           Required    Description
+    =================== =========== =======================
+    last_order_id       Yes         last order id
+    =================== =========== =======================
 
 
-Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
+    Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
-    
+        $ curl -X GET -H "Content-Type: application/json" -H "Authorization: token vE53k50FVtct50ll8iHBE6FgMRVCyJeF" -H "Expect:" https://host.com/api/store/orders/get?last_order_id=0
+        
 
-B. Response
------------
+    B. Response
+    -----------
 
-In response to these API calls, Omni will reply with the following data in JSON:
+    In response to these API calls, Omni will reply with the following data in JSON:
 
-=================== ==================
-Variable            Description
-=================== ==================
-orders              An array of order objects
-=================== ==================
+    =================== ==================
+    Variable            Description
+    =================== ==================
+    orders              An array of order objects
+    =================== ==================
 
-Omni replies with an array of the latest 15 order objects wherein each order object has the following `fields`_.
-
-
-Here are examples of API responses:
+    Omni replies with an array of the latest 15 order objects wherein each order object has the following `fields`_.
 
 
-If call to sync order API is successful (JSON):
+    Here are examples of API responses:
 
-.. code-block:: bash
 
-    HTTP/1.0 200 OK
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
+    If call to sync order API is successful (JSON):
 
-    {
-        "orders": [
-            {
-                [Redacted Content]
-            },
-            {
-                [Redacted Content]
-            },
-            {
-                [Redacted Content]
-            }
-        ]
-    }
+    .. code-block:: bash
 
-When some fields don't validate (JSON):
+        HTTP/1.0 200 OK
+        Vary: Accept
+        Content-Type: application/json
+        Allow: GET, OPTIONS
+        [Redacted Header]
 
-.. code-block:: bash
-
-    HTTP/1.0 400 BAD REQUEST
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
-
-    {
-        "error_message": "Invalid last order id",
-        "error_code": "invalid_last_order_id",
-        "errors": {
-            "last_order_id": "Invalid last order id"
+        {
+            "orders": [
+                {
+                    [Redacted Content]
+                },
+                {
+                    [Redacted Content]
+                },
+                {
+                    "id": 1,
+                    "number": "FR9TL74P",
+                    "total": 36364.0,
+                    "tax": 3636.0,
+                    "serviceCharge": 0.0,
+                    "grandTotal": 41000.0,
+                    "tableNumber": "A1",
+                    "channel": 2,
+                    "notes": "No lettuce",
+                    "status": 1,
+                    "deliveryStatus": 10,
+                    "statusText": "New",
+                    "storeName": "store test",
+                    "userID": 1,
+                    "created": 1564045835,
+                    "paymentMethod": 1,
+                    "paymentStatus": 1,
+                    "user": {
+                        "id": 1,
+                        "name": "test",
+                        "phone": "+628111111111"
+                    },
+                    "items": [],
+                    "delivery_info": null
+                }
+            ]
         }
-    }
 
-If missing or wrong authentication token:
+    When some fields don't validate (JSON):
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    HTTP/1.0 401 UNAUTHORIZED
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
-    
-    {"detail": "Invalid token"}
+        HTTP/1.0 400 BAD REQUEST
+        Vary: Accept
+        Content-Type: application/json
+        Allow: GET, OPTIONS
+        [Redacted Header]
 
-If HTTP is used instead of HTTPS:
-
-.. code-block:: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
-
-    {"detail": "Please use https instead of http"}
+        {
+            "error_message": "Invalid last order id",
+            "error_code": "invalid_last_order_id",
+            "errors": {
+                "last_order_id": "Invalid last order id"
+            }
+        }
 
 
-3. Get Order Details
+2. Get Order Details
 ====================
 | URL endpoint: https://host.com/api/store/orders/details
 | Allowed method: GET
@@ -261,10 +263,10 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can get a specific order's details by calling the API with these parameters
+You can get a specific order's details by calling the API with these parameters:
 
-Header
-______
+HTTP Header
+___________
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -423,32 +425,8 @@ When some fields don't validate (JSON):
         "error_code": "invalid_request"
     }
 
-If missing or wrong authentication token:
 
-.. code-block:: bash
-
-    HTTP/1.0 401 UNAUTHORIZED
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
-    
-    {"detail": "Invalid token"}
-
-If HTTP is used instead of HTTPS:
-
-.. code-block:: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: GET, OPTIONS
-    [Redacted Header]
-
-    {"detail": "Please use https instead of http"}
-
-
-4. Confirm Order
+3. Confirm Order
 ==================
 | URL endpoint: https://orders.upnormal.co.id/api/store/orders/confirm
 | Allowed method: POST
@@ -457,10 +435,10 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can mark an order as Confirmed by calling the API with these parameters
+You can mark an order as Confirmed by calling the API with these parameters:
 
-Header
-______
+HTTP Header
+___________
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -624,32 +602,8 @@ Order already confirmed
         }
     }
 
-If missing or wrong authentication token:
 
-.. code-block:: bash
-
-    HTTP/1.0 401 UNAUTHORIZED
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-    
-    {"detail": "Invalid token"}
-
-If HTTP is used instead of HTTPS:
-
-.. code-block:: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-
-    {"detail": "Please use https instead of http"}
-
-
-5. Mark Order as Paid
+4. Mark Order as Paid
 ==================
 | URL endpoint: https://orders.upnormal.co.id/api/store/orders/paid
 | Allowed method: POST
@@ -658,10 +612,10 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can mark an order as Paid by calling the API with these parameters
+You can mark an order as Paid by calling the API with these parameters:
 
-Header
-______
+HTTP Header
+___________
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -824,32 +778,8 @@ Order already paid
         }
     }
 
-If missing or wrong authentication token:
 
-.. code-block:: bash
-
-    HTTP/1.0 401 UNAUTHORIZED
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-    
-    {"detail": "Invalid token"}
-
-If HTTP is used instead of HTTPS:
-
-.. code-block:: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-
-    {"detail": "Please use https instead of http"}
-
-
-6. Complete Order
+5. Complete Order
 ==================
 | URL endpoint: https://orders.upnormal.co.id/api/store/orders/complete
 | Allowed method: POST
@@ -858,10 +788,10 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can mark an order as Complete by calling the API with these parameters
+You can mark an order as Complete by calling the API with these parameters:
 
-Header
-______
+HTTP Header
+___________
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -1024,32 +954,8 @@ Order already completed
         }
     }
 
-If missing or wrong authentication token:
 
-.. code-block:: bash
-
-    HTTP/1.0 401 UNAUTHORIZED
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-    
-    {"detail": "Invalid token"}
-
-If HTTP is used instead of HTTPS:
-
-.. code-block:: bash
-
-    HTTP/1.0 403 FORBIDDEN
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-
-    {"detail": "Please use https instead of http"}
-
-
-7. Cancel Order
+6. Cancel Order
 ==================
 | URL endpoint: https://orders.upnormal.co.id/api/store/orders/cancel
 | Allowed method: POST
@@ -1058,10 +964,10 @@ If HTTP is used instead of HTTPS:
 A. Request
 ------------
 
-You can mark an order as Confirmed by calling the API with these parameters
+You can mark an order as Confirmed by calling the API with these parameters:
 
-Header
-______
+HTTP Header
+___________
 
 =================== =========== =======================
 Parameter           Required    Description
@@ -1223,6 +1129,75 @@ Order already cancelled
             "order": "Order already canceled"
         }
     }
+
+
+7. Status Code Mappings
+=========================
+
+
+:code:`channel`
+
+=========== ==============
+Code        Definition
+=========== ==============
+1           Mobile App
+2           POS
+3           Kiosk
+4           Web
+=========== ==============
+
+
+:code:`deliveryStatus`
+
+=========== ==============
+Code        Definition
+=========== ==============
+10          Dispatched
+20          Completed
+30          Confirmed
+40          Cancelled
+=========== ==============
+
+
+:code:`orderStatus`
+
+=========== ==============
+Code        Definition
+=========== ==============
+1           New
+10          Confirmed
+20          Completed
+30          Cancelled
+40          Pending Payment
+=========== ==============
+
+
+:code:`paymentStatus`
+
+=========== ==============
+Code        Definition
+=========== ==============
+1           Unpaid
+2           Paid
+=========== ==============
+
+
+:code:`paymentMethod`
+
+=========== ==============
+Code        Definition
+=========== ==============
+1           Cash
+2           GO-PAY
+3           Credit Card
+4           Debit
+5           Dana
+6           OVO
+=========== ==============
+
+
+8. Error Responses
+====================
 
 If missing or wrong authentication token:
 

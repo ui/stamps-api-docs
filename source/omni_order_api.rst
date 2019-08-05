@@ -17,12 +17,6 @@ Omni Order API
 
 `7. Cancel Order`_
 
-`B. Generic Response`_ - Common across all API calls
-
-`C. Specific Responses`_ - Lists down specific behaviors and responses of each API call
-
-The various API calls contain similar headers and body. The differences will be highlighted within each API call
-
 
 1. Sync Order
 ====================
@@ -509,6 +503,10 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
+Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
+
+If an order is already confirmed, complete, or cancelled, the API call will return an error response stating that.
+
 In response to these API calls, Omni will reply with the following data in JSON:
 
 =================== ==================
@@ -535,11 +533,120 @@ user                Contains the user's id, name and phone number
 delivery_info       null
 =================== ==================
 
-An example of the response in JSON is found `here`_.
+Depending on the request, responses may return these status codes:
 
-Confirm Order changes the :code:`"status"` field from 1 (new) to 10 (confirmed) and the :code:`"statusText"` from "New" to "Confirmed".
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Something went wrong on Omni's end
+=================== ==============================
 
-If an order is already confirmed, complete, or cancelled, the API call will return an error response stating that.
+
+Here are examples of API responses:
+
+
+If call to order status API is successful (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "id": 1,
+        "number": "FR9TL74P",
+        "total": 36364.0,
+        "tax": 3636.0,
+        "serviceCharge": 0.0,
+        "grandTotal": 40000.0,
+        "tableNumber": "A1",
+        "channel": 2,
+        "notes": "No lettuce",
+        "status": 30,
+        "deliveryStatus": 10,
+        "statusText": "Cancelled",
+        "storeName": "Burger God",
+        "userID": 1,
+        "created": 1564045835,
+        "paymentMethod": 1,
+        "paymentStatus": 1,
+        "user": {
+            "id": 1,
+            "name": "user",
+            "phone": "+628111111111"
+        },
+        "delivery_info": null
+    }
+
+When some fields don't validate (JSON):
+
+Order not found
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "error_message": "Order not found",
+        "error_code": "invalid_order_number",
+        "errors": {
+            "order": "Order not found"
+        }
+    }
+    
+Order already confirmed
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {
+        "error_message": "Order has been confirmed",
+        "error_code": "invalid_status",
+        "errors": {
+            "number": "Order has been confirmed"
+        }
+    }
+
+If missing or wrong authentication token:
+
+.. code-block:: bash
+
+    HTTP/1.0 401 UNAUTHORIZED
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {"detail": "Invalid token"}
+
+If HTTP is used instead of HTTPS:
+
+.. code-block:: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {"detail": "Please use https instead of http"}
 
 
 5. Mark Order as Paid
@@ -596,6 +703,10 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
+Mark Order as Paid changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
+
+If an order is already paid or cancelled, the API call will return an error response stating that.
+
 In response to these API calls, Omni will reply with the following data in JSON:
 
 =================== ==================
@@ -622,11 +733,120 @@ user                Contains the user's id, name and phone number
 delivery_info       null
 =================== ==================
 
-An example of the response in JSON is found `here`_.
+Depending on the request, responses may return these status codes:
 
-Mark Order as Paid changes the :code:`"paymentStatus"` field from 1 (unpaid) to 2 (paid).
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Something went wrong on Omni's end
+=================== ==============================
 
-If an order is already paid or cancelled, the API call will return an error response stating that.
+
+Here are examples of API responses:
+
+
+If call to order status API is successful (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "id": 1,
+        "number": "FR9TL74P",
+        "total": 36364.0,
+        "tax": 3636.0,
+        "serviceCharge": 0.0,
+        "grandTotal": 40000.0,
+        "tableNumber": "A1",
+        "channel": 2,
+        "notes": "No lettuce",
+        "status": 30,
+        "deliveryStatus": 10,
+        "statusText": "Cancelled",
+        "storeName": "Burger God",
+        "userID": 1,
+        "created": 1564045835,
+        "paymentMethod": 1,
+        "paymentStatus": 1,
+        "user": {
+            "id": 1,
+            "name": "user",
+            "phone": "+628111111111"
+        },
+        "delivery_info": null
+    }
+
+When some fields don't validate (JSON):
+
+Order not found
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "error_message": "Order not found",
+        "error_code": "invalid_order_number",
+        "errors": {
+            "order": "Order not found"
+        }
+    }
+    
+Order already paid
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {
+        "error_message": "Order already paid",
+        "error_code": "already_paid",
+        "errors": {
+            "order": "Order already paid"
+        }
+    }
+
+If missing or wrong authentication token:
+
+.. code-block:: bash
+
+    HTTP/1.0 401 UNAUTHORIZED
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {"detail": "Invalid token"}
+
+If HTTP is used instead of HTTPS:
+
+.. code-block:: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {"detail": "Please use https instead of http"}
 
 
 6. Complete Order
@@ -683,6 +903,10 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
+Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
+
+If an order is already complete or cancelled, the API call will return an error response stating that.
+
 In response to these API calls, Omni will reply with the following data in JSON:
 
 =================== ==================
@@ -709,11 +933,120 @@ user                Contains the user's id, name and phone number
 delivery_info       null
 =================== ==================
 
-An example of the response in JSON is found `here`_.
+Depending on the request, responses may return these status codes:
 
-Complete Order changes the :code:`"paymentStatus"` field to 2 (paid), :code:`"status"` field to 20 (complete) and the :code:`"statusText"` field to "Complete" regardless of the values within the fields beforehand except for the condition(s) below.
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Something went wrong on Omni's end
+=================== ==============================
 
-If an order is already complete or cancelled, the API call will return an error response stating that.
+
+Here are examples of API responses:
+
+
+If call to order status API is successful (JSON):
+
+.. code-block:: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "id": 1,
+        "number": "FR9TL74P",
+        "total": 36364.0,
+        "tax": 3636.0,
+        "serviceCharge": 0.0,
+        "grandTotal": 40000.0,
+        "tableNumber": "A1",
+        "channel": 2,
+        "notes": "No lettuce",
+        "status": 20,
+        "deliveryStatus": 10,
+        "statusText": "Completed",
+        "storeName": "Burger God",
+        "userID": 1,
+        "created": 1564045835,
+        "paymentMethod": 1,
+        "paymentStatus": 2,
+        "user": {
+            "id": 1,
+            "name": "user",
+            "phone": "+628111111111"
+        },
+        "delivery_info": null
+    }
+
+When some fields don't validate (JSON):
+
+Order not found
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "error_message": "Order not found",
+        "error_code": "invalid_order_number",
+        "errors": {
+            "order": "Order not found"
+        }
+    }
+    
+Order already completed
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {
+        "error_message": "Order already completed",
+        "error_code": "order_already_completed",
+        "errors": {
+            "order": "Order already completed"
+        }
+    }
+
+If missing or wrong authentication token:
+
+.. code-block:: bash
+
+    HTTP/1.0 401 UNAUTHORIZED
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {"detail": "Invalid token"}
+
+If HTTP is used instead of HTTPS:
+
+.. code-block:: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {"detail": "Please use https instead of http"}
 
 
 7. Cancel Order
@@ -770,6 +1103,10 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 Response
 ----------
 
+Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
+
+If an order is already cancelled, the API call will return an error response stating that.
+
 In response to these API calls, Omni will reply with the following data in JSON:
 
 =================== ==================
@@ -796,16 +1133,7 @@ user                Contains the user's id, name and phone number
 delivery_info       null
 =================== ==================
 
-An example of the response in JSON is found `here`_.
-
-Cancel Order changes the :code:`"status"` field to 30 (cancelled) and the :code:`"statusText"` field to "Cancelled". This action will cause the order to be inaccessible to the other 3 API calls and **cannot be reversed**.
-
-If an order is already cancelled, the API call will return an error response stating that.
-
-.. _here:
-
-9. Response Example
-=====================
+Depending on the request, responses may return these status codes:
 
 =================== ==============================
 Code                Description
@@ -842,9 +1170,9 @@ If call to order status API is successful (JSON):
         "tableNumber": "A1",
         "channel": 2,
         "notes": "No lettuce",
-        "status": 10,
+        "status": 30,
         "deliveryStatus": 10,
-        "statusText": "Confirmed",
+        "statusText": "Cancelled",
         "storeName": "Burger God",
         "userID": 1,
         "created": 1564045835,
@@ -860,6 +1188,8 @@ If call to order status API is successful (JSON):
 
 When some fields don't validate (JSON):
 
+Order not found
+
 .. code-block:: bash
 
     HTTP/1.0 400 BAD REQUEST
@@ -872,7 +1202,25 @@ When some fields don't validate (JSON):
         "error_message": "Order not found",
         "error_code": "invalid_order_number",
         "errors": {
-            "number": "Order not found"
+            "order": "Order not found"
+        }
+    }
+    
+Order already cancelled
+
+.. code-block:: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    
+    {
+        "error_message": "Order already canceled",
+        "error_code": "order_already_canceled",
+        "errors": {
+            "order": "Order already canceled"
         }
     }
 
@@ -899,54 +1247,3 @@ If HTTP is used instead of HTTPS:
     [Redacted Header]
 
     {"detail": "Please use https instead of http"}
-
-Examples of failed API call responses
-_______________________________________
-
-These are various examples of the error responses returned by failed API calls described above:
-
-Common Header
-
-.. code-block:: bash
-
-    HTTP/1.0 400 BAD REQUEST
-    Vary: Accept
-    Content-Type: application/json
-    Allow: POST, OPTIONS
-    [Redacted Header]
-    
-Body (Confirmed Order, Paid Order, Complete Order, Cancelled Order errors)
-
-.. code-block:: json
-
-    {
-        "error_message": "Order has been confirmed",
-        "error_code": "invalid_status",
-        "errors": {
-            "number": "Order has been confirmed"
-        }
-    }
-
-    {
-        "error_message": "Order already paid",
-        "error_code": "already_paid",
-        "errors": {
-            "order": "Order already paid"
-        }
-    }
-
-    {
-        "error_message": "Order already completed",
-        "error_code": "order_already_completed",
-        "errors": {
-            "order": "Order already completed"
-        }
-    }
-
-    {
-        "error_message": "Order already canceled",
-        "error_code": "order_already_canceled",
-        "errors": {
-            "order": "Order already canceled"
-        }
-    }

@@ -92,3 +92,35 @@ Example response:
     Server: WSGIServer/0.1 Python/2.7.6
 
     Bad request - 400
+    
+4. Error 401
+============
+| Allowed method: GET & POST
+
+Almost all of Stamps' and OMNI API calls require a token for authentication. If you do not provide the correct token, the respective API(s) will return an Error 401 UNAUTHORIZED.
+
+.. code-block:: bash
+
+    HTTP/1.0 401 UNAUTHORIZED
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+    
+    {"detail": "Invalid token"}
+    
+5. Error 403
+============
+| Allowed method: GET & POST
+
+Stamps and OMNI require that you call them using HTTPS due to the lack of security with HTTP. If you are using HTTP instead of HTTPS in your API calls, the respective API(s) will return an Error 403 FORBIDDEN.
+
+If HTTP is used instead of HTTPS:
+
+.. code-block:: bash
+
+    HTTP/1.0 403 FORBIDDEN
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {"detail": "Please use https instead of http"}

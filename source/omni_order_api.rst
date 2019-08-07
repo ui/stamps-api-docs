@@ -428,7 +428,7 @@ When some fields don't validate (JSON):
 
 3. Confirm Order
 ==================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/confirm
+| URL endpoint: https://host.com/api/store/orders/confirm
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -475,7 +475,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/confirm -i -d '{ "number": "FR9TL74P" }'
     
 
 Response
@@ -605,7 +605,7 @@ Order already confirmed
 
 4. Mark Order as Paid
 ==================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/paid
+| URL endpoint: https://host.com/api/store/orders/paid
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -652,7 +652,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/paid -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -781,7 +781,7 @@ Order already paid
 
 5. Complete Order
 ==================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/complete
+| URL endpoint: https://host.com/api/store/orders/complete
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -828,7 +828,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------
@@ -957,7 +957,7 @@ Order already completed
 
 6. Cancel Order
 ==================
-| URL endpoint: https://orders.upnormal.co.id/api/store/orders/cancel
+| URL endpoint: https://host.com/api/store/orders/cancel
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -1004,7 +1004,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/cancel -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------

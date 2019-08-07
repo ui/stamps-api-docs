@@ -33,8 +33,6 @@ This API endpoint should used by POS terminals to fetch incoming orders from OMN
 
 This endpoint will only return said orders exactly **once**.
 
-It will only return said orders only **once**.
-
 The store is derived from the store token string.
 
 HTTP Header

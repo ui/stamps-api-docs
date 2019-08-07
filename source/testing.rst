@@ -99,6 +99,8 @@ Example response:
 
 Almost all of Stamps' and OMNI API calls require a token for authentication. If you do not provide the correct token, the respective API(s) will return an Error 401 UNAUTHORIZED.
 
+If an invalid token is used:
+
 .. code-block:: bash
 
     HTTP/1.0 401 UNAUTHORIZED

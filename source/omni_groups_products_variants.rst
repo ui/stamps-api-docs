@@ -373,7 +373,7 @@ If HTTP is used instead of HTTPS:
 A. Request
 ----------
 
-You can add or update multiple groups by calling the API with these parameters:
+You can add or update products and their variants by calling the API with these parameters:
 
 HTTP Header
 ___________

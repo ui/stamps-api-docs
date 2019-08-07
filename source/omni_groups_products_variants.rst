@@ -41,7 +41,9 @@ ______
 =================== =========== =======================
 Parameter           Required    Description
 =================== =========== =======================
-order               Yes         Order number string
+code                Yes         Group code
+name                Yes         Group name
+parent              No          Parent group code
 =================== =========== =======================
 
 
@@ -50,7 +52,22 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-      "order": "FR9TL74P"
+        "groups": [
+            {
+                "code": "10",
+                "name": "SPECIAL DRINK",
+                "parent": "1"
+            },
+            {
+            [Redacted Content]
+            },
+            {
+            [Redacted Content]
+            },
+            {
+            [Redacted Content]
+            }
+        ]
     }
 
 
@@ -58,7 +75,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block:: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://orders.upnormal.co.id/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: token example-store-token" -H "Expect:" https://host.com/api/store/orders/complete -i -d '{ "order": "FR9TL74P" }'
     
 Response
 ----------

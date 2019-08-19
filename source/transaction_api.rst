@@ -33,8 +33,8 @@ sub_total           No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
 service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
-channel             No          Channel of a transaction, example: PoS, Mobile App, Kiosk, Website
-type                No          The type of prepared transactions, example: Dine-in, Take-out, Delivery
+channel             No          Channel of a transaction, for channel mapping, see table below
+type                No          The type of prepared transactions, for type mapping, see table below
 items               No          List of items containing product name, quantity, subtotal &
                                 stamps_subtotal (optional).
                                 ``price`` is the combined price of products (qty * unit price),
@@ -42,6 +42,28 @@ items               No          List of items containing product name, quantity,
                                 this field is optional.
 =================== =========== =======================
 
+Channel Mapping
+
+=================== ===========
+Code                Description   
+=================== ===========
+1                   Mobile App
+2                   POS
+3                   Kiosk
+4                   Web
+=================== ===========
+
+
+
+Type Mapping
+
+=================== ===========
+Code                Description   
+=================== ===========
+1                   Delivery
+2                   Dine-in
+3                   Take out
+=================== ===========
 
 Here's an example of how the API call might look like in JSON format:
 
@@ -55,8 +77,8 @@ Here's an example of how the API call might look like in JSON format:
        "total_value": 50000,
        "number_of_people": 8,
        "tax": 5000,
-       "channel": "PoS",
-       "type": "Dine-in",
+       "channel": 1,
+       "type": 2,
        "created": "2013-02-15T13:01:01+07",
        "items": [
           {
@@ -79,7 +101,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "Channel":"PoS", "type":"Dine-in", "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "Channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}'
 
 B. Response
 -----------------------------

@@ -21,6 +21,7 @@ user            Yes       A string indicating customer's email or Member ID
 reward          Yes       A number indicating the reward's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
+channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
@@ -142,6 +143,7 @@ user            Yes       A string indicating customer's email or Member ID
 voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
+channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified voucher.

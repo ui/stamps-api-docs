@@ -88,6 +88,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 6,
           "redeemable": true,
+          "membership": "Blue",
           "name": "Mee Goreng",
           "code": "A001",
           "extra_data": {
@@ -99,6 +100,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 5,
           "redeemable": true,
+          "membership": "Blue",
           "name": "Curry Chicken",
           "code": "A002",
           "extra_data": {}
@@ -108,6 +110,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 8,
           "redeemable": false,
+          "membership": "Silver",
           "name": "Nasi Lemak",
           "code": "A003",
           "extra_data": {}
@@ -117,6 +120,7 @@ On a successful API call:
           "image_url": "http://foo.com",
           "id": 7,
           "redeemable": false,
+          "membership": "Gold",
           "name": "Nasi Lemak",
           "code": "A004",
           "extra_data": {}

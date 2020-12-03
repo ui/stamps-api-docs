@@ -29,7 +29,7 @@ number_of_people    Yes         An integer indicating the number of people invol
 created             Yes         ISO 8601 date time format to indicate transaction's
                                 created date
                                 (e.g. 2013-02-15T13:01:01+07)
-sub_total           No          A number indicating transaction subtotal
+subtotal           No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
 service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)
@@ -73,7 +73,8 @@ Here's an example of how the API call might look like in JSON format:
        "token": "secret",
        "user": "customer@stamps.co.id",
        "store": 32,
-       "invoice_number": "secret123456",
+       "invoice_number": "my_invoice_number",
+       "subtotal": 45000,
        "total_value": 50000,
        "number_of_people": 8,
        "tax": 5000,

@@ -452,3 +452,91 @@ When some fields don't validate:
      [Redacted Header]
 
     {"detail":"product_name: Product does not exists","error_message":"product_name: Product does not exists","error_code":"product_not_found","errors":{"product_name":"Product does not exists"}}
+
+
+
+4. Getting Transaction Detail
+=============================
+| URL endpoint: https://stamps.co.id/api/transactions/details
+| Allowed method: GET
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+You can get transaction's detail data through this API.
+
+========================== =========== =========================================================
+Parameter                  Required    Description
+========================== =========== =========================================================
+token                      Yes         Authentication string
+transaction_id             Yes         Transaction ID
+merchant                   Yes         Total value that want to deduct from a transaction
+========================== =========== =========================================================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/transactions/details?token=abc&merchant=123&transaction_id=345'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+transaction         An object containing transaction information after successful request.
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful balance update:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+      {
+        "transaction": {
+            "created": 1619734844,
+            "discount": null,
+            "items": [{
+                  "id": 1,
+                  "name": "Cafe Latte",
+                  "quantity": 1.0,
+              },
+              {
+                  "id": 2,
+                  "name": "Fried Rice",
+                  "quantity": 1.0,
+              }
+            ],
+            "notes": "",
+            "service_charge": null,
+            "stamps": 150,
+            "status": "Created",
+            "store": {
+                "display_name": "My Favorite Store",
+                "id": 1,
+                "name": "Fav Store"
+            },
+            "subtotal": null,
+            "tax": null,
+            "type": null,
+            "value": 1500000.0
+        }
+    }
+
+  

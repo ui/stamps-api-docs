@@ -12,17 +12,16 @@ A. Request
 -----------------------------
 You can add issue a voucher by calling the API with these parameters.
 
-===========      =========== =========================
+================ =========== =========================
 Parameter        Required    Description
-===========      =========== =========================
+================ =========== =========================
 token            Yes         Authentication string
 user             Yes         A string indicating user's email address or member ID
 voucher_template Yes         Integer indicating the voucher template ID
-start_date       Yes         Date string to indicate voucher's valid start date
-                             (e.g. 2013-02-15)
+start_date       Yes         Date string to indicate voucher's valid start date (e.g. 2013-02-15)
 quantity         Yes         Integer indicating voucher quantity to be given
 notes            No          Note tied to the voucher
-===========      =========== =========================
+================ =========== =========================
 
 Here's an example of how the API call might look like in JSON format
 
@@ -98,14 +97,14 @@ A. Request
 -----------------------------
 You can add issue a voucher by calling the API with these parameters.
 
-===========      =========== =========================
+============     =========== =========================
 Parameter        Required    Description
-===========      =========== =========================
+============     =========== =========================
 token            Yes         Authentication token in string
 voucher_code     Yes         A string indicating voucher code
 merchant         Yes         Integer indicating the voucher template ID
 store            Yes         Integer indicating store ID to be queried for reward
-===========      =========== =========================
+============     =========== =========================
 
 
 Example of API call request using cURL
@@ -123,9 +122,8 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==============================
 Variable            Description
 =================== ==============================
-user                An object containing customer information after successful request.
-voucher             An object containing the information on the voucher created with the request.
-                    Contains id, start_date, end_date, quantity, and notes.
+user                An object containing customer information.
+voucher             An object voucher information.
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 

@@ -87,3 +87,78 @@ On successful balance update:
       }
     }
 
+
+2. Validating a Voucher
+====================================
+| URL endpoint: https://stamps.co.id/api/vouchers/validate
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+You can add issue a voucher by calling the API with these parameters.
+
+===========      =========== =========================
+Parameter        Required    Description
+===========      =========== =========================
+token            Yes         Authentication token in string
+voucher_code     Yes         A string indicating voucher code
+merchant         Yes         Integer indicating the voucher template ID
+store            Yes         Integer indicating store ID to be queried for reward
+===========      =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/vouchers/validate?token=123&merchant=123&voucher_code=VC-ABC&store=123'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+user                An object containing customer information after successful request.
+voucher             An object containing the information on the voucher created with the request.
+                    Contains id, start_date, end_date, quantity, and notes.
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful balance update:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+      {
+      "is_redeemable": true,
+      "user": {
+          "email": "foo@bar.com",
+          "name": "Alice",
+          "phone": "+628123123123"
+      },
+      "voucher": {
+          "extra_data": {
+              "discount": 1000,
+          },
+          "id": 123,
+          "name": "Rp. 100,000 Discount",
+          "start_date": "2021-04-26",
+          "end_date": "2021-05-24",
+          "validity": "Dynamic"
+      }
+  }
+  

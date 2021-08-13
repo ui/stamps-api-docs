@@ -13,15 +13,15 @@ A. Request
 
 You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
 
-============================ =========== ============================================================
-          Parameter           Required     Description
-============================ =========== ============================================================
-token                            Yes       Authentication string
-user                             No        A string indicating customer's email or Member ID
-merchant                         Yes       Integer indicating merchant ID to be queried for reward
-store                            Yes       Integer indicating store ID to be queried for reward
-redeemable_in_this_store         No        boolean true/false by default false
-============================ =========== ===========================================================
+============================== =========== ============================================================
+          Parameter              Required     Description
+============================== =========== ============================================================
+token                            Yes          Authentication string
+user                             No           A string indicating customer's email or Member ID
+merchant                         Yes          Integer indicating merchant ID to be queried for reward
+store                            Yes          Integer indicating store ID to be queried for reward
+only_redeemable_in_this_store    No           boolean true/false by default false
+=============================== =========== ===========================================================
 
 Note : if redeemable_in_this_store = true it will show any rewards and vouchers on specific store given
 
@@ -97,7 +97,8 @@ On a successful API call:
           "code": "A001",
           "extra_data": {
              "SKU": "A001SKU"
-          }
+          },
+          "is_visible": true
         },
         {
           "stamps_to_redeem": 60,
@@ -107,7 +108,8 @@ On a successful API call:
           "membership": "Blue",
           "name": "Curry Chicken",
           "code": "A002",
-          "extra_data": {}
+          "extra_data": {},
+          "is_visible": true
         },
         {
           "stamps_to_redeem": 120,
@@ -117,7 +119,8 @@ On a successful API call:
           "membership": "Silver",
           "name": "Nasi Lemak",
           "code": "A003",
-          "extra_data": {}
+          "extra_data": {},
+          "is_visible": true
         },
         {
           "stamps_to_redeem": 10,
@@ -127,7 +130,8 @@ On a successful API call:
           "membership": "Gold",
           "name": "Nasi Lemak",
           "code": "A004",
-          "extra_data": {}
+          "extra_data": {},
+          "is_visible": true
         }
       ],
       "vouchers": [

@@ -13,14 +13,17 @@ A. Request
 
 You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
 
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-token       Yes         Authentication string
-user        No          A string indicating customer's email or Member ID
-merchant    Yes         Integer indicating merchant ID to be queried for reward
-store       Yes          Integer indicating store ID to be queried for reward
-=========== =========== =========================
+============================== =========== ========================================================================
+          Parameter              Required     Description
+============================== =========== ========================================================================
+token                            Yes          Authentication string
+user                             No           A string indicating customer's email or Member ID
+merchant                         Yes          Integer indicating merchant ID to be queried for reward
+store                            Yes          Integer indicating store ID to be queried for reward
+only_redeemable_in_this_store    No           `true` or `false`. Defaults to `false`.
+                                               If `true`, only rewards redeemable in given store will be returned.
+=============================== =========== =======================================================================
+
 
 Example of API call request using cURL
 
@@ -38,7 +41,8 @@ Variable            Description
 =================== ==============================
 customer            Customer information after successful query. Contains id, stamps_remaining, and status.
 rewards             List of rewards available for redemption.
-                    Contains id, name, stamps_required, extra_data, image_url, and redeemable(If user is provided)
+                    Contains id, name, stamps_required, extra_data, image_url, is_visible,
+                    and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url, extra_data
                     landscape_url, and expires_on.
@@ -93,7 +97,8 @@ On a successful API call:
           "code": "A001",
           "extra_data": {
              "SKU": "A001SKU"
-          }
+          },
+          "is_visible": true
         },
         {
           "stamps_to_redeem": 60,
@@ -103,7 +108,8 @@ On a successful API call:
           "membership": "Blue",
           "name": "Curry Chicken",
           "code": "A002",
-          "extra_data": {}
+          "extra_data": {},
+          "is_visible": true
         },
         {
           "stamps_to_redeem": 120,
@@ -113,7 +119,8 @@ On a successful API call:
           "membership": "Silver",
           "name": "Nasi Lemak",
           "code": "A003",
-          "extra_data": {}
+          "extra_data": {},
+          "is_visible": true
         },
         {
           "stamps_to_redeem": 10,
@@ -123,7 +130,8 @@ On a successful API call:
           "membership": "Gold",
           "name": "Nasi Lemak",
           "code": "A004",
-          "extra_data": {}
+          "extra_data": {},
+          "is_visible": true
         }
       ],
       "vouchers": [

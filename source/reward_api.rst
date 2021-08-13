@@ -13,17 +13,16 @@ A. Request
 
 You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
 
-============================== =========== ============================================================
+============================== =========== ========================================================================
           Parameter              Required     Description
-============================== =========== ============================================================
+============================== =========== ========================================================================
 token                            Yes          Authentication string
 user                             No           A string indicating customer's email or Member ID
 merchant                         Yes          Integer indicating merchant ID to be queried for reward
 store                            Yes          Integer indicating store ID to be queried for reward
-only_redeemable_in_this_store    No           boolean true/false by default false
-=============================== =========== ===========================================================
-
-Note : if only_redeemable_in_this_store = true it will show any rewards and vouchers on specific store given
+only_redeemable_in_this_store    No           `true` or `false`. Defaults to `false`.
+                                               If `true`, only rewards redeemable in given store will be returned.
+=============================== =========== =======================================================================
 
 
 Example of API call request using cURL

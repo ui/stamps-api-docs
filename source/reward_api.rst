@@ -23,7 +23,7 @@ store                            Yes          Integer indicating store ID to be 
 only_redeemable_in_this_store    No           boolean true/false by default false
 =============================== =========== ===========================================================
 
-Note : if redeemable_in_this_store = true it will show any rewards and vouchers on specific store given
+Note : if only_redeemable_in_this_store = true it will show any rewards and vouchers on specific store given
 
 
 Example of API call request using cURL

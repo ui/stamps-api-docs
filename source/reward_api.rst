@@ -41,7 +41,8 @@ Variable            Description
 =================== ==============================
 customer            Customer information after successful query. Contains id, stamps_remaining, and status.
 rewards             List of rewards available for redemption.
-                    Contains id, name, stamps_required, extra_data, image_url, and redeemable(If user is provided)
+                    Contains id, name, stamps_required, extra_data, image_url, is_visible,
+                    and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url, extra_data
                     landscape_url, and expires_on.

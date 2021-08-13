@@ -14,7 +14,7 @@ A. Request
 You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
 
 ============================== =========== ========================================================================
-          Parameter              Required     Description
+Parameter                      Required    Description
 ============================== =========== ========================================================================
 token                            Yes          Authentication string
 user                             No           A string indicating customer's email or Member ID

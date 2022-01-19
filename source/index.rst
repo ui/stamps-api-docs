@@ -23,4 +23,5 @@ Contents
    booking_api.rst
    stamps_api.rst
    testing.rst
+   ordering.rst
 

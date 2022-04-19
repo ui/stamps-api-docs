@@ -29,7 +29,7 @@ number_of_people    Yes         An integer indicating the number of people invol
 created             Yes         ISO 8601 date time format to indicate transaction's
                                 created date
                                 (e.g. 2013-02-15T13:01:01+07)
-subtotal           No          A number indicating transaction subtotal
+subtotal            No          A number indicating transaction subtotal
 discount            No          A number indicating transaction discount (in Rp.)
 service_charge      No          A number indicating service charge (in Rp.)
 tax                 No          A number indicating transaction tax (in Rp.)

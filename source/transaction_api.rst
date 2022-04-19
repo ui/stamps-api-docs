@@ -57,6 +57,11 @@ Code                Description
 2                   POS
 3                   Kiosk
 4                   Web
+5                   Android
+6                   iOS
+7                   Call Center
+8                   GrabFood
+9                   GoFood
 =================== ===========
 
 
@@ -69,6 +74,8 @@ Code                Description
 1                   Delivery
 2                   Dine-in
 3                   Take out
+4                   E-Commerce
+5                   Pickup
 =================== ===========
 
 

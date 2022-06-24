@@ -22,6 +22,7 @@ merchant                       Yes         Integer indicating merchant ID to be 
 store                          Yes         Integer indicating store ID to be queried for reward
 only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false`.
                                            If `true`, only rewards redeemable in given store will be returned.
+include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not                                             
 ============================== =========== ===================================================================
 
 

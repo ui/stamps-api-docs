@@ -15,38 +15,42 @@ A. Request
 You can add a new transaction on Stamps by calling the API with these parameters
 
 
-=================== =========== =======================
-Parameter           Required    Description
-=================== =========== =======================
-token               Yes         Authentication string
-user                No          Email address / Member ID indicating customer.
-                                Leaving this empty creates an ``open`` transaction.
-store               Yes         A number (id) indicating store where transaction
-                                is created
-invoice_number      Yes         POS transaction number (must be unique daily)
-total_value         Yes         A number indicating transaction's grand total
-number_of_people    Yes         An integer indicating the number of people involved in transaction
-created             Yes         ISO 8601 date time format to indicate transaction's
-                                created date
-                                (e.g. 2013-02-15T13:01:01+07)
-subtotal            No          A number indicating transaction subtotal
-discount            No          A number indicating transaction discount (in Rp.)
-service_charge      No          A number indicating service charge (in Rp.)
-tax                 No          A number indicating transaction tax (in Rp.)
-channel             No          Channel of a transaction, for channel mapping, see table below
-type                No          The type of prepared transactions, for type mapping, see table below
-items               No          List of items containing product name, quantity, subtotal &
-                                stamps_subtotal (optional).
-                                ``price`` is the combined price of products (qty * unit price),
-                                ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
-                                this field is optional.
-payments            No          List of payments object containing value, payment_method, and
-                                eligible_for_membership(optional).
-                                ``value`` is the amount of payment
-                                ``payment_method`` is the method used for payment, for payment method mapping, see table below
-                                ``eligible_for_membership`` whether this payment is used for member's status/level changes.
-                                This field is optional. Default to true if not provided(can be configured later).
-=================== =========== =======================
+=========================== =========== =======================
+Parameter                   Required    Description
+=========================== =========== =======================
+token                       Yes         Authentication string
+user                        No          Email address / Member ID indicating customer.
+                                        Leaving this empty creates an ``open`` transaction.
+store                       Yes         A number (id) indicating store where transaction
+                                        is created
+invoice_number              Yes         POS transaction number (must be unique daily)
+total_value                 Yes         A number indicating transaction's grand total
+number_of_people            Yes         An integer indicating the number of people involved in transaction
+created                     Yes         ISO 8601 date time format to indicate transaction's
+                                        created date
+                                        (e.g. 2013-02-15T13:01:01+07)
+sub_total                   No          A number indicating transaction subtotal
+discount                    No          A number indicating transaction discount (in Rp.)
+service_charge              No          A number indicating service charge (in Rp.)
+tax                         No          A number indicating transaction tax (in Rp.)
+channel                     No          Channel of a transaction, for channel mapping, see table below
+type                        No          The type of prepared transactions, for type mapping, see table below
+items                       No          List of items containing product name, quantity, subtotal &
+                                        stamps_subtotal (optional).
+                                        ``price`` is the combined price of products (qty * unit price),
+                                        ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
+                                        this field is optional.
+payments                    No          List of payments object containing value, payment_method, and
+                                        eligible_for_membership(optional).
+                                        ``value`` is the amount of payment
+                                        ``payment_method`` is the method used for payment, for payment method mapping, see table below
+                                        ``eligible_for_membership`` whether this payment is used for member's status/level changes.
+                                        This field is optional. Default to true if not provided(can be configured later).
+stamps                      No          A number indicating custom stamps
+require_email_notification  No          A boolean indicating send transaction to email if customer can retrieve email
+employee_code               No          Employee code of sender employee
+extra_data                  No          Additional data for further processing
+=========================== =========== =======================
 
 Channel Mapping
 
@@ -136,15 +140,22 @@ Here's an example of how the API call might look like in JSON format:
     {
        "token": "secret",
        "user": "customer@stamps.co.id",
+       "stamps": 10,
        "store": 32,
        "invoice_number": "my_invoice_number",
-       "subtotal": 45000,
+       "sub_total": 45000,
        "total_value": 50000,
        "number_of_people": 8,
        "tax": 5000,
        "channel": 1,
+       "require_email_notification": False,
+       "employee_code": "12345",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
+       "extra_data": {
+          "employee_name": "Stamps Employee",
+          "order_number": "123456"
+       }
        "items": [
           {
              "product_name": "Cappucino",
@@ -177,7 +188,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "Channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
 
 B. Response
 -----------------------------
@@ -189,9 +200,9 @@ Variable            Description
 =================== ==================
 transaction         Stamps transaction information
                     that is successfully created.
-                    Contains id, value, and stamps_earned.
+                    Contains id, value, number_of_people, discount and stamps_earned.
 customer            Customer information after successful
-                    transaction. Contains id, stamps_remaining, balance and status.
+                    transaction. Contains id, mobile_phone, stamps_remaining, balance and status.
 detail              Description of error (if any)
 validation_errors   Errors encountered when parsing data (if any)
 =================== ==================
@@ -234,7 +245,8 @@ If transaction is successful(JSON):
         "stamps_earned": 5,
         "id": 2374815,
         "value": 50000.0,
-        "number_of_people": 8
+        "number_of_people": 8,
+        "discount": 5000.0
       }
     }
 

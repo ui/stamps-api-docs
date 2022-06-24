@@ -149,12 +149,12 @@ Here's an example of how the API call might look like in JSON format:
        "tax": 5000,
        "channel": 1,
        "require_email_notification": False,
-       "employee_code": "12345",
+       "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
        "extra_data": {
           "employee_name": "Stamps Employee",
-          "order_number": "123456"
+          "order_number": "order_number"
        }
        "items": [
           {

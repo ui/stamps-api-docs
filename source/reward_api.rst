@@ -91,70 +91,100 @@ On a successful API call:
         {
           "stamps_to_redeem": 20,
           "image_url": "http://foo.com",
+          "landscape_url": null,
           "id": 6,
-          "redeemable": true,
           "membership": "Blue",
           "name": "Mee Goreng",
-          "code": "A001",
+          "description": "reward description",
+          "price": null,
           "extra_data": {
              "SKU": "A001SKU"
           },
-          "is_visible": true
+          "merchant_code": null,
+          "redeemable": true,
+          "is_visible": true,
+          "terms": "",
+          "code": "A001",
+          "type": 3
         },
         {
           "stamps_to_redeem": 60,
           "image_url": "http://foo.com",
+          "landscape_url": null,
           "id": 5,
-          "redeemable": true,
           "membership": "Blue",
           "name": "Curry Chicken",
-          "code": "A002",
+          "description": "reward description",
+          "price": null,
           "extra_data": {},
-          "is_visible": true
+          "merchant_code": null,
+          "redeemable": true,
+          "is_visible": true,
+          "terms": "",
+          "code": "A002",
+          "type": 3
         },
         {
           "stamps_to_redeem": 120,
           "image_url": "http://foo.com",
+          "landscape_url": null,
           "id": 8,
-          "redeemable": false,
           "membership": "Silver",
           "name": "Nasi Lemak",
-          "code": "A003",
+          "description": "reward description",
+          "price": null,
           "extra_data": {},
-          "is_visible": true
+          "merchant_code": null,
+          "redeemable": false,
+          "is_visible": true,
+          "terms": "",
+          "code": "A003",
+          "type": 3
         },
         {
           "stamps_to_redeem": 10,
           "image_url": "http://foo.com",
+          "landscape_url": null,
           "id": 7,
-          "redeemable": false,
           "membership": "Gold",
           "name": "Nasi Lemak",
-          "code": "A004",
+          "description": "reward description",
+          "price": null,
           "extra_data": {},
-          "is_visible": true
+          "merchant_code": null,
+          "redeemable": false,
+          "is_visible": true,
+          "terms": "",
+          "code": "A004",
+          "type": 3
         }
       ],
       "vouchers": [
         {
+          "id": 9,
           "name": "Birthday Voucher",
+          "code": "BD0201",
           "landscape_url": "foo-landscape.png",
           "image_url": "foo.png",
           "type": "promotion 1",
           "id": 110827,
           "expires_on": "13-02-2013 00:00",
+          "terms": "input your birthday for get voucher on your birthday",
           "quantity": 1,
           "extra_data": {
              "SKU": "PROMO-birthday-20-off"
           }
         },
         {
+          "id": 10,
           "name": "10 Year celebration promo",
+          "code": "P010",
           "landscape_url": "foo-landscape.png",
           "image_url": "foo.png",
           "type": "promotion 1",
           "id": 110214,
           "expires_on": "24-01-2014 00:00",
+          "terms": "sign up at stamps and get Free product A",
           "quantity": 2,
           "extra_data": {}
         }

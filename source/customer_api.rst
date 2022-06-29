@@ -19,6 +19,7 @@ Parameter   Required    Description
 token       Yes         Authentication string
 user        Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 merchant    Yes         Integer indicating merchant ID
+verbose     No          Boolean on whether to include membership's upgrade requirements
 =========== =========== =========================
 
 Example of API call request using cURL
@@ -81,7 +82,11 @@ On a successful API call:
         "stamps": 401,
         "balance": 150000,
         "start_date": "2014-08-08",
-        "created": "2014-08-08"
+        "created": "2014-08-08",
+        "to_upgrade": [{
+          "spending_requirement": 590000,
+          "deadline": "2022-12-31"
+        }]
       },
       "user": {
         "member_ids": [],

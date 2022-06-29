@@ -22,6 +22,8 @@ reward          Yes       A number indicating the reward's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
 channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
+stamps          No        Integer value indicating the stamps required for a flexible reward
+extra_data      No        JSON object containing any additional data
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
@@ -32,15 +34,19 @@ Here's an example of how the API call might look like in JSON format with specif
         "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
-        "reward": 1
-        "invoice_number": "POS-1020123"
+        "reward": 1,
+        "invoice_number": "POS-1020123",
+        "stamps": 20,
+        "extra_data": {
+            "discount": "10%"
+        }
     }
 
 Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/v2/redemptions/redeem-reward
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12, "stamps": 20}' https://stamps.co.id/api/v2/redemptions/redeem-reward
 
 
 B. Response
@@ -57,6 +63,7 @@ redemption          Redemption information which is
 membership          Membership information after successful
                     redemption. Contains membership id and stamps_remaining.
 reward              Reward information
+voucher             Voucher information is returned if the reward type is voucher
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -116,6 +123,19 @@ On successful redemption:
             "extra_data": {},
             "code": "MI0017",
             "type": "reward"
+        },
+        "voucher": {
+            "id": 1,
+            "name": "Free Kaya Bun",
+            "code": "ABCD12345",
+            "is_active": true,
+            "start_date": "2016-07-25",
+            "end_date": "2016-08-25",
+            "picture_url": "http://foo.com",
+            "short_description": "Free Kaya Bun",
+            "description": "Free Kaya Bun with no minimum purchase",
+            "instructions": "Show the voucher QR at the counter",
+            "terms_and_conditions": ""
         }
     }
 
@@ -154,7 +174,7 @@ Here's an example of how the API call might look like in JSON format with specif
         "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
-        "voucher": 1
+        "voucher": 1,
         "invoice_number": "POS-1020123"
     }
 

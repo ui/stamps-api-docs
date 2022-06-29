@@ -23,7 +23,7 @@ store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
 channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 stamps          No        Integer value indicating the stamps required for a flexible reward
-extra_data      No        JSON object containin any additional data
+extra_data      No        JSON object containing any additional data
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
@@ -135,7 +135,7 @@ On successful redemption:
             "short_description": "Free Kaya Bun",
             "description": "Free Kaya Bun with no minimum purchase",
             "instructions": "Show the voucher QR at the counter",
-            "terms_and_conditions": "",
+            "terms_and_conditions": ""
         }
     }
 

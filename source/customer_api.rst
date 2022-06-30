@@ -78,28 +78,38 @@ On a successful API call:
 
     {
       "membership": {
+        "tags": [],
         "status": 100,
+        "status_text": "Blue",
         "stamps": 401,
         "balance": 150000,
+        "is_blocked": false,
+        "referral_code": "ABCDE",
         "start_date": "2014-08-08",
         "created": "2014-08-08",
-        "to_upgrade": [{
+        "extra_data": {},
+        "to_upgrade": {
           "spending_requirement": 590000,
           "deadline": "2022-12-31"
-        }]
+        }
       },
       "user": {
         "member_ids": [],
-        "is_active": true,
-        "phone": "+6281314811365",
-        "protected_redemption": false,
-        "birthday": "1990-11-26",
-        "address": "",
         "id": "8120",
         "name": "Customer",
         "gender": "male",
+        "address": "",
+        "is_active": true,
+        "email": "customer@stamps.co.id",
+        "phone": "+6281314811365",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-        "email": "customer@stamps.co.id"
+        "birthday": "1990-11-26",
+        "city": "Jakarta",
+        "postal_code": "10310",
+        "protected_redemption": false,
+        "religion": 1,
+        "marital_status": 1,
+        "wedding_date": null
       }
     }
 
@@ -275,13 +285,22 @@ gender          Yes         Customer's gender ("male" or "female")
 store           Yes         Integer representing store ID where customer is registered
 member_id       No          Customer's member (card) id
 address         No          Customer's address
+city            No          Customer's city
+postal_code     No          Customer's postal code
+referral_code   No          Referal code used to register customer
+is_active       No          Customer's registration status
+religion        No          Customer's religion
+marital_status  No          Customer's marital status
+wedding_date    No          Customer's weidding date
+extra_data      No          Extra data related to customer
+
 =============== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "city": "Jakarta", "is_active": true}'
 
 
 B. Response Data
@@ -335,10 +354,27 @@ A successful API call:
         "address": "Jl MK raya",
         "is_active": true,
         "email": "customer@stamps.co.id",
+        "phone": "+62812398712",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
         "birthday": "1989-10-1",
-        "phone": "+62812398712",
+        "city": "Jakarta",
+        "postal_code": "10310",
         "protected_redemption": true,
+        "religion": 1,
+        "marital_status": 1,
+        "wedding_date": null,
+        "membership": {
+          "tags": [],
+          "status": 100,
+          "status_text": "Blue",
+          "stamps": 401,
+          "balance": 150000,
+          "is_blocked": false,
+          "referral_code": "ABCDE",
+          "start_date": "2014-08-08",
+          "created": "2014-08-08",
+          "extra_data": {}
+        }
     }
 
 

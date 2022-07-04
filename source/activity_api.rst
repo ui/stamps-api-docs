@@ -12,14 +12,14 @@ Activity API
 A. Request
 ----------
 
-You can query a user's activity list by calling the API with these parameters.
+You can query a user's activity list by calling the API with these parameters. Only 50 activities will be returned per API call.
 
 =================== =========== =======================
 Parameter           Required    Description
 =================== =========== =======================
-user                Yes         Email address / Member ID indicating customer
+user                Yes         Email/mobile number identifying the member
 token               Yes         Merchant's Authentication token
-older_than          No          Activity ID. 50 activities will be returned that are older than this ID. If missing, will return latest 50 activities
+older_than          No          Activity ID. 50 activities will be returned that are older than this ID. If not provided, will return the latest 50 activities.
 =================== =========== =======================
 
 Here's an example of a Activity List API call using cURL.
@@ -44,7 +44,7 @@ error_messages      Errors encountered when parsing data (if any)
 C. Example Response
 -------------------
 
-Below is an example response on successful API calls.
+Below is an example response on successful API call.
 
 If transaction is successful(JSON):
 

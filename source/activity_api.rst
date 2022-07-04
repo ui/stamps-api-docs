@@ -22,7 +22,7 @@ token               Yes         Merchant's Authentication token
 older_than          No          Activity ID. 50 activities will be returned that are older than this ID. If missing, will return latest 50 activities
 =================== =========== =======================
 
-Here's an example of a Booking API call using cURL.
+Here's an example of a Activity List API call using cURL.
 
 .. code-block :: bash
     
@@ -70,7 +70,8 @@ If transaction is successful(JSON):
             "status":2,
             "store":"Tes Store",
             "store_display_name":""
-        }, {
+        },
+        {
             "id":2588920,"type":1,
             "created":"2020-12-02T08:40:00+00:00",
             "created_timestamp":1606898400,
@@ -81,7 +82,8 @@ If transaction is successful(JSON):
             "status":1,
             "store":"Campaign Microsite",
             "store_display_name":"Campaign Microsite"
-        }, {
+        },
+        {
             "id":2588910,
             "type":1,
             "created":"2020-12-02T07:35:58+00:00",
@@ -93,7 +95,8 @@ If transaction is successful(JSON):
             "status":1,
             "store":"Campaign Microsite",
             "store_display_name":"Campaign Microsite"
-        }, {
+        },
+        {
             "id":2587493,
             "type":1,
             "created":"2020-12-01T03:40:40+00:00",
@@ -105,7 +108,8 @@ If transaction is successful(JSON):
             "status":2,
             "store":"Tes Store",
             "store_display_name":""
-        }, {
+        },
+        {
             "id":2587476,
             "type":1,
             "created":"2020-12-01T03:00:06+00:00",
@@ -116,7 +120,8 @@ If transaction is successful(JSON):
             "name":"Update Database Voucher IDR 100,000",
             "status":2,
             "store":"Tes Store","store_display_name":""
-        }, {
+        },
+        {
             "id":2375302,
             "type":1,
             "created":"2020-06-18T05:26:08+00:00",

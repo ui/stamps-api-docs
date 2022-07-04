@@ -2,8 +2,8 @@
 Activity API
 ************************************
 
-1. Get activity list
-===================
+1. Get Activity List
+====================
 | URL endpoint: https://stamps.co.id/api/v2/activities/
 | Allowed method: GET
 | Requires authentication: Yes
@@ -26,7 +26,7 @@ Here's an example of a Booking API call using cURL.
 
 .. code-block :: bash
     
-    $ curl 'https://stamps.co.id/api/v2/activities?token=abc&user=customer@stamps.co.id
+    $ curl 'https://stamps.co.id/api/v2/activities?token=abc&user=customer@stamps.co.id'
 
 B. Response
 -----------
@@ -41,21 +41,95 @@ actitivities        Activity list.
 error_messages      Errors encountered when parsing data (if any)
 =================== ==================
 
-Below are a few examples responses on successful API calls.
+C. Example Response
+-------------------
 
+Below is an example response on successful API calls.
 
 If transaction is successful(JSON):
 
 .. code-block:: javascript
 
     HTTP/1.0 200 OK
-    Allow: POST, OPTIONS
+    Allow: GET, HEAD, OPTIONS
     Content-Type: application/json
-    Date: Wed, 23 Apr 2014 07:02:10 GMT
+    Date: Wed, 15 Dec 2020 07:02:10 GMT
     Server: WSGIServer/0.1 Python/2.7.4
     Vary: Accept, Cookie
 
-    {"activities":[{"id":2590959,"type":1,"created":"2020-12-04T02:42:44+00:00","created_timestamp":1607049764,"merchantName":"Levi's","merchantID":2,"stamps":0,"name":"Update Database Voucher IDR 100,000","status":2,"store":"Tes Store","store_display_name":""},{"id":2588920,"type":1,"created":"2020-12-02T08:40:00+00:00","created_timestamp":1606898400,"merchantName":"Levi's","merchantID":2,"stamps":0,"name":"VOUCHER TEST REDEEM Rp 100,000","status":1,"store":"Campaign Microsite","store_display_name":"Campaign Microsite"},{"id":2588910,"type":1,"created":"2020-12-02T07:35:58+00:00","created_timestamp":1606894558,"merchantName":"Levi's","merchantID":2,"stamps":0,"name":"VOUCHER TEST REDEEM Rp 100,000","status":1,"store":"Campaign Microsite","store_display_name":"Campaign Microsite"},{"id":2587493,"type":1,"created":"2020-12-01T03:40:40+00:00","created_timestamp":1606794040,"merchantName":"Levi's","merchantID":2,"stamps":0,"name":"Update Database Voucher IDR 100,000","status":2,"store":"Tes Store","store_display_name":""},{"id":2587476,"type":1,"created":"2020-12-01T03:00:06+00:00","created_timestamp":1606791606,"merchantName":"Levi's","merchantID":2,"stamps":0,"name":"Update Database Voucher IDR 100,000","status":2,"store":"Tes Store","store_display_name":""},{"id":2375302,"type":1,"created":"2020-06-18T05:26:08+00:00","created_timestamp":1592457968,"merchantName":"Levi's","merchantID":2,"stamps":0,"name":"salah","status":1,"store":"levisecom","store_display_name":"Levi's Ecommerce"}]}
+    {
+        "activities":[{
+            "id":2590959,
+            "type":1,
+            "created":"2020-12-04T02:42:44+00:00",
+            "created_timestamp":1607049764,
+            "merchantName":"Levi's",
+            "merchantID":2,
+            "stamps":0,
+            "name":"Update Database Voucher IDR 100,000",
+            "status":2,
+            "store":"Tes Store",
+            "store_display_name":""
+        }, {
+            "id":2588920,"type":1,
+            "created":"2020-12-02T08:40:00+00:00",
+            "created_timestamp":1606898400,
+            "merchantName":"Levi's",
+            "merchantID":2,
+            "stamps":0,
+            "name":"VOUCHER TEST REDEEM Rp 100,000",
+            "status":1,
+            "store":"Campaign Microsite",
+            "store_display_name":"Campaign Microsite"
+        }, {
+            "id":2588910,
+            "type":1,
+            "created":"2020-12-02T07:35:58+00:00",
+            "created_timestamp":1606894558,
+            "merchantName":"Levi's",
+            "merchantID":2,
+            "stamps":0,
+            "name":"VOUCHER TEST REDEEM Rp 100,000",
+            "status":1,
+            "store":"Campaign Microsite",
+            "store_display_name":"Campaign Microsite"
+        }, {
+            "id":2587493,
+            "type":1,
+            "created":"2020-12-01T03:40:40+00:00",
+            "created_timestamp":1606794040,
+            "merchantName":"Levi's",
+            "merchantID":2,
+            "stamps":0,
+            "name":"Update Database Voucher IDR 100,000",
+            "status":2,
+            "store":"Tes Store",
+            "store_display_name":""
+        }, {
+            "id":2587476,
+            "type":1,
+            "created":"2020-12-01T03:00:06+00:00",
+            "created_timestamp":1606791606,
+            "merchantName":"Levi's",
+            "merchantID":2,
+            "stamps":0,
+            "name":"Update Database Voucher IDR 100,000",
+            "status":2,
+            "store":"Tes Store","store_display_name":""
+        }, {
+            "id":2375302,
+            "type":1,
+            "created":"2020-06-18T05:26:08+00:00",
+            "created_timestamp":1592457968,
+            "merchantName":"Levi's",
+            "merchantID":2,
+            "stamps":0,
+            "name":"salah"
+            "status":1,
+            "store":"levisecom",
+            "store_display_name":"Levi's Ecommerce"
+        }]
+    }
     
     
     

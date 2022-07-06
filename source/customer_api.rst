@@ -104,7 +104,6 @@ On a successful API call:
         "phone": "+6281314811365",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
         "birthday": "1990-11-26",
-        "city": "Jakarta",
         "postal_code": "10310",
         "protected_redemption": false,
         "religion": 1,
@@ -285,9 +284,7 @@ gender          Yes         Customer's gender ("male" or "female")
 store           Yes         Integer representing store ID where customer is registered
 member_id       No          Customer's member (card) id
 address         No          Customer's address
-city            No          Customer's city
 postal_code     No          Customer's postal code
-referral_code   No          Referal code used to register customer
 is_active       No          Customer's registration status
 religion        No          Customer's religion
 marital_status  No          Customer's marital status
@@ -300,7 +297,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "city": "Jakarta", "is_active": true}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true}'
 
 
 B. Response Data
@@ -357,7 +354,6 @@ A successful API call:
         "phone": "+62812398712",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
         "birthday": "1989-10-1",
-        "city": "Jakarta",
         "postal_code": "10310",
         "protected_redemption": true,
         "religion": 1,

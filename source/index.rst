@@ -13,6 +13,7 @@ Contents
    :maxdepth: 2
 
    introduction.rst
+   token_api.rst
    transaction_api.rst
    redemption_api.rst
    reward_api.rst

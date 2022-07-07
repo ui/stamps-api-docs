@@ -284,6 +284,7 @@ gender          Yes         Customer's gender ("male" or "female")
 store           Yes         Integer representing store ID where customer is registered
 member_id       No          Customer's member (card) id
 address         No          Customer's address
+district        No          Customer's address district ID
 postal_code     No          Customer's postal code
 is_active       No          Customer's registration status
 religion        No          Customer's religion
@@ -370,6 +371,11 @@ A successful API call:
           "start_date": "2014-08-08",
           "created": "2014-08-08",
           "extra_data": {}
+        },
+        "location": {
+           "district": {"id": 1, "name": "Kebayoran Baru"},
+           "regency": {"id": 1, "name": "Jakarta Selatan"},
+           "province": {"id": 1, "name": "DKI Jakarta"}
         }
     }
 
@@ -408,6 +414,9 @@ gender        Yes         Customer's gender ("male" or "female")
 email         No          Customer's email
 mobile number No          Customer's phone number
 address       No          Customer's address
+district      No          Customer's address district ID
+postal_code   No          Customer's postal code
+extra_data    No          Extra data related to customer
 ============= =========== =========================
 
 Example of API call request using cURL:
@@ -471,7 +480,23 @@ A successful API call:
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
         "birthday": "1989-10-1",
         "phone": "+62812398712",
+        "postal_code": "10310",
         "protected_redemption": true,
+        "religion": 1,
+        "marital_status": 1,
+        "wedding_date": null,
+        "membership": {
+          "tags": [],
+          "status": 100,
+          "status_text": "Blue",
+          "stamps": 401,
+          "balance": 150000,
+          "is_blocked": false,
+          "referral_code": "ABCDE",
+          "start_date": "2014-08-08",
+          "created": "2014-08-08",
+          "extra_data": {}
+        },
     }
 
 

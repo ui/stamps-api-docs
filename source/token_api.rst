@@ -77,7 +77,9 @@ Each part is separated by a '.'
 | is the signature.
 |
 | You can then use this token as your authorization header as:
-| ``Authorization: Bearer <JWT Token>``
+.. code-block:: bash
+
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg
 
 2. Verify a Token
 =======================

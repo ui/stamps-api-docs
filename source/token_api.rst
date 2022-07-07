@@ -110,7 +110,7 @@ Here's an example of an API call using cURL.
     $ curl \
     -X POST \
     -H "Content-Type: application/json" \
-    -d '{"accesstoken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg", "merchant": 1}' \
+    -d '{"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg"}' \
     https://stamps.co.id/api/token/verify/
 
 

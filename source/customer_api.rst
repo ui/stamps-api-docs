@@ -484,19 +484,7 @@ A successful API call:
         "protected_redemption": true,
         "religion": 1,
         "marital_status": 1,
-        "wedding_date": null,
-        "membership": {
-          "tags": [],
-          "status": 100,
-          "status_text": "Blue",
-          "stamps": 401,
-          "balance": 150000,
-          "is_blocked": false,
-          "referral_code": "ABCDE",
-          "start_date": "2014-08-08",
-          "created": "2014-08-08",
-          "extra_data": {}
-        },
+        "wedding_date": null
     }
 
 

@@ -495,3 +495,184 @@ E. Legacy API
 Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
 
 
+
+5. Add Child
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/add-child
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to update your customer's profile through Point of Sales
+or other websites.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         Customer's integer primary key or Card number
+token         Yes         Authentication string
+name          Yes         Child's name
+birthday      Yes         Child's birthday (with format YYYY-MM-DD)
+gender        Yes         Child's gender ("m" or "f")
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-child -i -d '{ "token": "secret", "user": 123, "name": "child", "birthday": "1991-10-19", "gender": "f"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+customer            Various customer data
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "child": {
+            "birthday": "2099-09-09",
+            "gender": "f",
+            "name": "Child 1",
+            "id": 1
+        }
+    }
+
+
+E. Legacy API
+-------------
+
+Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
+
+
+
+6. Add Pet
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/add-pet
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to update your customer's profile through Point of Sales
+or other websites.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         Customer's integer primary key or Card number
+token         Yes         Authentication string
+name          Yes         Pet's name
+type          Yes         Pet's type ("cat" or "dog" or etc)
+birthday      No          Pet's birthday (with format YYYY-MM-DD)
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-pet -i -d '{ "token": "secret", "user": 123, "name": "Kat", "birthday": "1991-10-19", "type": "cat"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+customer            Various customer data
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "pet": {
+            "id": 1,
+            "name": "Kat",
+            "birthday": "1989-04-15",
+            "type": {
+                "code": "cat",
+                "name": "Felines"
+            }
+        }
+    }
+
+
+E. Legacy API
+-------------
+
+Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_

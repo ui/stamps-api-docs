@@ -64,7 +64,8 @@ Each part is separated by a '.'
 
     {
         "token_type":"access",
-        "exp":1657266570,"iat":1657180170,
+        "exp":1657266570,
+        "iat":1657180170,
         "jti":"15611895dd504171ad30cc6e0cc65a3a",
         "user_id":5870,
         "merchant_user_id":5870
@@ -75,7 +76,8 @@ Each part is separated by a '.'
     ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg
 | is the signature.
 |
-| You can then use this token as your authorization header as ``Authorization: Bearer <JWT Token>``
+| You can then use this token as your authorization header as:
+| ``Authorization: Bearer <JWT Token>``
 
 2. Verify a Token
 =======================

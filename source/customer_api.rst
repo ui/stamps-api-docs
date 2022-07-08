@@ -579,12 +579,6 @@ A successful API call:
     }
 
 
-E. Legacy API
--------------
-
-Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
-
-
 
 6. Add Pet
 ===============
@@ -671,8 +665,3 @@ A successful API call:
         }
     }
 
-
-E. Legacy API
--------------
-
-Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_

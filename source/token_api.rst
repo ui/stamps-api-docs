@@ -48,14 +48,13 @@ Example of access token is below:
 
 .. code-block:: bash
     
-    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.B9CRcVaLfbbbbPDL85vhjEUFVT8C5D1QGTB6GYDxE2Q
-
+    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfaWQiOjU4NzB9.6i9vKIuKdRUHUCv6UJ8VBBWzr1UPedVQarAr3rjtuJY
 | You can use `jwt.io <https://jwt.io>`_ to debug  the above token with secret ``TESTJWT``
 | You can then use this token as your authorization header as:
 
 .. code-block:: bash
 
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.B9CRcVaLfbbbbPDL85vhjEUFVT8C5D1QGTB6GYDxE2Q
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfaWQiOjU4NzB9.6i9vKIuKdRUHUCv6UJ8VBBWzr1UPedVQarAr3rjtuJY
 
 2. Access Token Verification
 =============================
@@ -85,7 +84,7 @@ Here's an example of an API call using cURL.
     $ curl \
     -X POST \
     -H "Content-Type: application/json" \
-    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.B9CRcVaLfbbbbPDL85vhjEUFVT8C5D1QGTB6GYDxE2Q" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfaWQiOjU4NzB9.6i9vKIuKdRUHUCv6UJ8VBBWzr1UPedVQarAr3rjtuJY" \
     https://stamps.co.id/api/auth/verify-token/
 
 
@@ -102,5 +101,5 @@ This will return the payload of JWT Token:
         "iat": 1657246216,
         "jti": "4eadc4014d0d4d778691b84d570a6daf",
         "user_id": 5870,
-        "merchant_user_id": 5870
+        "merchant_id": 5870
     }

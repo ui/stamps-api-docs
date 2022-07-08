@@ -19,7 +19,7 @@ You can get a new token by calling the API with the these data
 Parameter                   Required    Description
 =========================== =========== =======================
 token                       Yes         Authentication string
-merchant                    Yes         Merchant User ID indicated which merchant will the user access
+merchant                    Yes         Merchant ID indicated which merchant will the user access
 =========================== =========== =======================
 
 

@@ -19,7 +19,7 @@ You can get a new token by calling the API with the these data
 Parameter                   Required    Description
 =========================== =========== =======================
 token                       Yes         Authentication string
-merchant                    Yes         Merchant ID indicated which merchant will the user access
+merchant_id                    Yes         Merchant ID indicated which merchant will the user access
 =========================== =========== =======================
 
 
@@ -30,7 +30,7 @@ Here's an example of an API call using cURL.
     $ curl \
     -X POST \
     -H "Content-Type: application/json" \
-    -d '{"token": "23095sgtr95402mkdls954002", "merchant": 1}' \
+    -d '{"token": "23095sgtr95402mkdls954002", "merchant_id": 1}' \
     https://stamps.co.id/api/auth/get-access-token/
 
 B. Response

@@ -498,7 +498,7 @@ Legacy endpoint's documentation is available at `Legacy Membership API <http://d
 
 5. Add Child
 ===============
-| URL endpoint: https://stamps.co.id/api/v2/memberships/add-child
+| URL endpoint: https://stamps.co.id/api/children/add
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -522,7 +522,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-child -i -d '{ "token": "secret", "user": 123, "name": "child", "birthday": "1991-10-19", "gender": "f"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/children/add -i -d '{ "token": "secret", "user": 123, "name": "child", "birthday": "1991-10-19", "gender": "f"}'
 
 
 B. Response Data
@@ -582,7 +582,7 @@ A successful API call:
 
 6. Add Pet
 ===============
-| URL endpoint: https://stamps.co.id/api/v2/memberships/add-pet
+| URL endpoint: https://stamps.co.id/api/pets/add
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -606,7 +606,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-pet -i -d '{ "token": "secret", "user": 123, "name": "Kat", "birthday": "1991-10-19", "type": "cat"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pets/add -i -d '{ "token": "secret", "user": 123, "name": "Kat", "birthday": "1991-10-19", "type": "cat"}'
 
 
 B. Response Data

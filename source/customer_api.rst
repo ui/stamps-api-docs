@@ -532,7 +532,7 @@ Stamps responds to this API call with the following data:
 =================== ==============================
 Variable            Description
 =================== ==============================
-customer            Various customer data
+child               Created child data
 =================== ==============================
 
 
@@ -616,7 +616,7 @@ Stamps responds to this API call with the following data:
 =================== ==============================
 Variable            Description
 =================== ==============================
-customer            Various customer data
+pet                 Created pet data
 =================== ==============================
 
 

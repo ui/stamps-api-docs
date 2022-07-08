@@ -1,10 +1,10 @@
-************************************
-Token API
-************************************
+*********************************************
+Temporary Access Token Authentication (DRAFT)
+*********************************************
 
 1. Get a Token
 =======================
-| URL endpoint: https://stamps.co.id/api/token/
+| URL endpoint: https://stamps.co.id/api/auth/get-access-token/
 | Allowed method: POST
 | Requires authentication: 
 
@@ -31,11 +31,12 @@ Here's an example of an API call using cURL.
     -X POST \
     -H "Content-Type: application/json" \
     -d '{"token": "23095sgtr95402mkdls954002", "merchant": 1}' \
-    https://stamps.co.id/api/token/
+    https://stamps.co.id/api/auth/get-access-token/
 
 B. Response
 -----------
-On a successful API call, Stamps will give you the accss_token that can be used to access our other APIs.
+
+Stamps will give you a time limited JWT token that can be used to access our other APIs.
 
 =================== ==================
 Variable            Description
@@ -43,63 +44,37 @@ Variable            Description
 access_token        Token that can be used to access Stamps APIs.
 =================== ==================
 
-access_token itself is encoded with base64 and signed. Here is an example of an access_token:
-
-.. code-block:: bash
-
-    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg
-
-Each part is separated by a '.'
-
-.. code-block:: bash
-
-    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-| is the header which have the information of the algorithm in use.
-.. code-block:: bash
-
-    eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0
-| is the actual payload where store information that is needed for client. Below is the decoded version of the payload:
-
-.. code-block:: javascript
-
-    {
-        "token_type":"access",
-        "exp":1657266570,
-        "iat":1657180170,
-        "jti":"15611895dd504171ad30cc6e0cc65a3a",
-        "user_id":5870,
-        "merchant_user_id":5870
-    }
+Example of access token is below:
 
 .. code-block:: bash
     
-    ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg
-| is the signature.
-|
+    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.B9CRcVaLfbbbbPDL85vhjEUFVT8C5D1QGTB6GYDxE2Q
+
+| You can use `jwt.io <https://jwt.io>`_ to debug  the above token with secret ``TESTJWT``
 | You can then use this token as your authorization header as:
+
 .. code-block:: bash
 
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.B9CRcVaLfbbbbPDL85vhjEUFVT8C5D1QGTB6GYDxE2Q
 
-2. Verify a Token
-=======================
-| URL endpoint: https://stamps.co.id/api/token/verify/
+2. Access Token Verification
+=============================
+| URL endpoint: https://stamps.co.id/api/auth/verify-token/
 | Allowed method: POST
 | Requires authentication: Yes
-
-
-
+|
+| You can verify whether your access token is valid via this API end point.
 
 A. Request
 -----------------------------
 
-You can get verify a token by calling the API with the these data
+You can verify a token by calling the API with this header
 
 
 =========================== =========== =======================
 Parameter                   Required    Description
 =========================== =========== =======================
-access_token                Yes         Authentication string
+Authorization               Yes         JWT Bearer token
 =========================== =========== =======================
 
 
@@ -110,10 +85,22 @@ Here's an example of an API call using cURL.
     $ curl \
     -X POST \
     -H "Content-Type: application/json" \
-    -d '{"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MjY2NTcwLCJpYXQiOjE2NTcxODAxNzAsImp0aSI6IjE1NjExODk1ZGQ1MDQxNzFhZDMwY2M2ZTBjYzY1YTNhIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.ay-2IQ1hkF6kI51e9eFOXzBBFDR30cD2nluhnShjzNg"}' \
-    https://stamps.co.id/api/token/verify/
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfdXNlcl9pZCI6NTg3MH0.B9CRcVaLfbbbbPDL85vhjEUFVT8C5D1QGTB6GYDxE2Q" \
+    https://stamps.co.id/api/auth/verify-token/
+
 
 
 B. Response
 -----------
-On a successful API call, Stamps will give you status code ``200`` with empty payload.
+This will return the payload of JWT Token:
+
+.. code-block:: javascript
+
+    {
+        "token_type": "access",
+        "exp": 1657332616,
+        "iat": 1657246216,
+        "jti": "4eadc4014d0d4d778691b84d570a6daf",
+        "user_id": 5870,
+        "merchant_user_id": 5870
+    }

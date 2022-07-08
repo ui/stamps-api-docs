@@ -513,9 +513,9 @@ Parameter     Required    Description
 ============= =========== =========================
 user          Yes         Customer's integer primary key or Card number
 token         Yes         Authentication string
-name          Yes         Child's name
-birthday      Yes         Child's birthday (with format YYYY-MM-DD)
-gender        Yes         Child's gender ("m" or "f")
+name          Yes         string
+birthday      Yes         YYYY-MM-DD
+gender        Yes         "m" or "f"
 ============= =========== =========================
 
 Example of API call request using cURL:
@@ -527,7 +527,7 @@ Example of API call request using cURL:
 
 B. Response Data
 ----------------
-Stamps responds to this API call with the following data (in JSON):
+Stamps responds to this API call with the following data:
 
 =================== ==============================
 Variable            Description
@@ -597,9 +597,9 @@ Parameter     Required    Description
 ============= =========== =========================
 user          Yes         Customer's integer primary key or Card number
 token         Yes         Authentication string
-name          Yes         Pet's name
-type          Yes         Pet's type ("cat" or "dog" or etc)
-birthday      No          Pet's birthday (with format YYYY-MM-DD)
+name          Yes         string
+type          Yes         "cat" or "dog" or etc
+birthday      No          YYYY-MM-DD
 ============= =========== =========================
 
 Example of API call request using cURL:
@@ -611,7 +611,7 @@ Example of API call request using cURL:
 
 B. Response Data
 ----------------
-Stamps responds to this API call with the following data (in JSON):
+Stamps responds to this API call with the following data:
 
 =================== ==============================
 Variable            Description

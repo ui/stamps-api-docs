@@ -93,7 +93,7 @@ A successful API call:
 A. Request
 -----------------------------
 
-You can use this API to add child data to customer.
+You can use this API to delete customer's child data.
 
 ============= =========== =========================
 Parameter     Required    Description

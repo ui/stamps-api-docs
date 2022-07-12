@@ -20,6 +20,8 @@ token                          Yes         Authentication string
 user                           No          A string indicating customer's email or Member ID
 merchant                       Yes         Integer indicating merchant ID to be queried for reward
 store                          Yes         Integer indicating store ID to be queried for reward
+image_size                     No          Reward image size. Defaults to 200px x 200px
+landscape_image_size           No          Reward image landscape size. Defaults to 545px x 300px 
 only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false`.
                                            If `true`, only rewards redeemable in given store will be returned.
 include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not                                             
@@ -223,3 +225,178 @@ If missing or wrong authentication token:
 
     {"detail": "Authentication credentials were not provided."}
 
+
+
+2. Available Rewards By Merchant Group
+=======================================
+| URL endpoint: https://stamps.co.id/api/rewards/by-merchant-group
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can query for a merchant group's available rewards on stamps with optional checking to user's capability to redeem the rewards.
+
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+token                          Yes         Authentication string
+user                           No          A string indicating customer's email or Member ID
+image_size                     No          Reward image size. Defaults to 200px x 200px
+landscape_image_size           No          Reward image landscape size. Defaults to 545px x 300px 
+show_all_reward                No          Boolean. Defaults to `false`.
+                                           Only rewards applicable to user's membership level will be returned if set to `false`.
+============================== =========== ===================================================================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/rewards/by-merchant-group?token=abc&user=customer@stamps.co.id&show_all_reward=true'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+customer            Customer information after successful query. Contains id, stamps_remaining, and status.
+rewards             List of rewards available for redemption.
+vouchers            List of vouchers available for redemption by user.
+detail              Description of error (if any)
+errors              Errors encountered when parsing
+                    data (if any)
+=================== ==============================
+
+
+C. Response Headers
+-------------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+
+D. Examples
+-----------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "rewards": [
+        {
+          "id": 1,
+          "name": "Mee Goreng",
+          "code": "A001",
+          "description": "Delicious Mee Goreng",
+          "price": null,
+          "stamps_to_redeem": 20,
+          "membership": "Blue",
+          "merchant": 1,
+          "image_url": "foo.png",
+          "landscape_url": "foo-landscape.png",
+          "extra_data": {
+            "SKU": "A001SKU"
+          },
+          "redeemable": true,
+          "terms": "",
+          "is_visible": true,
+          "is_featured": false,
+          "start_date": "2015-12-01",
+          "end_date": "2018-12-31"
+        },
+        {
+          "id": 2,
+          "name": "Curry Chicken",
+          "code": "A002",
+          "description": "Delicious Curry Chicken",
+          "price": null,
+          "stamps_to_redeem": 60,
+          "membership": "Blue",
+          "merchant": 1,
+          "image_url": "foo.png",
+          "landscape_url": "foo-landscape.png",
+          "extra_data": {},
+          "redeemable": false,
+          "terms": "",
+          "is_visible": true,
+          "is_featured": false,
+          "start_date": "2015-12-01",
+          "end_date": "2018-12-31"
+        }
+      ],
+      "vouchers": [
+        {
+          "id": 9,
+          "code": "BD0201",
+          "type": "voucher 1",
+          "quantity": 1,
+          "notes": "",
+          "start_date": "2016-12-01",
+          "end_date": "2018-12-31",
+          "template": {
+            "id": 1,
+            "name": "Voucher Template 1",
+            "type": 1,
+            "description": "",
+            "short_description": "",
+            "image_url": "foo.png",
+            "landscape_url": "foo-landscape.png",
+            "instructions": "",
+            "terms_and_conditions": "",
+            "merchant_code": "ABCDE"
+          }
+        },
+        {
+          "id": 10,
+          "code": "P010",
+          "type": "voucher 2",
+          "quantity": 2,
+          "notes": "",
+          "start_date": "2016-12-01",
+          "end_date": "2018-12-31",
+          "template": {
+            "id": 2,
+            "name": "10 Year celebration promo",
+            "type": 2,
+            "description": "",
+            "short_description": "",
+            "image_url": "foo.png",
+            "landscape_url": "foo-landscape.png",
+            "instructions": "Sign up at Stamps and get Free product A",
+            "terms_and_conditions": "",
+            "merchant_code": "EFCHG"
+          }
+        }
+      ],
+      "customer": {
+          "id": 114807,
+          "stamps": 18,
+          "membership_status": "Blue"
+      }
+    }

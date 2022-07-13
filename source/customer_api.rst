@@ -499,7 +499,7 @@ Legacy endpoint's documentation is available at `Legacy Membership API <http://d
 5. Get Full Profile
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/full-profile
-| Allowed Method: POST
+| Allowed Method: GET
 | Require Authentication: Yes
 
 A. Request
@@ -518,7 +518,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/full-profile -i -d '{ "token": "secret", "user": 123}'
+    $ curl -X GET -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/full-profile -i -d '{ "token": "secret", "user": 123}'
 
 
 B. Response Data

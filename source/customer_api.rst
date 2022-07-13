@@ -494,3 +494,164 @@ E. Legacy API
 
 Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
 
+
+5. Add Membership Tag
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/add-tag
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to add a tag to your customer's membership.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         Customer's integer primary key or Card number
+token         Yes         Authentication string
+merchant      Yes         Integer indicating merchant ID
+tag           Yes         Tag name
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-tag -i -d '{ "token": "secret", "user": 123, "name": "me", "tag": "vvip"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+customer            Various customer data
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "tags": ["vvip"],
+        "status": 1,
+        "status_text": "Blue",
+        "stamps": 100,
+        "balance": 100,
+        "is_blocked": false,
+        "referral_code": "ABCDEF",
+        "start_date": "2016-02-31",
+        "created": "2016-02-14",
+        "extra_data": {},
+    }
+
+
+
+6. Remove Membership Tag
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/remove-tag
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to add a tag to your customer's membership.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         Customer's integer primary key or Card number
+token         Yes         Authentication string
+merchant      Yes         Integer indicating merchant ID
+tag           Yes         Tag name
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "token": "secret", "user": 123, "name": "me", "tag": "vvip"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              status
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }

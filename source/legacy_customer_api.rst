@@ -419,7 +419,7 @@ A successful API call:
 
 
 
-4. Upgrade Requirement
+5. Upgrade Requirement
 ===============
 | URL endpoint: https://stamps.co.id/api/memberships/upgrade-requirement
 | Allowed Method: GET

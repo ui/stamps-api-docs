@@ -519,7 +519,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-tag -i -d '{ "token": "secret", "user": 123, "name": "me", "tag": "vvip"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "tag": "vvip"}'
 
 
 B. Response Data
@@ -605,7 +605,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "token": "secret", "user": 123, "name": "me", "tag": "vvip"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "tag": "vvip"}'
 
 
 B. Response Data

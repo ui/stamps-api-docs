@@ -494,3 +494,154 @@ E. Legacy API
 
 Legacy endpoint's documentation is available at `Legacy Membership API <http://docs.stamps.co.id/en/latest/legacy_customer_api.html>`_
 
+
+
+5. Get Full Profile
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/full-profile
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to get your full customer's profile.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+token         Yes         Authentication string
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/full-profile -i -d '{ "token": "secret", "user": 123}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+user                Customer profile data
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "user": {
+            "id": 6,
+            "name": "Customer 1",
+            "gender": "m",
+            "address": "Jl. Meruya Selatan No.5c, RT.4/RW.4, Meruya Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11610",
+            "is_active": true,
+            "email": "customer1@stamps.co.id",
+            "birthday": "1970-12-01",
+            "phone": "+6281234567890",
+            "has_incorrect_email": false,
+            "has_incorrect_phone": false,
+            "has_incorrect_wa_number": false,
+            "nationality": "Indonesian",
+            "postal_code": "11610",
+            "marital_status": "Married",
+            "religion": "Budha",
+            "wedding_date": "1995-12-01",
+            "location": {
+                "district": {
+                    "id": 1,
+                    "name": "Kembangan"
+                },
+                "regency": {
+                    "id": 2,
+                    "name": "Jakarta Barat"
+                },
+                "province": {
+                    "id": 3,
+                    "name": "Jakarta"
+                }
+            },
+            "children": [
+                {
+                    "birthday": "2099-09-09",
+                    "gender": "f",
+                    "name": "Child 1",
+                    "id": 1
+                },
+                {
+                    "birthday": "2077-07-07",
+                    "gender": "m",
+                    "name": "Child 2",
+                    "id": 2
+                }
+            ],
+            "pets": [
+                {
+                    "id": 1,
+                    "name": "Kat",
+                    "birthday": "1989-04-15",
+                    "type": {
+                        "code": "cat",
+                        "name": "Felines"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Doug",
+                    "birthday": None,
+                    "type": {
+                        "code": "dog",
+                        "name": "Canines"
+                    }
+                },
+            ],
+            "hobbies": [
+                {
+                    'id': 1,
+                    'code': 'stuff',
+                    'name': 'Stuff',
+                },
+                {
+                    'id': 2,
+                    'code': 'things',
+                    'name': 'Things',
+                }
+            ],
+        }
+    }
+

@@ -114,7 +114,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/memberships/deduct-stamps -i -d '{ "token": "secret", "user": "customer@stamps.co.id, "merchant": 2, "stamps": 10, "notes": "Test deduct"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/memberships/deduct-stamps -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "stamps": 10, "notes": "Test deduct"}'
 
 
 

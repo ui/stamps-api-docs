@@ -105,7 +105,7 @@ You can deduct customer's stamps amount with this API Call.
 Parameter            Required    Description
 ==================== =========== =========================
 token                Yes         Authentication string
-merchant             Yes         Merchant ID
+merchant             No          Merchant ID, default to merchant that is coresponding to token
 user                 Yes         A string indicating customer's email or Member ID
 stamps               Yes         Integer indicating amount of stamps to be deducted from customer
 notes                Yes         Notes that explain why stamps are deducted

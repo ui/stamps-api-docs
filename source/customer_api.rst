@@ -497,7 +497,7 @@ Legacy endpoint's documentation is available at `Legacy Membership API <http://d
 
 5. Add Membership Tag
 ===============
-| URL endpoint: https://stamps.co.id/api/v2/memberships/add-tag
+| URL endpoint: https://stamps.co.id/api/v2/memberships/add-key-value-tag
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -512,14 +512,15 @@ Parameter     Required    Description
 user          Yes         Customer's integer primary key or Card number
 token         Yes         Authentication string
 merchant      Yes         Integer indicating merchant ID
-tag           Yes         Tag name
+group         Yes         Tag key name
+tag           Yes         Tag value name
 ============= =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "tag": "vvip"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-key-value-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "group": "category", "tag": "vvip"}'
 
 
 B. Response Data
@@ -598,7 +599,8 @@ Parameter     Required    Description
 user          Yes         Customer's integer primary key or Card number
 token         Yes         Authentication string
 merchant      Yes         Integer indicating merchant ID
-tag           Yes         Tag name
+group         Yes         Tag key name
+tag           Yes         Tag value name
 ============= =========== =========================
 
 Example of API call request using cURL:

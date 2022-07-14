@@ -90,7 +90,7 @@ On a successful API call:
     }
 
 
-2. Deduct customer stamps
+2. Deduct stamps
 =======================================
 | URL endpoint: https://stamps.co.id/api/memberships/deduct-stamps
 | Allowed Method: POST

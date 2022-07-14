@@ -141,7 +141,7 @@ membership                            Membership information.
 stamps_deduction.id                   Deduction ID
 stamps_deduction.stamps               How many stamps that was successfully deducted
 stamps_deduction.notes                Notes about the deduction
-stamps_deduction.created              Created time of deduction in GMT timezone
+stamps_deduction.created              Created time of deduction in UTC
 stamps_deduction.created_timestamp    Created time of deduction in UNIX timestamp format
 detail                                Description of error (if any)
 errors                                Errors encountered when parsing

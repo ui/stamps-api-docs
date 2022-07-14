@@ -1,5 +1,5 @@
 ************************************
-Membership API
+Children API
 ************************************
 
 1. Add Child
@@ -16,7 +16,7 @@ You can use this API to add child data to customer.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-user          Yes         Customer's integer primary key or Card number
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 token         Yes         Authentication string
 name          Yes         string
 birthday      Yes         YYYY-MM-DD
@@ -81,4 +81,78 @@ A successful API call:
             "name": "Child 1",
             "id": 1
         }
+    }
+
+
+2. Delete Child
+===============
+| URL endpoint: https://stamps.co.id/api/children/delete
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to delete customer's child data.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+token         Yes         Authentication string
+child         Yes         To be deleted child ID
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/children/delete -i -d '{ "token": "secret", "child": 123 }'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data:
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              status
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "status": "ok"
     }

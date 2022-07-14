@@ -1,5 +1,5 @@
 ************************************
-Membership API
+Children API
 ************************************
 
 1. Add Child
@@ -16,7 +16,7 @@ You can use this API to add child data to customer.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-user          Yes         Customer's integer primary key or Card number
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 token         Yes         Authentication string
 name          Yes         string
 birthday      Yes         YYYY-MM-DD

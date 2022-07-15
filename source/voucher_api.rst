@@ -160,3 +160,155 @@ On successful balance update:
       }
   }
   
+
+3. Get User Vouchers by Merchant Group
+====================================
+| URL endpoint: https://stamps.co.id/api/vouchers/by-merchant-group
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can get user's vouchers in a merchant group by calling the API with these parameters.
+
+========================== =========== =========================================================
+Parameter                  Required    Description
+========================== =========== =========================================================
+token                      Yes         Authentication string
+user                       Yes         A string indicating customer's email or Member ID
+image_size                 No          Voucher image size. Defaults to 200px x 200px
+landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
+========================== =========== =========================================================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/vouchers/by-merchant-group?token=abc&user=customer@stamps.co.id'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+vouchers            An array containing information on user's vouchers.
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "vouchers": [
+        {
+            "id": 1,
+            "code": "VC-ABC",
+            "is_active": true,
+            "quantity": 1,
+            "notes": "",
+            "start_date": "2022-03-28",
+            "end_date": "2022-04-28",
+            "template": {
+                "id": 1,
+                "name": "March Surprise Voucher",
+                "type": 1,
+                "short_description": "Get 50% off on your next purchase",
+                "picture_url": "foo.png",
+                "landscape_picture_url": "foo_landscape.png",
+                "merchant_id": 1,
+                "merchant_code": "M-ABC",
+                "extra_data": null,
+        },
+        {
+            "id": 2,
+            "code": "VC-DEF",
+            "is_active": true,
+            "quantity": 2,
+            "notes": "",
+            "start_date": "2022-02-14",
+            "end_date": "2022-02-28",
+            "template": {
+                "id": 2,
+                "name": "Valentine Voucher",
+                "type": 1,
+                "short_description": "Get 50% off on your next purchase",
+                "picture_url": "foo.png",
+                "landscape_picture_url": "foo_landscape.png",
+                "merchant_id": 1,
+                "merchant_code": "M-ABC",
+                "extra_data": {},
+        }
+      ]
+    }
+
+
+4. Get User Vouchers Count by Merchant Group
+====================================
+| URL endpoint: https://stamps.co.id/api/vouchers/count-by-merchant-group
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can get user's vouchers count in a merchant group by calling the API with these parameters.
+
+========================== =========== =========================================================
+Parameter                  Required    Description
+========================== =========== =========================================================
+token                      Yes         Authentication string
+user                       Yes         A string indicating customer's email or Member ID
+========================== =========== =========================================================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/vouchers/count-by-merchant-group?token=abc&user=customer@stamps.co.id'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+count               Number of voucher a user has in a merchant group.
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "count": 12,
+    }

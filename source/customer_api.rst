@@ -646,7 +646,85 @@ A successful API call:
     }
 
 
-6. Add Membership Tag
+6. Level Upgrade Requirement
+===============
+| URL endpoint: https://stamps.co.id/api/memberships/upgrade-requirement
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to get your customer's upgrade requirement.
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+user        Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+token       Yes         Authentication string
+=========== =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/memberships/upgrade-requirement?token=secret&user=me@mail.com'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+===================== ==============================
+Variable              Description
+===================== ==============================
+upgrade_requirement   Customer's upgrade requirement
+===================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "upgrade_requirement": {
+          "spending_requirement": 590000,
+          "deadline": "2022-12-31",
+          "next_level": "Silver"
+      }
+    }
+
+
+7. Add Membership Tag
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/add-key-value-tag
 | Allowed Method: POST
@@ -670,9 +748,7 @@ tag           Yes         Tag value name
 Example of API call request using cURL:
 
 .. code-block :: bash
-
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-key-value-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "group": "category", "tag": "vvip"}'
-
 
 B. Response Data
 ----------------
@@ -711,13 +787,11 @@ D. Examples
 A successful API call:
 
 .. code-block :: bash
-
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
     Allow: POST, OPTIONS
     [Redacted Header]
-
     {
         "tags": ["vvip"],
         "status": 1,
@@ -732,7 +806,7 @@ A successful API call:
     }
 
 
-7. Remove Membership Tag
+8. Remove Membership Tag
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/remove-tag
 | Allowed Method: POST
@@ -756,9 +830,7 @@ tag           Yes         Tag value name
 Example of API call request using cURL:
 
 .. code-block :: bash
-
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "group": "category", "tag": "vvip"}'
-
 
 B. Response Data
 ----------------
@@ -797,7 +869,6 @@ D. Examples
 A successful API call:
 
 .. code-block :: bash
-
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
@@ -806,4 +877,3 @@ A successful API call:
     {
         "status": "ok"
     }
-

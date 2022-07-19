@@ -161,7 +161,7 @@ On successful balance update:
   }
   
 
-3. Get User Vouchers by Merchant Group
+3. Get Vouchers by Merchant Group
 ====================================
 | URL endpoint: https://stamps.co.id/api/vouchers/by-merchant-group
 | Allowed Method: GET
@@ -258,7 +258,7 @@ On a successful API call:
     }
 
 
-4. Get User Vouchers Count by Merchant Group
+4. Ge Vouchers Count by Merchant Group
 ====================================
 | URL endpoint: https://stamps.co.id/api/vouchers/count-by-merchant-group
 | Allowed Method: GET

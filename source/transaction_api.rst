@@ -626,4 +626,80 @@ On successful balance update:
         }
     }
 
-  
+
+5. Preview Transaction Earnings
+=============================
+| URL endpoint: https://stamps.co.id/api/v2/transactions/preview-earnings
+| Allowed method: GET
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+You can preview transaction's earning data before creating a transaction through this API.
+
+==========================  =========== =========================================================
+Parameter                   Required    Description
+==========================  =========== =========================================================
+token                       Yes         Authentication string
+user                        No          Email address / Member ID indicating customer.
+                                        Leaving this empty creates an ``open`` transaction.
+store                       Yes         A number (id) indicating store where transaction
+                                        is created
+total_value                 Yes         A number indicating transaction's grand total
+sub_total                   No          A number indicating transaction subtotal
+discount                    No          A number indicating transaction discount (in Rp.)
+service_charge              No          A number indicating service charge (in Rp.)
+tax                         No          A number indicating transaction tax (in Rp.)
+channel                     No          Channel of a transaction, for channel mapping, see table below
+type                        No          The type of prepared transactions, for type mapping, see table below
+items                       No          List of items containing product name, quantity, subtotal &
+                                        stamps_subtotal (optional).
+                                        ``price`` is the combined price of products (qty * unit price),
+                                        ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
+                                        this field is optional.
+payments                    No          List of payments object containing value, payment_method, and
+                                        eligible_for_membership(optional).
+                                        ``value`` is the amount of payment
+                                        ``payment_method`` is the method used for payment, for payment method mapping, see table below
+                                        ``eligible_for_membership`` whether this payment is used for member's status/level changes.
+                                        This field is optional. Default to true if not provided(can be configured later).
+==========================  =========== =========================================================
+
+
+Example of API call request using cURL (JSON)
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/preview-earnings -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 422, "tax":5000, "channel":1, "type":2, "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+stamps              The amount of stamps to be received after completing the transaction.
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful balance update:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+    {
+      "stamps": 10
+    }

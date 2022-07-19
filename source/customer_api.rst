@@ -529,6 +529,7 @@ Stamps responds to this API call with the following data (in JSON):
 Variable            Description
 =================== ==============================
 user                Customer profile data
+tags                Tags associated with customer's membership
 =================== ==============================
 
 
@@ -642,7 +643,13 @@ A successful API call:
                     'name': 'Things',
                 }
             ],
-        }
+        },
+        "tags": [
+            {
+                "group": "category",
+                "tag": "vvip"
+            },
+        ]
     }
 
 

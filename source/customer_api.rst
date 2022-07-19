@@ -646,8 +646,8 @@ A successful API call:
         },
         "tags": [
             {
-                "group": "category",
-                "tag": "vvip"
+                "key": "category",
+                "value": "vvip"
             },
         ]
     }

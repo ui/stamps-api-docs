@@ -258,7 +258,7 @@ On a successful API call:
     }
 
 
-4. Ge Vouchers Count by Merchant Group
+4. Get Vouchers Count by Merchant Group
 ====================================
 | URL endpoint: https://stamps.co.id/api/vouchers/count-by-merchant-group
 | Allowed Method: GET

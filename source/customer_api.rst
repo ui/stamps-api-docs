@@ -755,7 +755,9 @@ value         Yes         Tag value name
 Example of API call request using cURL:
 
 .. code-block :: bash
+
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-key-value-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "key": "category", "value": "vvip"}'
+
 
 B. Response Data
 ----------------
@@ -794,6 +796,7 @@ D. Examples
 A successful API call:
 
 .. code-block :: bash
+
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
@@ -837,7 +840,9 @@ value         Yes         Tag value name
 Example of API call request using cURL:
 
 .. code-block :: bash
+
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "key": "category", "value": "vvip"}'
+
 
 B. Response Data
 ----------------
@@ -876,6 +881,7 @@ D. Examples
 A successful API call:
 
 .. code-block :: bash
+
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json

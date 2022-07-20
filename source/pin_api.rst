@@ -33,7 +33,7 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              status (``ok``)
 =================== ==============================
 
 C. Response Codes
@@ -82,14 +82,15 @@ A successful API call:
 A. Request
 ----------
 
-========= ======== ===========
-Parameter Required Description
-========= ======== ===========
-token     Yes      Authentication string
-user      Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
-old_pin   Yes      Customer's previously set 6 digit string PIN
-pin       Yes      6 digit string
-========= ======== ===========
+=========== ======== ===========
+Parameter   Required Description
+=========== ======== ===========
+token       Yes      Authentication string
+user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+old_pin     Yes      Customer's previously set 6 digit string PIN
+pin         Yes      6 digit string
+confirm_pin Yes      6 digit string that needs to be the same as ``pin`` parameter
+=========== ======== ===========
 
 Example of API call request using cURL:
 
@@ -103,7 +104,7 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              status (``ok``)
 =================== ==============================
 
 C. Response Codes
@@ -166,7 +167,7 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              status (``ok``, ``invalid``)
 =================== ==============================
 
 C. Response Codes
@@ -203,4 +204,18 @@ A successful API call:
 
     {
         "status": "ok"
+    }
+
+A successful API call with invalid PIN:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "status": "invalid"
     }

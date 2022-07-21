@@ -26,7 +26,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/set -i -d '{ "token": "secret", "user": 123, "pin": "123456"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/set -i -d '{ "token": "secret", "user": 123, "pin": "123456", "confirm_pin": "123456" }'
 
 B. Response Data
 ----------------
@@ -34,7 +34,7 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status (``ok``, ``mismatch``)
+status              status
 =================== ==============================
 
 C. Response Codes
@@ -66,27 +66,30 @@ A successful API call:
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: POST
     [Redacted Header]
 
     {
         "status": "ok"
     }
 
-A successful API call with mismatch ``pin`` and ``confirm_pin`` parameter:
+Mismatch ``pin`` and ``confirm_pin`` parameter:
 
 .. code-block :: bash
 
-    HTTP/1.0 200 OK
+    HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
     [Redacted Header]
 
     {
-        "status": "mismatch"
+        "detail": "confirm_pin: Confirmation PIN does not match",
+        "errors": {
+            "confirm_pin": "Confirmation PIN does not match"
+        },
+        "error_code": "mismatch_pin",
+        "error_message": "confirm_pin: Confirmation PIN does not match"
     }
-
 
 
 2. Change PIN
@@ -98,21 +101,21 @@ A successful API call with mismatch ``pin`` and ``confirm_pin`` parameter:
 A. Request
 ----------
 
-=========== ======== ===========
-Parameter   Required Description
-=========== ======== ===========
-token       Yes      Authentication string
-user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
-old_pin     Yes      Customer's previously set 6 digit string PIN
-pin         Yes      6 digit string
-confirm_pin Yes      6 digit string that needs to be the same as ``pin`` parameter
-=========== ======== ===========
+=============== ======== ===========
+Parameter       Required Description
+=============== ======== ===========
+token           Yes      Authentication string
+user            Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+current_pin     Yes      Customer's previously set 6 digit string PIN
+new_pin         Yes      6 digit string
+confirm_new_pin Yes      6 digit string that needs to be the same as ``new_pin`` parameter
+=============== ======== ===========
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/change -i -d '{ "token": "secret", "user": 123, "old_pin": "123456", "pin": "654321"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/change -i -d '{ "token": "secret", "user": 123, "current_pin": "123456", "new_pin": "654321", "confirm_new_pin", "654321" }'
 
 B. Response Data
 ----------------
@@ -120,7 +123,7 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status (``ok``, ``mismatch``)
+status              status
 =================== ==============================
 
 C. Response Codes
@@ -152,25 +155,47 @@ A successful API call:
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: POST
     [Redacted Header]
 
     {
         "status": "ok"
     }
 
-A successful API call with mismatch ``pin`` and ``confirm_pin`` parameter:
+Invalid PIN:
 
 .. code-block :: bash
 
-    HTTP/1.0 200 OK
+    HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
     [Redacted Header]
 
     {
-        "status": "mismatch"
+        "detail": "current_pin: Invalid PIN",
+        "errors": {
+            "current_pin": "Invalid PIN"
+        },
+        "error_code": "invalid_pin",
+        "error_message": "current_pin: Invalid PIN"
+    }
+
+Mismatch ``new_pin`` and ``confirm_new_pin`` parameter:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "confirm_new_pin: Confirmation PIN does not match",
+        "errors": {
+            "confirm_new_pin":"Confirmation PIN does not match"
+        },
+        "error_code": "mismatch_pin",
+        "error_message":"confirm_new_pin: Confirmation PIN does not match"
     }
 
 
@@ -191,13 +216,19 @@ user      Yes      A string indicating customer's email, Member ID, mobile numbe
 pin       Yes      6 digit string
 ========= ======== ===========
 
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/validate -i -d '{ "token": "secret", "user": 123, "pin": "123456" }'
+
 B. Response Data
 ----------------
 
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status (``ok``, ``invalid``)
+status              status
 =================== ==============================
 
 C. Response Codes
@@ -229,31 +260,35 @@ A successful API call:
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: POST
     [Redacted Header]
 
     {
         "status": "ok"
     }
 
-A successful API call with invalid PIN:
+Invalid PIN:
 
 .. code-block :: bash
 
-    HTTP/1.0 200 OK
+    HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
     [Redacted Header]
 
     {
-        "status": "invalid"
+        "detail": "pin: Invalid PIN",
+        "errors": {
+            "pin": "Invalid PIN"
+        },
+        "error_code": "invalid_pin",
+        "error_message": "pin: Invalid PIN"
     }
 
 
-4. Forgot PIN
+4. Requesting an OTP to Reset PIN
 ===============
-| URL endpoint: https://stamps.co.id/api/pin/forgot
+| URL endpoint: https://stamps.co.id/api/pin/request-otp-for-reset
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -269,13 +304,19 @@ token     Yes      Authentication string
 user      Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 ========= ======== ===========
 
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/request-otp-for-reset -i -d '{ "token": "secret", "user": 123 }'
+
 B. Response Data
 ----------------
 
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status (``ok``)
+status              status
 =================== ==============================
 
 C. Response Codes
@@ -307,7 +348,7 @@ A successful API call:
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: POST
     [Redacted Header]
 
     {
@@ -315,9 +356,9 @@ A successful API call:
     }
 
 
-5. Unblock PIN
+5. Reset PIN
 ===============
-| URL endpoint: https://stamps.co.id/api/pin/unblock
+| URL endpoint: https://stamps.co.id/api/pin/reset
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -334,13 +375,19 @@ pin         Yes      6 digit string
 confirm_pin Yes      6 digit string that needs to be the same as ``pin`` parameter
 =========== ======== ===========
 
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/reset -i -d '{ "token": "secret", "user": 123, "otp": "123123", "pin": "654321", "confirm_pin", "654321" }'
+
 B. Response Data
 ----------------
 
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status (``ok``, ``mismatch``, ``invalid``)
+status              status
 =================== ==============================
 
 C. Response Codes
@@ -372,37 +419,45 @@ A successful API call:
     HTTP/1.0 200 OK
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
+    Allow: POST
     [Redacted Header]
 
     {
         "status": "ok"
     }
 
-A successful API call with mismatch ``pin`` and ``confirm_pin`` parameter:
+Mismatch ``pin`` and ``confirm_pin`` parameter:
 
 .. code-block :: bash
 
-    HTTP/1.0 200 OK
+    HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
     [Redacted Header]
 
     {
-        "status": "mismatch"
+        "detail": "confirm_pin: Confirmation PIN does not match",
+        "errors": {
+            "confirm_pin": "Confirmation PIN does not match"
+        },
+        "error_code": "mismatch_pin",
+        "error_message": "confirm_pin: Confirmation PIN does not match"
     }
 
-A successful API call with invalid OTP:
+Invalid OTP:
 
 .. code-block :: bash
 
-    HTTP/1.0 200 OK
+    HTTP/1.0 400 BAD REQUEST
     Vary: Accept
     Content-Type: application/json
-    Allow: POST, OPTIONS
     [Redacted Header]
 
     {
-        "status": "invalid"
+        "detail": "otp: Invalid OTP",
+        "errors": {
+            "otp": "Invalid OTP"
+        },
+        "error_code": "invalid_otp",
+        "error_message": "otp: Invalid OTP"
     }

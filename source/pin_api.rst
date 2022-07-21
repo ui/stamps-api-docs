@@ -208,6 +208,8 @@ Mismatch ``new_pin`` and ``confirm_new_pin`` parameter:
 A. Request
 ----------
 
+Customer's PIN will be blocked in case of repeated failed validation.
+
 ========= ======== ===========
 Parameter Required Description
 ========= ======== ===========
@@ -286,7 +288,77 @@ Invalid PIN:
     }
 
 
-4. Requesting an OTP to Reset PIN
+4. Unblock PIN
+===============
+| URL endpoint: https://stamps.co.id/api/pin/unblock
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+Unblock customer's PIN blocked by repeated failed validation
+
+=========== ======== ===========
+Parameter   Required Description
+=========== ======== ===========
+token       Yes      Authentication string
+user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+=========== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/unblock -i -d '{ "token": "secret", "user": 123 }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              status
+=================== ==============================
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+
+5. Requesting an OTP to Reset PIN
 ===============
 | URL endpoint: https://stamps.co.id/api/pin/request-otp-for-reset
 | Allowed Method: POST
@@ -356,7 +428,7 @@ A successful API call:
     }
 
 
-5. Reset PIN
+6. Reset PIN
 ===============
 | URL endpoint: https://stamps.co.id/api/pin/reset
 | Allowed Method: POST

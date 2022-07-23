@@ -46,8 +46,6 @@ C. Example Response
 
 Below is an example response on successful API call.
 
-If transaction is successful(JSON):
-
 .. code-block:: javascript
 
     HTTP/1.0 200 OK
@@ -72,7 +70,8 @@ If transaction is successful(JSON):
             "store_display_name":""
         },
         {
-            "id":2588920,"type":1,
+            "id":2588920,
+            "type":1,
             "created":"2020-12-02T08:40:00+00:00",
             "created_timestamp":1606898400,
             "merchantName":"Levi's",
@@ -119,7 +118,8 @@ If transaction is successful(JSON):
             "stamps":0,
             "name":"Update Database Voucher IDR 100,000",
             "status":2,
-            "store":"Tes Store","store_display_name":""
+            "store":"Tes Store",
+            "store_display_name":""
         },
         {
             "id":2375302,
@@ -135,6 +135,23 @@ If transaction is successful(JSON):
             "store_display_name":"Levi's Ecommerce"
         }]
     }
-    
-    
-    
+
+
+Activity Type Mapping
+
+=================== ===========
+Code                Description
+=================== ===========
+0                   Transaction
+1                   Redemption
+2                   Awarded Stamps
+3                   Twitter Awarded Stamps
+4                   Facebook Awarded Stamps
+5                   Membership Upgrade
+6                   Membership Downgrade
+7                   Change Balance
+8                   Survey Submission
+9                   Completed Registration
+10                  Deduct Stamps
+=================== ===========
+

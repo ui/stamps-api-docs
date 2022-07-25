@@ -643,6 +643,11 @@ A successful API call:
                     'name': 'Things',
                 }
             ],
+            "social_media_profile": {
+                'twitter': '@twitter',
+                'instagram': '@instagram',
+                'facebook': ''
+            },
         },
         "tags": [
             {
@@ -889,4 +894,82 @@ A successful API call:
     [Redacted Header]
     {
         "status": "ok"
+    }
+
+
+9. Set social media profile
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/set-social-media-profile
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to set customer's social media profile.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         Customer's integer primary key or Card number
+token         Yes         Authentication string
+facebook      No          String, field will be unchanged if not supplied
+twitter       No          String, field will be unchanged if not supplied
+instagram     No          String, field will be unchanged if not supplied
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-social-media-profile -i -d '{ "token": "secret", "user": 123, "instagram": "", "twitter": "@test"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              status
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "facebook": "Test",
+        "instagram": "",
+        "twitter": "@test"
     }

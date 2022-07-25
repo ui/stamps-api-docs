@@ -145,8 +145,6 @@ Code                Description
 0                   Transaction
 1                   Redemption
 2                   Awarded Stamps
-3                   Twitter Awarded Stamps
-4                   Facebook Awarded Stamps
 5                   Membership Upgrade
 6                   Membership Downgrade
 7                   Change Balance

@@ -26,5 +26,6 @@ Contents
    child_api.rst
    pet_api.rst
    hobbies_api.rst
+   pin_api.rst
    testing.rst
 

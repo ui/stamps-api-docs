@@ -15,6 +15,7 @@ Contents
    introduction.rst
    transaction_api.rst
    redemption_api.rst
+   expiration_journals.rst
    reward_api.rst
    customer_api.rst
    balance_api.rst

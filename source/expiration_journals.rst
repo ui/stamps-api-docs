@@ -1,0 +1,91 @@
+************************************
+Expiration Journals API
+************************************
+
+1. Index
+=======================
+| URL endpoint: https://stamps.co.id/api/v2/expiration-journals/
+| Allowed method: GET
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+You can get list of expiration journals for certain user by using this parameters:
+
+
+=================== =========== =======================
+Parameter           Required    Description
+=================== =========== =======================
+token               Yes         Authentication string
+user                Yes         Email address / Member ID indicating customer
+expiration_date     No          Minimum expiration date to be displayed.
+                                Will display all user's expiration journals if not defined.
+                                Format: yyy-mm-dd
+=================== =========== =======================
+
+
+Here's an example of how the API call might look like in JSON format:
+
+.. code-block:: javascript
+
+    {
+       "token": "secret",
+       "user": "customer@stamps.co.id",
+       "expiration_date": "2022-06-25"
+    }
+
+
+Example of API call request using cURL (JSON).
+
+.. code-block :: bash
+
+    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/expiration-journals/?token=secret&user=customer@stamps.id&expiration_date=2022-06-25'
+
+
+B. Response
+-----------------------------
+
+In response to this API call, Stamps will reply with list of `expiration_journals`, with following objects:
+
+=================== ==================
+Variable            Description
+=================== ==================
+stamps_to_expire    Amount of stamps that can be expired in the journal
+expiration_date     In what date that the stamps will be expired by system(yyyy-mm-dd)
+=================== ==================
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server errors - something is wrong on Stamps' end
+=================== ==============================
+
+Below are an example response on successful API calls.
+
+.. code-block :: bash
+    
+    {
+        "expiration_journals": [
+            {
+                "stamps_to_expire": 10,
+                "expiration_date": "2023-03-30"
+            },
+            {
+                "stamps_to_expire": 10,
+                "expiration_date": "2023-03-30"
+            },
+            {
+                "stamps_to_expire": 10,
+                "expiration_date": "2023-03-30"
+            }
+        ]
+    }

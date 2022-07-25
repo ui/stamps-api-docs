@@ -922,7 +922,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-social-media-profile -i -d '{ "token": "secret", "user": 123, "instagram": "", twitter: "@test"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-social-media-profile -i -d '{ "token": "secret", "user": 123, "instagram": "", "twitter": "@test"}'
 
 
 B. Response Data
@@ -971,5 +971,5 @@ A successful API call:
     {
         "facebook": "Test",
         "instagram": "",
-        twitter: "@test"
+        "twitter": "@test"
     }

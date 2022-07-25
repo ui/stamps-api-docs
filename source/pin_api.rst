@@ -34,29 +34,10 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              Returns ``ok`` if successful
 =================== ==============================
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:
@@ -123,29 +104,10 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              Returns ``ok`` if successful
 =================== ==============================
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:
@@ -230,29 +192,10 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              Returns ``ok`` if successful
 =================== ==============================
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:
@@ -318,29 +261,10 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              Returns ``ok`` if successful
 =================== ==============================
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:
@@ -388,29 +312,10 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              Returns ``ok`` if successful
 =================== ==============================
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:
@@ -459,29 +364,10 @@ B. Response Data
 =================== ==============================
 Variable            Description
 =================== ==============================
-status              status
+status              Returns ``ok`` if successful
 =================== ==============================
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:

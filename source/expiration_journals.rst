@@ -20,9 +20,9 @@ Parameter           Required    Description
 =================== =========== =======================
 token               Yes         Authentication string
 user                Yes         Email address / Member ID indicating customer
-expiration_date     No          Minimum expiration date to be displayed.
+minimum_expiration_date     No          Minimum expiration date to be displayed.
                                 Will display all user's expiration journals if not defined.
-                                Format: yyy-mm-dd
+                                Format: YYYY-MM-DD
 =================== =========== =======================
 
 
@@ -33,15 +33,15 @@ Here's an example of how the API call might look like in JSON format:
     {
        "token": "secret",
        "user": "customer@stamps.co.id",
-       "expiration_date": "2022-06-25"
+       "minimum_expiration_date": "2022-06-25"
     }
 
 
-Example of API call request using cURL (JSON).
+Example of API call request using cURL.
 
 .. code-block :: bash
 
-    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/expiration-journals/?token=secret&user=customer@stamps.id&expiration_date=2022-06-25'
+    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/expiration-journals/?token=secret&user=customer@stamps.id&minimum_expiration_date=2022-06-25'
 
 
 B. Response
@@ -53,7 +53,7 @@ In response to this API call, Stamps will reply with list of `expiration_journal
 Variable            Description
 =================== ==================
 stamps_to_expire    Amount of stamps that can be expired in the journal
-expiration_date     Date of expiration(yyyy-mm-dd)
+expiration_date     Date of expiration(YYYY-MM-DD)
 =================== ==================
 
 Depending on the request, responses may return these status codes:

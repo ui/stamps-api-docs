@@ -53,7 +53,7 @@ In response to this API call, Stamps will reply with list of `expiration_journal
 Variable            Description
 =================== ==================
 stamps_to_expire    Amount of stamps that can be expired in the journal
-expiration_date     In what date that the stamps will be expired by system(yyyy-mm-dd)
+expiration_date     Date of expiration(yyyy-mm-dd)
 =================== ==================
 
 Depending on the request, responses may return these status codes:

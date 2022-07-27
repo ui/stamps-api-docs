@@ -77,14 +77,17 @@ Below are an example response on successful API calls.
     {
         "expiration_journals": [
             {
+                "id": 284614,
                 "stamps_to_expire": 10,
                 "expiration_date": "2023-03-30"
             },
             {
+                "id": 284615,
                 "stamps_to_expire": 10,
                 "expiration_date": "2023-03-30"
             },
             {
+                "id": 284616,
                 "stamps_to_expire": 10,
                 "expiration_date": "2023-03-30"
             }

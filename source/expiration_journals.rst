@@ -41,7 +41,7 @@ Example of API call request using cURL.
 
 .. code-block:: bash
 
-    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/expiration-journals/?token=secret&user=customer@stamps.id&minimum_expiration_date=2022-06-25'
+    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/expiration-journals/?token=secret&user=customer@stamps.id&minimum_expiration_date=2022-06-25
 
 
 B. Response

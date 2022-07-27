@@ -52,6 +52,7 @@ In response to this API call, Stamps will reply with list of `expiration_journal
 =================== ==================
 Variable            Description
 =================== ==================
+id                  Unique identifer
 stamps_to_expire    Amount of stamps that can be expired in the journal
 expiration_date     Date of expiration(YYYY-MM-DD)
 =================== ==================

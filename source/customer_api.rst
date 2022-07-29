@@ -402,28 +402,31 @@ A. Request
 You can use this API to update your customer's profile through Point of Sales
 or other websites.
 
-============= =========== =========================
-Parameter     Required    Description
-============= =========== =========================
-user          Yes         Customer's integer primary key or Card number
-token         Yes         Authentication string
-merchant      Yes         Integer indicating merchant ID
-name          Yes         Customer's name
-birthday      Yes         Customer's birthday (with format YYYY-MM-DD)
-gender        Yes         Customer's gender ("male" or "female")
-email         No          Customer's email
-mobile number No          Customer's phone number
-address       No          Customer's address
-district      No          Customer's address district ID
-postal_code   No          Customer's postal code
-extra_data    No          Extra data related to customer
-============= =========== =========================
+==================== =========== =========================
+Parameter            Required    Description
+==================== =========== =========================
+user                 Yes         Customer's integer primary key or Card number
+token                Yes         Authentication string
+merchant             Yes         Integer indicating merchant ID
+name                 Yes         Customer's name
+birthday             Yes         Customer's birthday (with format YYYY-MM-DD)
+gender               Yes         Customer's gender ("male" or "female")
+email                No          Customer's email
+mobile number        No          Customer's phone number
+address              No          Customer's address
+district             No          Customer's address district ID
+postal_code          No          Customer's postal code
+extra_data           No          Extra data related to customer
+has_downloaded_app   No          Boolean indicating user has downloaded an app
+phone_is_verified    No          Boolean indicating user's phone is verified
+email_is_verified    No          Boolean indicating user's email is verified
+==================== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true}'
 
 
 B. Response Data
@@ -484,7 +487,7 @@ A successful API call:
         "protected_redemption": true,
         "religion": 1,
         "marital_status": 1,
-        "wedding_date": null
+        "wedding_date": null,
     }
 
 

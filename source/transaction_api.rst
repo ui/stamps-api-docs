@@ -36,10 +36,12 @@ tax                         No          A number indicating transaction tax (in 
 channel                     No          Channel of a transaction, for channel mapping, see table below
 type                        No          The type of prepared transactions, for type mapping, see table below
 items                       No          List of items containing product name, quantity, subtotal &
-                                        stamps_subtotal (optional).
+                                        stamps_subtotal (optional), eligible_for_stamps (Optional).
                                         ``price`` is the combined price of products (qty * unit price),
                                         ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
                                         this field is optional.
+                                        ``eligible_for_stamps`` is boolean value to determine whether the item is considered in stamps calculation or not.
+                                        this field is optional, the default value is ``True``.
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
                                         ``value`` is the amount of payment
@@ -167,7 +169,8 @@ Here's an example of how the API call might look like in JSON format:
              "product_name": "Iced Tea",
              "quantity": 4,
              "subtotal": 5000,
-             "stamps_subtotal": 4
+             "stamps_subtotal": 4,
+             "eligible_for_stamps": False
           }
        ],
        "payments": [

@@ -170,7 +170,7 @@ Mismatch ``new_pin`` and ``confirm_new_pin`` parameter:
 A. Request
 ----------
 
-Customer's PIN will be blocked in case of repeated failed validation.
+Customer's PIN will be blocked in case of repeated failed validation. Failures count will be reset 604800 seconds (1 week) after the last failure.
 
 ========= ======== ===========
 Parameter Required Description
@@ -222,12 +222,12 @@ Invalid PIN:
     [Redacted Header]
 
     {
-        "detail": "pin: Invalid PIN",
+        "detail": "pin: Invalid PIN, 2 attempt(s) left",
         "errors": {
-            "pin": "Invalid PIN"
+            "pin": "Invalid PIN, 2 attempt(s) left"
         },
         "error_code": "invalid_pin",
-        "error_message": "pin: Invalid PIN"
+        "error_message": "pin: Invalid PIN, 2 attempt(s) left"
     }
 
 
@@ -313,6 +313,7 @@ B. Response Data
 Variable            Description
 =================== ==============================
 status              Returns ``ok`` if successful
+otp                 6 digit string
 =================== ==============================
 
 C. Examples
@@ -329,7 +330,8 @@ A successful API call:
     [Redacted Header]
 
     {
-        "status": "ok"
+        "status": "ok",
+        "otp": "123456"
     }
 
 

@@ -40,8 +40,7 @@ items                       No          List of items containing product name, q
                                         ``price`` is the combined price of products (qty * unit price),
                                         ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
                                         this field is optional.
-                                        ``eligible_for_stamps`` is boolean value to determine whether the item is considered in stamps calculation or not.
-                                        this field is optional, the default value is ``True``.
+                                        ``eligible_for_stamps`` is boolean value to determine whether the item should be included in stamps. Defaults to ``true``.
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
                                         ``value`` is the amount of payment
@@ -662,8 +661,7 @@ items                       No          List of items containing product name, q
                                         ``price`` is the combined price of products (qty * unit price),
                                         ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
                                         this field is optional.
-                                        ``eligible_for_stamps`` is boolean value to determine whether the item is considered in stamps calculation or not.
-                                        this field is optional, the default value is ``True``.
+                                        ``eligible_for_stamps`` is boolean value to determine whether the item should be included in stamps. Defaults to ``true``.
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
                                         ``value`` is the amount of payment

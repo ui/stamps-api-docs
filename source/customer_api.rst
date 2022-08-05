@@ -286,6 +286,7 @@ member_id       No          Customer's member (card) id
 address         No          Customer's address
 district        No          Customer's address district ID
 postal_code     No          Customer's postal code
+referral_code   No          Referal code used to register customer
 is_active       No          Customer's registration status
 religion        No          Customer's religion
 marital_status  No          Customer's marital status

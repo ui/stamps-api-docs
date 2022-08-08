@@ -21,7 +21,7 @@ voucher_template Yes         Integer indicating the voucher template ID
 start_date       Yes         Date string to indicate voucher's valid start date (e.g. 2013-02-15)
 quantity         Yes         Integer indicating voucher quantity to be given
 notes            No          Note tied to the voucher
-value            No          Required if voucher template value type is dynamic
+value            No          Float indicationg voucher value to be given, Required if voucher template value type is dynamic
 ================ =========== =========================
 
 Here's an example of how the API call might look like in JSON format

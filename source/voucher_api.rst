@@ -21,6 +21,7 @@ voucher_template Yes         Integer indicating the voucher template ID
 start_date       Yes         Date string to indicate voucher's valid start date (e.g. 2013-02-15)
 quantity         Yes         Integer indicating voucher quantity to be given
 notes            No          Note tied to the voucher
+value            No          Float indicating voucher value to be given, Required if voucher template value type is dynamic
 ================ =========== =========================
 
 Here's an example of how the API call might look like in JSON format
@@ -33,14 +34,15 @@ Here's an example of how the API call might look like in JSON format
         "voucher_template": 1,
         "start_date": "2013-02-15",
         "quantity": 1,
-        "notes": "Special voucher for e-magazine readers"
+        "notes": "Special voucher for e-magazine readers",
+        "value": 200
     }
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers"}' https://stamps.co.id/api/vouchers/issue
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers", "value": "200"}' https://stamps.co.id/api/vouchers/issue
 
 
 B. Response
@@ -78,7 +80,8 @@ On successful balance update:
         "start_date": "2014-11-20",
         "end_date": "2014-11-30",
         "quantity": 1,
-        "notes": "Special voucher for e-magazine readers"
+        "notes": "Special voucher for e-magazine readers",
+        "value": 200
       },
       "customer": {
         "id": 6,
@@ -221,6 +224,7 @@ On a successful API call:
             "code": "VC-ABC",
             "is_active": true,
             "quantity": 1,
+            "value": 200,
             "notes": "",
             "start_date": "2022-03-28",
             "end_date": "2022-04-28",
@@ -241,6 +245,7 @@ On a successful API call:
             "is_active": true,
             "quantity": 2,
             "notes": "",
+            "value": 200,
             "start_date": "2022-02-14",
             "end_date": "2022-02-28",
             "template": {

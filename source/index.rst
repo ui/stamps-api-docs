@@ -24,6 +24,7 @@ Contents
    booking_api.rst
    stamps_api.rst
    activity_api.rst
+   user_api.rst
    child_api.rst
    pet_api.rst
    hobbies_api.rst

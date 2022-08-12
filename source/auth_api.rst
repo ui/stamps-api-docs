@@ -4,13 +4,12 @@ Auth API
 
 1. Validate Password
 ====================================
-| URL endpoint: https://stamps.co.id/api/auth/check-password
+| URL endpoint: https://stamps.co.id/api/auth/validate-password
 | Allowed Method: POST
 | Require Authentication: Yes
 
 A. Request
 -----------------------------
-You can add an amount to a balance by calling the API with these parameters.
 
 =========== =========== =========================
 Parameter   Required    Description
@@ -34,7 +33,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "password": "secret123"}' https://stamps.co.id/api/auth/check-password
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "password": "secret123"}' https://stamps.co.id/api/auth/validate-password
 
 
 B. Response Data

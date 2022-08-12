@@ -1,8 +1,72 @@
 *******
-PIN API
+Auth API
 *******
 
-1. Set PIN
+1. Validate Password
+====================================
+| URL endpoint: https://stamps.co.id/api/auth/validate-password
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+=========== =========== =========================
+Parameter   Required    Description
+=========== =========== =========================
+token       Yes         Authentication string
+user        Yes         A string indicating user's email address or member ID
+password    Yes         User's password
+=========== =========== =========================
+
+Here's an example of how the API call might look like in JSON format
+
+.. code-block :: bash
+
+    {
+        "token": "secret",
+        "user": "customer@stamps.co.id",
+        "password": "secret123"
+    }
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "password": "secret123"}' https://stamps.co.id/api/auth/validate-password
+
+
+B. Response Data
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+
+C. Examples
+-------------------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+
+2. Set PIN
 ==========
 | URL endpoint: https://stamps.co.id/api/pin/set
 | Allowed Method: POST
@@ -73,7 +137,7 @@ Mismatch ``pin`` and ``confirm_pin`` parameter:
     }
 
 
-2. Change PIN
+3. Change PIN
 =============
 | URL endpoint: https://stamps.co.id/api/pin/change
 | Allowed Method: POST
@@ -161,7 +225,7 @@ Mismatch ``new_pin`` and ``confirm_new_pin`` parameter:
     }
 
 
-3. Validate PIN
+4. Validate PIN
 ===============
 | URL endpoint: https://stamps.co.id/api/pin/validate
 | Allowed Method: POST
@@ -231,7 +295,7 @@ Invalid PIN:
     }
 
 
-4. Unblock PIN
+5. Unblock PIN
 ===============
 | URL endpoint: https://stamps.co.id/api/pin/unblock
 | Allowed Method: POST
@@ -282,7 +346,7 @@ A successful API call:
     }
 
 
-5. Requesting an OTP to Reset PIN
+6. Requesting an OTP to Reset PIN
 ===============
 | URL endpoint: https://stamps.co.id/api/pin/request-otp-for-reset
 | Allowed Method: POST
@@ -335,7 +399,7 @@ A successful API call:
     }
 
 
-6. Reset PIN
+7. Reset PIN
 ===============
 | URL endpoint: https://stamps.co.id/api/pin/reset
 | Allowed Method: POST

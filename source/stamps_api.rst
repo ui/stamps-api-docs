@@ -13,20 +13,23 @@ A. Request
 
 You can add customer's stamps amount with this API Call.
 
-==================== =========== =========================
-Parameter            Required    Description
-==================== =========== =========================
-token                Yes         Authentication string
-user                 Yes         A string indicating customer's email or Member ID
-store                Yes         Integer indicating store ID
-number_of_stamps     Yes         Integer indicating amount of stamps to be added to customer
-==================== =========== =========================
+============================== =========== =========================
+Parameter                      Required    Description
+============================== =========== =========================
+token                          Yes         Authentication string
+user                           Yes         A string indicating customer's email or Member ID
+store                          Yes         Integer indicating store ID
+number_of_stamps               Yes         Integer indicating amount of stamps to be added to customer
+notes                          No          Notes that explain why stamps are awarded
+expiration_date                No          YYYY-MM-DD format, defaults to the stamps validity days set in the merchant settings
+require_email_notification     No          Boolean, defaults to true
+============================== =========== =========================
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/stamps/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "number_of_stamps": 10}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/stamps/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "number_of_stamps": 10, "notes": "bonus", "require_email_notification": false}'
 
 
 B. Response Data
@@ -90,7 +93,95 @@ On a successful API call:
     }
 
 
-2. Deduct stamps
+2. Cancel awarded customer stamps
+=======================================
+| URL endpoint: https://stamps.co.id/api/stamps/cancel
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can cancel the awarded stamps added through the API above.
+
+==================== =========== =========================
+Parameter            Required    Description
+==================== =========== =========================
+token                Yes         Authentication string
+user                 Yes         A string indicating customer's email or Member ID
+id                   Yes         ID of the award to be cancelled
+==================== =========== =========================
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/stamps/cancel -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "id": 1010}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+customer            Customer information after successful query. Contains id, stamps, and status.
+awards              Award information for this stamps addition. Contains id, number_of_stamps
+detail              Description of error (if any)
+errors              Errors encountered when parsing
+                    data (if any)
+=================== ==============================
+
+
+C. Response Headers
+-------------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "customer": {
+          "id": 114807,
+          "stamps": 8,
+          "status": "Blue"
+      },
+      "award": {
+          "id": 1010,
+          "number_of_stamps": 10,
+          "status": "Cancelled"
+      }
+    }
+
+
+3. Deduct stamps
 =======================================
 | URL endpoint: https://stamps.co.id/api/memberships/deduct-stamps
 | Allowed Method: POST

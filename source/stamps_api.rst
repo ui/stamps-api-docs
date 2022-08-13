@@ -102,7 +102,7 @@ On a successful API call:
 A. Request
 -----------------------------
 
-You can cancel the awarded stamps added through the API above.
+You can cancel the awarded stamps added through the API above with this API call.
 
 ==================== =========== =========================
 Parameter            Required    Description
@@ -176,7 +176,7 @@ On a successful API call:
       "award": {
           "id": 1010,
           "number_of_stamps": 10,
-          "status": "Cancelled"
+          "status": "Canceled"
       }
     }
 

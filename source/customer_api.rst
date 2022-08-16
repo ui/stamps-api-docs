@@ -980,7 +980,7 @@ A successful API call:
 
 10. Delete Member Data
 ===============
-| URL endpoint: https://stamps.co.id/api/v2/memberships/delete
+| URL endpoint: https://stamps.co.id/api/v2/memberships/anonymize
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -999,7 +999,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/delete -i -d '{ "token": "secret", "identifier": 123}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/anonymize -i -d '{ "token": "secret", "identifier": 123}'
 
 
 B. Response Data

@@ -978,7 +978,7 @@ A successful API call:
     }
 
 
-10. Delete Member Data
+10. Delete Customer Data
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/anonymize
 | Allowed Method: POST
@@ -987,7 +987,7 @@ A successful API call:
 A. Request
 -----------------------------
 
-You can use this API to set customer's social media profile.
+You can use this API to delete customer data.
 
 ============= =========== =========================
 Parameter     Required    Description

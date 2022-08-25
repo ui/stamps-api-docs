@@ -1049,3 +1049,74 @@ A successful API call:
     {
         "status": "ok"
     }
+
+
+11. Set Level
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/set-level
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to override customer's level.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+token         Yes         Authentication string
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+level         Yes         A level numerical value
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-level -i -d '{ "token": "secret", "user": 123, "level": 200}'
+
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+
+C.  Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+    {
+        "status": "ok"
+    }
+
+The customer does not have membership:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "user: User does not have membership in Your Merchant",
+        "errors": {
+            "user": "User does not have membership in Your Merchant"
+        },
+        "error_code": "user_has_no_membership",
+        "error_message": "User does not have membership in Your Merchant"
+    }

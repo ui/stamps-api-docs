@@ -485,3 +485,146 @@ Invalid OTP:
         "error_code": "invalid_otp",
         "error_message": "otp: Invalid OTP"
     }
+
+
+8. Requesting an OTP to Reset Password
+===============
+| URL endpoint: https://stamps.co.id/api/auth/request-otp-for-password-reset
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+Request an OTP to unblock customer's PIN
+
+============= ======== ===========
+Parameter     Required Description
+============= ======== ===========
+token         Yes      Authentication string
+identifier    Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+type          Yes      A string for OTP sending method choice, supports ``email`` and ``sms``
+template_code No       A string for the template used to send the OTP, if not provided OTP is only returned from the API call
+============= ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/request-otp-for-password-reset -i -d '{ "token": "secret", "identifier": 123, "type": "email" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+otp                 6 digit string
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok",
+        "otp": "123456"
+    }
+
+
+9. Reset Password with OTP
+===============
+| URL endpoint: https://stamps.co.id/api/auth/reset-password-with-otp
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+==================== ======== ===========
+Parameter            Required Description
+==================== ======== ===========
+token                Yes      Authentication string
+identifier           Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+otp                  Yes      6 digit string OTP received from ``Requesting an OTP to Reset Password`` API
+new_password         Yes      A secure password
+confirm_new_password Yes      A secure password that needs to be the same as ``new_password`` parameter
+==================== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/reset-password-with-otp -i -d '{ "token": "secret", "identifier": 123, "otp": "123123", "new_password": "securepassword123", "confirm_new_password", "securepassword123" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+Mismatch ``new_password`` and ``confirm_new_password`` parameter:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "confirm_new_password: Confirmation password does not match",
+        "errors": {
+            "confirm_new_password": "Confirmation password does not match"
+        },
+        "error_code": "mismatch_password",
+        "error_message": "confirm_new_password: Confirmation password does not match"
+    }
+
+Invalid OTP:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "otp: Invalid OTP",
+        "errors": {
+            "otp": "Invalid OTP"
+        },
+        "error_code": "invalid_otp",
+        "error_message": "otp: Invalid OTP"
+    }

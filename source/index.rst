@@ -25,8 +25,8 @@ Contents
    stamps_api.rst
    activity_api.rst
    auth_api.rst
+   legacy_members_api.rst
    child_api.rst
    pet_api.rst
    hobbies_api.rst
    testing.rst
-

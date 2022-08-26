@@ -496,7 +496,7 @@ Invalid OTP:
 A. Request
 ----------
 
-Request an OTP to unblock customer's PIN
+Request an OTP to reset customer's password
 
 ============= ======== ===========
 Parameter     Required Description

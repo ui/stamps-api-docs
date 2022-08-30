@@ -38,10 +38,10 @@ Example of API call request using cURL
     --header 'Content-Type: application/json' \
     --header 'Cookie: csrftoken=FAc0E8TCQSCqCKhNNH62Pr3KTFgfemz2DMPWkjdSkD68VJYKda38emJi8GykuSgd; sessionid=sl07y2ektnrikw4bddkr4kndr482qms4' \
     --data-raw ' {
-                "root_invoice_number": "628988798123423",
+                "root_invoice_number": "6288988812712621",
                 "root_transaction_store": 3,
                 "root_invoice_date": "2022-08-30",
-                "return_invoice_number": "628988798123423.1",
+                "return_invoice_number": "6288988812712621.1",
                 "total_value_delta": -1,
                 "return_store": 3,
                 "items": [
@@ -113,7 +113,7 @@ On a successful API call:
             "email": "marshadouble@test.com",
             "picture_url": null,
             "birthday": "1988-04-23",
-            "phone": "+62898879812342",
+            "phone": "+628898881212",
             "postal_code": "",
             "protected_redemption": false,
             "has_incorrect_email": false,

@@ -1122,7 +1122,7 @@ The customer does not have membership:
     }
 
 
-12. Request OTP for Modify Mobile Number
+12. Request OTP to Modify Mobile Number
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/accounts/request-change-mobile-number-otp
 | Allowed Method: POST

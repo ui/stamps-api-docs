@@ -1120,3 +1120,187 @@ The customer does not have membership:
         "error_code": "user_has_no_membership",
         "error_message": "User does not have membership in Your Merchant"
     }
+
+
+12. Request OTP for Modify Mobile Number
+===============
+| URL endpoint: https://stamps.co.id/api/v2/accounts/request-change-mobile-number-otp
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to request authentication code for change mobile number.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+type          Yes         A choices for delivery channel for otp ( email, sms, whatsapp )
+template_code No          A template code for otp messages template, can be setup in merchant interfaces
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-change-mobile-number-otp -i -d '{ "token": "secret", "identifier": 123, "type": "sms", "template_code": "OTP_1"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+otp                 otp number for authentication
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized - Often missing or
+                    wrong authentication token
+403                 Forbidden - You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "otp": "1234"
+    }
+
+Invalid Template Code:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "template_code: Messages template not found",
+        "errors": {
+            "template_code": "Messages template not found"
+        },
+        "error_code": "invalid_template_code",
+        "error_message": "Messages template not found"
+    }
+
+Invalid Whatsapp number if delivery channel is whatsapp
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "type: User does not have mobile number or invalid whatsapp number",
+        "errors": {
+            "type": "User does not have mobile number or invalid whatsapp number"
+        },
+        "error_code": "invalid_user_whatsapp_number",
+        "error_message": "User does not have mobile number or invalid whatsapp number"
+    }
+
+
+13. Modify Mobile Number
+===============
+| URL endpoint: https://stamps.co.id/api/v2/accounts/change-mobile-number
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to modify mobile number.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+new_mumber    Yes         A new mobile number
+otp           Yes         A string for authentication
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/change-mobile-number -i -d '{ "token": "secret", "identifier": 123, "new_number": "+628123454321", "otp": "1234"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              status
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized - Often missing or
+                    wrong authentication token
+403                 Forbidden - You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "status": "ok"
+    }

@@ -79,14 +79,14 @@ A successful API call:
                 "id": 28,
                 "name": "Vaughan Sosa",
                 "merchant_id": 1,
-                "personal_link": "http://stamps.co.id/proxy/add-survey/28/VS8i6JnqR5at3ZipgPLSC4",
+                "personal_url": "http://stamps.co.id/proxy/add-survey/28/VS8i6JnqR5at3ZipgPLSC4",
                 "description": "Dolor quia soluta en"
             },
             {
                 "id": 20,
                 "name": "Julie Terrell",
                 "merchant_id": 1,
-                "personal_link": "http://stamps.co.id/proxy/add-survey/20/VS8i6JnqR5at3ZipgPLSC4",
+                "personal_url": "http://stamps.co.id/proxy/add-survey/20/VS8i6JnqR5at3ZipgPLSC4",
                 "description": "Quia aut maiores nat"
             }
         ]

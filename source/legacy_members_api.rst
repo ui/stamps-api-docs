@@ -208,3 +208,67 @@ On successful balance update:
       "created": "2014-08-08",
       "extra_data": {},
     }
+
+
+4. Get Merged Legacy Members
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/get-merged-members
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+You can get legacy members that have been merged to a stamps membership with this API.
+
+============     =========== =========================
+Parameter        Required    Description
+============     =========== =========================
+token            Yes         Authentication token in string
+user             Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+============     =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/legacy/get-merged-members?token=123&user=2'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+merged_members      An array of legacy member objects
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful balance update:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+    {
+      "merged_members": [
+        {
+          "member_id": "322177",
+          "email": "merged_legacy_member@stamps.com",
+          "mobile_number": "+62851111222444",
+          "merchant": 1,
+          "status": 1
+        },
+      ]
+    }

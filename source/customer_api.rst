@@ -1247,7 +1247,7 @@ You can use this API to modify mobile number.
 Parameter     Required    Description
 ============= =========== =========================
 identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-new_mumber    Yes         A new mobile number
+new_number    Yes         A new mobile number
 otp           Yes         A string for authentication
 ============= =========== =========================
 
@@ -1303,4 +1303,167 @@ A successful API call:
     [Redacted Header]
     {
         "status": "ok"
+    }
+
+
+14. Request OTP to Modify Email
+===============================
+| URL endpoint: https://stamps.co.id/api/v2/accounts/request-otp-for-email-change
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to request authentication code to change email.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+type          Yes         A choices for delivery channel for otp ( email, sms, whatsapp )
+template_code No          A template code for otp messages template, can be setup in merchant interfaces
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "user": 123, "type": "sms", "template_code": "OTP_1"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+otp                 6 digit string OTP number for authentication
+=================== ==============================
+
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "otp": "123456"
+    }
+
+Invalid Template Code:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "template_code: Message template not found",
+        "errors": {
+            "template_code": "Message template not found"
+        },
+        "error_code": "invalid_template_code",
+        "error_message": "Message template not found"
+    }
+
+Invalid Whatsapp number if delivery channel is whatsapp
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "type: User does not have mobile number or has incorrect whatsapp number",
+        "errors": {
+            "type": "User does not have mobile number or has incorrect whatsapp number"
+        },
+        "error_code": "invalid_user_whatsapp_number",
+        "error_message": "User does not have mobile number or has incorrect whatsapp number"
+    }
+
+
+15. Modify Email
+================
+| URL endpoint: https://stamps.co.id/api/v2/accounts/change-email
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to modify email.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+otp           Yes         6 digit string OTP received from ``Request OTP to Modify Email`` API
+new_email     Yes         A new email
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/change-email -i -d '{ "token": "secret", "user": 123, "new_email": "alice@stamps.co.id", "otp": "123456"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "status": "ok"
+    }
+
+Email is already used
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "new_email: alice@stamps.co.id is already used",
+        "errors": {
+            "new_email": "alice@stamps.co.id is already used",
+        },
+        "error_code": "email_already_used",
+        "error_message": "alice@stamps.co.id is already used"
     }

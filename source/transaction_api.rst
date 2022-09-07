@@ -514,7 +514,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ]'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add-with-redemptions -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ]'
 
 B. Response
 -----------------------------
@@ -660,7 +660,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "secret", "invoice_number": "ABCD123", "date": "2021-02-01" }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/transactions/cancel -i -d '{ "token": "secret", "invoice_number": "ABCD123", "date": "2021-02-01" }'
 
 
 B. Response

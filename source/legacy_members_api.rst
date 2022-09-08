@@ -204,7 +204,7 @@ C. Example Response
     }
 
 
-3. Merge Legacy Membership
+4. Activate Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/activate
 | Allowed Method: POST

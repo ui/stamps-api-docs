@@ -50,8 +50,6 @@ errors              Errors encountered when processing request (if any)
 C. Example Response
 -------------------
 
-On successful balance update:
-
 .. code-block :: bash
 
     HTTP/1.0 200 OK
@@ -109,8 +107,6 @@ errors              Errors encountered when processing request (if any)
 
 C. Example Response
 -------------------
-
-On successful balance update:
 
 .. code-block :: bash
 
@@ -187,8 +183,6 @@ errors              Errors encountered when processing request (if any)
 C. Example Response
 -------------------
 
-On successful balance update:
-
 .. code-block :: bash
 
     HTTP/1.0 200 OK
@@ -207,4 +201,75 @@ On successful balance update:
       "start_date": "2014-08-08",
       "created": "2014-08-08",
       "extra_data": {},
+    }
+
+
+3. Merge Legacy Membership
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/activate
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+You can activate/register a legacy membership to a stamps membership with this API
+
+================ =========== =========================
+Parameter        Required    Description
+================ =========== =========================
+token            Yes         Authentication string
+user             Yes         A string indicating legacy member's ID, mobile number or email
+merchant_id      Yes         Merchant ID the legacy member is associated with
+pin              Yes         Legacy member's pin
+bonus_stamps     No          Integer, bonus points given to target user's membership
+================ =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/activate -i -d '{ "token": "secret", "user": 12, "pin": "123456", "merchant_id": 1, "bonus_stamps": 10 }'
+
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+user                Various information about Stamps user
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "id": "123",
+      "name": "Customer",
+      "gender": "male",
+      "address": "Jl MK raya",
+      "is_active": true,
+      "email": "customer@stamps.co.id",
+      "phone": "+62812398712",
+      "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+      "birthday": "1989-10-1",
+      "postal_code": "10310",
+      "protected_redemption": true,
+      "religion": 1,
+      "marital_status": 1,
+      "wedding_date": null
     }

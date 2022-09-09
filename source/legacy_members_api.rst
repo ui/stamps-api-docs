@@ -210,7 +210,65 @@ On successful balance update:
     }
 
 
-4. Get Merged Legacy Members
+4. Request Pin
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/request-pin
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+Send legacy member's pin by email or SMS
+
+================ =========== =========================
+Parameter        Required    Description
+================ =========== =========================
+token            Yes         Authentication string
+type             Yes         Type of pin request. Can be `email` or `sms`
+merchant_id      Yes         Merchant ID the legacy member is associated with
+================ =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "token": "secret", "type": "email", "merchant_id": 1 }'
+
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Status of the request
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful request pin:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "status": "ok"
+    }
+
+
+
+5. Get Merged Legacy Members
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/get-merged-members
 | Allowed Method: GET
@@ -218,13 +276,14 @@ On successful balance update:
 
 A. Request
 -----------------------------
-You can get legacy members that have been merged to a stamps membership with this API.
+Allows you to query for legacy members that have been merged into a user's membership account.
 
 ============     =========== =========================
 Parameter        Required    Description
 ============     =========== =========================
 token            Yes         Authentication token in string
-user             Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+user             Yes         A string indicating customer's email, Member ID, mobile number or primary key ID.
+                             This should be an active membership account.
 ============     =========== =========================
 
 

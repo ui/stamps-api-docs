@@ -204,7 +204,64 @@ C. Example Response
     }
 
 
-4. Activate Legacy Membership
+4. Request Pin
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/request-pin
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+Send legacy member's pin by email or SMS
+
+================ =========== =========================
+Parameter        Required    Description
+================ =========== =========================
+token            Yes         Authentication string
+type             Yes         Type of pin request. Can be `email` or `sms`
+merchant_id      Yes         Merchant ID the legacy member is associated with
+================ =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "token": "secret", "type": "email", "merchant_id": 1 }'
+
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Status of the request
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful request pin:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "status": "ok"
+    }
+
+
+5. Activate Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/activate
 | Allowed Method: POST
@@ -212,7 +269,7 @@ C. Example Response
 
 A. Request
 -----------------------------
-You can activate/register a legacy membership to a stamps membership with this API
+This API turns a legacy member data into to an active membership.
 
 ================ =========== =========================
 Parameter        Required    Description

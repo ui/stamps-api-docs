@@ -21,6 +21,7 @@ token         Yes         Authentication string
 name          Yes         string
 type          Yes         "cat" or "dog" or etc
 birthday      No          YYYY-MM-DD
+breed         No          A string indicating pet's breed code, ex: "persia", "shiba", etc
 ============= =========== =========================
 
 Example of API call request using cURL:
@@ -82,7 +83,11 @@ A successful API call:
             "type": {
                 "code": "cat",
                 "name": "Felines"
-            }
+            },
+            "breed": {
+                "code": "persia",
+                "name": "Persian"
+            },
         }
     }
 

@@ -208,3 +208,60 @@ On successful balance update:
       "created": "2014-08-08",
       "extra_data": {},
     }
+
+
+4. Request Pin
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/request-pin
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+Send legacy member's pin by email or SMS
+
+================ =========== =========================
+Parameter        Required    Description
+================ =========== =========================
+token            Yes         Authentication string
+type             Yes         Type of pin request. Can be `email` or `sms`
+merchant_id      Yes         Merchant ID the legacy member is associated with
+================ =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "token": "secret", "type": "email", "merchant_id": 1 }'
+
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Status of the request
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful request pin:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "status": "ok"
+    }

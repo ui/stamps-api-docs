@@ -263,5 +263,5 @@ On successful request pin:
      [Redacted Header]
 
     {
-      "status": "ok",
+      "status": "ok"
     }

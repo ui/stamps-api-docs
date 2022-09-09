@@ -623,6 +623,10 @@ A successful API call:
                     "type": {
                         "code": "cat",
                         "name": "Felines"
+                    },
+                    "breed": {
+                        "code": "siamese",
+                        "name": "Siamese"
                     }
                 },
                 {
@@ -632,6 +636,10 @@ A successful API call:
                     "type": {
                         "code": "dog",
                         "name": "Canines"
+                    },
+                    "breed": {
+                        "code": "bulldog",
+                        "name": "Bulldog"
                     }
                 },
             ],

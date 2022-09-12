@@ -100,6 +100,7 @@ On a successful API call:
         "gender": "male",
         "address": "",
         "is_active": true,
+        "is_anonymized": true,
         "email": "customer@stamps.co.id",
         "phone": "+6281314811365",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
@@ -361,6 +362,7 @@ A successful API call:
         "religion": 1,
         "marital_status": 1,
         "wedding_date": null,
+        "is_anonymized": true,
         "membership": {
           "tags": [],
           "status": 100,
@@ -489,6 +491,7 @@ A successful API call:
         "religion": 1,
         "marital_status": 1,
         "wedding_date": null,
+        "is_anonymized": true,
     }
 
 
@@ -587,6 +590,7 @@ A successful API call:
             "marital_status": "Married",
             "religion": "Budha",
             "wedding_date": "1995-12-01",
+            "is_anonymized": true,
             "location": {
                 "district": {
                     "id": 1,

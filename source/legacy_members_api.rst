@@ -36,15 +36,14 @@ B. Response
 
 In response to this API call, Stamps will return response with the following data (in JSON):
 
-=================== ==============================
-Variable            Description
-=================== ==============================
-member_id           Legacy membership's ID
-merchant            Merchant ID which the member is associated to
-status              `1` means legacy member has been merged, while
-                    `2` means legacy member is unmerged
-errors              Errors encountered when processing request (if any)
-=================== ==============================
+====================== ==============================
+Variable               Description
+====================== ==============================
+legacy_member          Various information about legacy member
+legacy_member.status   `1` means legacy member has been merged, while
+                       `2` means legacy member is unmerged
+errors                 Errors encountered when processing request (if any)
+====================== ==============================
 
 
 C. Example Response
@@ -61,11 +60,13 @@ On successful balance update:
      [Redacted Header]
 
     {
-      "member_id": "322145",
-      "email": "legacy_member@stamps.com",
-      "mobile_number": "+62851111222333",
-      "merchant": 1,
-      "status": 1
+      "legacy_member": {
+        "member_id": "322145",
+        "email": "legacy_member@stamps.com",
+        "mobile_number": "+62851111222333",
+        "merchant": 1,
+        "status": 1
+      }
     }
 
 
@@ -198,15 +199,16 @@ On successful balance update:
      [Redacted Header]
 
     {
-      "status": 100,
-      "status_text": "Blue",
-      "stamps": 410,
-      "balance": 150000,
-      "is_blocked": false,
-      "referral_code": "ABCDE",
-      "start_date": "2014-08-08",
-      "created": "2014-08-08",
-      "extra_data": {},
+      "membership": {
+        "level": 100,
+        "level_text": "Blue",
+        "stamps": 410,
+        "balance": 150000,
+        "is_blocked": false,
+        "referral_code": "ABCDE",
+        "start_date": "2014-08-08",
+        "created": "2014-08-08",
+      }
     }
 
 

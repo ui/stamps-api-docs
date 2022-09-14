@@ -298,7 +298,8 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==============================
 Variable            Description
 =================== ==============================
-user                Various information about Stamps user
+user                Customer profile data
+membership          Various information about active membership
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -315,18 +316,25 @@ C. Example Response
      [Redacted Header]
 
     {
-      "id": "123",
-      "name": "Customer",
-      "gender": "male",
-      "address": "Jl MK raya",
-      "is_active": true,
-      "email": "customer@stamps.co.id",
-      "phone": "+62812398712",
-      "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-      "birthday": "1989-10-1",
-      "postal_code": "10310",
-      "protected_redemption": true,
-      "religion": 1,
-      "marital_status": 1,
-      "wedding_date": null
+      "user": {
+        "id": "123",
+        "name": "Customer",
+        "gender": "m",
+        "address": "Jl MK raya",
+        "is_active": true,
+        "email": "customer@stamps.co.id",
+        "phone": "+62812398712",
+        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+        "birthday": "1989-10-1",
+      },
+      "membership": {
+        "level": 1,
+        "level_text": "Blue",
+        "stamps": 100,
+        "balance": 0,
+        "is_blocked": false,
+        "referral_code": "abc123",
+        "start_date": "2022-01-01",
+        "created": "2022-01-01",
+      }
     }

@@ -640,7 +640,7 @@ You can cancel a transaction on Stamps by calling the API with these parameters
 Parameter                  Required    Description
 ========================== =========== =========================================================
 token                      Yes         Authentication string
-invoice_number             Yes         The trannsaction's invoice number
+invoice_number             Yes         The transaction's invoice number
 date                       Yes         Date when the transaction is executed, in YYYY-MM-DD format
 ========================== =========== =========================================================
 

@@ -1149,7 +1149,7 @@ You can use this API to request authentication code for change mobile number.
 Parameter     Required    Description
 ============= =========== =========================
 identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-type          Yes         A choices for delivery channel for otp ( email, sms, whatsapp )
+type          Yes         A choices for delivery channel for otp ( sms, whatsapp )
 template_code No          A template code for otp messages template, can be setup in merchant interfaces
 ============= =========== =========================
 

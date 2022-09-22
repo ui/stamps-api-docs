@@ -133,6 +133,21 @@ Below is an example response on successful API call.
             "status":1,
             "store":"levisecom",
             "store_display_name":"Levi's Ecommerce"
+        },
+        {
+            "id": 704,
+            "type": 0,
+            "created": "2022-08-31T06:01:01+00:00",
+            "created_timestamp": 1661925661,
+            "merchantName": "Ace Hardware",
+            "merchantID": 5,
+            "stamps": 20,
+            "name": "Transaction #493",
+            "status": 2,
+            "store": "A301",
+            "store_display_name": "ST ACE KARAWACI MAL",
+            "invoice_number": "INV-17",
+            "channel": "Mobile App"
         }]
     }
 

@@ -1333,7 +1333,7 @@ You can use this API to request authentication code to change email. The authent
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+new_email     Yes         A string indicating customer's new email address
 template_code No          A template code for otp messages template, can be setup in merchant interfaces
 ============= =========== =========================
 
@@ -1341,7 +1341,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "user": 123, "template_code": "OTP_1"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "new_email": "alice@stamps.co.id", "template_code": "OTP_1"}'
 
 
 B. Response Data
@@ -1390,7 +1390,7 @@ Invalid Template Code:
         "error_message": "Email template not found"
     }
 
-User does not have reachable email
+New email already used
 
 .. code-block :: bash
 
@@ -1400,12 +1400,12 @@ User does not have reachable email
     [Redacted Header]
 
     {
-        "detail": "user: User does not have email or has incorrect email",
+        "detail": "new_email: alice@stamps.co.id is already used",
         "errors": {
-            "user": "User does not have email or has incorrect email"
+            "new_email": "alice@stamps.co.id is already used"
         },
-        "error_code": "invalid_user_email",
-        "error_message": "User does not have email or has incorrect email"
+        "error_code": "email_already_used",
+        "error_message": "alice@stamps.co.id is already used"
     }
 
 

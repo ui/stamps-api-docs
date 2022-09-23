@@ -272,35 +272,35 @@ You can use this API to register your customer through Point of Sales
 or other websites. On successful redemption, Stamps will send an email
 containing an automatically generated password.
 
-=============== =========== =========================
-Parameter       Required    Description
-=============== =========== =========================
-token           Yes         Authentication string
-merchant        Yes         Integer indicating merchant ID
-name            Yes         Customer's name
-email           Yes         Customer's email
-mobile_number   Yes         Customer's mobile number
-birthday        Yes         Customer's birthday (with format YYYY-MM-DD)
-gender          Yes         Customer's gender ("male" or "female")
-store           Yes         Integer representing store ID where customer is registered
-member_id       No          Customer's member (card) id
-address         No          Customer's address
-district        No          Customer's address district ID
-postal_code     No          Customer's postal code
-referral_code   No          Referal code used to register customer
-is_active       No          Customer's registration status
-religion        No          Customer's religion
-marital_status  No          Customer's marital status
-wedding_date    No          Customer's weidding date
-extra_data      No          Extra data related to customer
-
-=============== =========== =========================
+============================ =========== =========================
+Parameter                    Required    Description
+============================ =========== =========================
+token                        Yes         Authentication string
+merchant                     Yes         Integer indicating merchant ID
+name                         Yes         Customer's name
+email                        Yes         Customer's email
+mobile_number                Yes         Customer's mobile number
+birthday                     Yes         Customer's birthday (with format YYYY-MM-DD)
+gender                       Yes         Customer's gender ("male" or "female")
+store                        Yes         Integer representing store ID where customer is registered
+member_id                    No          Customer's member (card) id
+address                      No          Customer's address
+district                     No          Customer's address district ID
+postal_code                  No          Customer's postal code
+referral_code                No          Referal code used to register customer
+is_active                    No          Customer's registration status
+religion                     No          Customer's religion
+marital_status               No          Customer's marital status
+wedding_date                 No          Customer's weidding date
+extra_data                   No          Extra data related to customer
+registering_employee_code    No          A String indicated Employee Code, if customer not exist will create new one
+============================ =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true, "registering_employee_code": "EMP001"}'
 
 
 B. Response Data
@@ -379,7 +379,8 @@ A successful API call:
            "district": {"id": 1, "name": "Kebayoran Baru"},
            "regency": {"id": 1, "name": "Jakarta Selatan"},
            "province": {"id": 1, "name": "DKI Jakarta"}
-        }
+        },
+        "registering_employee_code": "EMP001"
     }
 
 
@@ -1148,7 +1149,7 @@ You can use this API to request authentication code for change mobile number.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+mobile_number Yes         A string indicating customer new mobile number
 type          Yes         A choices for delivery channel for otp ( sms, whatsapp )
 template_code No          A template code for otp messages template, can be setup in merchant interfaces
 ============= =========== =========================

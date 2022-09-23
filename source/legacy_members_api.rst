@@ -36,21 +36,18 @@ B. Response
 
 In response to this API call, Stamps will return response with the following data (in JSON):
 
-=================== ==============================
-Variable            Description
-=================== ==============================
-member_id           Legacy membership's ID
-merchant            Merchant ID which the member is associated to
-status              `1` means legacy member has been merged, while
-                    `2` means legacy member is unmerged
-errors              Errors encountered when processing request (if any)
-=================== ==============================
+====================== ==============================
+Variable               Description
+====================== ==============================
+legacy_member          Various information about legacy member
+legacy_member.status   `1` means legacy member has been merged, while
+                       `2` means legacy member is unmerged
+errors                 Errors encountered when processing request (if any)
+====================== ==============================
 
 
 C. Example Response
 -------------------
-
-On successful balance update:
 
 .. code-block :: bash
 
@@ -61,11 +58,13 @@ On successful balance update:
      [Redacted Header]
 
     {
-      "member_id": "322145",
-      "email": "legacy_member@stamps.com",
-      "mobile_number": "+62851111222333",
-      "merchant": 1,
-      "status": 1
+      "legacy_member": {
+        "member_id": "322145",
+        "email": "legacy_member@stamps.com",
+        "mobile_number": "+62851111222333",
+        "merchant": 1,
+        "status": 1
+      }
     }
 
 
@@ -109,8 +108,6 @@ errors              Errors encountered when processing request (if any)
 
 C. Example Response
 -------------------
-
-On successful balance update:
 
 .. code-block :: bash
 
@@ -187,8 +184,6 @@ errors              Errors encountered when processing request (if any)
 C. Example Response
 -------------------
 
-On successful balance update:
-
 .. code-block :: bash
 
     HTTP/1.0 200 OK
@@ -198,15 +193,16 @@ On successful balance update:
      [Redacted Header]
 
     {
-      "status": 100,
-      "status_text": "Blue",
-      "stamps": 410,
-      "balance": 150000,
-      "is_blocked": false,
-      "referral_code": "ABCDE",
-      "start_date": "2014-08-08",
-      "created": "2014-08-08",
-      "extra_data": {},
+      "membership": {
+        "level": 100,
+        "level_text": "Blue",
+        "stamps": 410,
+        "balance": 150000,
+        "is_blocked": false,
+        "referral_code": "ABCDE",
+        "start_date": "2014-08-08",
+        "created": "2014-08-08",
+      }
     }
 
 
@@ -264,4 +260,83 @@ On successful request pin:
 
     {
       "status": "ok"
+    }
+
+
+5. Activate Legacy Membership
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/activate
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+This API turns a legacy member data into to an active membership.
+
+================ =========== =========================
+Parameter        Required    Description
+================ =========== =========================
+token            Yes         Authentication string
+user             Yes         A string indicating legacy member's ID, mobile number or email
+merchant_id      Yes         Merchant ID the legacy member is associated with
+pin              Yes         Legacy member's pin
+bonus_stamps     No          Integer, bonus points given to target user's membership
+================ =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/activate -i -d '{ "token": "secret", "user": 12, "pin": "123456", "merchant_id": 1, "bonus_stamps": 10 }'
+
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+user                Customer profile data
+membership          Various information about active membership
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "user": {
+        "id": "123",
+        "name": "Customer",
+        "gender": "m",
+        "address": "Jl MK raya",
+        "is_active": true,
+        "email": "customer@stamps.co.id",
+        "phone": "+62812398712",
+        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+        "birthday": "1989-10-1",
+      },
+      "membership": {
+        "level": 1,
+        "level_text": "Blue",
+        "stamps": 100,
+        "balance": 0,
+        "is_blocked": false,
+        "referral_code": "abc123",
+        "start_date": "2022-01-01",
+        "created": "2022-01-01",
+      }
     }

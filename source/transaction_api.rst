@@ -56,7 +56,7 @@ extra_data                  No          Additional data for further processing
 Channel Mapping
 
 =================== ===========
-Code                Description   
+Code                Description
 =================== ===========
 1                   Mobile App
 2                   POS
@@ -74,7 +74,7 @@ Code                Description
 Type Mapping
 
 =================== ===========
-Code                Description   
+Code                Description
 =================== ===========
 1                   Delivery
 2                   Dine-in
@@ -88,7 +88,7 @@ Code                Description
 Payment Method Mapping
 
 =================== ===========
-Code                Description   
+Code                Description
 =================== ===========
 10                  Cash
 11                  Exact Cash
@@ -414,7 +414,7 @@ When some fields don't validate:
      [Redacted Header]
 
     {"errors": {"info": "Transaction can't be canceled due to insufficient Stamps"}}
- 
+
 3. Modify Transaction's Value or Items
 =============================
 | URL endpoint: https://stamps.co.id/api/v2/transactions/modify
@@ -525,7 +525,7 @@ If transaction is successfully canceled:
         "mobile_phone":null,
         "stamps_remaining": 62,
         "status": "Blue",
-        "balance":0       
+        "balance":0
       }
     }
 
@@ -706,3 +706,96 @@ On successful balance update:
     {
       "stamps": 10
     }
+
+
+5. List User Transaction
+=============================
+| URL endpoint: https://stamps.co.id/api/transactions/by-user
+| Allowed method: GET
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+You can query latest user transaction's list through this API.
+
+==========================  =========== =========================================================
+Parameter                   Required    Description
+==========================  =========== =========================================================
+token                       Yes         Authentication string
+user                        Yes         A string indicating customer's email, Member ID,
+                                        mobile number or primary key ID
+==========================  =========== =========================================================
+
+
+Example of API call request using cURL (JSON)
+
+.. code-block :: bash
+
+    $ curl -X GET -H "Content-Type: application/json" https://stamps.co.id/api/transactions/by-user -i -d '{ "token": "secret", "user": 123}'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+transactions        list of user transactions
+                    contains, id, value,
+                    stamps_earned, number_of_people,
+                    discount, subtotal, invoice_number,
+                    created, merchant, and store
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful get Transactions:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+    {
+    "transactions": [
+      {
+        "id": 20,
+        "value": 200000.0,
+        "stamps_earned": 1,
+        "number_of_people": null,
+        "discount": null,
+        "subtotal": null,
+        "invoice_number": "0020014795:1:001",
+        "created": 1661075448,
+        "merchant": "Merchant Test",
+        "store": {
+          "name": "0020014795",
+          "display_name": "TEST STORE"
+        }
+      },
+      {
+        "id": 15,
+        "value": 10000.0,
+        "stamps_earned": 20,
+        "number_of_people": null,
+        "discount": null,
+        "subtotal": 102.0,
+        "invoice_number": "0020014795:1:002",
+        "created": 1661075448,
+        "merchant": "Merchant Test"",
+        "store": {
+          "name": "0020014795",
+          "display_name": "TEST STORE"
+        }
+      }
+    ]
+  }

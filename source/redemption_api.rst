@@ -24,6 +24,7 @@ invoice_number  No        POS invoice number
 channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 stamps          No        Integer value indicating the stamps required for a flexible reward
 extra_data      No        JSON object containing any additional data
+qty             No        A number indicating quantity for reward value
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
@@ -37,6 +38,7 @@ Here's an example of how the API call might look like in JSON format with specif
         "reward": 1,
         "invoice_number": "POS-1020123",
         "stamps": 20,
+        "qty": 1,
         "extra_data": {
             "discount": "10%"
         }
@@ -46,7 +48,7 @@ Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12, "stamps": 20}' https://stamps.co.id/api/v2/redemptions/redeem-reward
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12, "stamps": 20, "qty": 1}' https://stamps.co.id/api/v2/redemptions/redeem-reward
 
 
 B. Response

@@ -100,6 +100,7 @@ On a successful API call:
         "gender": "male",
         "address": "",
         "is_active": true,
+        "is_anonymized": true,
         "email": "customer@stamps.co.id",
         "phone": "+6281314811365",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
@@ -271,35 +272,35 @@ You can use this API to register your customer through Point of Sales
 or other websites. On successful redemption, Stamps will send an email
 containing an automatically generated password.
 
-=============== =========== =========================
-Parameter       Required    Description
-=============== =========== =========================
-token           Yes         Authentication string
-merchant        Yes         Integer indicating merchant ID
-name            Yes         Customer's name
-email           Yes         Customer's email
-mobile_number   Yes         Customer's mobile number
-birthday        Yes         Customer's birthday (with format YYYY-MM-DD)
-gender          Yes         Customer's gender ("male" or "female")
-store           Yes         Integer representing store ID where customer is registered
-member_id       No          Customer's member (card) id
-address         No          Customer's address
-district        No          Customer's address district ID
-postal_code     No          Customer's postal code
-referral_code   No          Referal code used to register customer
-is_active       No          Customer's registration status
-religion        No          Customer's religion
-marital_status  No          Customer's marital status
-wedding_date    No          Customer's weidding date
-extra_data      No          Extra data related to customer
-
-=============== =========== =========================
+============================ =========== =========================
+Parameter                    Required    Description
+============================ =========== =========================
+token                        Yes         Authentication string
+merchant                     Yes         Integer indicating merchant ID
+name                         Yes         Customer's name
+email                        Yes         Customer's email
+mobile_number                Yes         Customer's mobile number
+birthday                     Yes         Customer's birthday (with format YYYY-MM-DD)
+gender                       Yes         Customer's gender ("male" or "female")
+store                        Yes         Integer representing store ID where customer is registered
+member_id                    No          Customer's member (card) id
+address                      No          Customer's address
+district                     No          Customer's address district ID
+postal_code                  No          Customer's postal code
+referral_code                No          Referal code used to register customer
+is_active                    No          Customer's registration status
+religion                     No          Customer's religion
+marital_status               No          Customer's marital status
+wedding_date                 No          Customer's weidding date
+extra_data                   No          Extra data related to customer
+registering_employee_code    No          A String indicated Employee Code, if customer not exist will create new one
+============================ =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true, "registering_employee_code": "EMP001"}'
 
 
 B. Response Data
@@ -361,6 +362,7 @@ A successful API call:
         "religion": 1,
         "marital_status": 1,
         "wedding_date": null,
+        "is_anonymized": true,
         "membership": {
           "tags": [],
           "status": 100,
@@ -377,7 +379,8 @@ A successful API call:
            "district": {"id": 1, "name": "Kebayoran Baru"},
            "regency": {"id": 1, "name": "Jakarta Selatan"},
            "province": {"id": 1, "name": "DKI Jakarta"}
-        }
+        },
+        "registering_employee_code": "EMP001"
     }
 
 
@@ -489,6 +492,7 @@ A successful API call:
         "religion": 1,
         "marital_status": 1,
         "wedding_date": null,
+        "is_anonymized": true,
     }
 
 
@@ -587,6 +591,7 @@ A successful API call:
             "marital_status": "Married",
             "religion": "Budha",
             "wedding_date": "1995-12-01",
+            "is_anonymized": true,
             "location": {
                 "district": {
                     "id": 1,
@@ -623,6 +628,10 @@ A successful API call:
                     "type": {
                         "code": "cat",
                         "name": "Felines"
+                    },
+                    "breed": {
+                        "code": "siamese",
+                        "name": "Siamese"
                     }
                 },
                 {
@@ -632,6 +641,10 @@ A successful API call:
                     "type": {
                         "code": "dog",
                         "name": "Canines"
+                    },
+                    "breed": {
+                        "code": "bulldog",
+                        "name": "Bulldog"
                     }
                 },
             ],
@@ -1136,8 +1149,8 @@ You can use this API to request authentication code for change mobile number.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-type          Yes         A choices for delivery channel for otp ( email, sms, whatsapp )
+mobile_number Yes         A string indicating customer new mobile number
+type          Yes         A choices for delivery channel for otp ( sms, whatsapp )
 template_code No          A template code for otp messages template, can be setup in merchant interfaces
 ============= =========== =========================
 
@@ -1247,7 +1260,7 @@ You can use this API to modify mobile number.
 Parameter     Required    Description
 ============= =========== =========================
 identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-new_mumber    Yes         A new mobile number
+new_number    Yes         A new mobile number
 otp           Yes         A string for authentication
 ============= =========== =========================
 
@@ -1303,4 +1316,167 @@ A successful API call:
     [Redacted Header]
     {
         "status": "ok"
+    }
+
+
+14. Request OTP to Modify Email
+===============================
+| URL endpoint: https://stamps.co.id/api/v2/accounts/request-otp-for-email-change
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to request authentication code to change email.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+type          Yes         A choices for delivery channel for otp ( email, sms, whatsapp )
+template_code No          A template code for otp messages template, can be setup in merchant interfaces
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "user": 123, "type": "sms", "template_code": "OTP_1"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+otp                 6 digit string OTP number for authentication
+=================== ==============================
+
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "otp": "123456"
+    }
+
+Invalid Template Code:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "template_code: Message template not found",
+        "errors": {
+            "template_code": "Message template not found"
+        },
+        "error_code": "invalid_template_code",
+        "error_message": "Message template not found"
+    }
+
+Invalid Whatsapp number if delivery channel is whatsapp
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "type: User does not have mobile number or has incorrect whatsapp number",
+        "errors": {
+            "type": "User does not have mobile number or has incorrect whatsapp number"
+        },
+        "error_code": "invalid_user_whatsapp_number",
+        "error_message": "User does not have mobile number or has incorrect whatsapp number"
+    }
+
+
+15. Modify Email
+================
+| URL endpoint: https://stamps.co.id/api/v2/accounts/change-email
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to modify email.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+otp           Yes         6 digit string OTP received from ``Request OTP to Modify Email`` API
+new_email     Yes         A new email
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/change-email -i -d '{ "token": "secret", "user": 123, "new_email": "alice@stamps.co.id", "otp": "123456"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "status": "ok"
+    }
+
+Email is already used
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "new_email: alice@stamps.co.id is already used",
+        "errors": {
+            "new_email": "alice@stamps.co.id is already used",
+        },
+        "error_code": "email_already_used",
+        "error_message": "alice@stamps.co.id is already used"
     }

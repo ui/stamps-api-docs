@@ -44,7 +44,7 @@ items                       No          List of items containing product name, q
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
                                         ``value`` is the amount of payment
-                                        ``payment_method`` is the method used for payment, for payment method mapping, see table below
+                                        ``payment_method`` is the method used for payment
                                         ``eligible_for_membership`` whether this payment is used for member's status/level changes.
                                         This field is optional. Default to true if not provided(can be configured later).
 stamps                      No          A number indicating custom stamps
@@ -81,55 +81,6 @@ Code                Description
 3                   Take out
 4                   E-Commerce
 5                   Pickup
-=================== ===========
-
-
-
-Payment Method Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-10                  Cash
-11                  Exact Cash
-12                  Rp50000
-13                  Rp100000
-20                  Debit Card
-30                  Credit Card
-31                  BCA Credit Card
-32                  CIMB Credit Card
-40                  Digital
-41                  GO-PAY
-42                  Dana
-43                  OVO
-44                  Link Aja
-45                  BCA Virtual Account
-46                  Shopee Pay
-47                  Sakuku
-50                  Voucher
-51                  MAP 50000
-52                  MAP 100000
-53                  MAP 500000
-54                  SOGO 25000
-55                  SOGO 50000
-56                  SOGO 10000
-57                  SODEXO
-58                  GL 50000
-59                  GL 100000
-60                  Others
-61                  VMM Mandiri
-62                  BCA Debit
-63                  BCA Card
-64                  Flazz
-65                  GO-RESTO
-66                  DANA Online
-67                  GRAB-IM
-68                  OVO Online
-69                  GO-PAY Online
-70                  Shopee Online
-71                  BNI Card
-72                  BNI
-73                  Traveloka
 =================== ===========
 
 
@@ -298,7 +249,7 @@ C. Legacy Endpoint
 Legacy endpoint's documentation is available at `Legacy transaction API <http://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
 
 
-2. Adding a Transaction with Redemptions
+1. Adding a Transaction with Redemptions
 =======================
 | URL endpoint: https://stamps.co.id/api/v2/transactions/add-with-redemptions
 | Allowed method: POST
@@ -340,7 +291,7 @@ items                       No          List of items containing product name, q
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
                                         ``value`` is the amount of payment
-                                        ``payment_method`` is the method used for payment, for payment method mapping, see table below
+                                        ``payment_method`` is the method used for payment
                                         ``eligible_for_membership`` whether this payment is used for member's status/level changes.
                                         This field is optional. Default to true if not provided(can be configured later).
 stamps                      No          A number indicating custom stamps
@@ -379,55 +330,6 @@ Code                Description
 3                   Take out
 4                   E-Commerce
 5                   Pickup
-=================== ===========
-
-
-
-Payment Method Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-10                  Cash
-11                  Exact Cash
-12                  Rp50000
-13                  Rp100000
-20                  Debit Card
-30                  Credit Card
-31                  BCA Credit Card
-32                  CIMB Credit Card
-40                  Digital
-41                  GO-PAY
-42                  Dana
-43                  OVO
-44                  Link Aja
-45                  BCA Virtual Account
-46                  Shopee Pay
-47                  Sakuku
-50                  Voucher
-51                  MAP 50000
-52                  MAP 100000
-53                  MAP 500000
-54                  SOGO 25000
-55                  SOGO 50000
-56                  SOGO 10000
-57                  SODEXO
-58                  GL 50000
-59                  GL 100000
-60                  Others
-61                  VMM Mandiri
-62                  BCA Debit
-63                  BCA Card
-64                  Flazz
-65                  GO-RESTO
-66                  DANA Online
-67                  GRAB-IM
-68                  OVO Online
-69                  GO-PAY Online
-70                  Shopee Online
-71                  BNI Card
-72                  BNI
-73                  Traveloka
 =================== ===========
 
 
@@ -623,7 +525,7 @@ If missing or wrong authentication token:
 
 
 
-3. Canceling a Transaction
+1. Canceling a Transaction
 =============================
 | URL endpoint: https://stamps.co.id/api/v2/transactions/cancel
 | Allowed method: POST
@@ -1003,7 +905,7 @@ items                       No          List of items containing product name, q
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
                                         ``value`` is the amount of payment
-                                        ``payment_method`` is the method used for payment, for payment method mapping, see table below
+                                        ``payment_method`` is the method used for payment
                                         ``eligible_for_membership`` whether this payment is used for member's status/level changes.
                                         This field is optional. Default to true if not provided(can be configured later).
 ==========================  =========== =========================================================
@@ -1046,7 +948,7 @@ On successful balance update:
     }
 
 
-5. List User Transaction
+1. List User Transaction
 =============================
 | URL endpoint: https://stamps.co.id/api/transactions/by-user
 | Allowed method: GET

@@ -424,13 +424,14 @@ extra_data           No          Extra data related to customer
 has_downloaded_app   No          Boolean indicating user has downloaded an app
 phone_is_verified    No          Boolean indicating user's phone is verified
 email_is_verified    No          Boolean indicating user's email is verified
+notes                No          String to give custom notes to this user
 ==================== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note"}'
 
 
 B. Response Data
@@ -592,6 +593,8 @@ A successful API call:
             "religion": "Budha",
             "wedding_date": "1995-12-01",
             "is_anonymized": true,
+            "notes": "Note",
+            "has_downloaded_app": True,
             "location": {
                 "district": {
                     "id": 1,

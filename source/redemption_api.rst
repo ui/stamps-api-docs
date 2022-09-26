@@ -25,6 +25,7 @@ channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` f
 stamps          No        Integer value indicating the stamps required for a flexible reward
 extra_data      No        JSON object containing any additional data
 qty             No        A number indicating quantity for reward value
+request_id      No        Request ID string, needed if using PIN authorization method
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
@@ -166,6 +167,7 @@ voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
 channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
+request_id      No        Request ID string, needed if using PIN authorization method
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified voucher.
@@ -456,4 +458,78 @@ If redemption is successfully canceled:
         "id": 6,
         "stamps_remaining": 60
       }
+    }
+
+
+5. Authorize Redemption
+=======================
+| URL endpoint: https://stamps.co.id/api/redemptions/authorize
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to authorize reward or voucher redemption if redemption settings is set to use PIN authorization method.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+token         Yes         Authentication string
+user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+pin           Yes         6 digit string
+request_id    Yes         A string indicating the Request ID to be authorized
+timeout       Yes         An integer indicating duration in seconds the authorization is valid
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/redemptions/authorize -i -d '{ "token": "secret", "user": 123, "pin": "123456", "request_id": "abcdefgh", "timeout": 900}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "status": "ok"
+    }
+
+Invalid PIN:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "pin: Invalid PIN, 2 attempt(s) left",
+        "errors": {
+            "pin": "Invalid PIN, 2 attempt(s) left"
+        },
+        "error_code": "invalid_pin",
+        "error_message": "pin: Invalid PIN, 2 attempt(s) left"
     }

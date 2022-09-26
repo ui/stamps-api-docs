@@ -162,7 +162,7 @@ On successful balance update:
           "validity": "Dynamic"
       }
   }
-  
+
 
 3. Get Vouchers by Merchant Group
 ====================================
@@ -261,6 +261,22 @@ On a successful API call:
         }
       ]
     }
+
+
+Voucher Template Type Mapping
+
+=================== ===========
+Code                Description
+=================== ===========
+1                   Cross Promotion
+2                   Regular
+3                   Promotion
+4                   Signup
+5                   Birthday
+6                   Referral
+7                   Pregenerated
+8                   Anniversary
+=================== ===========
 
 
 4. Get Vouchers Count by Merchant Group

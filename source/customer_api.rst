@@ -409,7 +409,8 @@ or other websites.
 Parameter            Required    Description
 ==================== =========== =========================
 user                 Yes         Customer's integer primary key or Card number
-token                Yes         Authentication string
+token                Yes         Authenticat
+ion string
 merchant             Yes         Integer indicating merchant ID
 name                 Yes         Customer's name
 birthday             Yes         Customer's birthday (with format YYYY-MM-DD)
@@ -1496,9 +1497,7 @@ You can use this API to register your customer
 Parameter                    Required    Description
 ============================ =========== =========================
 token                        Yes         Authentication string
-user                         Yes         A string indicating
-                                         customer's email,
-                                         or mobile number
+user                         Yes         Member's email or mobile number
 send_registration_message    No          Default True
 registering_employee_code    No          A string indicating
                                          employee code

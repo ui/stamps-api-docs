@@ -1328,7 +1328,7 @@ A successful API call:
 A. Request
 -----------------------------
 
-You can use this API to request authentication code to change email. The authentication code will be sent to the user current email.
+You can use this API to request authentication code to change email. The authentication code will be sent to the new email address provided.
 
 ============= =========== =========================
 Parameter     Required    Description

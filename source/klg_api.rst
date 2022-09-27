@@ -17,7 +17,7 @@ You can get unmerged legacy memberships that are potentially duplicate to a lega
 Parameter        Required    Description
 ============     =========== =========================
 token            Yes         Authentication token in string
-user             Yes         Legacy membership's ID
+user             Yes         Legacy membership's email or mobile number
 pin              Yes         Legacy mebership's PIN
 ============     =========== =========================
 

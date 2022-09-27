@@ -1485,3 +1485,106 @@ Email is already used
         "error_code": "email_already_used",
         "error_message": "alice@stamps.co.id is already used"
     }
+
+
+15. Partial Registration
+===============
+| URL endpoint: https://stamps.co.id/api/v3/memberships/partial-registration
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to register your customer
+
+============================ =========== =========================
+Parameter                    Required    Description
+============================ =========== =========================
+token                        Yes         Authentication string
+user                         Yes         Member's email or mobile number
+send_registration_message    No          Default True
+registering_employee_code    No          A string indicating
+                                         employee code
+============================ =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v3/memberships/partial-registration -i -d '{"token": "secreet", "user": "partial1@mail.com"}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+user                Various user data
+membership          Various membership data
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+    "membership": {
+        "level": 100,
+        "level_text": "Blue",
+        "stamps": 0,
+        "balance": 0,
+        "is_blocked": false,
+        "referral_code": "7LXJ7",
+        "start_date": "2022-09-16",
+        "created": "2022-09-16"
+    },
+    "user": {
+        "id": 140,
+        "name": "",
+        "gender": null,
+        "is_active": true,
+        "email": "partial1@mail.com",
+        "birthday": null,
+        "picture_url": null,
+        "phone": null,
+        "has_incorrect_email": false,
+        "has_incorrect_phone": false,
+        "has_incorrect_wa_number": false,
+        "phone_is_verified": false,
+        "email_is_verified": false,
+        "registering_employee_code": "ABC123"
+    }
+}

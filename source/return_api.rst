@@ -256,7 +256,7 @@ payments                       No          Must be provided if original transact
                                            Payments are list of :ref:`payment objects <Payment Object>`
 items                          Yes         Which items are returned. Items are list of :ref:`item objects<Item Object>`
 stamps_to_refund               No          Stamps payment to be returned
-cancel_redemptions             No          Also cancel redemption related to original transaction. Default to "false"
+cancel_redemptions             No          Also cancel redemptions related to original transaction. Default to "false"
 ============================== =========== =============================================================================
 
 Example of API call request using cURL

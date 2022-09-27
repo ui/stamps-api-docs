@@ -595,6 +595,7 @@ A successful API call:
             "wedding_date": "1995-12-01",
             "is_anonymized": true,
             "has_pin": false,
+            "pin_is_blocked": false,
             "notes": "Note",
             "has_downloaded_app": True,
             "location": {

@@ -25,7 +25,7 @@ channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` f
 stamps          No        Integer value indicating the stamps required for a flexible reward
 extra_data      No        JSON object containing any additional data
 qty             No        A number indicating quantity for reward value
-request_id      No        Request ID string, needed if using PIN authorization method
+request_id      No        This field is needed if PIN authorization is enabled
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified reward
@@ -167,7 +167,7 @@ voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
 channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
-request_id      No        Request ID string, needed if using PIN authorization method
+request_id      No        This field is needed if PIN authorization is enabled
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified voucher.

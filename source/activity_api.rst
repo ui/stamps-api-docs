@@ -25,7 +25,7 @@ older_than          No          Activity ID. 50 activities will be returned that
 Here's an example of a Activity List API call using cURL.
 
 .. code-block :: bash
-    
+
     $ curl 'https://stamps.co.id/api/v2/activities?token=abc&user=customer@stamps.co.id'
 
 B. Response
@@ -37,7 +37,8 @@ On a successful API call, Stamps will reply with 50 (maximum) activities in a JS
 Variable            Description
 =================== ==================
 actitivities        Activity list.
-                    Contains id, number of people and other details.
+                    Contains id, :ref:`activity type <Activity Type>` and other details.
+                    Object may vary depending on the activity type.
 error_messages      Errors encountered when parsing data (if any)
 =================== ==================
 
@@ -56,84 +57,7 @@ Below is an example response on successful API call.
     Vary: Accept, Cookie
 
     {
-        "activities":[{
-            "id":2590959,
-            "type":1,
-            "created":"2020-12-04T02:42:44+00:00",
-            "created_timestamp":1607049764,
-            "merchantName":"Levi's",
-            "merchantID":2,
-            "stamps":0,
-            "name":"Update Database Voucher IDR 100,000",
-            "status":2,
-            "store":"Tes Store",
-            "store_display_name":""
-        },
-        {
-            "id":2588920,
-            "type":1,
-            "created":"2020-12-02T08:40:00+00:00",
-            "created_timestamp":1606898400,
-            "merchantName":"Levi's",
-            "merchantID":2,
-            "stamps":0,
-            "name":"VOUCHER TEST REDEEM Rp 100,000",
-            "status":1,
-            "store":"Campaign Microsite",
-            "store_display_name":"Campaign Microsite"
-        },
-        {
-            "id":2588910,
-            "type":1,
-            "created":"2020-12-02T07:35:58+00:00",
-            "created_timestamp":1606894558,
-            "merchantName":"Levi's",
-            "merchantID":2,
-            "stamps":0,
-            "name":"VOUCHER TEST REDEEM Rp 100,000",
-            "status":1,
-            "store":"Campaign Microsite",
-            "store_display_name":"Campaign Microsite"
-        },
-        {
-            "id":2587493,
-            "type":1,
-            "created":"2020-12-01T03:40:40+00:00",
-            "created_timestamp":1606794040,
-            "merchantName":"Levi's",
-            "merchantID":2,
-            "stamps":0,
-            "name":"Update Database Voucher IDR 100,000",
-            "status":2,
-            "store":"Tes Store",
-            "store_display_name":""
-        },
-        {
-            "id":2587476,
-            "type":1,
-            "created":"2020-12-01T03:00:06+00:00",
-            "created_timestamp":1606791606,
-            "merchantName":"Levi's",
-            "merchantID":2,
-            "stamps":0,
-            "name":"Update Database Voucher IDR 100,000",
-            "status":2,
-            "store":"Tes Store",
-            "store_display_name":""
-        },
-        {
-            "id":2375302,
-            "type":1,
-            "created":"2020-06-18T05:26:08+00:00",
-            "created_timestamp":1592457968,
-            "merchantName":"Levi's",
-            "merchantID":2,
-            "stamps":0,
-            "name":"salah"
-            "status":1,
-            "store":"levisecom",
-            "store_display_name":"Levi's Ecommerce"
-        },
+        "activities": [
         {
             "id": 704,
             "type": 0,
@@ -148,12 +72,86 @@ Below is an example response on successful API call.
             "store_display_name": "ST ACE KARAWACI MAL",
             "invoice_number": "INV-17",
             "channel": "Mobile App"
+        },
+        {
+            "id": 2590959,
+            "type": 1,
+            "created": "2020-12-04T02:42:44+00:00",
+            "created_timestamp": 1607049764,
+            "merchantName": "Levi's",
+            "merchantID": 2,
+            "stamps": 0,
+            "name": "Update Database Voucher IDR 100,000",
+            "status": 2,
+            "store": "Tes Store",
+            "store_display_name": ""
+        },
+        {
+            "id": 2590960,
+            "type": 2,
+            "created": "2020-12-04T02:42:44+00:00",
+            "created_timestamp": 1607049764,
+            "merchantName": "Levi's",
+            "merchantID": 2,
+            "stamps": 0,
+            "name": "Update Database Voucher IDR 100,000",
+            "status": 2
+        },
+        {
+            "id": 2590961,
+            "type": 7,
+            "created": "2020-12-04T02:42:44+00:00",
+            "created_timestamp": 1607049764,
+            "merchantName": "Levi's",
+            "merchantID": 2,
+            "store": "Tes Store",
+            "store_display_name": ""
+            "transaction_number": "ABCDE123",
+            "amount": 120000,
+            "status": 1
+        },
+        {
+            "id": 2590962,
+            "type": 8
+        },
+        {
+            "id": 2590963,
+            "type": 9,
+            "created": "2020-12-04T02:42:44+00:00",
+            "created_timestamp": 1607049764
+        },
+        {
+            "id": 2590964,
+            "type": 10,
+            "created": "2020-12-04T02:42:44+00:00",
+            "created_timestamp": 1607049764,
+            "deducted_stamps": 100,
+            "notes": ""
+        },
+        {
+            "id": 2590965,
+            "type": 11,
+            "created_timestamp": 1607049764,
+            "root_transaction_id": "12",
+            "original_transaction_id": "12",
+            "modified_transaction_id": "13",
+            "store_name": "Tes Store",
+            "stamps_delta": "10",
+            "subtotal_delta": "100000",
+            "refunded_stamps": "5"
+        },
+        {
+            "id": 2590966,
+            "type": 12
         }]
     }
 
 
-Activity Type Mapping
+Miscellaneous
+------------------------------
 
+Activity Type
+^^^^^^^^^^^^^^^^^^^^^
 =================== ===========
 Code                Description
 =================== ===========
@@ -166,5 +164,6 @@ Code                Description
 8                   Survey Submission
 9                   Completed Registration
 10                  Deduct Stamps
+11                  Return transaction
+12                  Membership Level Override
 =================== ===========
-

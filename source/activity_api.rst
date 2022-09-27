@@ -58,92 +58,93 @@ Below is an example response on successful API call.
 
     {
         "activities": [
-        {
-            "id": 704,
-            "type": 0,
-            "created": "2022-08-31T06:01:01+00:00",
-            "created_timestamp": 1661925661,
-            "merchantName": "Ace Hardware",
-            "merchantID": 5,
-            "stamps": 20,
-            "name": "Transaction #493",
-            "status": 2,
-            "store": "A301",
-            "store_display_name": "ST ACE KARAWACI MAL",
-            "invoice_number": "INV-17",
-            "channel": "Mobile App"
-        },
-        {
-            "id": 2590959,
-            "type": 1,
-            "created": "2020-12-04T02:42:44+00:00",
-            "created_timestamp": 1607049764,
-            "merchantName": "Levi's",
-            "merchantID": 2,
-            "stamps": 0,
-            "name": "Update Database Voucher IDR 100,000",
-            "status": 2,
-            "store": "Tes Store",
-            "store_display_name": ""
-        },
-        {
-            "id": 2590960,
-            "type": 2,
-            "created": "2020-12-04T02:42:44+00:00",
-            "created_timestamp": 1607049764,
-            "merchantName": "Levi's",
-            "merchantID": 2,
-            "stamps": 0,
-            "name": "Update Database Voucher IDR 100,000",
-            "status": 2
-        },
-        {
-            "id": 2590961,
-            "type": 7,
-            "created": "2020-12-04T02:42:44+00:00",
-            "created_timestamp": 1607049764,
-            "merchantName": "Levi's",
-            "merchantID": 2,
-            "store": "Tes Store",
-            "store_display_name": ""
-            "transaction_number": "ABCDE123",
-            "amount": 120000,
-            "status": 1
-        },
-        {
-            "id": 2590962,
-            "type": 8
-        },
-        {
-            "id": 2590963,
-            "type": 9,
-            "created": "2020-12-04T02:42:44+00:00",
-            "created_timestamp": 1607049764
-        },
-        {
-            "id": 2590964,
-            "type": 10,
-            "created": "2020-12-04T02:42:44+00:00",
-            "created_timestamp": 1607049764,
-            "deducted_stamps": 100,
-            "notes": ""
-        },
-        {
-            "id": 2590965,
-            "type": 11,
-            "created_timestamp": 1607049764,
-            "root_transaction_id": "12",
-            "original_transaction_id": "12",
-            "modified_transaction_id": "13",
-            "store_name": "Tes Store",
-            "stamps_delta": "10",
-            "subtotal_delta": "100000",
-            "refunded_stamps": "5"
-        },
-        {
-            "id": 2590966,
-            "type": 12
-        }]
+            {
+                "id": 704,
+                "type": 0,
+                "created": "2022-08-31T06:01:01+00:00",
+                "created_timestamp": 1661925661,
+                "merchantName": "Ace Hardware",
+                "merchantID": 5,
+                "stamps": 20,
+                "name": "Transaction #493",
+                "status": 2,
+                "store": "A301",
+                "store_display_name": "ST ACE KARAWACI MAL",
+                "invoice_number": "INV-17",
+                "channel": "Mobile App"
+            },
+            {
+                "id": 2590959,
+                "type": 1,
+                "created": "2020-12-04T02:42:44+00:00",
+                "created_timestamp": 1607049764,
+                "merchantName": "Levi's",
+                "merchantID": 2,
+                "stamps": 0,
+                "name": "Update Database Voucher IDR 100,000",
+                "status": 2,
+                "store": "Tes Store",
+                "store_display_name": ""
+            },
+            {
+                "id": 2590960,
+                "type": 2,
+                "created": "2020-12-04T02:42:44+00:00",
+                "created_timestamp": 1607049764,
+                "merchantName": "Levi's",
+                "merchantID": 2,
+                "stamps": 0,
+                "name": "Update Database Voucher IDR 100,000",
+                "status": 2
+            },
+            {
+                "id": 2590961,
+                "type": 7,
+                "created": "2020-12-04T02:42:44+00:00",
+                "created_timestamp": 1607049764,
+                "merchantName": "Levi's",
+                "merchantID": 2,
+                "store": "Tes Store",
+                "store_display_name": ""
+                "transaction_number": "ABCDE123",
+                "amount": 120000,
+                "status": 1
+            },
+            {
+                "id": 2590962,
+                "type": 8
+            },
+            {
+                "id": 2590963,
+                "type": 9,
+                "created": "2020-12-04T02:42:44+00:00",
+                "created_timestamp": 1607049764
+            },
+            {
+                "id": 2590964,
+                "type": 10,
+                "created": "2020-12-04T02:42:44+00:00",
+                "created_timestamp": 1607049764,
+                "deducted_stamps": 100,
+                "notes": ""
+            },
+            {
+                "id": 2590965,
+                "type": 11,
+                "created_timestamp": 1607049764,
+                "root_transaction_id": "12",
+                "original_transaction_id": "12",
+                "modified_transaction_id": "13",
+                "store_name": "Tes Store",
+                "stamps_delta": "10",
+                "subtotal_delta": "100000",
+                "refunded_stamps": "5"
+            },
+            {
+                "id": 2590966,
+                "type": 12
+            }
+        ]
     }
 
 

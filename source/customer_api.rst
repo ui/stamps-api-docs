@@ -1333,13 +1333,12 @@ A successful API call:
 A. Request
 -----------------------------
 
-You can use this API to request authentication code to change email.
+You can use this API to request authentication code to change email. The authentication code will be sent to the new email address provided.
 
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-type          Yes         A choices for delivery channel for otp ( email, sms, whatsapp )
+new_email     Yes         A string indicating customer's new email address
 template_code No          A template code for otp messages template, can be setup in merchant interfaces
 ============= =========== =========================
 
@@ -1347,7 +1346,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "user": 123, "type": "sms", "template_code": "OTP_1"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "new_email": "alice@stamps.co.id", "template_code": "OTP_1"}'
 
 
 B. Response Data
@@ -1388,15 +1387,15 @@ Invalid Template Code:
     [Redacted Header]
 
     {
-        "detail": "template_code: Message template not found",
+        "detail": "template_code: Email template not found",
         "errors": {
-            "template_code": "Message template not found"
+            "template_code": "Email template not found"
         },
         "error_code": "invalid_template_code",
-        "error_message": "Message template not found"
+        "error_message": "Email template not found"
     }
 
-Invalid Whatsapp number if delivery channel is whatsapp
+New email already used
 
 .. code-block :: bash
 
@@ -1406,12 +1405,12 @@ Invalid Whatsapp number if delivery channel is whatsapp
     [Redacted Header]
 
     {
-        "detail": "type: User does not have mobile number or has incorrect whatsapp number",
+        "detail": "new_email: alice@stamps.co.id is already used",
         "errors": {
-            "type": "User does not have mobile number or has incorrect whatsapp number"
+            "new_email": "alice@stamps.co.id is already used"
         },
-        "error_code": "invalid_user_whatsapp_number",
-        "error_message": "User does not have mobile number or has incorrect whatsapp number"
+        "error_code": "email_already_used",
+        "error_message": "alice@stamps.co.id is already used"
     }
 
 

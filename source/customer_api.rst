@@ -81,6 +81,7 @@ On a successful API call:
         "tags": [],
         "status": 100,
         "status_text": "Blue",
+        "member_status": "Active",
         "stamps": 401,
         "balance": 150000,
         "is_blocked": false,
@@ -368,6 +369,7 @@ A successful API call:
           "tags": [],
           "status": 100,
           "status_text": "Blue",
+          "member_status": "Active",
           "stamps": 401,
           "balance": 150000,
           "is_blocked": false,
@@ -1564,6 +1566,7 @@ A successful API call:
     "membership": {
         "level": 100,
         "level_text": "Blue",
+        "status": "Active",
         "stamps": 0,
         "balance": 0,
         "is_blocked": false,

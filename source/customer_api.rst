@@ -428,6 +428,8 @@ has_downloaded_app   No          Boolean indicating user has downloaded an app
 phone_is_verified    No          Boolean indicating user's phone is verified
 email_is_verified    No          Boolean indicating user's email is verified
 notes                No          String to give custom notes to this user
+marital_status       No          Customer's marital status
+wedding_date         No          Customer's weidding date
 ==================== =========== =========================
 
 Example of API call request using cURL:

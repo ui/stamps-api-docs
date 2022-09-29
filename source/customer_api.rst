@@ -110,7 +110,9 @@ On a successful API call:
         "protected_redemption": false,
         "religion": 1,
         "marital_status": 1,
-        "wedding_date": null
+        "wedding_date": null,
+        "has_pin": false,
+        "pin_is_blocked": false
       }
     }
 
@@ -1161,7 +1163,7 @@ Parameter     Required    Description
 ============= =========== =========================
 mobile_number Yes         A string indicating customer new mobile number
 type          Yes         A choices for delivery channel for otp ( sms, whatsapp )
-template_code No          A template code for otp messages template, can be setup in merchant interfaces
+template_code Yes         A template code for otp messages template, can be setup in merchant interfaces
 ============= =========== =========================
 
 Example of API call request using cURL:

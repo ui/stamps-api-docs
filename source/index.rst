@@ -23,6 +23,7 @@ Contents
    feedback_api.rst
    booking_api.rst
    stamps_api.rst
+   return_api.rst
    activity_api.rst
    auth_api.rst
    legacy_members_api.rst

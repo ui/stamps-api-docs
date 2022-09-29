@@ -43,7 +43,7 @@ Variable            Description
 customer            Customer information after successful query. Contains id, stamps_remaining, and status.
 rewards             List of rewards available for redemption.
                     Contains id, name, stamps_required, extra_data, image_url, is_visible,
-                    and redeemable(If user is provided)
+                    :ref:`type <Reward Type>` and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url, extra_data
                     landscape_url, and expires_on.
@@ -224,8 +224,79 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-Reward Type Mapping
+2. Get Reward Detail
+=======================================
+| URL endpoint: https://stamps.co.id/api/rewards/{reward_code}
+| Allowed Method: GET
+| Require Authentication: Yes
 
+A. Request
+-----------------------------
+
+You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
+
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+token                          Yes         Authentication string
+============================== =========== ===================================================================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/rewards/ABCDE1?token=abc'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+reward              Various reward data
+errors              Errors encountered when parsing
+                    data (if any)
+=================== ==============================
+
+
+c. Examples
+-----------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "id": 1,
+      "name": "Example Reward",
+      "stamps_to_redeem": 100,
+      "get_absolute_url": "/merchant/rewards/abcde1",
+      "is_cross_promo": false,
+      "description": "An example description of a reward",
+      "redemption_url": "",
+      "membership": "Blue",
+      "picture_url": "/foo.png",
+      "is_active": true,
+      "code": "ABCDE1",
+      "extra_data": {},
+      "available_at": ["store A", "store B"]
+    }
+
+
+Miscellaneous
+------------------------------
+
+Reward Type
+^^^^^^^^^^^
 =================== ===========
 Code                Description
 =================== ===========

@@ -137,21 +137,22 @@ C. Example Response
 
 
 
-3. Get Suspected Duplicate Legacy Members
+3. Search Legacy Membership
 ====================================
-| URL endpoint: https://stamps.co.id/api/legacy/members/check-suspected-duplicates
+| URL endpoint: https://stamps.co.id/api/legacy/members/search
 | Allowed Method: GET
 | Require Authentication: Yes
 
 A. Request
 -----------------------------
-You can check for members with the same email / mobile number with this API.
+You can search for legacy members using email / mobile number with this API.
 
 ============     =========== =========================
 Parameter        Required    Description
 ============     =========== =========================
 token            Yes         Authentication token in string
-user             Yes         Legacy membership's email / mobile number
+email            No          Membership email. Required if mobile number is empty.
+mobile_number    No          Membership mobile number. Required if email is empty.
 ============     =========== =========================
 
 
@@ -159,7 +160,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/check-suspected-duplicates?token=123&member_id=612345'
+    $ curl 'https://stamps.co.id/api/legacy/search?token=123&email=test@stamps.co.id'
 
 
 B. Response

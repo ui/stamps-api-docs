@@ -107,6 +107,7 @@ token            Yes         Authentication token in string
 voucher_code     Yes         A string indicating voucher code
 merchant         Yes         Integer indicating the voucher template ID
 store            Yes         Integer indicating store ID to be queried for reward
+user             No          User identifier, will validate voucher owner if provided
 ============     =========== =========================
 
 
@@ -163,6 +164,23 @@ On successful balance update:
       }
   }
 
+The voucher is not owned by the user provided in the parameter:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "user: This voucher is not owned by Alice",
+        "error_message": "user: This voucher is not owned by Alice",
+        "error_code": "invalid_voucher_owner",
+        "errors": {
+            "user": "This voucher is not owned by Alice"
+        }
+    }
 
 3. Get Vouchers by Merchant Group
 ====================================

@@ -239,7 +239,6 @@ You can query for all available rewards on stamps with optional checking to user
 Parameter                      Required    Description
 ============================== =========== ===================================================================
 token                          Yes         Authentication string
-merchant                       Yes         Integer indicating merchant ID to be queried for reward
 ============================== =========== ===================================================================
 
 
@@ -247,7 +246,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/ABCDE1?token=abc&merchant=14'
+    $ curl 'https://stamps.co.id/api/rewards/ABCDE1?token=abc'
 
 
 B. Response Data

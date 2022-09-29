@@ -249,7 +249,7 @@ C. Legacy Endpoint
 Legacy endpoint's documentation is available at `Legacy transaction API <http://docs.stamps.co.id/en/latest/legacy_transaction_api.html>`_
 
 
-1. Adding a Transaction with Redemptions
+2. Adding a Transaction with Redemptions
 =======================
 | URL endpoint: https://stamps.co.id/api/v2/transactions/add-with-redemptions
 | Allowed method: POST
@@ -525,7 +525,7 @@ If missing or wrong authentication token:
 
 
 
-1. Canceling a Transaction
+3. Canceling a Transaction
 =============================
 | URL endpoint: https://stamps.co.id/api/v2/transactions/cancel
 | Allowed method: POST
@@ -948,7 +948,7 @@ On successful balance update:
     }
 
 
-1. List User Transaction
+7. List User Transaction
 =============================
 | URL endpoint: https://stamps.co.id/api/transactions/by-user
 | Allowed method: GET

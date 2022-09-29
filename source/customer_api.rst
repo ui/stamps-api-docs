@@ -110,7 +110,9 @@ On a successful API call:
         "protected_redemption": false,
         "religion": 1,
         "marital_status": 1,
-        "wedding_date": null
+        "wedding_date": null,
+        "has_pin": false,
+        "pin_is_blocked": false
       }
     }
 

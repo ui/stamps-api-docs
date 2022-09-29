@@ -263,6 +263,7 @@ On successful request pin:
     }
 
 
+
 5. Activate Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/activate
@@ -339,4 +340,70 @@ C. Example Response
         "start_date": "2022-01-01",
         "created": "2022-01-01",
       }
+    }
+
+
+
+6. Get Merged Legacy Members
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/get-merged-members
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+Allows you to query for legacy members that have been merged into a user's membership account.
+
+============     =========== =========================
+Parameter        Required    Description
+============     =========== =========================
+token            Yes         Authentication token in string
+user             Yes         A string indicating customer's email, Member ID, mobile number or primary key ID.
+                             This should be an active membership account.
+============     =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/legacy/get-merged-members?token=123&user=2'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+merged_members      An array of legacy member objects
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On successful balance update:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+    {
+      "merged_members": [
+        {
+          "member_id": "322177",
+          "email": "merged_legacy_member@stamps.com",
+          "mobile_number": "+62851111222444",
+          "merchant": 1,
+          "status": 1
+        },
+      ]
     }

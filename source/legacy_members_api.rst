@@ -160,7 +160,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/search?token=123&email=test@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/legacy/members/search?token=123&email=test@stamps.co.id'
 
 
 B. Response

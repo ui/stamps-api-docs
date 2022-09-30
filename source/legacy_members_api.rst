@@ -39,9 +39,8 @@ In response to this API call, Stamps will return response with the following dat
 ====================== ==============================
 Variable               Description
 ====================== ==============================
-legacy_member          Various information about legacy member
-legacy_member.status   `1` means legacy member has been merged, while
-                       `2` means legacy member is unmerged
+legacy_member          Various information about legacy member.
+                       Refer :ref:`here <Legacy Member Status>` for member status
 errors                 Errors encountered when processing request (if any)
 ====================== ==============================
 
@@ -138,7 +137,78 @@ C. Example Response
 
 
 
-3. Merge Legacy Membership
+3. Search Legacy Membership
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/search
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+You can search for legacy members using email / mobile number with this API.
+
+============     =========== =========================
+Parameter        Required    Description
+============     =========== =========================
+token            Yes         Authentication token in string
+email            No          Membership email. Required if mobile number is empty.
+mobile_number    No          Membership mobile number. Required if email is empty.
+============     =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/legacy/members/search?token=123&email=test@stamps.co.id'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+legacy_members      An array of legacy member objects
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: GET
+      [Redacted Header]
+
+    {
+      "legacy_members": [
+        {
+          "member_id": "322145",
+          "email": "legacy_member@stamps.com",
+          "mobile_number": "+62851111222333",
+          "merchant": 1,
+          "status": 1
+        },
+        {
+          "member_id": "63414",
+          "email": "duplicate_member2@stamps.com",
+          "mobile_number": "+62851111222444",
+          "merchant": 2,
+          "status": 1
+        },
+      ]
+    }
+
+
+
+4. Merge Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/merge
 | Allowed Method: POST
@@ -206,7 +276,7 @@ C. Example Response
     }
 
 
-4. Request Pin
+5. Request Pin
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/request-pin
 | Allowed Method: POST
@@ -263,8 +333,7 @@ On successful request pin:
     }
 
 
-
-5. Activate Legacy Membership
+6. Activate Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/activate
 | Allowed Method: POST
@@ -343,8 +412,7 @@ C. Example Response
     }
 
 
-
-6. Get Merged Legacy Members
+7. Get Merged Legacy Members
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/get-merged-members
 | Allowed Method: GET
@@ -407,3 +475,16 @@ On successful balance update:
         },
       ]
     }
+
+
+Miscellaneous
+------------------------------
+
+Legacy Member Status
+^^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Merged
+2                   Unmerged
+=================== ===========

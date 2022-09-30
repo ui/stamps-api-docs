@@ -355,14 +355,15 @@ A successful API call:
 A. Request
 ----------
 
-Request an OTP to unblock customer's PIN
+Request an OTP to reset customer's PIN. OTP will be send to customer's email if ``template_code`` parameter is provided.
 
-========= ======== ===========
-Parameter Required Description
-========= ======== ===========
-token     Yes      Authentication string
-user      Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
-========= ======== ===========
+============= ======== ===========
+Parameter     Required Description
+============= ======== ===========
+token         Yes      Authentication string
+user          Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+template_code No       A string indicating the template to be used to send the OTP
+============= ======== ===========
 
 Example of API call request using cURL:
 
@@ -496,7 +497,7 @@ Invalid OTP:
 A. Request
 ----------
 
-Request an OTP to reset customer's password
+Request an OTP to reset customer's password. OTP will be send to customer's email or mobile phone if ``template_code`` parameter is provided.
 
 ============= ======== ===========
 Parameter     Required Description
@@ -504,7 +505,7 @@ Parameter     Required Description
 token         Yes      Authentication string
 identifier    Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 type          Yes      A string for OTP sending method choice, supports ``email`` and ``sms``
-template_code No       A string for the template used to send the OTP, if not provided OTP is only returned from the API call
+template_code No       A string indicating the template to be used to send the OTP
 ============= ======== ===========
 
 Example of API call request using cURL:

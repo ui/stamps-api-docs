@@ -488,7 +488,60 @@ Invalid OTP:
     }
 
 
-8. Requesting an OTP to Reset Password
+8. Change Password
+===============
+| URL endpoint: https://stamps.co.id/api/auth/change-password2
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+====================== ======== ===========
+Parameter              Required Description
+====================== ======== ===========
+token                  Yes      Authentication string
+user                   Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+current_password       Yes      Customer current password
+new_password           Yes      New password
+confirm_new_password   Yes      New password, needs to be the same as ``new_password`` parameter
+====================== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/change-password2 -i -d '{ "token": "secret", "user": "test@gmail.com", "current_password": "secure_password", "new_password": "new_secure_password", "confirm_new_password": "new_secure_password" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+
+
+9. Requesting an OTP to Reset Password
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/request-otp-for-password-reset
 | Allowed Method: POST
@@ -543,7 +596,7 @@ A successful API call:
     }
 
 
-9. Reset Password with OTP
+10. Reset Password with OTP
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/reset-password-with-otp
 | Allowed Method: POST

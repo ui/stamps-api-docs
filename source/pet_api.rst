@@ -22,6 +22,7 @@ name          Yes         string
 type          Yes         "cat" or "dog" or etc
 birthday      No          YYYY-MM-DD
 breed         No          A string indicating pet's breed code, ex: "persia", "shiba", etc
+gender        No          :ref:`Code <Gender Mapping>` indicating pet's gender
 ============= =========== =========================
 
 Example of API call request using cURL:
@@ -80,6 +81,7 @@ A successful API call:
             "id": 1,
             "name": "Kat",
             "birthday": "1989-04-15",
+            "gender": "m",
             "type": {
                 "code": "cat",
                 "name": "Felines"
@@ -164,3 +166,17 @@ A successful API call:
     {
         "status": "ok"
     }
+
+
+Miscellaneous
+------------------------------
+
+Gender Mapping
+^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+m                   Male
+f                   Female
+o                   Other
+=================== ===========

@@ -683,12 +683,14 @@ On successful redemption:
             }
         },
         "membership": {
-            "tags": [],
-            "status": 100,
-            "stamps": 250,
+            "level": 100,
+            "level_text": "Blue",
+            "status": "Active",
+            "stamps": 0,
             "balance": 0,
-            "referral_code": "9121682",
-            "start_date": "2016-07-25",
-            "created": "2016-07-25"
+            "is_blocked": false,
+            "referral_code": "7LXJ7",
+            "start_date": "2022-09-16",
+            "created": "2022-09-16"
         },
     }

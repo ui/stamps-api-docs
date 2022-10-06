@@ -534,7 +534,7 @@ Invalid PIN:
         "error_message": "pin: Invalid PIN, 2 attempt(s) left"
     }
 
-7. Multiple Reward Redemption
+6. Multiple Reward Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards

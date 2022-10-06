@@ -490,7 +490,7 @@ Invalid OTP:
 
 8. Change Password
 ===============
-| URL endpoint: https://stamps.co.id/api/auth/change-password2
+| URL endpoint: https://stamps.co.id/api/auth/change-password
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -502,16 +502,15 @@ Parameter              Required Description
 ====================== ======== ===========
 token                  Yes      Authentication string
 user                   Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
-current_password       Yes      Customer current password
+old_password           Yes      Customer's current password
 new_password           Yes      New password
-confirm_new_password   Yes      New password, needs to be the same as ``new_password`` parameter
 ====================== ======== ===========
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/change-password2 -i -d '{ "token": "secret", "user": "test@gmail.com", "current_password": "secure_password", "new_password": "new_secure_password", "confirm_new_password": "new_secure_password" }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/change-password -i -d '{ "token": "secret", "user": "test@gmail.com", "old_password": "secure_password", "new_password": "new_secure_password" }'
 
 B. Response Data
 ----------------

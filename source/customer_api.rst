@@ -590,6 +590,7 @@ A successful API call:
             "is_active": true,
             "email": "customer1@stamps.co.id",
             "birthday": "1970-12-01",
+            "gender": "m",
             "phone": "+6281234567890",
             "has_incorrect_email": false,
             "has_incorrect_phone": false,
@@ -637,6 +638,7 @@ A successful API call:
                     "id": 1,
                     "name": "Kat",
                     "birthday": "1989-04-15",
+                    "gender": "f",
                     "type": {
                         "code": "cat",
                         "name": "Felines"
@@ -650,6 +652,7 @@ A successful API call:
                     "id": 2,
                     "name": "Doug",
                     "birthday": None,
+                    "gender": "m",
                     "type": {
                         "code": "dog",
                         "name": "Canines"

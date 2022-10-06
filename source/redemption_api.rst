@@ -553,8 +553,24 @@ user            Yes       A string indicating customer's email or Member ID
 rewards         Yes       List of reward objects that want to be redeemed. Contains request_id, code, and stamps (required if reward type is flexible reward).
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
-channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
+channel         No        Channel of a transaction, for channel mapping, see table below
 =============== ========= =========================
+
+Channel Mapping
+
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile App
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
+7                   Call Center
+8                   GrabFood
+9                   GoFood
+=================== ===========
 
 Here's an example of how the API call might look like in JSON format with specified reward
 

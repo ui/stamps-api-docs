@@ -1093,6 +1093,7 @@ Parameter     Required    Description
 token         Yes         Authentication string
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 level         Yes         A level numerical value
+upgrade_only  No          A boolean value, default to false. If set to true, ``level`` must be higher than user's current level
 ============= =========== =========================
 
 Example of API call request using cURL:
@@ -1144,6 +1145,24 @@ The customer does not have membership:
         },
         "error_code": "user_has_no_membership",
         "error_message": "User does not have membership in Your Merchant"
+    }
+
+``upgrade_only`` is set to true, but ``level`` is lower than user's current level:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "__all__: Level is lower than user's current level and downgrade is not allowed",
+        "error_message": "Level is lower than user's current level and downgrade is not allowed",
+        "error_code": "downgrade_not_allowed",
+        "errors": {
+            "__all__": "Level is lower than user's current level and downgrade is not allowed"
+        }
     }
 
 

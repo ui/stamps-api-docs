@@ -132,7 +132,7 @@ Mismatch ``pin`` and ``confirm_pin`` parameter:
         "errors": {
             "confirm_pin": "Confirmation PIN does not match"
         },
-        "error_code": "mismatch_pin",
+        "error_code": "pin_mismatch",
         "error_message": "confirm_pin: Confirmation PIN does not match"
     }
 
@@ -220,7 +220,7 @@ Mismatch ``new_pin`` and ``confirm_new_pin`` parameter:
         "errors": {
             "confirm_new_pin":"Confirmation PIN does not match"
         },
-        "error_code": "mismatch_pin",
+        "error_code": "pin_mismatch",
         "error_message":"confirm_new_pin: Confirmation PIN does not match"
     }
 
@@ -465,7 +465,7 @@ Mismatch ``pin`` and ``confirm_pin`` parameter:
         "errors": {
             "confirm_pin": "Confirmation PIN does not match"
         },
-        "error_code": "mismatch_pin",
+        "error_code": "pin_mismatch",
         "error_message": "confirm_pin: Confirmation PIN does not match"
     }
 

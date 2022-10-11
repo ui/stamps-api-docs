@@ -533,3 +533,164 @@ Invalid PIN:
         "error_code": "invalid_pin",
         "error_message": "pin: Invalid PIN, 2 attempt(s) left"
     }
+
+6. Multiple Reward Redemption
+======================
+
+| URL endpoint: https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can initiate a reward redemption by calling the API with these parameters.
+
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+user            Yes       A string indicating customer's email or Member ID
+rewards         Yes       List of reward objects that want to be redeemed. Contains request_id, code, and stamps (required if reward type is flexible reward).
+store           Yes       Merchant's store id where redemption is initiated
+invoice_number  No        POS invoice number
+channel         No        Channel of a transaction, for channel mapping, see table below
+=============== ========= =========================
+
+Channel Mapping
+
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile App
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
+7                   Call Center
+8                   GrabFood
+9                   GoFood
+=================== ===========
+
+Here's an example of how the API call might look like in JSON format with specified reward
+
+.. code-block :: bash
+
+    {
+    "token": "abc",
+    "user": "customer@stamps.co.id",
+    "store": 32,
+    "rewards": [
+        {
+            "code": 1,
+            "qty": 1,
+            "stamps": 1
+        },
+        {
+            "code": 1,
+            "qty": 1,
+        },
+        {
+            "code": 1,
+            "qty": 1,
+        }
+    ],
+    "invoice_number": "POS-1020123",
+    }
+
+Example of API call request using cURL with specified reward
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "rewards": [{ "code": 1, "qty": 1, "stamps": 1 }, { "code": 1, "qty": 1 }, { "code": 1, qty": 1 }], "invoice_number": "POS-1020123" }' https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+redemption          Redemption information which is
+                    successfully created.
+                    Contains id, reward, stamps_used, Reward information, Voucher information is returned if the reward type is voucher
+membership          Membership information after successful
+                    redemption. Contains membership id and stamps_remaining.
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+    {
+        "redemption": {
+            "id": 3,
+            "reward": "Kaya Bun",
+            "stamps_used": 2,
+            "extra_data": {
+                "discount": "10%"
+            },
+            "reward": {
+                "id": 1,
+                "name": "Kaya Bun",
+                "stamps_to_redeem": 2,
+                "extra_data": {},
+                "code": "MI0017",
+                "type": "reward"
+            },
+            "voucher": {
+                "id": 1,
+                "name": "Free Kaya Bun",
+                "code": "ABCD12345",
+                "is_active": true,
+                "start_date": "2016-07-25",
+                "end_date": "2016-08-25",
+                "picture_url": "http://foo.com",
+                "short_description": "Free Kaya Bun",
+                "description": "Free Kaya Bun with no minimum purchase",
+                "instructions": "Show the voucher QR at the counter",
+                "terms_and_conditions": ""
+            }
+        },
+        "membership": {
+            "level": 100,
+            "level_text": "Blue",
+            "status": "Active",
+            "stamps": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "7LXJ7",
+            "start_date": "2022-09-16",
+            "created": "2022-09-16"
+        },
+    }

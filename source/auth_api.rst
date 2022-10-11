@@ -414,7 +414,7 @@ Parameter   Required Description
 =========== ======== ===========
 token       Yes      Authentication string
 user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
-otp         Yes      6 digit string OTP received from ``Forgot PIN`` API
+otp         Yes      6 digit string OTP received from ``Requesting an OTP to Reset PIN`` API
 pin         Yes      6 digit string
 confirm_pin Yes      6 digit string that needs to be the same as ``pin`` parameter
 =========== ======== ===========
@@ -488,7 +488,77 @@ Invalid OTP:
     }
 
 
-8. Change Password
+8. Reset PIN with Password
+==========================
+| URL endpoint: https://stamps.co.id/api/pin/reset-with-password
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+=========== ======== ===========
+Parameter   Required Description
+=========== ======== ===========
+token       Yes      Authentication string
+user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+password    Yes      User's password
+pin         Yes      6 digit string
+confirm_pin Yes      6 digit string that needs to be the same as ``pin`` parameter
+=========== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/reset-with-password -i -d '{ "token": "secret", "user": 123, "password": "secret123", "pin": "654321", "confirm_pin", "654321" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+Invalid password:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "detail": "password: Invalid user password",
+        "error_code": "invalid_password",
+        "error_message": "password: Invalid user password",
+        "errors": {
+            "password": "Invalid user password"
+        }
+    }
+
+
+9. Change Password
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/change-password
 | Allowed Method: POST
@@ -540,7 +610,7 @@ A successful API call:
 
 
 
-9. Requesting an OTP to Reset Password
+10. Requesting an OTP to Reset Password
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/request-otp-for-password-reset
 | Allowed Method: POST
@@ -595,7 +665,7 @@ A successful API call:
     }
 
 
-10. Reset Password with OTP
+11. Reset Password with OTP
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/reset-password-with-otp
 | Allowed Method: POST

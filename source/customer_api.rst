@@ -378,7 +378,13 @@ A successful API call:
           "referral_code": "ABCDE",
           "start_date": "2014-08-08",
           "created": "2014-08-08",
-          "extra_data": {}
+          "extra_data": {},
+          "primary_card": {
+            "id": 1,
+            "number": "RRR123456",
+            "is_active": true,
+            "activated_time": "2022-01-20 10:00:00"
+          }
         },
         "location": {
            "district": {"id": 1, "name": "Kebayoran Baru"},

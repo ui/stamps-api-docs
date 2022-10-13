@@ -409,6 +409,12 @@ C. Example Response
         "referral_code": "abc123",
         "start_date": "2022-01-01",
         "created": "2022-01-01",
+        "primary_card": {
+          "id": 1,
+          "number": "RRR123456",
+          "is_active": true,
+          "activated_time": "2022-01-20 10:00:00"
+        }
       }
     }
 

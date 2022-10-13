@@ -145,22 +145,22 @@ C. Example Response
 
 A. Request
 -----------------------------
-You can search for legacy members using email / mobile number with this API.
+You can search for legacy members using email and/or mobile number with this API.
 
-============     =========== =========================
+=============== =========== =========================
 Parameter        Required    Description
-============     =========== =========================
+=============== =========== =========================
 token            Yes         Authentication token in string
 email            No          Membership email. Required if mobile number is empty.
 mobile_number    No          Membership mobile number. Required if email is empty.
-============     =========== =========================
+=============== =========== =========================
 
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/members/search?token=123&email=test@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/legacy/members/search?token=123&email=test@stamps.co.id&mobile_number=+6285123123123'
 
 
 B. Response

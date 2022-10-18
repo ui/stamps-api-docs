@@ -1,5 +1,5 @@
 *********************************************
-Temporary Access Token Authentication
+Access Token Authentication
 *********************************************
 
 1. Get a Token

@@ -143,6 +143,14 @@ Below is an example response on successful API call.
             {
                 "id": 2590966,
                 "type": 12
+            },
+            {
+                "id": 2590967,
+                "type": 13,
+            },
+            {
+                "id": 2590968,
+                "type": 14,
             }
         ]
     }
@@ -167,4 +175,6 @@ Code                Description
 10                  Deduct Stamps
 11                  Return transaction
 12                  Membership Level Override
+13                  Merged with Legacy Member
+14                  Legacy Member Activated
 =================== ===========

@@ -147,8 +147,10 @@ Below is an example response on successful API call.
             {
                 "id": 2590967,
                 "type": 13,
-                "stamps_added": 10,
-                "legacy_member_id": "RRR123456"
+            },
+            {
+                "id": 2590968,
+                "type": 14,
             }
         ]
     }
@@ -174,4 +176,5 @@ Code                Description
 11                  Return transaction
 12                  Membership Level Override
 13                  Merged with Legacy Member
+14                  Legacy Member Activated
 =================== ===========

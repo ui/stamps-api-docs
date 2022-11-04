@@ -135,6 +135,8 @@ C. Example Response
       ]
     }
 
+
+
 3. Search Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/search
@@ -272,6 +274,7 @@ C. Example Response
         "created": "2014-08-08",
       }
     }
+
 
 5. Request Pin
 ====================================
@@ -415,6 +418,7 @@ C. Example Response
       }
     }
 
+
 7. Get Merged Legacy Members
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/get-merged-members
@@ -432,6 +436,7 @@ token            Yes         Authentication token in string
 user             Yes         A string indicating customer's email, Member ID, mobile number or primary key ID.
                              This should be an active membership account.
 ============     =========== =========================
+
 
 Example of API call request using cURL
 

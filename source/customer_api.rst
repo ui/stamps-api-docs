@@ -1521,7 +1521,7 @@ Email is already used
     }
 
 
-15. Partial Registration
+16. Partial Registration
 ===============
 | URL endpoint: https://stamps.co.id/api/v3/memberships/partial-registration
 | Allowed Method: POST

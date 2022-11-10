@@ -158,6 +158,7 @@ On successful balance update:
           },
           "id": 123,
           "name": "Rp. 100,000 Discount",
+          "value": 100000,
           "start_date": "2021-04-26",
           "end_date": "2021-05-24",
           "validity": "Dynamic"

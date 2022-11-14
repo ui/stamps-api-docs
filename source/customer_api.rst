@@ -424,7 +424,7 @@ user                 Yes         Customer's integer primary key or Card number
 token                Yes         Authentication string
 merchant             Yes         Integer indicating merchant ID
 name                 Yes         Customer's name
-birthday             Yes         Customer's birthday (with format YYYY-MM-DD)
+birthday             No          Customer's birthday (with format YYYY-MM-DD)
 gender               Yes         Customer's gender ("male" or "female")
 email                No          Customer's email
 mobile number        No          Customer's phone number

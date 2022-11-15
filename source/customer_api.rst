@@ -1620,6 +1620,9 @@ A successful API call:
             "has_incorrect_wa_number": false,
             "phone_is_verified": false,
             "email_is_verified": false,
-            "registering_employee_code": "ABC123"
+            "registering_employee_code": "ABC123",
+            "member_ids": [
+                "AOSVD"
+            ]
         }
     }

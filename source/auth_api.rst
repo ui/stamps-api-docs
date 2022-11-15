@@ -609,8 +609,60 @@ A successful API call:
     }
 
 
+10. Set Password
+===============
+| URL endpoint: https://stamps.co.id/api/auth/set-password
+| Allowed Method: POST
+| Require Authentication: Yes
 
-10. Requesting an OTP to Reset Password
+A. Request
+----------
+
+====================== ======== ===========
+Parameter              Required Description
+====================== ======== ===========
+token                  Yes      Authentication string
+email                  Yes      Customer's email
+new_password           Yes      New password
+====================== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/set-password -i -d '{ "token": "secret", "email": "foo@bar.com", "new_password": "secure_password" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "id": 1,
+        "name": "Foo",
+        "email": "foo@bar.com",
+        "status": "ok"
+    }
+
+
+11. Requesting an OTP to Reset Password
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/request-otp-for-password-reset
 | Allowed Method: POST
@@ -665,7 +717,7 @@ A successful API call:
     }
 
 
-11. Reset Password with OTP
+12. Reset Password with OTP
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/reset-password-with-otp
 | Allowed Method: POST

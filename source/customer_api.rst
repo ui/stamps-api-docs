@@ -1624,5 +1624,6 @@ A successful API call:
             "member_ids": [
                 "AOSVD"
             ]
+            "primary_membership_id": "RRRAWWROWO"
         }
     }

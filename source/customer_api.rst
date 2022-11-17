@@ -1622,7 +1622,8 @@ A successful API call:
             "email_is_verified": false,
             "registering_employee_code": "ABC123",
             "member_ids": [
-                "AOSVD"
+                "RRRAWWROWO",
+                "RRRAWRRUWU"
             ]
             "primary_membership_id": "RRRAWWROWO"
         }

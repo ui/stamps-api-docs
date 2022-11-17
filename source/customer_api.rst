@@ -1595,31 +1595,36 @@ A successful API call:
     [Redacted Header]
 
     {
-    "membership": {
-        "level": 100,
-        "level_text": "Blue",
-        "status": "Active",
-        "stamps": 0,
-        "balance": 0,
-        "is_blocked": false,
-        "referral_code": "7LXJ7",
-        "start_date": "2022-09-16",
-        "created": "2022-09-16"
-    },
-    "user": {
-        "id": 140,
-        "name": "",
-        "gender": null,
-        "is_active": true,
-        "email": "partial1@mail.com",
-        "birthday": null,
-        "picture_url": null,
-        "phone": null,
-        "has_incorrect_email": false,
-        "has_incorrect_phone": false,
-        "has_incorrect_wa_number": false,
-        "phone_is_verified": false,
-        "email_is_verified": false,
-        "registering_employee_code": "ABC123"
+        "membership": {
+            "level": 100,
+            "level_text": "Blue",
+            "status": "Active",
+            "stamps": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "7LXJ7",
+            "start_date": "2022-09-16",
+            "created": "2022-09-16"
+        },
+        "user": {
+            "id": 140,
+            "name": "",
+            "gender": null,
+            "is_active": true,
+            "email": "partial1@mail.com",
+            "birthday": null,
+            "picture_url": null,
+            "phone": null,
+            "has_incorrect_email": false,
+            "has_incorrect_phone": false,
+            "has_incorrect_wa_number": false,
+            "phone_is_verified": false,
+            "email_is_verified": false,
+            "registering_employee_code": "ABC123",
+            "member_ids": [
+                "RRRAWWROWO",
+                "RRRAWRRUWU"
+            ]
+            "primary_membership_id": "RRRAWWROWO"
+        }
     }
-}

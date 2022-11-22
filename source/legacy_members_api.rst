@@ -352,7 +352,7 @@ user                         Yes         A string indicating legacy member's ID,
 merchant_id                  Yes         Merchant ID the legacy member is associated with
 pin                          Yes         Legacy member's pin
 bonus_stamps                 No          Integer, bonus points given to target user's membership
-generate_default_password    No          Boolean, whether to generate a random password for the legacy member, default to true
+generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 ============================ =========== =========================
 
 

@@ -344,15 +344,16 @@ A. Request
 -----------------------------
 This API turns a legacy member data into to an active membership.
 
-================ =========== =========================
-Parameter        Required    Description
-================ =========== =========================
-token            Yes         Authentication string
-user             Yes         A string indicating legacy member's ID, mobile number or email
-merchant_id      Yes         Merchant ID the legacy member is associated with
-pin              Yes         Legacy member's pin
-bonus_stamps     No          Integer, bonus points given to target user's membership
-================ =========== =========================
+============================ =========== =========================
+Parameter                    Required    Description
+============================ =========== =========================
+token                        Yes         Authentication string
+user                         Yes         A string indicating legacy member's ID, mobile number or email
+merchant_id                  Yes         Merchant ID the legacy member is associated with
+pin                          Yes         Legacy member's pin
+bonus_stamps                 No          Integer, bonus points given to target user's membership
+generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+============================ =========== =========================
 
 
 Example of API call request using cURL

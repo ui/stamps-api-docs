@@ -168,6 +168,7 @@ store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
 channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 request_id      No        This field is needed if PIN authorization is enabled
+extra_data      No        JSON object containing any additional data
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified voucher.
@@ -186,7 +187,7 @@ API call example:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12}' https://stamps.co.id/api/v2/redemptions/redeem-voucher
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12, "extra_data": { "discount": "10%" } }' https://stamps.co.id/api/v2/redemptions/redeem-voucher
 
 
 B. Response

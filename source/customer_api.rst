@@ -605,12 +605,25 @@ A successful API call:
             "address": "Anggrek 5 No. 1",
             "birthday": "1999-07-15",
             "gender": "f",
-            "postal_code": null,
-            "location": null,
-            "religion": null,
+            "location": {
+                "district": {
+                    "id": 1,
+                    "name": "Kembangan"
+                },
+                "regency": {
+                    "id": 2,
+                    "name": "Jakarta Barat"
+                },
+                "province": {
+                    "id": 3,
+                    "name": "Jakarta"
+                }
+            },
+            "religion": "Budha",
             "marital_status": "Married",
             "wedding_date": "2023-03-03",
-            "nationality": null,
+            "nationality": "Indonesian",
+            "postal_code": "11610",
             "hobbies": [
                 {
                     "id": 30,
@@ -661,7 +674,11 @@ A successful API call:
                     }
                 }
             ],
-            "social_media_profile": null,
+            "social_media_profile": {
+                "twitter": "@twitter",
+                "instagram": "@instagram",
+                "facebook": ""
+            },
             "notes": "Update HP Required",
             "has_downloaded_app": false
         },

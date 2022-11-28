@@ -40,7 +40,7 @@ Variable            Description
 =================== ==============================
 memberships         Membership related information
 users               User related information
-tags                Membership tags
+tags                Tags associated with customer's membership
 =================== ==============================
 
 

@@ -358,14 +358,14 @@ A successful API call:
         "address": "Jalan Anggrek No. 1",
         "is_active": true,
         "email": "johndoe@example.com",
-        "picture_url": null,
+        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
         "birthday": "1993-05-30",
         "phone": "+6285567146065",
-        "postal_code": "",
+        "postal_code": "10310",
         "protected_redemption": false,
         "has_incorrect_email": true,
-        "marital_status": null,
-        "religion": null,
+        "marital_status": 1,
+        "religion": 1,
         "wedding_date": null,
         "id_number": null,
         "id_card_file_name": "",
@@ -377,7 +377,20 @@ A successful API call:
         "notes": "",
         "referral_code": "GYHTLIY9",
         "registration_status": "Full",
-        "location": null,
+        "location": {
+            "district": {
+                "id": 1,
+                "name": "Kebayoran Baru"
+            },
+            "regency": {
+                "id": 1,
+                "name": "Jakarta Selatan"
+            },
+            "province": {
+                "id": 1,
+                "name": "DKI Jakarta"
+            }
+        },
         "membership": {
             "tags": [],
             "status": 0,
@@ -395,10 +408,10 @@ A successful API call:
                 "id": 231,
                 "number": "RRRB1AKUT0",
                 "is_active": true,
-                "activated_time": null
+                "activated_time": "2022-01-20 10:00:00"
             }
         },
-        "registering_employee_code": null
+        "registering_employee_code": "EMP001"
     }
 
 

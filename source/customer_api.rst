@@ -589,109 +589,121 @@ A successful API call:
     [Redacted Header]
     {
         "user": {
-            "id": 6,
-            "name": "Customer 1",
-            "gender": "m",
-            "address": "Jl. Meruya Selatan No.5c, RT.4/RW.4, Meruya Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11610",
+            "id": 319,
+            "name": "Ariane",
             "is_active": true,
-            "email": "customer1@stamps.co.id",
-            "birthday": "1970-12-01",
-            "gender": "m",
-            "phone": "+6281234567890",
+            "phone": "+6285155113118",
+            "email": "r.a.y.a.amos@gmail.com",
             "has_incorrect_email": false,
             "has_incorrect_phone": false,
             "has_incorrect_wa_number": false,
-            "nationality": "Indonesian",
-            "postal_code": "11610",
-            "marital_status": "Married",
-            "religion": "Budha",
-            "wedding_date": "1995-12-01",
-            "is_anonymized": true,
+            "phone_is_verified": false,
+            "email_is_verified": false,
+            "is_anonymized": false,
             "has_pin": false,
             "pin_is_blocked": false,
-            "notes": "Note",
-            "has_downloaded_app": True,
-            "location": {
-                "district": {
-                    "id": 1,
-                    "name": "Kembangan"
-                },
-                "regency": {
-                    "id": 2,
-                    "name": "Jakarta Barat"
-                },
-                "province": {
-                    "id": 3,
-                    "name": "Jakarta"
-                }
+            "address": "Rukan Taman Aries 2",
+            "birthday": "1993-05-30",
+            "gender": "f",
+            "postal_code": null,
+            "location": null,
+            "religion": null,
+            "marital_status": "Married",
+            "wedding_date": "2023-03-03",
+            "nationality": null,
+            "hobbies": [
+            {
+                "id": 30,
+                "code": "28",
+                "name": "Film"
             },
+            {
+                "id": 32,
+                "code": "30",
+                "name": "Games"
+            }
+            ],
             "children": [
-                {
-                    "birthday": "2099-09-09",
-                    "gender": "f",
-                    "name": "Child 1",
-                    "id": 1
-                },
-                {
-                    "birthday": "2077-07-07",
-                    "gender": "m",
-                    "name": "Child 2",
-                    "id": 2
-                }
+            {
+                "id": 14,
+                "name": "Iris",
+                "gender": "f",
+                "birthday": "1991-10-19"
+            },
+            {
+                "id": 33,
+                "name": "Iris",
+                "gender": "f",
+                "birthday": "1991-10-19"
+            }
             ],
             "pets": [
-                {
-                    "id": 1,
-                    "name": "Kat",
-                    "birthday": "1989-04-15",
-                    "gender": "f",
-                    "type": {
-                        "code": "cat",
-                        "name": "Felines"
-                    },
-                    "breed": {
-                        "code": "siamese",
-                        "name": "Siamese"
-                    }
+            {
+                "id": 5,
+                "name": "Rocky",
+                "birthday": "1991-10-19",
+                "gender": "f",
+                "type": {
+                "code": "79",
+                "name": "Dog"
                 },
-                {
-                    "id": 2,
-                    "name": "Doug",
-                    "birthday": None,
-                    "gender": "m",
-                    "type": {
-                        "code": "dog",
-                        "name": "Canines"
-                    },
-                    "breed": {
-                        "code": "bulldog",
-                        "name": "Bulldog"
-                    }
-                },
-            ],
-            "hobbies": [
-                {
-                    'id': 1,
-                    'code': 'stuff',
-                    'name': 'Stuff',
-                },
-                {
-                    'id': 2,
-                    'code': 'things',
-                    'name': 'Things',
+                "breed": {
+                "code": "1",
+                "name": "Affenpinscher"
                 }
-            ],
-            "social_media_profile": {
-                'twitter': '@twitter',
-                'instagram': '@instagram',
-                'facebook': ''
             },
+            {
+                "id": 29,
+                "name": "Rocky",
+                "birthday": "1991-10-19",
+                "gender": "f",
+                "type": {
+                "code": "79",
+                "name": "Dog"
+                },
+                "breed": {
+                "code": "1",
+                "name": "Affenpinscher"
+                }
+            },
+            {
+                "id": 4,
+                "name": "Rocky",
+                "birthday": "1991-10-19",
+                "gender": "f",
+                "type": {
+                "code": "79",
+                "name": "Dog"
+                },
+                "breed": {
+                "code": "18",
+                "name": "Fox Terrier"
+                }
+            },
+            {
+                "id": 3,
+                "name": "Rocky",
+                "birthday": "1991-10-19",
+                "gender": "f",
+                "type": {
+                "code": "78",
+                "name": "Cat"
+                },
+                "breed": {
+                "code": "18",
+                "name": "Fox Terrier"
+                }
+            }
+            ],
+            "social_media_profile": null,
+            "notes": "Update HP Required",
+            "has_downloaded_app": false
         },
         "tags": [
             {
-                "key": "category",
-                "value": "vvip"
-            },
+            "group": "category",
+            "tag": "vvip"
+            }
         ]
     }
 

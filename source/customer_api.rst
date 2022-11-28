@@ -590,10 +590,10 @@ A successful API call:
     {
         "user": {
             "id": 319,
-            "name": "Ariane",
+            "name": "John Doe",
             "is_active": true,
-            "phone": "+6285155113118",
-            "email": "r.a.y.a.amos@gmail.com",
+            "phone": "+6281343283754",
+            "email": "johndoe@example.com",
             "has_incorrect_email": false,
             "has_incorrect_phone": false,
             "has_incorrect_wa_number": false,
@@ -602,8 +602,8 @@ A successful API call:
             "is_anonymized": false,
             "has_pin": false,
             "pin_is_blocked": false,
-            "address": "Rukan Taman Aries 2",
-            "birthday": "1993-05-30",
+            "address": "Anggrek 5 No. 1",
+            "birthday": "1999-07-15",
             "gender": "f",
             "postal_code": null,
             "location": null,
@@ -612,88 +612,54 @@ A successful API call:
             "wedding_date": "2023-03-03",
             "nationality": null,
             "hobbies": [
-            {
-                "id": 30,
-                "code": "28",
-                "name": "Film"
-            },
-            {
-                "id": 32,
-                "code": "30",
-                "name": "Games"
-            }
+                {
+                    "id": 30,
+                    "code": "28",
+                    "name": "Film"
+                },
+                {
+                    "id": 32,
+                    "code": "30",
+                    "name": "Games"
+                }
             ],
             "children": [
-            {
-                "id": 14,
-                "name": "Iris",
-                "gender": "f",
-                "birthday": "1991-10-19"
-            },
-            {
-                "id": 33,
-                "name": "Iris",
-                "gender": "f",
-                "birthday": "1991-10-19"
-            }
+                {
+                    "id": 14,
+                    "name": "Iris",
+                    "gender": "f",
+                    "birthday": "2000-10-19"
+                }
             ],
             "pets": [
-            {
-                "id": 5,
-                "name": "Rocky",
-                "birthday": "1991-10-19",
-                "gender": "f",
-                "type": {
-                "code": "79",
-                "name": "Dog"
+                {
+                    "id": 5,
+                    "name": "Rocky",
+                    "birthday": "1991-10-19",
+                    "gender": "f",
+                    "type": {
+                        "code": "79",
+                        "name": "Dog"
+                    },
+                    "breed": {
+                        "code": "1",
+                        "name": "Affenpinscher"
+                    }
                 },
-                "breed": {
-                "code": "1",
-                "name": "Affenpinscher"
+                {
+                    "id": 3,
+                    "name": "Sandy",
+                    "birthday": "1991-10-19",
+                    "gender": "f",
+                    "type": {
+                        "code": "78",
+                        "name": "Cat"
+                    },
+                    "breed": {
+                        "code": "18",
+                        "name": "Fox Terrier"
+                    }
                 }
-            },
-            {
-                "id": 29,
-                "name": "Rocky",
-                "birthday": "1991-10-19",
-                "gender": "f",
-                "type": {
-                "code": "79",
-                "name": "Dog"
-                },
-                "breed": {
-                "code": "1",
-                "name": "Affenpinscher"
-                }
-            },
-            {
-                "id": 4,
-                "name": "Rocky",
-                "birthday": "1991-10-19",
-                "gender": "f",
-                "type": {
-                "code": "79",
-                "name": "Dog"
-                },
-                "breed": {
-                "code": "18",
-                "name": "Fox Terrier"
-                }
-            },
-            {
-                "id": 3,
-                "name": "Rocky",
-                "birthday": "1991-10-19",
-                "gender": "f",
-                "type": {
-                "code": "78",
-                "name": "Cat"
-                },
-                "breed": {
-                "code": "18",
-                "name": "Fox Terrier"
-                }
-            }
             ],
             "social_media_profile": null,
             "notes": "Update HP Required",
@@ -701,8 +667,8 @@ A successful API call:
         },
         "tags": [
             {
-            "group": "category",
-            "tag": "vvip"
+                "group": "category",
+                "tag": "vvip"
             }
         ]
     }

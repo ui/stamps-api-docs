@@ -40,7 +40,7 @@ Variable            Description
 =================== ==============================
 memberships         Membership related information
 users               User related information
-tags                Tags associated with customer's membership
+tags                Tags associated with the customer user
 =================== ==============================
 
 
@@ -90,11 +90,9 @@ On a successful API call:
             "start_date": "2022-10-18",
             "status": 0,
             "status_text": "Silver",
-            "tags": [
-            ]
+            "tags": []
         },
-        "tags": [
-        ],
+        "tags": [],
         "user": {
             "address": "Rukan Taman Aries",
             "birthday": "1993-05-30",

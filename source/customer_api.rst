@@ -88,8 +88,6 @@ On a successful API call:
             "referral_code": "7J2K1",
             "stamps": 0,
             "start_date": "2022-10-18",
-            "status": 0,
-            "status_text": "Silver",
             "tags": []
         },
         "tags": [],
@@ -106,19 +104,19 @@ On a successful API call:
             "id_number": null,
             "is_active": true,
             "is_anonymized": false,
-            "marital_status": null,
+            "marital_status": 1,
             "member_ids": ["RRROWO5U51"],
             "name": "Wisesi",
             "notes": "",
             "phone": "+6285647156061",
             "phone_is_verified": false,
-            "picture_url": null,
+            "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
             "pin_is_blocked": false,
-            "postal_code": "",
+            "postal_code": "10310",
             "protected_redemption": false,
             "referral_code": "SR2KORUB",
             "registration_status": "Partial",
-            "religion": null,
+            "religion": 1,
             "wedding_date": null
         }
     }

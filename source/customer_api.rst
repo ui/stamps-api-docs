@@ -107,9 +107,7 @@ On a successful API call:
             "is_active": true,
             "is_anonymized": false,
             "marital_status": null,
-            "member_ids": [
-                "RRROWO5U51"
-            ],
+            "member_ids": ["RRROWO5U51"],
             "name": "Wisesi",
             "notes": "",
             "phone": "+6285647156061",

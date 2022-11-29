@@ -352,44 +352,64 @@ A successful API call:
     [Redacted Header]
 
     {
-        "id": "123",
-        "name": "Customer",
+        "id": "620",
+        "name": "John Doe",
         "gender": "male",
-        "address": "Jl MK raya",
+        "address": "Jalan Anggrek No. 1",
         "is_active": true,
-        "email": "customer@stamps.co.id",
-        "phone": "+62812398712",
+        "email": "johndoe@example.com",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-        "birthday": "1989-10-1",
+        "birthday": "1993-05-30",
+        "phone": "+6285567146065",
         "postal_code": "10310",
-        "protected_redemption": true,
-        "religion": 1,
+        "protected_redemption": false,
+        "has_incorrect_email": true,
         "marital_status": 1,
+        "religion": 1,
         "wedding_date": null,
-        "is_anonymized": true,
-        "membership": {
-          "tags": [],
-          "status": 100,
-          "status_text": "Blue",
-          "member_status": "Active",
-          "stamps": 401,
-          "balance": 150000,
-          "is_blocked": false,
-          "referral_code": "ABCDE",
-          "start_date": "2014-08-08",
-          "created": "2014-08-08",
-          "extra_data": {},
-          "primary_card": {
-            "id": 1,
-            "number": "RRR123456",
-            "is_active": true,
-            "activated_time": "2022-01-20 10:00:00"
-          }
-        },
+        "id_number": null,
+        "id_card_file_name": "",
+        "phone_is_verified": false,
+        "email_is_verified": false,
+        "is_anonymized": false,
+        "has_pin": false,
+        "pin_is_blocked": false,
+        "notes": "",
+        "referral_code": "GYHTLIY9",
+        "registration_status": "Full",
         "location": {
-           "district": {"id": 1, "name": "Kebayoran Baru"},
-           "regency": {"id": 1, "name": "Jakarta Selatan"},
-           "province": {"id": 1, "name": "DKI Jakarta"}
+            "district": {
+                "id": 1,
+                "name": "Kebayoran Baru"
+            },
+            "regency": {
+                "id": 1,
+                "name": "Jakarta Selatan"
+            },
+            "province": {
+                "id": 1,
+                "name": "DKI Jakarta"
+            }
+        },
+        "membership": {
+            "tags": [],
+            "status": 0,
+            "status_text": "Silver",
+            "level": 0,
+            "level_text": "Silver",
+            "member_status": "Active",
+            "stamps": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "7J133",
+            "start_date": "2022-11-24",
+            "created": "2022-11-24",
+            "primary_card": {
+                "id": 231,
+                "number": "RRRB1AKUT0",
+                "is_active": true,
+                "activated_time": "2022-01-20 10:00:00"
+            }
         },
         "registering_employee_code": "EMP001"
     }

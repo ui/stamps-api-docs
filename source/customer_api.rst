@@ -40,6 +40,7 @@ Variable            Description
 =================== ==============================
 memberships         Membership related information
 users               User related information
+tags                Tags associated with the customer user
 =================== ==============================
 
 
@@ -77,43 +78,47 @@ On a successful API call:
     [Redacted Header]
 
     {
-      "membership": {
+        "membership": {
+            "balance": 0,
+            "created": "2022-10-18",
+            "is_blocked": false,
+            "level": 0,
+            "level_text": "Silver",
+            "member_status": "Active",
+            "referral_code": "7J2K1",
+            "stamps": 0,
+            "start_date": "2022-10-18",
+            "tags": []
+        },
         "tags": [],
-        "status": 100,
-        "status_text": "Blue",
-        "member_status": "Active",
-        "stamps": 401,
-        "balance": 150000,
-        "is_blocked": false,
-        "referral_code": "ABCDE",
-        "start_date": "2014-08-08",
-        "created": "2014-08-08",
-        "extra_data": {},
-        "to_upgrade": {
-          "spending_requirement": 590000,
-          "deadline": "2022-12-31"
+        "user": {
+            "address": "Jalan Anggrek No. 1",
+            "birthday": "1993-05-30",
+            "email": "johndoe@gmail.com",
+            "email_is_verified": false,
+            "gender": "female",
+            "has_incorrect_email": true,
+            "has_pin": false,
+            "id": "454",
+            "id_card_file_name": "",
+            "id_number": null,
+            "is_active": true,
+            "is_anonymized": false,
+            "marital_status": 1,
+            "member_ids": ["RRROWO5U51"],
+            "name": "Wisesi",
+            "notes": "",
+            "phone": "+628555756061",
+            "phone_is_verified": false,
+            "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+            "pin_is_blocked": false,
+            "postal_code": "10310",
+            "protected_redemption": false,
+            "referral_code": "SR2KORUB",
+            "registration_status": "Partial",
+            "religion": 1,
+            "wedding_date": null
         }
-      },
-      "user": {
-        "member_ids": [],
-        "id": "8120",
-        "name": "Customer",
-        "gender": "male",
-        "address": "",
-        "is_active": true,
-        "is_anonymized": true,
-        "email": "customer@stamps.co.id",
-        "phone": "+6281314811365",
-        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-        "birthday": "1990-11-26",
-        "postal_code": "10310",
-        "protected_redemption": false,
-        "religion": 1,
-        "marital_status": 1,
-        "wedding_date": null,
-        "has_pin": false,
-        "pin_is_blocked": false
-      }
     }
 
 

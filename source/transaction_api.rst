@@ -1019,6 +1019,11 @@ On successful get Transactions:
         "invoice_number": "0020014795:1:001",
         "created": 1661075448,
         "merchant": "Merchant Test",
+        "merchant_id": 2,
+        "meta": {
+          "channel": 2,
+          "channel_text": "POS"
+        },
         "store": {
           "name": "0020014795",
           "display_name": "TEST STORE"
@@ -1033,7 +1038,12 @@ On successful get Transactions:
         "subtotal": 102.0,
         "invoice_number": "0020014795:1:002",
         "created": 1661075448,
-        "merchant": "Merchant Test"",
+        "merchant": "Merchant Test",
+        "merchant_id": 3,
+        "meta": {
+          "channel": 2,
+          "channel_text": "POS"
+        },
         "store": {
           "name": "0020014795",
           "display_name": "TEST STORE"

@@ -966,6 +966,8 @@ Parameter                   Required    Description
 token                       Yes         Authentication string
 user                        Yes         A string indicating customer's email, Member ID,
                                         mobile number or primary key ID
+                                        An integer indicating customer transaction_id,
+                                        will return transaction with id less than given value
 ==========================  =========== =========================================================
 
 

@@ -23,6 +23,7 @@ store                          Yes         Integer indicating store ID to be que
 only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false`.
                                            If `true`, only rewards redeemable in given store will be returned.
 include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not
+channel                        No          Integer indicating channel number to be queried for reward. Available values are ``1`` for Mobile app, ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 ============================== =========== ===================================================================
 
 
@@ -30,7 +31,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1'
+    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1channel=2'
 
 
 B. Response Data

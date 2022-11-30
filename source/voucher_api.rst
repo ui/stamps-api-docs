@@ -201,6 +201,7 @@ token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 image_size                 No          Voucher image size. Defaults to 200px x 200px
 landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
+channel                    No          Integer indicating channel number to be queried for user's vouchers. Available values are ``1`` for Mobile app, ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
 ========================== =========== =========================================================
 
 
@@ -208,7 +209,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/vouchers/by-merchant-group?token=abc&user=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/vouchers/by-merchant-group?token=abc&user=customer@stamps.co.id&channel=2'
 
 
 B. Response

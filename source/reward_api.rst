@@ -23,7 +23,7 @@ store                          Yes         Integer indicating store ID to be que
 only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false`.
                                            If `true`, only rewards redeemable in given store will be returned.
 include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not
-channel                        No          Integer indicating channel number to be queried for reward.
+channel                        No          :ref:`Integer <Channel Type>` indicating channel number to be queried for reward.
 ============================== =========== ===================================================================
 
 
@@ -47,7 +47,7 @@ rewards             List of rewards available for redemption.
                     :ref:`type <Reward Type>` and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url, extra_data
-                    landscape_url, and expires_on.
+                    landscape_url, expires_on, and :ref:`channels <Channel Type>`.
 detail              Description of error (if any)
 errors              Errors encountered when parsing
                     data (if any)
@@ -174,7 +174,7 @@ On a successful API call:
           "extra_data": {
              "SKU": "PROMO-birthday-20-off"
           },
-          "channel": 2
+          "channels": [2, 4],
         },
         {
           "id": 10,
@@ -187,7 +187,7 @@ On a successful API call:
           "terms": "sign up at stamps and get Free product A",
           "quantity": 2,
           "extra_data": {},
-          "channel": 2
+          "channels": [2, 5],
         }
       ],
       "customer": {
@@ -229,7 +229,7 @@ Miscellaneous
 ------------------------------
 
 Channel Type
-^^^^^^^^^^^
+^^^^^^^^^^^^
 =================== ===========
 Code                Description
 =================== ===========

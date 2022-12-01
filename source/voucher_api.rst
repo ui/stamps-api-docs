@@ -258,6 +258,7 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": null,
+                "channels": [2, 3],
         },
         {
             "id": 2,
@@ -278,13 +279,16 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": {},
+                "channels": [2, 5],
         }
       ]
     }
 
+Miscellaneous
+------------------------------
 
 Voucher Template Type Mapping
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 =================== ===========
 Code                Description
 =================== ===========
@@ -296,6 +300,19 @@ Code                Description
 6                   Referral
 7                   Pregenerated
 8                   Anniversary
+=================== ===========
+
+Channel Type
+^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
 =================== ===========
 
 
@@ -353,18 +370,3 @@ On a successful API call:
     {
       "count": 12,
     }
-
-
-Miscellaneous
-------------------------------
-
-Channel Type
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile app
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS

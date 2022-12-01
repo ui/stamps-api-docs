@@ -173,7 +173,8 @@ On a successful API call:
           "quantity": 1,
           "extra_data": {
              "SKU": "PROMO-birthday-20-off"
-          }
+          },
+          "channel": 2
         },
         {
           "id": 10,
@@ -185,7 +186,8 @@ On a successful API call:
           "expires_on": "24-01-2014 00:00",
           "terms": "sign up at stamps and get Free product A",
           "quantity": 2,
-          "extra_data": {}
+          "extra_data": {},
+          "channel": 2
         }
       ],
       "customer": {
@@ -222,6 +224,22 @@ If missing or wrong authentication token:
 
     {"detail": "Authentication credentials were not provided."}
 
+
+Miscellaneous
+------------------------------
+
+Channel Type
+^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
+=================== ===========
 
 2. Get Reward Detail
 =======================================
@@ -304,15 +322,3 @@ Code                Description
 4                   Voucher
 5                   Flexible Reward
 =================== ===========
-
-
-Channel Type
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile app
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS

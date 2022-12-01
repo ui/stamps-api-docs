@@ -201,7 +201,7 @@ token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 image_size                 No          Voucher image size. Defaults to 200px x 200px
 landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
-channel                    No          :ref:`Integer <Channel Type>`indicating channel number to be queried for user's vouchers.
+channel                    No          Integer indicating :ref:`channel <Channel Type>` number to be queried for user's vouchers.
 ========================== =========== =========================================================
 
 

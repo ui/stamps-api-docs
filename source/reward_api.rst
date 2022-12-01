@@ -23,7 +23,7 @@ store                          Yes         Integer indicating store ID to be que
 only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false`.
                                            If `true`, only rewards redeemable in given store will be returned.
 include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not
-channel                        No          :ref:`Integer <Channel Type>` indicating channel number to be queried for reward.
+channel                        No          Integer indicating :ref:`channel <Channel Type>` number to be queried for reward.
 ============================== =========== ===================================================================
 
 

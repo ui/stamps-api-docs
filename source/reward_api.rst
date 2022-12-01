@@ -23,6 +23,7 @@ store                          Yes         Integer indicating store ID to be que
 only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false`.
                                            If `true`, only rewards redeemable in given store will be returned.
 include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not
+channel                        No          Integer indicating :ref:`channel <Channel Type>` number to be queried for reward.
 ============================== =========== ===================================================================
 
 
@@ -30,7 +31,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1'
+    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1channel=2'
 
 
 B. Response Data
@@ -46,7 +47,7 @@ rewards             List of rewards available for redemption.
                     :ref:`type <Reward Type>` and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url, extra_data
-                    landscape_url, and expires_on.
+                    landscape_url, expires_on, and :ref:`channels <Channel Type>`.
 detail              Description of error (if any)
 errors              Errors encountered when parsing
                     data (if any)
@@ -172,7 +173,8 @@ On a successful API call:
           "quantity": 1,
           "extra_data": {
              "SKU": "PROMO-birthday-20-off"
-          }
+          },
+          "channels": [2, 4],
         },
         {
           "id": 10,
@@ -184,7 +186,8 @@ On a successful API call:
           "expires_on": "24-01-2014 00:00",
           "terms": "sign up at stamps and get Free product A",
           "quantity": 2,
-          "extra_data": {}
+          "extra_data": {},
+          "channels": [2, 5],
         }
       ],
       "customer": {
@@ -221,6 +224,22 @@ If missing or wrong authentication token:
 
     {"detail": "Authentication credentials were not provided."}
 
+
+Miscellaneous
+------------------------------
+
+Channel Type
+^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
+=================== ===========
 
 2. Get Reward Detail
 =======================================

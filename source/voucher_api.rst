@@ -201,6 +201,7 @@ token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 image_size                 No          Voucher image size. Defaults to 200px x 200px
 landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
+channel                    No          Integer indicating :ref:`channel <Channel Type>` number to be queried for user's vouchers.
 ========================== =========== =========================================================
 
 
@@ -208,7 +209,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/vouchers/by-merchant-group?token=abc&user=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/vouchers/by-merchant-group?token=abc&user=customer@stamps.co.id&channel=2'
 
 
 B. Response
@@ -257,6 +258,7 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": null,
+                "channels": [2, 3],
         },
         {
             "id": 2,
@@ -277,13 +279,16 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": {},
+                "channels": [2, 5],
         }
       ]
     }
 
+Miscellaneous
+------------------------------
 
 Voucher Template Type Mapping
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 =================== ===========
 Code                Description
 =================== ===========
@@ -295,6 +300,19 @@ Code                Description
 6                   Referral
 7                   Pregenerated
 8                   Anniversary
+=================== ===========
+
+Channel Type
+^^^^^^^^^^^
+=================== ===========
+Integer Value       Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
 =================== ===========
 
 

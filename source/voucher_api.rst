@@ -201,7 +201,7 @@ token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 image_size                 No          Voucher image size. Defaults to 200px x 200px
 landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
-channel                    No          Integer indicating channel number to be queried for user's vouchers. Available values are ``1`` for Mobile app, ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
+channel                    No          Integer indicating channel number to be queried for user's vouchers.
 ========================== =========== =========================================================
 
 
@@ -353,3 +353,18 @@ On a successful API call:
     {
       "count": 12,
     }
+
+
+Miscellaneous
+------------------------------
+
+Channel Type
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS

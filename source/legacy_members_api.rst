@@ -62,7 +62,8 @@ C. Example Response
         "email": "legacy_member@stamps.com",
         "mobile_number": "+62851111222333",
         "merchant": 1,
-        "status": 1
+        "status": 1,
+        "duplicate_id": "1234"
       }
     }
 
@@ -123,14 +124,16 @@ C. Example Response
           "email": "legacy_member@stamps.com",
           "mobile_number": "+62851111222333",
           "merchant": 1,
-          "status": 1
+          "status": 1,
+          "duplicate_id": "1234"
         },
         {
           "member_id": "63414",
           "email": "duplicate_member2@stamps.com",
           "mobile_number": "+62851111222444",
           "merchant": 2,
-          "status": 1
+          "status": 1,
+          "duplicate_id": "1234"
         },
       ]
     }
@@ -201,7 +204,8 @@ C. Example Response
           "email": "duplicate_member2@stamps.com",
           "mobile_number": "+62851111222444",
           "merchant": 2,
-          "status": 1
+          "status": 1,
+          "duplicate_id": "1234"
         },
       ]
     }
@@ -271,7 +275,7 @@ C. Example Response
         "is_blocked": false,
         "referral_code": "ABCDE",
         "start_date": "2014-08-08",
-        "created": "2014-08-08",
+        "created": "2014-08-08"
       }
     }
 
@@ -399,7 +403,7 @@ C. Example Response
         "email": "customer@stamps.co.id",
         "phone": "+62812398712",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-        "birthday": "1989-10-1",
+        "birthday": "1989-10-1"
       },
       "membership": {
         "level": 1,
@@ -479,8 +483,9 @@ On successful balance update:
           "email": "merged_legacy_member@stamps.com",
           "mobile_number": "+62851111222444",
           "merchant": 1,
-          "status": 1
-        },
+          "status": 1,
+          "duplicate_id": "1234"
+        }
       ]
     }
 

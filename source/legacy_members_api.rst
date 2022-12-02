@@ -197,7 +197,8 @@ C. Example Response
           "email": "legacy_member@stamps.com",
           "mobile_number": "+62851111222333",
           "merchant": 1,
-          "status": 1
+          "status": 1,
+          "duplicate_id": "1234"
         },
         {
           "member_id": "63414",

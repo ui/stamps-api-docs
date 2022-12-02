@@ -258,7 +258,6 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": null,
-                "channels": [2, 3],
         },
         {
             "id": 2,
@@ -279,7 +278,6 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": {},
-                "channels": [2, 5],
         }
       ]
     }

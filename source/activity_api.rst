@@ -148,7 +148,7 @@ Below is an example response on successful API call.
                 "type": 10,
                 "created": 1607049764,
                 "stamps_deduction": {
-                    "deducted_stamps": 100,
+                    "stamps": 100,
                     "status": 1,
                     "notes": ""
                 }
@@ -167,7 +167,7 @@ Below is an example response on successful API call.
                     "modified_transaction_id": "13",
                     "stamps_delta": "10",
                     "subtotal_delta": "100000",
-                    "refunded_stamps": "5"
+                    "stamps_added": "5"
                 }
             },
             {

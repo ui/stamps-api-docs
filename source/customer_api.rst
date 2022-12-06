@@ -450,7 +450,7 @@ token                Yes         Authentication string
 merchant             Yes         Integer indicating merchant ID
 name                 Yes         Customer's name
 birthday             No          Customer's birthday (with format YYYY-MM-DD)
-gender               Yes         Customer's gender ("male" or "female")
+gender               No          Customer's gender ("male" or "female")
 email                No          Customer's email
 mobile number        No          Customer's phone number
 address              No          Customer's address

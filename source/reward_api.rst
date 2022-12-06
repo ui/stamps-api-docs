@@ -47,7 +47,7 @@ rewards             List of rewards available for redemption.
                     :ref:`type <Reward Type>` and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
                     Contains  id, name, type, quantity, image_url, extra_data
-                    landscape_url, and expires_on.
+                    landscape_url, expires_on and constraint :ref:`channels <Channel Type>`.
 detail              Description of error (if any)
 errors              Errors encountered when parsing
                     data (if any)
@@ -171,6 +171,9 @@ On a successful API call:
           "expires_on": "13-02-2013 00:00",
           "terms": "input your birthday for get voucher on your birthday",
           "quantity": 1,
+          "constraint": {
+              "channels": [1, 2]
+          },
           "extra_data": {
              "SKU": "PROMO-birthday-20-off"
           },
@@ -186,6 +189,9 @@ On a successful API call:
           "terms": "sign up at stamps and get Free product A",
           "quantity": 2,
           "extra_data": {},
+          "constraint": {
+              "channels": [1, 2, 3, 4, 5, 6]
+          },
         }
       ],
       "customer": {

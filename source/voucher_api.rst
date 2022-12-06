@@ -248,6 +248,9 @@ On a successful API call:
             "notes": "",
             "start_date": "2022-03-28",
             "end_date": "2022-04-28",
+            "constraint": {
+                "channels": [1, 2, 3, 4],
+            },
             "template": {
                 "id": 1,
                 "name": "March Surprise Voucher",
@@ -258,6 +261,7 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": null,
+            },
         },
         {
             "id": 2,
@@ -268,6 +272,9 @@ On a successful API call:
             "value": 200,
             "start_date": "2022-02-14",
             "end_date": "2022-02-28",
+            "constraint": {
+                "channels": [1, 2, 3, 6],
+            },
             "template": {
                 "id": 2,
                 "name": "Valentine Voucher",
@@ -278,6 +285,7 @@ On a successful API call:
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
                 "extra_data": {},
+            }
         }
       ]
     }

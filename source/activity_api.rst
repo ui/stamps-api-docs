@@ -176,11 +176,11 @@ Below is an example response on successful API call.
             },
             {
                 "id": 2590967,
-                "type": 13,
+                "type": 13
             },
             {
                 "id": 2590968,
-                "type": 14,
+                "type": 14
             }
         ]
     }

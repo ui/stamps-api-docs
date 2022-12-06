@@ -300,6 +300,7 @@ employee_code               No          Employee code of sender employee
 extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
+generate_voucher            No          Used to generate a voucher. This object contains ``voucher_template_id`` and optionally ``value``. Voucher template with ``voucher_template_id`` id's will be used to issue the voucher with ``value`` value.
 =========================== =========== =======================
 
 Channel Mapping

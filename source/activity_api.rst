@@ -155,7 +155,7 @@ Below is an example response on successful API call.
             {
                 "id": 2590969,
                 "type": 15,
-                "created_timestamp": 1607049764,
+                "created": 1607049764,
                 "expired_stamps": 102
             }
         ]

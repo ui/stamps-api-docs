@@ -131,7 +131,12 @@ Below is an example response on successful API call.
             },
             {
                 "id": 2590962,
-                "type": 8
+                "type": 8,
+                "created": 1607049764,
+                "survey": {
+                    "name": "Test Survey",
+                    "transaction_id": null
+                }
             },
             {
                 "id": 2590963,
@@ -142,22 +147,27 @@ Below is an example response on successful API call.
                 "id": 2590964,
                 "type": 10,
                 "created": 1607049764,
-                "deducted_stamps": 100,
-                "notes": ""
+                "stamps_deduction": {
+                    "deducted_stamps": 100,
+                    "status": 1,
+                    "notes": ""
+                }
             },
             {
                 "id": 2590965,
                 "type": 11,
                 "created": 1607049764,
-                "root_transaction_id": "12",
-                "original_transaction_id": "12",
-                "modified_transaction_id": "13",
-                "stamps_delta": "10",
-                "subtotal_delta": "100000",
-                "refunded_stamps": "5",
                 "store": {
                     "name": "L123",
                     "display_name": "Levi Store"
+                },
+                "transaction_modification": {
+                    "root_transaction_id": "12",
+                    "original_transaction_id": "12",
+                    "modified_transaction_id": "13",
+                    "stamps_delta": "10",
+                    "subtotal_delta": "100000",
+                    "refunded_stamps": "5"
                 }
             },
             {
@@ -187,8 +197,6 @@ Code                Description
 0                   Transaction
 1                   Redemption
 2                   Awarded Stamps
-5                   Membership Upgrade
-6                   Membership Downgrade
 7                   Change Balance
 8                   Survey Submission
 9                   Completed Registration
@@ -197,4 +205,15 @@ Code                Description
 12                  Membership Level Override
 13                  Merged with Legacy Member
 14                  Legacy Member Activated
+=================== ===========
+
+
+Status
+^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Created
+2                   Canceled
+3                   Open
 =================== ===========

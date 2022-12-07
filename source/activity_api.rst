@@ -181,6 +181,12 @@ Below is an example response on successful API call.
             {
                 "id": 2590968,
                 "type": 14
+            },
+            {
+                "id": 2590969,
+                "type": 15,
+                "created": 1607049764,
+                "expired_stamps": 102
             }
         ]
     }
@@ -205,6 +211,7 @@ Code                Description
 12                  Membership Level Override
 13                  Merged with Legacy Member
 14                  Legacy Member Activated
+15                  Stamps Expired
 =================== ===========
 
 

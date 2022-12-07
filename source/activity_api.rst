@@ -180,7 +180,7 @@ Below is an example response on successful API call.
             },
             {
                 "id": 2590968,
-                "type": 14,
+                "type": 14
             },
             {
                 "id": 2590969,

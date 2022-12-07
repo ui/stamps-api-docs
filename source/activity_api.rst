@@ -4,7 +4,7 @@ Activity API
 
 1. Get Activity List
 ====================
-| URL endpoint: https://stamps.co.id/api/v2/activities/
+| URL endpoint: https://stamps.co.id/api/v3/activities/
 | Allowed method: GET
 | Requires authentication: Yes
 
@@ -26,7 +26,7 @@ Here's an example of a Activity List API call using cURL.
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/v2/activities?token=abc&user=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/v3/activities?token=abc&user=customer@stamps.co.id'
 
 B. Response
 -----------
@@ -61,84 +61,114 @@ Below is an example response on successful API call.
             {
                 "id": 704,
                 "type": 0,
-                "created": "2022-08-31T06:01:01+00:00",
-                "created_timestamp": 1661925661,
-                "merchantName": "Ace Hardware",
-                "merchantID": 5,
-                "stamps": 20,
-                "name": "Transaction #493",
-                "status": 2,
-                "store": "A301",
-                "store_display_name": "ST ACE KARAWACI MAL",
-                "invoice_number": "INV-17",
-                "channel": "Mobile App"
+                "created": 1661925661,
+                "merchant": {
+                    "id": 5,
+                    "name": "Ace Hardware"
+                },
+                "store": {
+                    "name": "A301",
+                    "display_name": "ST ACE KARAWACI MAL"
+                },
+                "transaction": {
+                    "stamps": 20,
+                    "name": "Transaction #493",
+                    "status": 2,
+                    "invoice_number": "INV-17",
+                    "channel": "Mobile App"
+                }
             },
             {
                 "id": 2590959,
                 "type": 1,
-                "created": "2020-12-04T02:42:44+00:00",
-                "created_timestamp": 1607049764,
-                "merchantName": "Levi's",
-                "merchantID": 2,
-                "stamps": 0,
-                "name": "Update Database Voucher IDR 100,000",
-                "status": 2,
-                "store": "Tes Store",
-                "store_display_name": ""
+                "created": 1607049764,
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "redemption": {
+                    "stamps": 0,
+                    "name": "Update Database Voucher IDR 100,000",
+                    "status": 2
+                }
             },
             {
                 "id": 2590960,
                 "type": 2,
-                "created": "2020-12-04T02:42:44+00:00",
-                "created_timestamp": 1607049764,
-                "merchantName": "Levi's",
-                "merchantID": 2,
-                "stamps": 0,
-                "name": "Update Database Voucher IDR 100,000",
-                "status": 2
+                "created": 1607049764,
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
+                "award": {
+                    "stamps": 0,
+                    "name": "Update Database Voucher IDR 100,000",
+                    "status": 2
+                }
             },
             {
                 "id": 2590961,
                 "type": 7,
-                "created": "2020-12-04T02:42:44+00:00",
-                "created_timestamp": 1607049764,
-                "merchantName": "Levi's",
-                "merchantID": 2,
-                "store": "Tes Store",
-                "store_display_name": ""
-                "transaction_number": "ABCDE123",
-                "amount": 120000,
-                "status": 1
+                "created": 1607049764,
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "balance_update": {
+                    "transaction_number": "ABCDE123",
+                    "amount": 120000,
+                    "status": 1,
+                    "balance_type": 1
+                }
             },
             {
                 "id": 2590962,
-                "type": 8
+                "type": 8,
+                "created": 1607049764,
+                "survey": {
+                    "name": "Test Survey",
+                    "transaction_id": null
+                }
             },
             {
                 "id": 2590963,
                 "type": 9,
-                "created": "2020-12-04T02:42:44+00:00",
-                "created_timestamp": 1607049764
+                "created": 1607049764
             },
             {
                 "id": 2590964,
                 "type": 10,
-                "created": "2020-12-04T02:42:44+00:00",
-                "created_timestamp": 1607049764,
-                "deducted_stamps": 100,
-                "notes": ""
+                "created": 1607049764,
+                "stamps_deduction": {
+                    "stamps": 100,
+                    "status": 1,
+                    "notes": ""
+                }
             },
             {
                 "id": 2590965,
                 "type": 11,
-                "created_timestamp": 1607049764,
-                "root_transaction_id": "12",
-                "original_transaction_id": "12",
-                "modified_transaction_id": "13",
-                "store_name": "Tes Store",
-                "stamps_delta": "10",
-                "subtotal_delta": "100000",
-                "refunded_stamps": "5"
+                "created": 1607049764,
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "transaction_modification": {
+                    "root_transaction_id": "12",
+                    "original_transaction_id": "12",
+                    "modified_transaction_id": "13",
+                    "stamps_delta": "10",
+                    "subtotal_delta": "100000",
+                    "stamps_added": "5"
+                }
             },
             {
                 "id": 2590966,
@@ -146,7 +176,7 @@ Below is an example response on successful API call.
             },
             {
                 "id": 2590967,
-                "type": 13,
+                "type": 13
             },
             {
                 "id": 2590968,
@@ -173,8 +203,6 @@ Code                Description
 0                   Transaction
 1                   Redemption
 2                   Awarded Stamps
-5                   Membership Upgrade
-6                   Membership Downgrade
 7                   Change Balance
 8                   Survey Submission
 9                   Completed Registration
@@ -184,4 +212,15 @@ Code                Description
 13                  Merged with Legacy Member
 14                  Legacy Member Activated
 15                  Stamps Expired
+=================== ===========
+
+
+Status
+^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Created
+2                   Canceled
+3                   Open
 =================== ===========

@@ -26,7 +26,7 @@ subtotal_delta                 No          Must be provided if the original tran
 total_value_delta              Yes         The delta value of transaction's grand total after returned
 payments                       No          Must be provided if original transaction has payments.
                                            Payments are list of :ref:`payment objects <Payment Object>`
-stamps_to_add                  No          Stamps to be added manually. Can't be sent alongside stamps_to_deduct.
+stamps_to_add                  No          Stamps to be added by this transaction. If specified, this overrides system's calculation of the number of Stamps that will be added or deducted from this transaction.
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
 items                          Yes         Which items are returned. Items are list of :ref:`item objects<Item Object>`
@@ -258,7 +258,7 @@ total_value_delta              Yes         The delta value of transaction's gran
 payments                       No          Must be provided if original transaction has payments.
                                            Payments are list of :ref:`payment objects <Payment Object>`
 items                          Yes         Which items are returned. Items are list of :ref:`item objects<Item Object>`
-stamps_to_add                  No          Stamps to be added manually. Can't be sent alongside stamps_to_deduct.
+stamps_to_add                  No          Stamps to be added by this transaction. If specified, this overrides system's calculation of the number of Stamps that will be added or deducted from this transaction.
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
 cancel_redemptions             No          Also cancel redemptions related to original transaction. Default to "false"

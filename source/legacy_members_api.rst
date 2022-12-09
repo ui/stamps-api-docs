@@ -68,7 +68,62 @@ C. Example Response
     }
 
 
-2. Get Duplicate Legacy Members
+2. Validate Legacy Membership Pin
+====================================
+| URL endpoint: https://stamps.co.id/api/legacy/members/validate-pin
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+You can validate whether a legacy membership exists and check its status by calling this API.
+
+================ =========== =========================
+Parameter        Required    Description
+================ =========== =========================
+token            Yes         Authentication string
+user             Yes         A string indicating legacy member's ID, mobile number or email
+pin              Yes         User's pin
+================ =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/validate-pin -i -d '{ "token": "secret", "user": "legacy_member@stamps.com", "pin": "123456"}'
+
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+====================== ==============================
+Variable               Description
+====================== ==============================
+status                 Status of the request
+====================== ==============================
+
+
+C. Example Response
+-------------------
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "status": "ok"
+    }
+
+
+3. Get Duplicate Legacy Members
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/check-duplicates
 | Allowed Method: GET
@@ -140,7 +195,7 @@ C. Example Response
 
 
 
-3. Search Legacy Membership
+4. Search Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/search
 | Allowed Method: GET
@@ -213,7 +268,7 @@ C. Example Response
 
 
 
-4. Merge Legacy Membership
+5. Merge Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/merge
 | Allowed Method: POST
@@ -281,7 +336,7 @@ C. Example Response
     }
 
 
-5. Request Pin
+6. Request Pin
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/request-pin
 | Allowed Method: POST
@@ -339,7 +394,7 @@ On successful request pin:
     }
 
 
-6. Activate Legacy Membership
+7. Activate Legacy Membership
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/activate
 | Allowed Method: POST
@@ -425,7 +480,7 @@ C. Example Response
     }
 
 
-7. Get Merged Legacy Members
+8. Get Merged Legacy Members
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/get-merged-members
 | Allowed Method: GET

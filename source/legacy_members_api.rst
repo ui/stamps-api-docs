@@ -70,7 +70,7 @@ C. Example Response
 
 2. Validate Legacy Membership Pin
 ====================================
-| URL endpoint: https://stamps.co.id/api/legacy/members/pin/validate
+| URL endpoint: https://stamps.co.id/api/legacy/members/validate-pin
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -91,7 +91,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/pin/validate -i -d '{ "token": "secret", "user": "legacy_member@stamps.com", "pin": "123456"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/validate-pin -i -d '{ "token": "secret", "user": "legacy_member@stamps.com", "pin": "123456"}'
 
 
 

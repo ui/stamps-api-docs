@@ -165,9 +165,11 @@ Below is an example response on successful API call.
                     "root_transaction_id": "12",
                     "original_transaction_id": "12",
                     "modified_transaction_id": "13",
-                    "stamps_delta": "10",
-                    "subtotal_delta": "100000",
-                    "stamps_added": "5"
+                    "root_transaction_invoice_number": "ABC-123",
+                    "original_transaction_invoice_number": "ABC-123.1",
+                    "modified_transaction_invoice_number": "ABC-123.2",
+                    "stamps_delta": "-10",
+                    "subtotal_delta": "100000"
                 }
             },
             {

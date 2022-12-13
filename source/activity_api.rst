@@ -179,7 +179,7 @@ Below is an example response on successful API call.
                 }
             },
             {
-                "id": 2590965,
+                "id": 2590966,
                 "type": 11,
                 "created": 1607049764,
                 "store": {
@@ -201,19 +201,19 @@ Below is an example response on successful API call.
                 }
             },
             {
-                "id": 2590966,
+                "id": 2590967,
                 "type": 12
             },
             {
-                "id": 2590967,
+                "id": 2590968,
                 "type": 13
             },
             {
-                "id": 2590968,
+                "id": 2590969,
                 "type": 14
             },
             {
-                "id": 2590969,
+                "id": 25909610,
                 "type": 15,
                 "created": 1607049764,
                 "expired_stamps": 102

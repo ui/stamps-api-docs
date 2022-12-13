@@ -150,13 +150,15 @@ A. Request
 -----------------------------
 You can search for legacy members using email and/or mobile number with this API.
 
-=============== =========== =========================
-Parameter        Required    Description
-=============== =========== =========================
-token            Yes         Authentication token in string
-email            No          Membership email. Required if mobile number is empty.
-mobile_number    No          Membership mobile number. Required if email is empty.
-=============== =========== =========================
+======================= =========== =========================
+Parameter               Required    Description
+======================= =========== =========================
+token                   Yes         Authentication token in string
+email                   No          Membership email. Required if other identifiers are empty.
+mobile_number           No          Membership mobile number. Required if other identifiers are empty.
+member_id               No          Membership member ID. Required if other identifiers are empty.
+check_duplicate_id      No          Boolean indicating whether to check members' duplicate ID or not.
+======================= =========== =========================
 
 
 Example of API call request using cURL

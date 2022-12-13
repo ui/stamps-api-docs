@@ -162,30 +162,58 @@ Below is an example response on successful API call.
                     "display_name": "Levi Store"
                 },
                 "transaction_modification": {
-                    "root_transaction_id": "12",
-                    "original_transaction_id": "12",
-                    "modified_transaction_id": "13",
-                    "root_transaction_invoice_number": "ABC-123",
-                    "original_transaction_invoice_number": "ABC-123.1",
-                    "modified_transaction_invoice_number": "ABC-123.2",
+                    "root_transaction": {
+                        "id": 12,
+                        "invoice_number": "ABC-123"
+                    },
+                    "original_transaction": {
+                        "id": 13,
+                        "invoice_number": "ABC-123.1"
+                    },
+                    "modified_transaction": {
+                        "id": 14,
+                        "invoice_number": "ABC-123.2"
+                    }
                     "stamps_delta": "-10",
                     "subtotal_delta": "100000"
                 }
             },
             {
                 "id": 2590966,
-                "type": 12
+                "type": 11,
+                "created": 1607049764,
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "transaction_modification": {
+                    "root_transaction": {
+                        "id": 20,
+                        "invoice_number": "ABC-2"
+                    },
+                    "original_transaction": {
+                        "id": 20,
+                        "invoice_number": "ABC-2"
+                    },
+                    "modified_transaction": nil,
+                    "stamps_delta": "-10",
+                    "subtotal_delta": "100000"
+                }
             },
             {
                 "id": 2590967,
-                "type": 13
+                "type": 12
             },
             {
                 "id": 2590968,
-                "type": 14
+                "type": 13
             },
             {
                 "id": 2590969,
+                "type": 14
+            },
+            {
+                "id": 25909610,
                 "type": 15,
                 "created": 1607049764,
                 "expired_stamps": 102

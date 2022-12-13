@@ -179,6 +179,28 @@ Below is an example response on successful API call.
                 }
             },
             {
+                "id": 2590965,
+                "type": 11,
+                "created": 1607049764,
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "transaction_modification": {
+                    "root_transaction": {
+                        "id": 20,
+                        "invoice_number": "ABC-2"
+                    },
+                    "original_transaction": {
+                        "id": 20,
+                        "invoice_number": "ABC-2"
+                    },
+                    "modified_transaction": nil,
+                    "stamps_delta": "-10",
+                    "subtotal_delta": "100000"
+                }
+            },
+            {
                 "id": 2590966,
                 "type": 12
             },

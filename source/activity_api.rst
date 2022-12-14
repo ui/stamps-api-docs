@@ -12,14 +12,14 @@ Activity API
 A. Request
 ----------
 
-You can query a user's activity list by calling the API with these parameters. Only 50 activities will be returned per API call.
+You can query a user's activity list by calling the API with these parameters. Only 20 activities will be returned per API call.
 
 =================== =========== =======================
 Parameter           Required    Description
 =================== =========== =======================
 user                Yes         Email/mobile number identifying the member
 token               Yes         Merchant's Authentication token
-older_than          No          Activity ID. 50 activities will be returned that are older than this ID. If not provided, will return the latest 50 activities.
+older_than          No          Activity ID. 20 activities will be returned that are older than this ID. If not provided, will return the latest 20 activities.
 =================== =========== =======================
 
 Here's an example of a Activity List API call using cURL.
@@ -31,12 +31,12 @@ Here's an example of a Activity List API call using cURL.
 B. Response
 -----------
 
-On a successful API call, Stamps will reply with 50 (maximum) activities in a JSON List:
+On a successful API call, Stamps will reply with 20 (maximum) activities in a JSON List:
 
 =================== ==================
 Variable            Description
 =================== ==================
-actitivities        Activity list.
+activities          Activity list.
                     Contains id, :ref:`activity type <Activity Type>` and other details.
                     Object may vary depending on the activity type.
 error_messages      Errors encountered when parsing data (if any)
@@ -220,6 +220,108 @@ Below is an example response on successful API call.
             }
         ]
     }
+
+
+2. Get Activity List by Merchant Group
+====================
+| URL endpoint: https://stamps.co.id/api/v3/activities/by-merchant-group
+| Allowed method: GET
+| Requires authentication: Yes
+
+
+A. Request
+----------
+
+You can query a user's activity list in a merchant group by calling this API.
+Returns 20 activities per API call.
+
+=================== =========== =======================
+Parameter           Required    Description
+=================== =========== =======================
+user                Yes         Email/mobile number identifying the member
+token               Yes         Merchant's Authentication token
+merchant_id         No          An array of merchant IDs to filter activities.
+older_than          No          Activity ID. 20 activities will be returned that are older than this ID. If not provided, will return the latest 20 activities.
+=================== =========== =======================
+
+Here's an example of a Activity List API call using cURL.
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/v3/activities/by-merchnat-group?token=abc&user=customer@stamps.co.id'
+
+B. Response
+-----------
+
+On a successful API call, Stamps will reply with 20 (maximum) activities in a JSON List:
+
+=================== ==================
+Variable            Description
+=================== ==================
+activities          Activity list.
+                    Contains id, :ref:`activity type <Activity Type>` and other details.
+                    Object may vary depending on the activity type.
+error_messages      Errors encountered when parsing data (if any)
+=================== ==================
+
+C. Example Response
+-------------------
+
+Below is an example response on successful API call.
+
+.. code-block:: javascript
+
+    HTTP/1.0 200 OK
+    Allow: GET, HEAD, OPTIONS
+    Content-Type: application/json
+    Date: Wed, 15 Dec 2020 07:02:10 GMT
+    Server: WSGIServer/0.1 Python/2.7.4
+    Vary: Accept, Cookie
+
+    {
+        "activities": [
+            {
+                "id": 704,
+                "type": 0,
+                "created": 1661925661,
+                "merchant": {
+                    "id": 5,
+                    "name": "Ace Hardware"
+                },
+                "store": {
+                    "name": "A301",
+                    "display_name": "ST ACE KARAWACI MAL"
+                },
+                "transaction": {
+                    "stamps": 20,
+                    "name": "Transaction #493",
+                    "status": 2,
+                    "invoice_number": "INV-17",
+                    "channel": "Mobile App"
+                }
+            },
+            {
+                "id": 2590959,
+                "type": 1,
+                "created": 1607049764,
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "redemption": {
+                    "stamps": 0,
+                    "name": "Update Database Voucher IDR 100,000",
+                    "status": 2
+                }
+            }
+        ]
+    }
+
+
 
 
 Miscellaneous

@@ -148,15 +148,15 @@ C. Example Response
 
 A. Request
 -----------------------------
-You can search for legacy members using email and/or mobile number with this API.
+You can search for legacy members using one or a combination of these identifiers: mobile number, email, or member ID.
 
 ======================= =========== =========================
 Parameter               Required    Description
 ======================= =========== =========================
 token                   Yes         Authentication token in string
-email                   No          Membership email. Required if other identifiers are empty.
-mobile_number           No          Membership mobile number. Required if other identifiers are empty.
-member_id               No          Membership member ID. Required if other identifiers are empty.
+email                   No          Membership email.
+mobile_number           No          Membership mobile number.
+member_id               No          Membership member ID.
 check_duplicate_id      No          Boolean indicating whether to check members' duplicate ID or not.
 ======================= =========== =========================
 

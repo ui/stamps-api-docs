@@ -33,8 +33,8 @@ sub_total                   No          A number indicating transaction subtotal
 discount                    No          A number indicating transaction discount (in Rp.)
 service_charge              No          A number indicating service charge (in Rp.)
 tax                         No          A number indicating transaction tax (in Rp.)
-channel                     No          Channel of a transaction, for channel mapping, see table below
-type                        No          The type of prepared transactions, for type mapping, see table below
+channel                     No          Channel of a transaction. See :ref:`channel mapping <Channel Mapping>` for more details.
+type                        No          The type of prepared transactions.  See :ref:`type mapping <Type Mapping>` for more details.
 items                       No          List of items containing product name, quantity, subtotal,
                                         stamps_subtotal (optional) & eligible_for_stamps (optional).
                                         ``price`` is the combined price of products (qty * unit price),
@@ -52,37 +52,6 @@ require_email_notification  No          A boolean indicating send transaction to
 employee_code               No          Employee code of sender employee
 extra_data                  No          Additional data for further processing
 =========================== =========== =======================
-
-Channel Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile App
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS
-7                   Call Center
-8                   GrabFood
-9                   GoFood
-=================== ===========
-
-
-
-Type Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Delivery
-2                   Dine-in
-3                   Take out
-4                   E-Commerce
-5                   Pickup
-=================== ===========
-
 
 
 Here's an example of how the API call might look like in JSON format:
@@ -280,8 +249,8 @@ sub_total                   No          A number indicating transaction subtotal
 discount                    No          A number indicating transaction discount (in Rp.)
 service_charge              No          A number indicating service charge (in Rp.)
 tax                         No          A number indicating transaction tax (in Rp.)
-channel                     No          Channel of a transaction, for channel mapping, see table below
-type                        No          The type of prepared transactions, for type mapping, see table below
+channel                     No          Channel of a transaction. See :ref:`channel mapping <Channel Mapping>` for more details.
+type                        No          The type of prepared transactions.  See :ref:`type mapping <Type Mapping>` for more details.
 items                       No          List of items containing product name, quantity, subtotal,
                                         stamps_subtotal (optional) & eligible_for_stamps (optional).
                                         ``price`` is the combined price of products (qty * unit price),
@@ -301,37 +270,6 @@ extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
 =========================== =========== =======================
-
-Channel Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile App
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS
-7                   Call Center
-8                   GrabFood
-9                   GoFood
-=================== ===========
-
-
-
-Type Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Delivery
-2                   Dine-in
-3                   Take out
-4                   E-Commerce
-5                   Pickup
-=================== ===========
-
 
 
 Here's an example of how the API call might look like in JSON format:
@@ -894,8 +832,8 @@ sub_total                   No          A number indicating transaction subtotal
 discount                    No          A number indicating transaction discount (in Rp.)
 service_charge              No          A number indicating service charge (in Rp.)
 tax                         No          A number indicating transaction tax (in Rp.)
-channel                     No          Channel of a transaction, for channel mapping, see table below
-type                        No          The type of prepared transactions, for type mapping, see table below
+channel                     No          Channel of a transaction. See :ref:`channel mapping <Channel Mapping>` for more details.
+type                        No          The type of prepared transactions.  See :ref:`type mapping <Type Mapping>` for more details.
 items                       No          List of items containing product name, quantity, subtotal,
                                         stamps_subtotal (optional) & eligible_for_stamps.
                                         ``price`` is the combined price of products (qty * unit price),
@@ -968,6 +906,10 @@ user                        Yes         A string indicating customer's email, Me
                                         mobile number or primary key ID
 last_transaction_id         No          An integer indicating customer transaction_id,
                                         will return transactions with less than given value
+merchant_id                 No          An array of merchant IDs to filter
+channel                     No          An integer array of transaction channels to filter. See :ref:`channel mapping <Channel Mapping>` for more details.
+start_date                  No          Start of transaction created date to filter in YYYY-MM-DD format
+end_date                    No          End of transaction created date to filter in YYYY-MM-DD format
 ==========================  =========== =========================================================
 
 
@@ -975,7 +917,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X GET -H "Content-Type: application/json" https://stamps.co.id/api/transactions/by-user -i -d '{ "token": "secret", "user": 123}'
+    $ curl 'https://stamps.co.id/api/transactions/by-user?token=secret&user=123&merchant_id=2&merchant_id=3&channel=2&channel=4&end_date=2022-09-12'
 
 
 B. Response
@@ -991,6 +933,7 @@ transactions        list of user transactions
                     stamps_earned, number_of_people,
                     discount, subtotal, invoice_number,
                     created, merchant, and store
+has_next            Boolean value indicating whether any older transaction exists.
 =================== ==============================
 
 
@@ -1049,5 +992,40 @@ On successful get Transactions:
           "display_name": "TEST STORE"
         }
       }
-    ]
+    ],
+    "has_next": true
   }
+
+
+
+Miscellaneous
+------------------------------
+
+Channel Mapping
+^^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile App
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
+7                   Call Center
+8                   GrabFood
+9                   GoFood
+=================== ===========
+
+
+Type Mapping
+^^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Delivery
+2                   Dine-in
+3                   Take out
+4                   E-Commerce
+5                   Pickup
+=================== ===========

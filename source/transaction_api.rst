@@ -300,7 +300,7 @@ employee_code               No          Employee code of sender employee
 extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
-generate_voucher            No          Objects of data used to generate a voucher. Contains ``voucher_template_id`` and ``value`` (optional).
+issue_voucher               No          Objects of data used to issue a voucher. Contains ``template_id`` and ``value`` (optional).
 =========================== =========== =======================
 
 Channel Mapping
@@ -410,8 +410,8 @@ Here's an example of how the API call might look like in JSON format:
             "voucher_code": "VOUCHERCODE"
           }
        ],
-       "generate_voucher": {
-          "voucher_template_id": 1
+       "issue_voucher": {
+          "template_id": 1
           "value": 100000
        }
     }
@@ -485,6 +485,10 @@ If transaction is successful(JSON):
         "value": 50000.0,
         "number_of_people": 8,
         "discount": 5000.0
+      },
+      "issued_voucher": {
+        "id": 5,
+        "template_id": 1
       }
     }
 

@@ -303,6 +303,7 @@ marital_status               No          Customer's marital status
 wedding_date                 No          Customer's weidding date
 extra_data                   No          Extra data related to customer
 registering_employee_code    No          A String indicated Employee Code, if customer not exist will create new one
+generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 ============================ =========== =========================
 
 Example of API call request using cURL:

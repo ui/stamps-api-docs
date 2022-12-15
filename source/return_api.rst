@@ -262,7 +262,7 @@ stamps_to_add                  No          Stamps to be added by this transactio
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
 cancel_redemptions             No          Also cancel redemptions related to original transaction. Default to "false"
-issue_voucher                  No          Objects of data used to generate a voucher. Contains ``voucher_template_id`` and ``value`` (optional).
+issue_voucher                  No          Objects of data used to issue a voucher. Contains ``template_id`` and ``value`` (optional).
 ============================== =========== ==================================================================================================================
 
 Example of API call request using cURL
@@ -292,7 +292,11 @@ Example of API call request using cURL
                         "payment_method": "1300",
                         "value": -15000
                     }
-                ]
+                ],
+                "issue_voucher": {
+                    "template_id": 1,
+                    "value": 10000
+                }
             }'
 
 B. Response Data
@@ -430,6 +434,10 @@ On a successful API call:
             "created": 1661844369,
             "stamps_delta": -12.0,
             "subtotal_delta": -15000.0
+        },
+        "issued_voucher": {
+            "id": 5,
+            "template_id": 1
         }
     }
 

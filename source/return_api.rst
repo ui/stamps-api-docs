@@ -292,7 +292,11 @@ Example of API call request using cURL
                         "payment_method": "1300",
                         "value": -15000
                     }
-                ]
+                ],
+                "issue_voucher": {
+                    "template_id": 1,
+                    "value": 10000
+                }
             }'
 
 B. Response Data
@@ -430,6 +434,10 @@ On a successful API call:
             "created": 1661844369,
             "stamps_delta": -12.0,
             "subtotal_delta": -15000.0
+        },
+        "issued_voucher": {
+            "id": 5,
+            "template_id": 1
         }
     }
 

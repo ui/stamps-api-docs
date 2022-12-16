@@ -443,28 +443,29 @@ A. Request
 You can use this API to update your customer's profile through Point of Sales
 or other websites.
 
-==================== =========== =========================
-Parameter            Required    Description
-==================== =========== =========================
-user                 Yes         Customer's integer primary key or Card number
-token                Yes         Authentication string
-merchant             Yes         Integer indicating merchant ID
-name                 Yes         Customer's name
-birthday             No          Customer's birthday (with format YYYY-MM-DD)
-gender               No          Customer's gender ("male" or "female")
-email                No          Customer's email
-mobile number        No          Customer's phone number
-address              No          Customer's address
-district             No          Customer's address district ID
-postal_code          No          Customer's postal code
-extra_data           No          Extra data related to customer
-has_downloaded_app   No          Boolean indicating user has downloaded an app
-phone_is_verified    No          Boolean indicating user's phone is verified
-email_is_verified    No          Boolean indicating user's email is verified
-notes                No          String to give custom notes to this user
-marital_status       No          Customer's marital status
-wedding_date         No          Customer's weidding date
-==================== =========== =========================
+============================ =========== =========================
+Parameter                    Required    Description
+============================ =========== =========================
+user                         Yes         Customer's integer primary key or Card number
+token                        Yes         Authentication string
+merchant                     Yes         Integer indicating merchant ID
+name                         Yes         Customer's name
+birthday                     No          Customer's birthday (with format YYYY-MM-DD)
+gender                       No          Customer's gender ("male" or "female")
+email                        No          Customer's email
+mobile number                No          Customer's phone number
+address                      No          Customer's address
+district                     No          Customer's address district ID
+postal_code                  No          Customer's postal code
+extra_data                   No          Extra data related to customer
+has_downloaded_app           No          Boolean indicating user has downloaded an app
+phone_is_verified            No          Boolean indicating user's phone is verified
+email_is_verified            No          Boolean indicating user's email is verified
+notes                        No          String to give custom notes to this user
+marital_status               No          Customer's marital status
+wedding_date                 No          Customer's weidding date
+generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+============================ =========== =========================
 
 Example of API call request using cURL:
 

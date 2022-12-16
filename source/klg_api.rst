@@ -657,8 +657,28 @@ On a successful API call:
             "subtotal_delta": -15000.0
         },
         "issued_voucher": {
-            "id": 5,
-            "template_id": 1
+            "id": 1,
+            "code": "VC-ABC",
+            "is_active": true,
+            "quantity": 1,
+            "value": 200,
+            "notes": "",
+            "start_date": "2022-03-28",
+            "end_date": "2022-04-28",
+            "constraint": {
+                "channels": [1, 2, 3, 4],
+            },
+            "template": {
+                "id": 1,
+                "name": "March Surprise Voucher",
+                "type": 1,
+                "short_description": "Get 50% off on your next purchase",
+                "picture_url": "foo.png",
+                "landscape_picture_url": "foo_landscape.png",
+                "merchant_id": 1,
+                "merchant_code": "M-ABC",
+                "extra_data": null,
+            }
         }
     }
 

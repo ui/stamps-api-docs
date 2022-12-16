@@ -269,6 +269,7 @@ employee_code               No          Employee code of sender employee
 extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
+issue_voucher               No          Objects of data used to issue a voucher. Contains ``template_id`` and ``value`` (optional).
 =========================== =========== =======================
 
 
@@ -346,7 +347,11 @@ Here's an example of how the API call might look like in JSON format:
             "request_id": "request-id-1",
             "voucher_code": "VOUCHERCODE"
           }
-       ]
+       ],
+       "issue_voucher": {
+          "template_id": 1
+          "value": 100000
+       }
     }
 
 
@@ -418,6 +423,30 @@ If transaction is successful(JSON):
         "value": 50000.0,
         "number_of_people": 8,
         "discount": 5000.0
+      },
+      "issued_voucher": {
+        "id": 1,
+        "code": "VC-ABC",
+        "is_active": true,
+        "quantity": 1,
+        "value": 200,
+        "notes": "",
+        "start_date": "2022-03-28",
+        "end_date": "2022-04-28",
+        "constraint": {
+            "channels": [1, 2, 3, 4],
+        },
+        "template": {
+            "id": 1,
+            "name": "March Surprise Voucher",
+            "type": 1,
+            "short_description": "Get 50% off on your next purchase",
+            "picture_url": "foo.png",
+            "landscape_picture_url": "foo_landscape.png",
+            "merchant_id": 1,
+            "merchant_code": "M-ABC",
+            "extra_data": null,
+        }
       }
     }
 

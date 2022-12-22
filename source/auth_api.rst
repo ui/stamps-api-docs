@@ -803,3 +803,71 @@ Invalid OTP:
         "error_code": "invalid_otp",
         "error_message": "otp: Invalid OTP"
     }
+
+
+10. Validate Mobile Number
+===============
+| URL endpoint: https://stamps.co.id/api/auth/validate-mobile-number
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+==================== ======== ===========
+Parameter            Required Description
+==================== ======== ===========
+token                Yes      Authentication string
+mobile_number        Yes      A string indicating mobile number or phone to validate
+==================== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/validate-mobile-number -i -d '{ "token": "secret", "mobile_number": "081234567890" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+Invalid Mobile Number:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "status": "invalid",
+        "detail": "mobile_number: Please enter a valid mobile phone number.",
+        "errors": {
+            "mobile_number": "Please enter a valid mobile phone number."
+        },
+        "error_code": "invalid_mobile_number",
+        "error_message": "mobile_number: Please enter a valid mobile phone number."
+    }

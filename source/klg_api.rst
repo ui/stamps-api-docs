@@ -483,6 +483,7 @@ stamps_to_add                  No          Stamps to be added by this transactio
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
 cancel_redemptions             No          Also cancel redemptions related to original transaction. Default to "false"
+issue_voucher                  No          Objects of data used to issue a voucher. Contains ``template_id`` and ``value`` (optional).
 ============================== =========== ==================================================================================================================
 
 Example of API call request using cURL
@@ -512,7 +513,11 @@ Example of API call request using cURL
                         "payment_method": "1300",
                         "value": -15000
                     }
-                ]
+                ],
+                "issue_voucher": {
+                    "template_id": 1,
+                    "value": 10000
+                }
             }'
 
 B. Response Data
@@ -650,6 +655,30 @@ On a successful API call:
             "created": 1661844369,
             "stamps_delta": -12.0,
             "subtotal_delta": -15000.0
+        },
+        "issued_voucher": {
+            "id": 1,
+            "code": "VC-ABC",
+            "is_active": true,
+            "quantity": 1,
+            "value": 200,
+            "notes": "",
+            "start_date": "2022-03-28",
+            "end_date": "2022-04-28",
+            "template": {
+                "id": 1,
+                "name": "March Surprise Voucher",
+                "type": 1,
+                "description": "Get 50% off on your next purchase in Lippo Mall Kemang Store",
+                "short_description": "Get 50% off on your next purchase",
+                "picture_url": "foo.png",
+                "landscape_picture_url": "foo_landscape.png",
+                "instructions": "Show this voucher to the cashier",
+                "terms_and_conditions": "Valid until 28 April 2022 with minimum purchase of Rp 100.000",
+                "usable_in_merchant_ids": [1, 2, 3],
+                "merchant_code": "M-ABC",
+                "extra_data": null,
+            }
         }
     }
 

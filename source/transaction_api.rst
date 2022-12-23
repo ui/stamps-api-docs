@@ -768,7 +768,6 @@ Parameter                  Required    Description
 ========================== =========== =========================================================
 token                      Yes         Authentication string
 transaction_id             Yes         Transaction ID
-merchant                   Yes         Total value that want to deduct from a transaction
 ========================== =========== =========================================================
 
 
@@ -831,7 +830,13 @@ On successful balance update:
             "subtotal": null,
             "tax": null,
             "type": null,
-            "value": 1500000.0
+            "value": 1500000.0,
+            "payments": [{
+                "id": 1,
+                "value": 1500000.0,
+                "eligible_for_stamps": 150,
+                "payment_method_code": ABC
+            }]
         }
     }
 
@@ -935,7 +940,7 @@ user                        Yes         A string indicating customer's email, Me
                                         mobile number or primary key ID
 last_transaction_id         No          An integer indicating customer transaction_id,
                                         will return transactions with less than given value
-merchant_id                 No          An array of merchant IDs to filter
+merchant_id                 No          An array of merchant IDs to filter, fill with [0] to get all merchant in same group
 channel                     No          An integer array of transaction channels to filter. See :ref:`channel mapping <Channel Mapping>` for more details.
 start_date                  No          Start of transaction created date to filter in YYYY-MM-DD format
 end_date                    No          End of transaction created date to filter in YYYY-MM-DD format

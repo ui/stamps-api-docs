@@ -297,6 +297,7 @@ root_transaction     Information about the first original transaction
 original_transaction Information about the previous transaction
 modified_transaction Information about the new transaction after return happens
 modication           Information about the modified data of the original transaction
+returnable_vouchers  Information about what vouchers will be returned
 ==================== ===========================================================================
 
 
@@ -438,7 +439,39 @@ On a successful API call:
             "created": 1661844369,
             "stamps_delta": -12.0,
             "subtotal_delta": -15000.0
-        }
+        },
+        "returnable_vouchers": [
+            {
+                "id": 9,
+                "code": "R-FWEWQWVV",
+                "is_active": true,
+                "quantity": 1,
+                "value": 50000.0,
+                "notes": "",
+                "start_date": "2022-12-23",
+                "end_date": "2022-12-29",
+                "template": {
+                    "id": 5,
+                    "name": "MULTI VOUCHER",
+                    "type": 2,
+                    "description": "",
+                    "short_description": "",
+                    "picture_url": "/media/thumb/voucher_templates/2022/12/9/uploaded_image_2022_12_09_03_38_21_252743_size_400.webp",
+                    "landscape_picture_url": null,
+                    "instructions": "",
+                    "terms_and_conditions": "",
+                    "usable_in_merchant_ids": [
+                        1,
+                        2
+                    ],
+                    "merchant_code": "",
+                    "extra_data": null,
+                    "html_terms_and_conditions": null
+                },
+                "terms_and_conditions": "",
+                "html_terms_and_conditions": null
+            }
+        ]
     }
 
 On an invalid request:
@@ -534,6 +567,7 @@ root_transaction     Information about the first original transaction
 original_transaction Information about the previous transaction
 modified_transaction Information about the new transaction after return happens
 modication           Information about the modified data of the original transaction
+returned_vouchers    Information about what vouchers are returned
 ==================== ===========================================================================
 
 
@@ -679,7 +713,39 @@ On a successful API call:
                 "merchant_code": "M-ABC",
                 "extra_data": null,
             }
-        }
+        },
+        "returned_vouchers": [
+            {
+                "id": 9,
+                "code": "R-ZLT2ULER",
+                "is_active": true,
+                "quantity": 1,
+                "value": 50000.0,
+                "notes": "",
+                "start_date": "2022-12-23",
+                "end_date": "2022-12-29",
+                "template": {
+                    "id": 5,
+                    "name": "MULTI VOUCHER",
+                    "type": 2,
+                    "description": "",
+                    "short_description": "",
+                    "picture_url": "/media/thumb/voucher_templates/2022/12/9/uploaded_image_2022_12_09_03_38_21_252743_size_400.webp",
+                    "landscape_picture_url": null,
+                    "instructions": "",
+                    "terms_and_conditions": "",
+                    "usable_in_merchant_ids": [
+                        1,
+                        2
+                    ],
+                    "merchant_code": "",
+                    "extra_data": null,
+                    "html_terms_and_conditions": null
+                },
+                "terms_and_conditions": "",
+                "html_terms_and_conditions": null
+            }
+        ]
     }
 
 On an invalid request:
@@ -706,6 +772,7 @@ Parameter                      Required    Description
 ============================== =========== ===================================================================
 payment_method                 Yes         Payment method code
 value                          Yes         Nominal of payment, must be negative
+voucher_code                   No          Will issue a new voucher with corresponding `value`
 ============================== =========== ===================================================================
 
 Item Object

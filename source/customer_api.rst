@@ -99,6 +99,8 @@ On a successful API call:
             "gender": "female",
             "has_incorrect_email": true,
             "has_pin": false,
+            "pin_is_blocked": false,
+            "has_password": true,
             "id": "454",
             "id_card_file_name": "",
             "id_number": null,
@@ -117,7 +119,11 @@ On a successful API call:
             "referral_code": "SR2KORUB",
             "registration_status": "Partial",
             "religion": 1,
-            "wedding_date": null
+            "wedding_date": null,
+            "site_activity": {
+                "id": 1,
+                "registration_method": "API"
+            }
         }
     }
 
@@ -380,6 +386,7 @@ A successful API call:
         "is_anonymized": false,
         "has_pin": false,
         "pin_is_blocked": false,
+        "has_password": true,
         "notes": "",
         "referral_code": "GYHTLIY9",
         "registration_status": "Full",
@@ -629,6 +636,7 @@ A successful API call:
             "is_anonymized": false,
             "has_pin": false,
             "pin_is_blocked": false,
+            "has_password": true,
             "address": "Anggrek 5 No. 1",
             "birthday": "1999-07-15",
             "gender": "f",

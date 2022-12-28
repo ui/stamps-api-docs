@@ -134,6 +134,7 @@ On successful redemption:
             "is_active": true,
             "start_date": "2016-07-25",
             "end_date": "2016-08-25",
+            "value": null,
             "picture_url": "http://foo.com",
             "short_description": "Free Kaya Bun",
             "description": "Free Kaya Bun with no minimum purchase",

@@ -1391,7 +1391,7 @@ A successful API call:
 
 14. Request OTP to Modify Email
 ===============================
-| URL endpoint: https://stamps.co.id/api/v2/accounts/request-otp-for-email-change
+| URL endpoint: https://stamps.co.id/api/v2/accounts/request-otp-for-email
 | Allowed Method: POST
 | Require Authentication: Yes
 
@@ -1411,7 +1411,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email-change -i -d '{ "token": "secret", "new_email": "alice@stamps.co.id", "template_code": "OTP_1"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email -i -d '{ "token": "secret", "new_email": "alice@stamps.co.id", "template_code": "OTP_1"}'
 
 
 B. Response Data
@@ -1458,24 +1458,6 @@ Invalid Template Code:
         },
         "error_code": "invalid_template_code",
         "error_message": "Email template not found"
-    }
-
-New email already used
-
-.. code-block :: bash
-
-    HTTP/1.0 400 BAD REQUEST
-    Vary: Accept
-    Content-Type: application/json
-    [Redacted Header]
-
-    {
-        "detail": "new_email: alice@stamps.co.id is already used",
-        "errors": {
-            "new_email": "alice@stamps.co.id is already used"
-        },
-        "error_code": "email_already_used",
-        "error_message": "alice@stamps.co.id is already used"
     }
 
 
@@ -1532,7 +1514,7 @@ A successful API call:
         "status": "ok"
     }
 
-Email is already used
+Email is already used by other user
 
 .. code-block :: bash
 

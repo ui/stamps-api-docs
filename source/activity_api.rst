@@ -62,6 +62,7 @@ Below is an example response on successful API call.
                 "id": 704,
                 "type": 0,
                 "created": 1661925661,
+                "notes": "Acvitity notes",
                 "merchant": {
                     "id": 5,
                     "name": "Ace Hardware"
@@ -82,6 +83,7 @@ Below is an example response on successful API call.
                 "id": 2590959,
                 "type": 1,
                 "created": 1607049764,
+                "notes": "",
                 "merchant": {
                     "id": 2,
                     "name": "Levi's"
@@ -100,6 +102,7 @@ Below is an example response on successful API call.
                 "id": 2590960,
                 "type": 2,
                 "created": 1607049764,
+                "notes": "",
                 "merchant": {
                     "id": 2,
                     "name": "Levi's"
@@ -114,6 +117,7 @@ Below is an example response on successful API call.
                 "id": 2590961,
                 "type": 7,
                 "created": 1607049764,
+                "notes": "",
                 "merchant": {
                     "id": 2,
                     "name": "Levi's"
@@ -133,6 +137,7 @@ Below is an example response on successful API call.
                 "id": 2590962,
                 "type": 8,
                 "created": 1607049764,
+                "notes": "",
                 "survey": {
                     "name": "Test Survey",
                     "transaction_id": null
@@ -141,12 +146,14 @@ Below is an example response on successful API call.
             {
                 "id": 2590963,
                 "type": 9,
-                "created": 1607049764
+                "created": 1607049764,
+                "notes": "",
             },
             {
                 "id": 2590964,
                 "type": 10,
                 "created": 1607049764,
+                "notes": "",
                 "stamps_deduction": {
                     "stamps": 100,
                     "status": 1,
@@ -157,6 +164,7 @@ Below is an example response on successful API call.
                 "id": 2590965,
                 "type": 11,
                 "created": 1607049764,
+                "notes": "",
                 "store": {
                     "name": "L123",
                     "display_name": "Levi Store"
@@ -182,6 +190,7 @@ Below is an example response on successful API call.
                 "id": 2590966,
                 "type": 11,
                 "created": 1607049764,
+                "notes": "",
                 "store": {
                     "name": "L123",
                     "display_name": "Levi Store"
@@ -203,20 +212,24 @@ Below is an example response on successful API call.
             {
                 "id": 2590967,
                 "type": 12
+                "notes": "",
             },
             {
                 "id": 2590968,
-                "type": 13
+                "type": 13,
+                "notes": "",
             },
             {
                 "id": 2590969,
-                "type": 14
+                "type": 14,
+                "notes": "",
             },
             {
                 "id": 25909610,
                 "type": 15,
                 "created": 1607049764,
-                "expired_stamps": 102
+                "expired_stamps": 102,
+                "notes": "",
             }
         ]
     }
@@ -284,6 +297,7 @@ Below is an example response on successful API call.
                 "id": 704,
                 "type": 0,
                 "created": 1661925661,
+                "notes": "",
                 "merchant": {
                     "id": 5,
                     "name": "Ace Hardware"
@@ -304,6 +318,7 @@ Below is an example response on successful API call.
                 "id": 2590959,
                 "type": 1,
                 "created": 1607049764,
+                "notes": "",
                 "merchant": {
                     "id": 2,
                     "name": "Levi's"

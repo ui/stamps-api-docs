@@ -237,7 +237,36 @@ Below is an example response on successful API call.
                 "created": 1607049764,
                 "expired_stamps": 102,
                 "notes": "",
-            }
+            },
+            {
+                "id": 25909611,
+                "type": 16,
+                "created": 1607049764,
+                "notes": "",
+                "store": {
+                    "name": "L123",
+                    "display_name": "Levi Store"
+                },
+                "transaction_modification": {
+                    "root_transaction": {
+                        "id": 30,
+                        "invoice_number": "ABC-16"
+                    },
+                    "original_transaction": {
+                        "id": 30,
+                        "invoice_number": "ABC-16"
+                    },
+                    "modified_transaction": {
+                        "id": 31,
+                        "invoice_number": "ABC-16.2"
+                    }
+                    "stamps_delta_override": 0,
+                    "stamps_refund_from_payments": 0,
+                    "total_stamps_delta": -10,
+                    "subtotal_delta": -100000,
+                    "grand_total_delta": -100000
+                }
+            },
         ]
     }
 
@@ -366,6 +395,7 @@ Code                Description
 13                  Merged with Legacy Member
 14                  Legacy Member Activated
 15                  Stamps Expired
+16                  Refund Stamps
 =================== ===========
 
 

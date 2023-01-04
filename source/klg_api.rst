@@ -266,7 +266,7 @@ Example of API call request using cURL
                 "root_transaction_store": 3,
                 "root_invoice_date": "2022-08-30",
                 "return_invoice_number": "6288988812712621.1",
-                "total_value_delta": -1,
+                "total_value_delta": -15000,
                 "return_store": 3,
                 "items": [
                     {
@@ -288,17 +288,17 @@ B. Response Data
 
 Stamps responds to this API call with the following data (in JSON):
 
-==================== ===========================================================================
+==================== =============================================================================================
 Variable             Description
-==================== ===========================================================================
+==================== =============================================================================================
 user                 Information about this transaction's user
 membership           Information about the user's membership on the transaction's merchant
 root_transaction     Information about the first original transaction
 original_transaction Information about the previous transaction
 modified_transaction Information about the new transaction after return happens
-modication           Information about the modified data of the original transaction
+modication           Information about the :ref:`modified data <Modification Object>` of the original transaction
 returnable_vouchers  Information about what vouchers will be returned
-==================== ===========================================================================
+==================== =============================================================================================
 
 
 C. Response Headers
@@ -437,8 +437,12 @@ On a successful API call:
         "modification": {
             "id": null,
             "created": 1661844369,
-            "stamps_delta": -12.0,
-            "subtotal_delta": -15000.0
+            "stamps_delta": -12,
+            "stamps_delta_override": 0,
+            "stamps_refund_from_payments": 0,
+            "total_stamps_delta": -12,
+            "subtotal_delta": -15000.0,
+            "grand_total_delta": -15000.0
         },
         "returnable_vouchers": [
             {
@@ -532,7 +536,7 @@ Example of API call request using cURL
                 "root_transaction_store": 3,
                 "root_invoice_date": "2022-08-30",
                 "return_invoice_number": "6288988812712621.1",
-                "total_value_delta": -1,
+                "total_value_delta": -15000,
                 "return_store": 3,
                 "items": [
                     {
@@ -566,7 +570,7 @@ membership           Information about the user's membership on the transaction'
 root_transaction     Information about the first original transaction
 original_transaction Information about the previous transaction
 modified_transaction Information about the new transaction after return happens
-modication           Information about the modified data of the original transaction
+modification           Information about the :ref:`modified data <Modification Object>` of the original transaction
 returned_vouchers    Information about what vouchers are returned
 ==================== ===========================================================================
 
@@ -687,8 +691,12 @@ On a successful API call:
         "modification": {
             "id": 1,
             "created": 1661844369,
-            "stamps_delta": -12.0,
-            "subtotal_delta": -15000.0
+            "stamps_delta": -12,
+            "stamps_delta_override": 0,
+            "stamps_refund_from_payments": 0,
+            "total_stamps_delta": -12,
+            "subtotal_delta": -15000.0,
+            "grand_total_delta": -15000.0
         },
         "issued_voucher": {
             "id": 1,
@@ -784,3 +792,18 @@ product_name                   Yes         Product name of the item
 quantity                       Yes         Returned quantity, must be negative
 subtotal                       Yes         Returned subtotal, must be negative
 ============================== =========== ===================================================================
+
+Modification Object
+^^^^^^^^^^^^^^^^^^^
+============================== =========== =============================================================================================
+Parameter                      Type        Description
+============================== =========== =============================================================================================
+id                             int         Modification ID
+created                        int         Created time of modification in Unix Timestamp format
+stamps_delta                   int         Stamps delta between previous and latest transaction, from default calculation
+stamps_delta_override          int         Stamps delta between previous and latest transaction, from stamps_to_add or stamps_to_deduct
+stamps_refund_from_payments    int         Refunded stamps from the defined refundable payment methods
+total_stamps_delta             int         Total stamps delta from stamps_delta + stamps_delta_override + stamps_refund_from_payments
+subtotal_delta                 float       Subtotal delta between previous and latest transaction
+grand_total_delta              float       Grand total delta between previous and latest transaction
+============================== =========== =============================================================================================

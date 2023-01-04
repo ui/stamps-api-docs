@@ -209,6 +209,7 @@ Below is an example response on successful API call.
                         "invoice_number": "ABC-2"
                     },
                     "modified_transaction": nil,
+                    "stamps_delta": -10
                     "stamps_delta_override": 0,
                     "stamps_refund_from_payments": 0,
                     "total_stamps_delta": -10,
@@ -260,9 +261,10 @@ Below is an example response on successful API call.
                         "id": 31,
                         "invoice_number": "ABC-16.2"
                     }
+                    "stamps_delta": -10,
                     "stamps_delta_override": 0,
-                    "stamps_refund_from_payments": 0,
-                    "total_stamps_delta": -10,
+                    "stamps_refund_from_payments": 100,
+                    "total_stamps_delta": 90,
                     "subtotal_delta": -100000,
                     "grand_total_delta": -100000
                 }

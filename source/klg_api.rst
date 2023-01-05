@@ -822,7 +822,7 @@ API call example:
         "store": 32,
         "voucher": "ABC",
         "extra_data": {
-            "A001": "10000",
+            "A001": 10000,
             "I002": 40000
         }
     }'

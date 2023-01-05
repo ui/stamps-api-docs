@@ -779,7 +779,7 @@ On an invalid request:
 
 A. Parameters
 -------------
-You can initiate a reward redemption by calling the API with these parameters.
+You can initiate a voucher redemption by calling the API with these parameters.
 
 =============== ========= =========================
 Parameter       Required  Description

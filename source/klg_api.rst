@@ -770,6 +770,138 @@ On an invalid request:
     }
 
 
+6. Adding Voucher Redemption
+======================
+
+| URL endpoint: https://stamps.co.id/api/klg/redemptions/odi-redeem-voucher
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can initiate a reward redemption by calling the API with these parameters.
+
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+user            Yes       A string indicating customer's email or Member ID
+voucher         Yes       Voucher code of the redeemed voucher
+store           Yes       Merchant's store identifier where redemption is initiated
+invoice_number  No        POS invoice number
+channel         No        Channel mapping can be seen :ref:`here <Channel Mapping>`
+request_id      No        This field is needed if PIN authorization is enabled
+extra_data      Yes       JSON object containing voucher data. Store name as the key, and voucher value as the value.
+=============== ========= =========================
+
+Here's an example of how the API call might look like in JSON format with specified voucher.
+
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "user": "customer@stamps.co.id",
+        "store": 32,
+        "voucher": 1,
+        "invoice_number": "POS-1020123",
+        "extra_data": {
+            "A001": 10000,
+            "I002": 40000
+        }
+    }
+
+API call example:
+
+.. code-block :: bash
+    
+    $ curl --location --request POST 'https://stamps.co.id/api/klg/redemptions/odi-redeem-voucher' \
+    --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxOTMwNjg2LCJpYXQiOjE2NjE4NDQyODYsImp0aSI6IjZlM2U0ZGU0MzZkYzRjNDZhNGJhMjRkZWE2MjM0N2VjIiwidXNlcl9pZCI6MSwibWVyY2hhbnRfaWQiOjF9.brgNBzeuPmOV6ECP5WpwJJlQ6MQZ1zACHYx1YiW33AM' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "user": "customer@stamps.co.id",
+        "store": 32,
+        "voucher": "ABC",
+        "extra_data": {
+            "A001": "10000",
+            "I002": 40000
+        }
+    }'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+redemption          Redemption information which is
+                    successfully created.
+                    Contains id, reward, and stamps_used
+membership          Customer information after successful
+                    redemption. Contains id and stamps_remaining.
+voucher             Voucher used in redemption
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+    {
+       "redemption": {
+            "id": 2,
+            "reward": "Discount Rp 100,000",
+            "stamps_used": 0,
+            "extra_data": {
+                "discount": "10%"
+            }
+        },
+        "membership": {
+            "tags": [],
+            "status": 100,
+            "stamps": 250,
+            "balance": 0,
+            "referral_code": "9121682",
+            "start_date": "2016-07-25",
+            "created": "2016-07-25"
+        },
+        "voucher": {
+            "id": 4,
+            "name": "Discount Rp 100,000",
+            "code": "PZ633ECV",
+            "type": "voucher"
+        }
+    }
+
 Miscellaneous
 ------------------------------
 
@@ -807,3 +939,15 @@ total_stamps_delta             int         Total stamps delta from stamps_delta 
 subtotal_delta                 float       Subtotal delta between previous and latest transaction
 grand_total_delta              float       Grand total delta between previous and latest transaction
 ============================== =========== =============================================================================================
+
+Channel Mapping
+^^^^^^^^^^^^^^^
+=========== ======
+Channel     Value
+=========== ======
+POS         2
+Kiosk       3
+Web         4
+Android     5
+iOS         6
+=========== ======

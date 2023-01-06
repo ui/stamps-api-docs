@@ -791,7 +791,7 @@ store           Yes       Merchant's store identifier where redemption is initia
 invoice_number  No        POS invoice number
 channel         No        Channel mapping can be seen :ref:`here <Channel Mapping>`
 request_id      No        This field is needed if PIN authorization is enabled
-extra_data      Yes       JSON object containing voucher data. Store name as the key, and voucher value as the value.
+extra_data      Yes       JSON object containing "vouchers" object. Store name as the key, and voucher value as the value.
 =============== ========= =========================
 
 Here's an example of how the API call might look like in JSON format with specified voucher.
@@ -805,8 +805,10 @@ Here's an example of how the API call might look like in JSON format with specif
         "voucher": 1,
         "invoice_number": "POS-1020123",
         "extra_data": {
-            "A001": 10000,
-            "I002": 40000
+            "vouchers": {
+                "A001": 10000,
+                "I002": 40000
+            }
         }
     }
 
@@ -822,8 +824,10 @@ API call example:
         "store": 32,
         "voucher": "ABC",
         "extra_data": {
-            "A001": 10000,
-            "I002": 40000
+            "vouchers": {
+                "A001": 10000,
+                "I002": 40000
+            }
         }
     }'
 

@@ -187,7 +187,8 @@ Below is an example response on successful API call.
                     "stamps_refund_from_payments": 0,
                     "total_stamps_delta": -10,
                     "subtotal_delta": -100000,
-                    "grand_total_delta": -100000
+                    "grand_total_delta": -100000,
+                    "invoice_number": "ABC-123.2"
                 }
             },
             {
@@ -214,7 +215,8 @@ Below is an example response on successful API call.
                     "stamps_refund_from_payments": 0,
                     "total_stamps_delta": -10,
                     "subtotal_delta": -100000,
-                    "grand_total_delta": -100000
+                    "grand_total_delta": -100000,
+                    "invoice_number": "ABC-2.2"
                 }
             },
             {
@@ -266,7 +268,8 @@ Below is an example response on successful API call.
                     "stamps_refund_from_payments": 100,
                     "total_stamps_delta": 90,
                     "subtotal_delta": -100000,
-                    "grand_total_delta": -100000
+                    "grand_total_delta": -100000,
+                    "invoice_number": "ABC-16.2"
                 }
             },
         ]

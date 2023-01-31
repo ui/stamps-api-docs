@@ -308,7 +308,8 @@ religion                     No          Customer's religion
 marital_status               No          Customer's marital status
 wedding_date                 No          Customer's weidding date
 extra_data                   No          Extra data related to customer
-registering_employee_code    No          A String indicated Employee Code, if customer not exist will create new one
+registration_method          No          :ref:`Registration method <Registration Method>` code, defaults to `API`
+registering_employee_code    No          String indicating employee code, will create a new employee if not exists
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 ============================ =========== =========================
 
@@ -1640,3 +1641,24 @@ A successful API call:
             "primary_membership_id": "RRRAWWROWO"
         }
     }
+
+
+Miscellaneous
+------------------------------
+
+Registration Method
+^^^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+0                   Mobile Web
+1                   Web
+2                   Store
+3                   API
+4                   Merchant
+5                   Mobile API
+6                   SMS
+9                   Android
+10                  iOS
+12                  Imported
+=================== ===========

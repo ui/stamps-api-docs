@@ -138,6 +138,7 @@ C. Example Response
       }
     }
 
+
 3. Activate Legacy Membership Without Pin
 ====================================
 | URL endpoint: https://stamps.co.id/api/legacy/members/activate-without-pin
@@ -148,14 +149,15 @@ A. Request
 -----------------------------
 This API turns a legacy member data into to an active membership.
 
-================ =========== =========================
-Parameter        Required    Description
-================ =========== =========================
-token            Yes         Authentication string
-user             Yes         A string indicating legacy member's ID, mobile number or email
-merchant_id      Yes         Merchant ID the legacy member is associated with
-bonus_stamps     No          Integer, bonus points given to target user's membership
-================ =========== =========================
+============================ =========== =========================
+Parameter                    Required    Description
+============================ =========== =========================
+token                        Yes         Authentication string
+user                         Yes         A string indicating legacy member's ID, mobile number or email
+merchant_id                  Yes         Merchant ID the legacy member is associated with
+bonus_stamps                 No          Integer, bonus points given to target user's membership
+registration_method          No          :ref:`Registration method <Registration Method>` code, defaults to `API`
+============================ =========== =========================
 
 
 Example of API call request using cURL
@@ -817,7 +819,7 @@ Here's an example of how the API call might look like in JSON format with specif
 API call example:
 
 .. code-block :: bash
-    
+
     $ curl --location --request POST 'https://stamps.co.id/api/klg/redemptions/odi-redeem-voucher' \
     --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxOTMwNjg2LCJpYXQiOjE2NjE4NDQyODYsImp0aSI6IjZlM2U0ZGU0MzZkYzRjNDZhNGJhMjRkZWE2MjM0N2VjIiwidXNlcl9pZCI6MSwibWVyY2hhbnRfaWQiOjF9.brgNBzeuPmOV6ECP5WpwJJlQ6MQZ1zACHYx1YiW33AM' \
     --header 'Content-Type: application/json' \
@@ -957,3 +959,20 @@ Web         4
 Android     5
 iOS         6
 =========== ======
+
+Registration Method
+^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+0                   Mobile Web
+1                   Web
+2                   Store
+3                   API
+4                   Merchant
+5                   Mobile API
+6                   SMS
+9                   Android
+10                  iOS
+12                  Imported
+=================== ===========

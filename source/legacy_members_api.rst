@@ -415,6 +415,7 @@ merchant_id                  Yes         Merchant ID the legacy member is associ
 pin                          Yes         Legacy member's pin
 bonus_stamps                 No          Integer, bonus points given to target user's membership
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+registration_method          No          :ref:`Registration method <Registration Method>` code, defaults to `API`
 ============================ =========== =========================
 
 
@@ -558,4 +559,21 @@ Code                Description
 =================== ===========
 1                   Merged
 2                   Unmerged
+=================== ===========
+
+Registration Method
+^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+0                   Mobile Web
+1                   Web
+2                   Store
+3                   API
+4                   Merchant
+5                   Mobile API
+6                   SMS
+9                   Android
+10                  iOS
+12                  Imported
 =================== ===========

@@ -387,7 +387,8 @@ Below is an example response on successful API call.
                 "redemption": {
                     "stamps": 0,
                     "name": "Update Database Voucher IDR 100,000",
-                    "status": 2
+                    "status": 2,
+                    "channel": "POS"
                 }
             }
         ]

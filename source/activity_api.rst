@@ -95,7 +95,8 @@ Below is an example response on successful API call.
                 "redemption": {
                     "stamps": 0,
                     "name": "Update Database Voucher IDR 100,000",
-                    "status": 2
+                    "status": 2,
+                    "channel": "POS"
                 }
             },
             {
@@ -165,6 +166,10 @@ Below is an example response on successful API call.
                 "type": 11,
                 "created": 1607049764,
                 "notes": "",
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
                 "store": {
                     "name": "L123",
                     "display_name": "Levi Store"
@@ -188,7 +193,8 @@ Below is an example response on successful API call.
                     "total_stamps_delta": -10,
                     "subtotal_delta": -100000,
                     "grand_total_delta": -100000,
-                    "invoice_number": "ABC-123.2"
+                    "invoice_number": "ABC-123.2",
+                    "channel": "POS"
                 }
             },
             {
@@ -196,6 +202,10 @@ Below is an example response on successful API call.
                 "type": 11,
                 "created": 1607049764,
                 "notes": "",
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
                 "store": {
                     "name": "L123",
                     "display_name": "Levi Store"
@@ -216,7 +226,8 @@ Below is an example response on successful API call.
                     "total_stamps_delta": -10,
                     "subtotal_delta": -100000,
                     "grand_total_delta": -100000,
-                    "invoice_number": "ABC-2.2"
+                    "invoice_number": "ABC-2.2",
+                    "channel": "POS"
                 }
             },
             {
@@ -246,6 +257,10 @@ Below is an example response on successful API call.
                 "type": 16,
                 "created": 1607049764,
                 "notes": "",
+                "merchant": {
+                    "id": 2,
+                    "name": "Levi's"
+                },
                 "store": {
                     "name": "L123",
                     "display_name": "Levi Store"
@@ -269,7 +284,8 @@ Below is an example response on successful API call.
                     "total_stamps_delta": 90,
                     "subtotal_delta": -100000,
                     "grand_total_delta": -100000,
-                    "invoice_number": "ABC-16.2"
+                    "invoice_number": "ABC-16.2",
+                    "channel": "POS"
                 }
             },
         ]

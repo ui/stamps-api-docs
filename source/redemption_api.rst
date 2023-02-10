@@ -378,12 +378,13 @@ A. Parameters
 -------------
 You can cancel a redemption by calling the API with these parameters.
 
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-token       Yes         Authentication string
-id          Yes         Redemption ID
-=========== =========== =========================
+========================== =========== =========================
+Parameter                  Required    Description
+========================== =========== =========================
+token                      Yes         Authentication string
+id                         Yes         Redemption ID
+create_replacement_voucher No          Boolean indicating whether to create a replacement voucher
+========================== =========== =========================
 
 Here's an example of how the API call might look like in JSON format
 

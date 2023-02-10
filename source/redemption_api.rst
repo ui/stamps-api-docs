@@ -383,7 +383,7 @@ Parameter                  Required    Description
 ========================== =========== =========================
 token                      Yes         Authentication string
 id                         Yes         Redemption ID
-create_replacement_voucher No          Boolean indicating whether to create a replacement voucher
+create_replacement_voucher No          Boolean indicating whether to create a replacement voucher, default to False
 ========================== =========== =========================
 
 Here's an example of how the API call might look like in JSON format

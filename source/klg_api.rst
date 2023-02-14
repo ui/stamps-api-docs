@@ -908,6 +908,90 @@ On successful redemption:
         }
     }
 
+
+7. Webhook Validation
+=======================
+Webhook from STAMPS will return the payload with following format:
+
+.. code-block :: bash
+
+    {
+        "payload": ...
+        "signature": ...
+    }
+
+Signature can be verified on KLG's system to add extra security. To generate signature, STAMPS require a secret key that is generated from KLG.
+
+Example with "teststaging" as secret key:
+
+.. code-block :: bash
+
+    {
+        "payload": {
+            "from": "test@gmail.com",
+            "to": "test2@gmail.com",
+            "membership": {
+            "level": 0,
+            "level_text": "Silver",
+            "stamps": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "KKJ21",
+            "start_date": "2023-02-13",
+            "created": "2023-02-13",
+            "status": "Active",
+            "primary_card": {
+                "id": 3713,
+                "number": "RRR123456",
+                "is_active": true,
+                "activated_time": null
+            }
+            },
+            "user": {
+            "id": 2824,
+            "name": "test",
+            "gender": "f",
+            "is_active": true,
+            "email": "test2@gmail.com",
+            "birthday": null,
+            "picture_url": null,
+            "phone": "+6287876544322",
+            "has_incorrect_email": false,
+            "has_incorrect_phone": false,
+            "has_incorrect_wa_number": false,
+            "phone_is_verified": true,
+            "email_is_verified": true,
+            "referral_code": "TESTXYZ",
+            "registration_status": "Full",
+            "member_ids": [
+                "RRR123456"
+            ]
+            }
+        },
+        "signature": "a5577fafc2e2ef42b67d446bc5dd8b9515c8ec8a9cc73ae4f498d01a6b50e96f"
+    }
+
+To verify the signature the steps are:
+    - Minify the "payload" value.
+    - Sign the payload with HMAC and use SHA256 as hashing algorithm. And your secret key as the key.
+    - Compare the signed payload with the given signature.
+
+Python code example:
+
+.. code-block :: bash
+
+    import hashlib
+    import hmac
+    import json
+
+
+    def verify_signature(request) -> bool:
+        payload = request.data['payload']
+        minified_payload = json.dumps(payload, separators=[",", ":"])
+        signed_payload = hmac.new("teststaging".encode(), minified_payload.encode(), hashlib.sha256)
+        return hmac.compare_digest(request.data['signature'], signed_payload.hexdigest())
+
+
 Miscellaneous
 ------------------------------
 

@@ -249,7 +249,7 @@ On a successful API call:
             "start_date": "2022-03-28",
             "end_date": "2022-04-28",
             "constraint": {
-                "channels": [1, 2, 3, 4],
+                "channels": [1, 2, 3, 4]
             },
             "template": {
                 "id": 1,
@@ -260,7 +260,7 @@ On a successful API call:
                 "landscape_picture_url": "foo_landscape.png",
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
-                "extra_data": null,
+                "extra_data": null
             },
         },
         {
@@ -273,7 +273,7 @@ On a successful API call:
             "start_date": "2022-02-14",
             "end_date": "2022-02-28",
             "constraint": {
-                "channels": [1, 2, 3, 6],
+                "channels": [1, 2, 3, 6]
             },
             "template": {
                 "id": 2,
@@ -284,42 +284,11 @@ On a successful API call:
                 "landscape_picture_url": "foo_landscape.png",
                 "merchant_id": 1,
                 "merchant_code": "M-ABC",
-                "extra_data": {},
+                "extra_data": {}
             }
         }
       ]
     }
-
-Miscellaneous
-------------------------------
-
-Voucher Template Type Mapping
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-=================== ===========
-Code                Description
-=================== ===========
-1                   Cross Promotion
-2                   Regular
-3                   Promotion
-4                   Signup
-5                   Birthday
-6                   Referral
-7                   Pregenerated
-8                   Anniversary
-=================== ===========
-
-Channel Type
-^^^^^^^^^^^
-=================== ===========
-Integer Value       Description
-=================== ===========
-1                   Mobile app
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS
-=================== ===========
 
 
 4. Get Vouchers Count by Merchant Group
@@ -376,3 +345,119 @@ On a successful API call:
     {
       "count": 12,
     }
+
+
+4. Get Voucher Details
+====================================
+| URL endpoint: https://stamps.co.id/api/vouchers/details
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+Get user's voucher's details.
+
+========================== =========== =========================================================
+Parameter                  Required    Description
+========================== =========== =========================================================
+token                      Yes         Authentication string
+user                       Yes         A string indicating customer's email or Member ID
+code                       Yes         A string indicating voucher code
+image_size                 No          Voucher image size. Defaults to 200px x 200px
+landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
+========================== =========== =========================================================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl 'https://stamps.co.id/api/vouchers/details?token=abc&user=customer@stamps.co.id&code=ABCD123'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+voucher             An object containing voucher information.
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+        "id": 2,
+        "code": "VC-DEF",
+        "is_active": true,
+        "quantity": 2,
+        "notes": "",
+        "value": 200,
+        "terms_and_conditions": "",
+        "start_date": "2022-02-14",
+        "end_date": "2022-02-28",
+        "constraint": {
+            "channels": [1, 2, 3, 6]
+        },
+        "template": {
+            "id": 2,
+            "name": "Valentine Voucher",
+            "type": 1,
+            "short_description": "Get 50% off on your next purchase",
+            "description": "Get 50% off on your next purchase",
+            "instructions": "",
+            "terms_and_conditions": "",
+            "picture_url": "foo.png",
+            "landscape_picture_url": "foo_landscape.png",
+            "merchant_id": 1,
+            "merchant_code": "M-ABC",
+            "extra_data": {}
+        }
+    }
+
+
+Miscellaneous
+------------------------------
+
+Voucher Template Type Mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Cross Promotion
+2                   Regular
+3                   Promotion
+4                   Signup
+5                   Birthday
+6                   Referral
+7                   Pregenerated
+8                   Anniversary
+=================== ===========
+
+Channel Type
+^^^^^^^^^^^
+=================== ===========
+Integer Value       Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
+=================== ===========

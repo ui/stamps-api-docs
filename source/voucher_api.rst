@@ -347,7 +347,7 @@ On a successful API call:
     }
 
 
-4. Get Voucher Details
+5. Get Voucher Details
 ====================================
 | URL endpoint: https://stamps.co.id/api/vouchers/details
 | Allowed Method: GET

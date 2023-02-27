@@ -909,7 +909,7 @@ On successful redemption:
     }
 
 
-7. Webhook Validation
+7. Webhook Security
 =======================
 Webhook from STAMPS will return the payload with following format:
 
@@ -920,9 +920,12 @@ Webhook from STAMPS will return the payload with following format:
         "signature": ...
     }
 
-Signature can be verified on KLG's system to add extra security. To generate signature, STAMPS require a secret key that is generated from KLG.
+You should always verify that the webhook's payload matches the signature. To verify the signature against the payload:
+* Strip all whitespace from the `payload`.
+* Encode the resulting `payload` string with the HMAC algorithm, using your secret key as the key and SHA256 as the hashing algorithm.
+* Compare and make sure that the result matches the given `signature`
 
-Example with "teststaging" as secret key:
+Example with "your_secret_key" as the secret key:
 
 .. code-block :: json
 
@@ -968,13 +971,8 @@ Example with "teststaging" as secret key:
                 ]
             }
         },
-        "signature": "a5577fafc2e2ef42b67d446bc5dd8b9515c8ec8a9cc73ae4f498d01a6b50e96f"
+        "signature": "c318b158a1066b3110bd5e36cdf9b98aff9bd6852a0cab80ef41ee3079d1812c"
     }
-
-To verify the signature the steps are:
-    - Minify the "payload" value.
-    - Sign the payload with HMAC and use SHA256 as hashing algorithm. And your secret key as the key.
-    - Compare the signed payload with the given signature.
 
 Python code example:
 
@@ -988,7 +986,7 @@ Python code example:
     def verify_signature(request) -> bool:
         payload = request.data['payload']
         minified_payload = json.dumps(payload, separators=[",", ":"])
-        signed_payload = hmac.new("teststaging".encode(), minified_payload.encode(), hashlib.sha256)
+        signed_payload = hmac.new("your_secret_key".encode(), minified_payload.encode(), hashlib.sha256)
         return hmac.compare_digest(request.data['signature'], signed_payload.hexdigest())
 
 

@@ -921,9 +921,9 @@ Webhook from STAMPS will return the payload with following format:
     }
 
 You should always verify that the webhook's payload matches the signature. To verify the signature against the payload:
-* Strip all whitespace from the `payload`.
-* Encode the resulting `payload` string with the HMAC algorithm, using your secret key as the key and SHA256 as the hashing algorithm.
-* Compare and make sure that the result matches the given `signature`
+    - Strip all whitespace from the `payload`.
+    - Encode the resulting `payload` string with the HMAC algorithm, using your secret key as the key and SHA256 as the hashing algorithm.
+    - Compare and make sure that the result matches the given `signature`
 
 Example with "your_secret_key" as the secret key:
 

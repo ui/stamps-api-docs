@@ -976,7 +976,7 @@ Python code example:
     def verify_signature(request) -> bool:
         minified_payload = json.dumps(request.data, separators=[",", ":"])
         signed_payload = hmac.new("your_secret_key".encode(), minified_payload.encode(), hashlib.sha256)
-        sinature = request.headers["X-STAMPS-SIGNATURE"]
+        signature = request.headers["X-STAMPS-SIGNATURE"]
         return hmac.compare_digest(signature, signed_payload.hexdigest())
 
 

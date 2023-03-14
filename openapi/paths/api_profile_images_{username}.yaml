@@ -1,0 +1,42 @@
+get:
+  summary: A Users or organizations profile image
+  tags:
+    - profile images
+  description: >-
+    This endpoint allows the client to retrieve a user or organization profile
+    image information by its
+            corresponding username.
+  operationId: getProfileImage
+  parameters:
+    - name: username
+      in: path
+      required: true
+      description: >-
+        The parameter is the username of the user or the username of the
+        organization.
+      schema:
+        type: string
+      example: janedoe
+  responses:
+    '200':
+      description: An object containing profile image details
+      content:
+        application/json:
+          example:
+            type_of: profile_image
+            image_of: user
+            profile_image: >-
+              /uploads/user/profile_image/3647/b862b06c-e357-491a-b0ee-94f9ebe30557.jpeg
+            profile_image_90: >-
+              /uploads/user/profile_image/3647/b862b06c-e357-491a-b0ee-94f9ebe30557.jpeg
+          schema:
+            type: object
+            items:
+              $ref: ../components/schemas/ProfileImage.yaml
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

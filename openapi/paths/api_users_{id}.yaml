@@ -1,0 +1,22 @@
+get:
+  summary: A User
+  tags:
+    - users
+  description: >-
+    This endpoint allows the client to retrieve a single user, either by id
+
+    or by the user's username.
+
+
+    For complete documentation, see the v0 API docs:
+    https://developers.forem.com/api/v0#tag/users/operation/getUser
+  operationId: getUser
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: successful

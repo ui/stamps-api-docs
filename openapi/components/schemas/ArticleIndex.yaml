@@ -1,0 +1,100 @@
+description: Representation of an article or post returned in a list
+type: object
+properties:
+  type_of:
+    type: string
+  id:
+    type: integer
+    format: int32
+  title:
+    type: string
+  description:
+    type: string
+  cover_image:
+    type: string
+    format: url
+    nullable: true
+  readable_publish_date:
+    type: string
+  social_image:
+    type: string
+    format: url
+  tag_list:
+    type: array
+    items:
+      type: string
+  tags:
+    type: string
+  slug:
+    type: string
+  path:
+    type: string
+    format: path
+  url:
+    type: string
+    format: url
+  canonical_url:
+    type: string
+    format: url
+  positive_reactions_count:
+    type: integer
+    format: int32
+  public_reactions_count:
+    type: integer
+    format: int32
+  created_at:
+    type: string
+    format: date-time
+  edited_at:
+    type: string
+    format: date-time
+    nullable: true
+  crossposted_at:
+    type: string
+    format: date-time
+    nullable: true
+  published_at:
+    type: string
+    format: date-time
+  last_comment_at:
+    type: string
+    format: date-time
+  published_timestamp:
+    description: Crossposting or published date time
+    type: string
+    format: date-time
+  reading_time_minutes:
+    description: Reading time, in minutes
+    type: integer
+    format: int32
+  user:
+    $ref: ./SharedUser.yaml
+  flare_tag:
+    $ref: ./ArticleFlareTag.yaml
+  organization:
+    $ref: ./SharedOrganization.yaml
+required:
+  - type_of
+  - id
+  - title
+  - description
+  - cover_image
+  - readable_publish_date
+  - social_image
+  - tag_list
+  - tags
+  - slug
+  - path
+  - url
+  - canonical_url
+  - comments_count
+  - positive_reactions_count
+  - public_reactions_count
+  - created_at
+  - edited_at
+  - crossposted_at
+  - published_at
+  - last_comment_at
+  - published_timestamp
+  - user
+  - reading_time_minutes

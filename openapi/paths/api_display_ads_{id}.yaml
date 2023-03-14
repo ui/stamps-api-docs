@@ -1,0 +1,151 @@
+get:
+  summary: display ad
+  tags:
+    - display ads
+  description: This endpoint allows the client to retrieve a single display ad, via its id.
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the user to unpublish.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 123
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 92
+            approved: false
+            body_markdown: Hello _hey_ Hey hey 9
+            cached_tag_list: ''
+            clicks_count: 0
+            created_at: '2023-01-12T00:00:23.944+08:00'
+            display_to: all
+            impressions_count: 0
+            name: Display Ad 92
+            organization_id: 667
+            placement_area: sidebar_left
+            processed_html: <p>Hello <em>hey</em> Hey hey 9</p>
+            published: false
+            success_rate: 0
+            type_of: in_house
+            updated_at: '2023-01-12T00:00:23.947+08:00'
+            tag_list: ''
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '404':
+      description: Unknown DisplayAd ID
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404
+put:
+  summary: display ads
+  tags:
+    - display ads
+  description: >-
+    This endpoint allows the client to update the attributes of a single display
+    ad, via its id.
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the user to unpublish.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 123
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            approved: false
+            body_markdown: Hello _hey_ Hey hey 10
+            display_to: all
+            name: Display Ad 93
+            organization_id: 668
+            placement_area: sidebar_left
+            published: false
+            processed_html: <p>Hello <em>hey</em> Hey hey 10</p>
+            cached_tag_list: ''
+            id: 93
+            clicks_count: 0
+            created_at: '2023-01-12T00:00:24.163+08:00'
+            impressions_count: 0
+            success_rate: 0
+            type_of: in_house
+            updated_at: '2023-01-12T00:00:24.165+08:00'
+            tag_list: ''
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '404':
+      description: not found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: For internal use, helps distinguish ads from one another
+            body_markdown:
+              type: string
+              description: The text (in markdown) of the ad (required)
+            approved:
+              type: boolean
+              description: Ad must be both published and approved to be in rotation
+            published:
+              type: boolean
+              description: Ad must be both published and approved to be in rotation
+            organization_id:
+              type: integer
+              description: Identifies the organization to which the ad belongs
+            display_to:
+              type: string
+              enum:
+                - all
+                - logged_in
+                - logged_out
+              default: all
+              description: Potentially limits visitors to whom the ad is visible
+            placement_area:
+              type: string
+              enum:
+                - sidebar_left
+                - sidebar_left_2
+                - sidebar_right
+                - post_sidebar
+                - post_comments
+              description: Identifies which area of site layout the ad can appear in
+            tag_list:
+              type: string
+              description: Tags on which this ad can be displayed (blank is all/any tags)
+          required:
+            - name
+            - body_markdown
+            - placement_area

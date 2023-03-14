@@ -1,0 +1,8 @@
+name: category
+in: query
+description: |-
+  Using this parameter will return listings belonging to the
+                requested category.
+schema:
+  type: string
+example: cfp

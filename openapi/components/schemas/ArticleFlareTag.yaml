@@ -1,0 +1,11 @@
+description: Flare tag of the article
+type: object
+properties:
+  name:
+    type: string
+  bg_color_hex:
+    description: Background color (hexadecimal)
+    type: string
+  text_color_hex:
+    description: Text color (hexadecimal)
+    type: string

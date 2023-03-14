@@ -1,0 +1,50 @@
+put:
+  summary: Suspend a User
+  tags:
+    - users
+  description: >-
+    This endpoint allows the client to suspend a user.
+
+
+    The user associated with the API key must have any 'admin' or 'moderator'
+    role.
+
+
+    This specified user will be assigned the 'suspended' role. Suspending a user
+    will stop the
+
+    user from posting new posts and comments. It doesn't delete any of the
+    user's content, just
+
+    prevents them from creating new content while suspended. Users are not
+    notified of their suspension
+
+    in the UI, so if you want them to know about this, you must notify them.
+  operationId: suspendUser
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the user to suspend.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1
+  responses:
+    '204':
+      description: User successfully unpublished
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '404':
+      description: Unknown User ID
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

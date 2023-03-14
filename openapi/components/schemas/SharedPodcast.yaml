@@ -1,0 +1,11 @@
+description: The podcast that the resource belongs to
+type: object
+properties:
+  title:
+    type: string
+  slug:
+    type: string
+  image_url:
+    description: Podcast image url
+    type: string
+    format: url

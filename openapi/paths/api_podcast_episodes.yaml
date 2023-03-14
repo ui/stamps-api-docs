@@ -1,0 +1,52 @@
+get:
+  summary: Podcast Episodes
+  security: []
+  tags:
+    - podcast_episodes
+  description: |-
+    This endpoint allows the client to retrieve a list of podcast episodes.
+            "Podcast episodes" are episodes belonging to podcasts.
+            It will only return active (reachable) podcast episodes that belong to published podcasts available on the platform, ordered by descending publication date.
+            It supports pagination, each page will contain 30 articles by default.
+  operationId: getPodcastEpisodes
+  parameters:
+    - $ref: ../components/parameters/pageParam.yaml
+    - $ref: ../components/parameters/perPageParam30to1000.yaml
+    - name: username
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve episodes belonging to a specific
+        podcast.
+      schema:
+        type: string
+      example: codenewbie
+  responses:
+    '200':
+      description: A List of Podcast episodes filtered by username
+      content:
+        application/json:
+          example:
+            - type_of: podcast_episodes
+              class_name: PodcastEpisode
+              id: 115
+              path: /codenewbie/slug-4
+              title: '2'
+              image_url: >-
+                /uploads/podcast/image/90/d7d60853-1d17-46c7-b5b2-a8ec981e0360.jpeg
+              podcast:
+                title: Sapporo Premium
+                slug: codenewbie
+                image_url: >-
+                  /uploads/podcast/image/90/d7d60853-1d17-46c7-b5b2-a8ec981e0360.jpeg
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/PodcastEpisodeIndex.yaml
+    '404':
+      description: Unknown Podcast username
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

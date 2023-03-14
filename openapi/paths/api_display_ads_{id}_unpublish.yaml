@@ -1,0 +1,34 @@
+put:
+  summary: unpublish
+  tags:
+    - display ads
+  description: >-
+    This endpoint allows the client to remove a display ad from rotation by
+    un-publishing it.
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the user to unpublish.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 123
+  responses:
+    '204':
+      description: no content
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '404':
+      description: not found
+      content:
+        application/json:
+          example:
+            error: not found
+            status: 404

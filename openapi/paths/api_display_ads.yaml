@@ -1,0 +1,127 @@
+get:
+  summary: display ads
+  tags:
+    - display ads
+  description: This endpoint allows the client to retrieve a list of all display ads.
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example: []
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+post:
+  summary: display ads
+  tags:
+    - display ads
+  description: This endpoint allows the client to create a new display ad.
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            id: 91
+            approved: true
+            body_markdown: |-
+              # Hi, this is ad
+              Yep, it's an ad
+            cached_tag_list: ''
+            clicks_count: 0
+            created_at: '2023-01-12T00:00:23.787+08:00'
+            display_to: all
+            impressions_count: 0
+            name: Example Ad
+            organization_id: null
+            placement_area: post_comments
+            processed_html: >-
+              <h1>  <a href="#hi-this-is-ad" class="anchor">  </a>  Hi, this is
+              ad</h1><p>Yep, it's an ad</p>
+            published: true
+            success_rate: 0
+            type_of: in_house
+            updated_at: '2023-01-12T00:00:23.787+08:00'
+            tag_list: ''
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401
+    '422':
+      description: unprocessable
+      content:
+        application/json:
+          example:
+            id: null
+            approved: true
+            body_markdown: |-
+              # Hi, this is ad
+              Yep, it's an ad
+            cached_tag_list: null
+            clicks_count: 0
+            created_at: null
+            display_to: all
+            impressions_count: 0
+            name: Example Ad
+            organization_id: null
+            placement_area: moon
+            processed_html: null
+            published: true
+            success_rate: 0
+            type_of: in_house
+            updated_at: null
+            tag_list: null
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: For internal use, helps distinguish ads from one another
+            body_markdown:
+              type: string
+              description: The text (in markdown) of the ad (required)
+            approved:
+              type: boolean
+              description: Ad must be both published and approved to be in rotation
+            published:
+              type: boolean
+              description: Ad must be both published and approved to be in rotation
+            organization_id:
+              type: integer
+              description: Identifies the organization to which the ad belongs
+            display_to:
+              type: string
+              enum:
+                - all
+                - logged_in
+                - logged_out
+              default: all
+              description: Potentially limits visitors to whom the ad is visible
+            placement_area:
+              type: string
+              enum:
+                - sidebar_left
+                - sidebar_left_2
+                - sidebar_right
+                - post_sidebar
+                - post_comments
+              description: Identifies which area of site layout the ad can appear in
+            tag_list:
+              type: string
+              description: Tags on which this ad can be displayed (blank is all/any tags)
+          required:
+            - name
+            - body_markdown
+            - placement_area

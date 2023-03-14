@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Welcome to Stamps’ API documentation!
+  version: 1.0.0
+  description: |-
+    Our API is built on HTTP and allows third party systems to easily initiate a transaction. All our APIs are:
+paths:
+  /api/articles:
+    $ref: paths/api_articles.yaml
+  /api/articles/me:
+    $ref: paths/api_articles_me.yaml
+  /api/articles/me/published:
+    $ref: paths/api_articles_me_published.yaml
+  /api/articles/me/unpublished:
+    $ref: paths/api_articles_me_unpublished.yaml
+  /api/articles/me/all:
+    $ref: paths/api_articles_me_all.yaml
+  /api/articles/{id}/unpublish:
+    $ref: paths/api_articles_{id}_unpublish.yaml
+  /api/display_ads:
+    $ref: paths/api_display_ads.yaml
+  /api/display_ads/{id}:
+    $ref: paths/api_display_ads_{id}.yaml
+  /api/display_ads/{id}/unpublish:
+    $ref: paths/api_display_ads_{id}_unpublish.yaml
+  /api/podcast_episodes:
+    $ref: paths/api_podcast_episodes.yaml
+  /api/profile_images/{username}:
+    $ref: paths/api_profile_images_{username}.yaml
+  /api/reactions/toggle:
+    $ref: paths/api_reactions_toggle.yaml
+  /api/reactions:
+    $ref: paths/api_reactions.yaml
+  /api/readinglist:
+    $ref: paths/api_readinglist.yaml
+  /api/users/{id}:
+    $ref: paths/api_users_{id}.yaml
+  /api/users/{id}/unpublish:
+    $ref: paths/api_users_{id}_unpublish.yaml
+  /api/users/{id}/suspend:
+    $ref: paths/api_users_{id}_suspend.yaml
+servers:
+  - url: https://dev.to/api
+    description: Production server
+security:
+  - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: api-key
+      in: header
+      description: >-
+        API Key authentication.
+
+
+        Authentication for some endpoints, like write operations on the
+
+        Articles API require a DEV API key.
+
+
+        All authenticated endpoints are CORS disabled, the API key is intended
+        for non-browser scripts.
+
+
+        ### Getting an API key
+
+
+        To obtain one, please follow these steps:
+
+          - visit https://dev.to/settings/extensions
+          - in the "DEV API Keys" section create a new key by adding a
+            description and clicking on "Generate API Key"
+
+            ![obtain a DEV API Key](https://user-images.githubusercontent.com/37842/172718105-bd93664e-76e0-477d-99c4-265dda0b06c5.png)
+
+          - You'll see the newly generated key in the same view
+            ![generated DEV API Key](https://user-images.githubusercontent.com/37842/172718151-e7fe26a0-9937-42e8-96c6-333acdab9e49.png)

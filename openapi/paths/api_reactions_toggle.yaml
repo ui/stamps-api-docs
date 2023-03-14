@@ -1,0 +1,52 @@
+post:
+  summary: toggle reaction
+  tags:
+    - reactions
+  description: >-
+    This endpoint allows the client to toggle the user's reaction to a specified
+    reactable (eg, Article, Comment, or User). For examples:
+            * "Like"ing an Article will create a new "like" Reaction from the user for that Articles
+            * "Like"ing that Article a second time will remove the "like" from the user
+  parameters:
+    - name: category
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - like
+          - readinglist
+          - unicorn
+    - name: reactable_id
+      in: query
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: reactable_type
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - Comment
+          - Article
+          - User
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            result: create
+            category: like
+            id: 72
+            reactable_id: 1548
+            reactable_type: Article
+    '401':
+      description: unauthorized
+      content:
+        application/json:
+          example:
+            error: unauthorized
+            status: 401

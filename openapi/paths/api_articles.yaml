@@ -1,0 +1,173 @@
+get:
+  summary: Published articles
+  security: []
+  tags:
+    - articles
+  description: |-
+    This endpoint allows the client to retrieve a list of articles.
+
+    "Articles" are all the posts that users create on DEV that typically
+    show up in the feed. They can be a blog post, a discussion question,
+    a help thread etc. but is referred to as article within the code.
+
+    By default it will return featured, published articles ordered
+    by descending popularity.
+
+    It supports pagination, each page will contain `30` articles by default.
+  operationId: getArticles
+  parameters:
+    - $ref: ../components/parameters/pageParam.yaml
+    - $ref: ../components/parameters/perPageParam30to1000.yaml
+    - name: tag
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve articles that contain the requested
+        tag. Articles
+
+        will be ordered by descending popularity.This parameter can be used in
+        conjuction with `top`.
+      schema:
+        type: string
+      example: discuss
+    - name: tags
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve articles with any of the
+        comma-separated tags.
+
+        Articles will be ordered by descending popularity.
+      schema:
+        type: string
+      example: javascript, css
+    - name: tags_exclude
+      in: query
+      required: false
+      description: >-
+        Using this parameter will retrieve articles that do _not_ contain _any_
+
+        of comma-separated tags. Articles will be ordered by descending
+        popularity.
+      schema:
+        type: string
+      example: node, java
+    - name: username
+      in: query
+      required: false
+      description: |-
+        Using this parameter will retrieve articles belonging
+                    to a User or Organization ordered by descending publication date.
+                    If `state=all` the number of items returned will be `1000` instead of the default `30`.
+                    This parameter can be used in conjuction with `state`.
+      schema:
+        type: string
+      example: ben
+    - name: state
+      in: query
+      required: false
+      description: >-
+        Using this parameter will allow the client to check which articles are
+        fresh or rising.
+                    If `state=fresh` the server will return fresh articles.
+                    If `state=rising` the server will return rising articles.
+                    This param can be used in conjuction with `username`, only if set to `all`.
+      schema:
+        type: string
+        enum:
+          - fresh
+          - rising
+          - all
+      example: fresh
+    - name: top
+      in: query
+      required: false
+      description: >-
+        Using this parameter will allow the client to return the most popular
+        articles
+
+        in the last `N` days.
+
+        `top` indicates the number of days since publication of the articles
+        returned.
+
+        This param can be used in conjuction with `tag`.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 2
+    - name: collection_id
+      in: query
+      required: false
+      description: >-
+        Adding this will allow the client to return the list of articles
+
+        belonging to the requested collection, ordered by ascending publication
+        date.
+      schema:
+        type: integer
+        format: int32
+      example: 99
+  responses:
+    '200':
+      description: A List of Articles
+      content:
+        application/json:
+          example:
+            - type_of: article
+              id: 1544
+              title: The Line of Beauty172
+              description: >-
+                Five dollar toast pour-over 8-bit gluten-free selvage try-hard.
+                Stumptown listicle ennui plaid tacos...
+              readable_publish_date: Jan 12
+              slug: the-line-of-beauty172-39d8
+              path: /username382/the-line-of-beauty172-39d8
+              url: http://localhost:3000/username382/the-line-of-beauty172-39d8
+              comments_count: 0
+              public_reactions_count: 0
+              collection_id: null
+              published_timestamp: '2023-01-11T16:00:22Z'
+              positive_reactions_count: 0
+              cover_image: >-
+                http://localhost:3000/assets/27-441873f471d98b5358beff7d47a211e58b9979c6453794f9a7abfd5709c33322.png
+              social_image: >-
+                http://localhost:3000/assets/27-441873f471d98b5358beff7d47a211e58b9979c6453794f9a7abfd5709c33322.png
+              canonical_url: http://localhost:3000/username382/the-line-of-beauty172-39d8
+              created_at: '2023-01-11T16:00:22Z'
+              edited_at: null
+              crossposted_at: null
+              published_at: '2023-01-11T16:00:22Z'
+              last_comment_at: '2023-01-11T16:00:22Z'
+              reading_time_minutes: 1
+              tag_list:
+                - discuss
+              tags: discuss
+              user:
+                name: Ira "Tanna" \:/ West
+                username: username382
+                twitter_username: twitter382
+                github_username: github382
+                user_id: 3620
+                website_url: null
+                profile_image: >-
+                  /uploads/user/profile_image/3620/3b3f8cf9-6517-4a48-aa69-95eeaf8b0456.jpeg
+                profile_image_90: >-
+                  /uploads/user/profile_image/3620/3b3f8cf9-6517-4a48-aa69-95eeaf8b0456.jpeg
+              organization:
+                name: Klocko and Sons
+                username: org67
+                slug: org67
+                profile_image: >-
+                  /uploads/organization/profile_image/666/5431d3e5-2222-4881-8108-adecceb1cf6f.png
+                profile_image_90: >-
+                  /uploads/organization/profile_image/666/5431d3e5-2222-4881-8108-adecceb1cf6f.png
+              flare_tag:
+                name: discuss
+                bg_color_hex: '#000000'
+                text_color_hex: '#ffffff'
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ArticleIndex.yaml

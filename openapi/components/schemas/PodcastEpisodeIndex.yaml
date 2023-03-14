@@ -1,0 +1,29 @@
+description: Representation of a podcast episode returned in a list
+type: object
+properties:
+  type_of:
+    type: string
+  id:
+    type: integer
+    format: int32
+  class_name:
+    type: string
+  path:
+    type: string
+    format: path
+  title:
+    type: string
+  image_url:
+    description: Podcast episode image url or podcast image url
+    type: string
+    format: url
+  podcast:
+    $ref: ./SharedPodcast.yaml
+required:
+  - type_of
+  - class_name
+  - id
+  - path
+  - title
+  - image_url
+  - podcast

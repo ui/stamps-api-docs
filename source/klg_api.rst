@@ -911,7 +911,7 @@ On successful redemption:
 
 7. Webhook Security
 =======================
-Webhook from STAMPS will return the siganture inside X-STAMPS-SIGNATURE header.
+Webhook from STAMPS will return the siganture inside X-Stamps-Signature header.
 
 You should always verify that the webhook's payload matches the signature. To verify the signature against the payload:
     - Strip all whitespace from the `payload`.
@@ -976,7 +976,7 @@ Python code example:
     def verify_signature(request) -> bool:
         minified_payload = json.dumps(request.data, separators=[",", ":"])
         signed_payload = hmac.new("your_secret_key".encode(), minified_payload.encode(), hashlib.sha256)
-        signature = request.headers["X-STAMPS-SIGNATURE"]
+        signature = request.headers["X-Stamps-Signature"]
         return hmac.compare_digest(signature, signed_payload.hexdigest())
 
 

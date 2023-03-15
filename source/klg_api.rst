@@ -911,14 +911,7 @@ On successful redemption:
 
 7. Webhook Security
 =======================
-Webhook from STAMPS will return the payload with following format:
-
-.. code-block :: bash
-
-    {
-        "payload": ...
-        "signature": ...
-    }
+Webhook from STAMPS will return the siganture inside X-STAMPS-SIGNATURE header.
 
 You should always verify that the webhook's payload matches the signature. To verify the signature against the payload:
     - Strip all whitespace from the `payload`.
@@ -930,48 +923,45 @@ Example with "your_secret_key" as the secret key:
 .. code-block :: json
 
     {
-        "payload": {
-            "from": "test@gmail.com",
-            "to": "test2@gmail.com",
-            "membership": {
-                "level": 0,
-                "level_text": "Silver",
-                "stamps": 0,
-                "balance": 0,
-                "is_blocked": false,
-                "referral_code": "KKJ21",
-                "start_date": "2023-02-13",
-                "created": "2023-02-13",
-                "status": "Active",
-                "primary_card": {
-                    "id": 3713,
-                    "number": "RRR123456",
-                    "is_active": true,
-                    "activated_time": null
-                }
-            },
-            "user": {
-                "id": 2824,
-                "name": "test",
-                "gender": "f",
+        "from": "test@gmail.com",
+        "to": "test2@gmail.com",
+        "membership": {
+            "level": 0,
+            "level_text": "Silver",
+            "stamps": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "KKJ21",
+            "start_date": "2023-02-13",
+            "created": "2023-02-13",
+            "status": "Active",
+            "primary_card": {
+                "id": 3713,
+                "number": "RRR123456",
                 "is_active": true,
-                "email": "test2@gmail.com",
-                "birthday": null,
-                "picture_url": null,
-                "phone": "+6287876544322",
-                "has_incorrect_email": false,
-                "has_incorrect_phone": false,
-                "has_incorrect_wa_number": false,
-                "phone_is_verified": true,
-                "email_is_verified": true,
-                "referral_code": "TESTXYZ",
-                "registration_status": "Full",
-                "member_ids": [
-                    "RRR123456"
-                ]
+                "activated_time": null
             }
         },
-        "signature": "c318b158a1066b3110bd5e36cdf9b98aff9bd6852a0cab80ef41ee3079d1812c"
+        "user": {
+            "id": 2824,
+            "name": "test",
+            "gender": "f",
+            "is_active": true,
+            "email": "test2@gmail.com",
+            "birthday": null,
+            "picture_url": null,
+            "phone": "+6287876544322",
+            "has_incorrect_email": false,
+            "has_incorrect_phone": false,
+            "has_incorrect_wa_number": false,
+            "phone_is_verified": true,
+            "email_is_verified": true,
+            "referral_code": "TESTXYZ",
+            "registration_status": "Full",
+            "member_ids": [
+                "RRR123456"
+            ]
+        }
     }
 
 Python code example:
@@ -984,10 +974,10 @@ Python code example:
 
 
     def verify_signature(request) -> bool:
-        payload = request.data['payload']
-        minified_payload = json.dumps(payload, separators=[",", ":"])
+        minified_payload = json.dumps(request.data, separators=[",", ":"])
         signed_payload = hmac.new("your_secret_key".encode(), minified_payload.encode(), hashlib.sha256)
-        return hmac.compare_digest(request.data['signature'], signed_payload.hexdigest())
+        signature = request.headers["X-STAMPS-SIGNATURE"]
+        return hmac.compare_digest(signature, signed_payload.hexdigest())
 
 
 Miscellaneous

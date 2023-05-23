@@ -24,6 +24,9 @@ only_redeemable_in_this_store  No          `true` or `false`. Defaults to `false
                                            If `true`, only rewards redeemable in given store will be returned.
 include_inactive_vouchers      No          Boolean indicating response include inactive vouchers or not
 channel                        No          Integer indicating :ref:`channel <Channel Type>` number to be queried for reward.
+last_voucher_id                No          Specifies the ID of the last voucher from which the API should start retrieving vouchers.
+last_reward_id                 No          Specifies the ID of the last reward from which the API should start retrieving rewards.
+per_page                       No          Determines the number of records to be returned per API call.
 ============================== =========== ===================================================================
 
 

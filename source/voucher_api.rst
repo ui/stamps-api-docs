@@ -22,8 +22,8 @@ start_date       Yes         Date string to indicate voucher's valid start date 
 quantity         Yes         Integer indicating voucher quantity to be given
 notes            No          Note tied to the voucher
 value            No          Float indicating voucher value to be given, Required if voucher template value type is dynamic
-per_page         No          Determines the number of vouchers to be returned per API call.
-last_voucher_id  No          Specifies the ID of the last voucher from which the API should start retrieving vouchers.
+per_page         No          Integer, Determines the number of vouchers to be returned per API call.
+last_voucher_id  No          Integer, Specifies the ID of the last voucher from which the API should start retrieving vouchers.
 ================ =========== =========================
 
 Here's an example of how the API call might look like in JSON format

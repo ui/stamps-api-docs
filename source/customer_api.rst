@@ -88,7 +88,13 @@ On a successful API call:
             "referral_code": "7J2K1",
             "stamps": 0,
             "start_date": "2022-10-18",
-            "tags": []
+            "tags": [],
+            "primary_card": {
+                "id": 7,
+                "number": "A5MHG",
+                "is_active": true,
+                "activated_time": null
+            }
         },
         "tags": [],
         "user": {
@@ -1617,7 +1623,13 @@ A successful API call:
             "is_blocked": false,
             "referral_code": "7LXJ7",
             "start_date": "2022-09-16",
-            "created": "2022-09-16"
+            "created": "2022-09-16",
+            "primary_card": {
+                "id": 7,
+                "number": "A5MHG",
+                "is_active": true,
+                "activated_time": null
+            }
         },
         "user": {
             "id": 140,

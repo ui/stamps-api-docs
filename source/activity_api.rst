@@ -318,7 +318,7 @@ Here's an example of a Activity List API call using cURL.
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/v3/activities/by-merchnat-group?token=abc&user=customer@stamps.co.id'
+    $ curl 'https://stamps.co.id/api/v3/activities/by-merchant-group?token=abc&user=customer@stamps.co.id'
 
 B. Response
 -----------

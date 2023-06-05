@@ -1140,13 +1140,14 @@ token         Yes         Authentication string
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 level         Yes         A level numerical value
 upgrade_only  No          A boolean value, default to false. If set to true, ``level`` must be higher than user's current level
+end_date      No          If set, ``level`` will only be set until the specified date. Must not be earlier than today.
 ============= =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-level -i -d '{ "token": "secret", "user": 123, "level": 200}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-level -i -d '{ "token": "secret", "user": 123, "level": 200, "end_date": "2023-12-31"}'
 
 
 B. Response Data

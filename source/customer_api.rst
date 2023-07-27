@@ -806,7 +806,12 @@ A successful API call:
       "upgrade_requirement": {
           "spending_requirement": 590000,
           "deadline": "2022-12-31",
-          "next_level": "Silver"
+          "next_level": "Gold"
+      },
+      "downgrade_requirement": {
+          "spending_requirement": 1000000,
+          "deadline": "2022-11-31",
+          "next_level": "Blue"
       }
     }
 

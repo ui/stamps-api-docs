@@ -251,6 +251,12 @@ stamps_to_add                  No          Stamps to be added by this transactio
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
 items                          Yes         Which items are returned. Items are list of :ref:`item objects<Item Object>`
+stamps_to_add                  No          Stamps to be added by this transaction. If specified, this overrides system's calculation of the number of Stamps that will be added or deducted from this transaction.
+stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
+                                           Can't be sent alongside stamps_to_add.
+cancel_redemptions             No          Also cancel redemptions related to original transaction. Default to "false"
+issue_voucher                  No          Objects of data used to issue a voucher. Contains ``template_id`` and ``value`` (optional).
+deactivate_payment_vouchers    No          Also deactivate unredeemed payment vouchers when set to `true`. Default is `true`.
 ============================== =========== =============================================================================
 
 Example of API call request using cURL
@@ -522,6 +528,7 @@ stamps_to_deduct               No          Stamps to be deducted manually. If sp
                                            Can't be sent alongside stamps_to_add.
 cancel_redemptions             No          Also cancel redemptions related to original transaction. Default to "false"
 issue_voucher                  No          Objects of data used to issue a voucher. Contains ``template_id`` and ``value`` (optional).
+deactivate_payment_vouchers    No          Also deactivate unredeemed payment vouchers when set to `true`. Default is `true`.
 ============================== =========== ==================================================================================================================
 
 Example of API call request using cURL

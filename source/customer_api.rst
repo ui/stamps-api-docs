@@ -466,8 +466,6 @@ merchant                     Yes         Integer indicating merchant ID
 name                         Yes         Customer's name
 birthday                     No          Customer's birthday (with format YYYY-MM-DD)
 gender                       No          Customer's gender ("male" or "female")
-email                        No          Customer's email
-mobile number                No          Customer's phone number
 address                      No          Customer's address
 district                     No          Customer's address district ID
 postal_code                  No          Customer's postal code

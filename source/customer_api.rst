@@ -1116,7 +1116,79 @@ A successful API call:
     }
 
 
-11. Set Level
+11. Set Pending Anonymization Customer
+===============
+| URL endpoint: https://stamps.co.id/api/v2/memberships/set-pending-anonymization
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can use this API to anonymize customer.
+
+============= =========== =========================
+Parameter     Required    Description
+============= =========== =========================
+identifier    Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
+============= =========== =========================
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-pending-anonymization -i -d '{ "token": "secret", "identifier": 123}'
+
+
+B. Response Data
+----------------
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              status
+=================== ==============================
+
+
+C. Response Codes
+-----------------
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized - Often missing or
+                    wrong authentication token
+403                 Forbidden - You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== ==============================
+
+
+D. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+        "status": "ok"
+    }
+
+
+12. Set Level
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/set-level
 | Allowed Method: POST
@@ -1206,7 +1278,7 @@ The customer does not have membership:
     }
 
 
-12. Request OTP to Modify Mobile Number
+13. Request OTP to Modify Mobile Number
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/accounts/request-change-mobile-number-otp
 | Allowed Method: POST
@@ -1316,7 +1388,7 @@ Invalid Whatsapp number if delivery channel is whatsapp
     }
 
 
-13. Modify Mobile Number
+14. Modify Mobile Number
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/accounts/change-mobile-number
 | Allowed Method: POST
@@ -1390,7 +1462,7 @@ A successful API call:
     }
 
 
-14. Request OTP to Modify Email
+15. Request OTP to Modify Email
 ===============================
 | URL endpoint: https://stamps.co.id/api/v2/accounts/request-otp-for-email
 | Allowed Method: POST
@@ -1462,7 +1534,7 @@ Invalid Template Code:
     }
 
 
-15. Modify Email
+16. Modify Email
 ================
 | URL endpoint: https://stamps.co.id/api/v2/accounts/change-email
 | Allowed Method: POST
@@ -1534,7 +1606,7 @@ Email is already used by other user
     }
 
 
-16. Partial Registration
+17. Partial Registration
 ===============
 | URL endpoint: https://stamps.co.id/api/v3/memberships/partial-registration
 | Allowed Method: POST

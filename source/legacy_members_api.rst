@@ -352,9 +352,10 @@ Send legacy member's pin by email or SMS
 Parameter        Required    Description
 ================ =========== =========================
 token            Yes         Authentication string
-type             Yes         Type of pin request. Can be `email` or `sms`
+type             Yes         Type of pin request. Can be `email`, `whatsapp`` or `sms`
 user             Yes         A string indicating legacy member's ID, mobile number or email
 merchant_id      Yes         Merchant ID the legacy member is associated with
+template_code    Yes         Template code for the pin request
 ================ =========== =========================
 
 
@@ -362,7 +363,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "token": "secret", "type": "email", "user": "test@example.com", "merchant_id": 1 }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "token": "secret", "type": "email", "user": "test@example.com", "merchant_id": 1, "template_code": "1234" }'
 
 
 

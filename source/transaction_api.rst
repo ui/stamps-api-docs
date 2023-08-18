@@ -966,7 +966,7 @@ transactions        list of user transactions
                     contains, id, value,
                     stamps_earned, number_of_people,
                     discount, subtotal, invoice_number,
-                    created, merchant, and store
+                    created, merchant, :ref:`status <Status Mapping>`, and store
 has_next            Boolean value indicating whether any older transaction exists.
 =================== ==============================
 
@@ -997,6 +997,7 @@ On successful get Transactions:
         "created": 1661075448,
         "merchant": "Merchant Test",
         "merchant_id": 2,
+        "status": 1,
         "meta": {
           "channel": 2,
           "channel_text": "POS"
@@ -1016,6 +1017,7 @@ On successful get Transactions:
         "invoice_number": "0020014795:1:002",
         "created": 1661075448,
         "merchant": "Merchant Test",
+        "status": 2,
         "merchant_id": 3,
         "meta": {
           "channel": 2,
@@ -1062,4 +1064,15 @@ Code                Description
 3                   Take out
 4                   E-Commerce
 5                   Pickup
+=================== ===========
+
+
+Status Mapping
+^^^^^^^^^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   New
+2                   Canceled
+3                   Open
 =================== ===========

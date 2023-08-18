@@ -355,7 +355,7 @@ token            Yes         Authentication string
 type             Yes         Type of pin request. Can be `email`, `whatsapp`` or `sms`
 user             Yes         A string indicating legacy member's ID, mobile number or email
 merchant_id      Yes         Merchant ID the legacy member is associated with
-template_code    Yes         Template code for the pin request
+template_code    No          Template code for the pin request
 ================ =========== =========================
 
 

@@ -222,8 +222,108 @@ C. Example Response
     }
 
 
+4. Activate Legacy Membership and Complete Profile
+====================================
+| URL endpoint: https://stamps.co.id/api/klg/legacy/members/activate
+| Allowed Method: POST
+| Require Authentication: Yes
 
-4. Return Transaction Preview
+A. Request
+-----------------------------
+
+================== =========== =========================
+Parameter          Required    Description
+================== =========== =========================
+token              Yes         Authentication string
+user               Yes         A string indicating legacy member's ID, mobile number or email
+merchant_id        Yes         Merchant ID the legacy member is associated with
+passkey            No          Legacy member's PIN, required when `with_passkey` is true
+with_passkey       Yes         Boolean, whether to check legacy member PIN or not
+bonus_stamps       No          Integer, bonus points given to target user's membership
+new_password       Yes         User password
+pin                Yes         User pin
+confirm_pin        Yes         User pin confirmation
+email              No          Email
+mobile_number      No          Mobile number
+gender             No          Gender
+address            No          Address
+district           No          District ID
+phone_is_verified  No          Boolean
+email_is_verified  No          Boolean
+================== =========== =========================
+
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/legacy/members/activate -i -d '{ "token": "secret", "user": 12, "merchant_id": 1, "bonus_stamps": 10, "passkey": "", "with_passkey": false, "new_password": "password", "pin": "123123", "confirm_pin": "123123" }'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+user                Customer profile data
+membership          Various information about active membership
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+
+C. Example Response
+-------------------
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "user": {
+        "id": "123",
+        "name": "Customer",
+        "gender": "m",
+        "address": "Jl MK raya",
+        "is_active": true,
+        "email": "customer@stamps.co.id",
+        "phone": "+62812398712",
+        "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+        "birthday": "1989-10-1",
+        "has_incorrect_email": true,
+        "has_incorrect_phone": true,
+        "has_incorrect_wa_number": true,
+        "phone_is_verified": true,
+        "email_is_verified": true,
+        "referral_code": "ABCDEF",
+        "registration_status": "Full"
+      },
+      "membership": {
+        "level": 1,
+        "level_text": "Blue",
+        "stamps": 100,
+        "balance": 0,
+        "is_blocked": false,
+        "referral_code": "abc123",
+        "start_date": "2022-01-01",
+        "created": "2022-01-01",
+        "primary_card": {
+          "id": 1,
+          "number": "RRR123456",
+          "is_active": true,
+          "activated_time": "2022-01-20 10:00:00"
+        }
+      }
+    }
+
+
+5. Return Transaction Preview
 =======================================
 | URL endpoint: https://stamps.co.id/api/returns/preview
 | Allowed Method: POST
@@ -499,7 +599,7 @@ On an invalid request:
     }
 
 
-5. Add a return transaction
+6. Add a return transaction
 =======================================
 | URL endpoint: https://stamps.co.id/api/returns/add
 | Allowed Method: POST
@@ -779,7 +879,7 @@ On an invalid request:
     }
 
 
-6. Adding Voucher Redemption
+7. Adding Voucher Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/klg/redemptions/odi-redeem-voucher
@@ -824,7 +924,7 @@ Here's an example of how the API call might look like in JSON format with specif
 API call example:
 
 .. code-block :: bash
-    
+
     $ curl --location --request POST 'https://stamps.co.id/api/klg/redemptions/odi-redeem-voucher' \
     --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxOTMwNjg2LCJpYXQiOjE2NjE4NDQyODYsImp0aSI6IjZlM2U0ZGU0MzZkYzRjNDZhNGJhMjRkZWE2MjM0N2VjIiwidXNlcl9pZCI6MSwibWVyY2hhbnRfaWQiOjF9.brgNBzeuPmOV6ECP5WpwJJlQ6MQZ1zACHYx1YiW33AM' \
     --header 'Content-Type: application/json' \

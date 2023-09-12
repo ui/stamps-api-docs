@@ -237,7 +237,7 @@ Parameter          Required    Description
 token              Yes         Authentication string
 user               Yes         A string indicating legacy member's ID, mobile number or email
 merchant_id        Yes         Merchant ID the legacy member is associated with
-passkey            Yes         Legacy member's PIN
+passkey            No          Legacy member's PIN, required when `with_passkey` is true
 with_passkey       Yes         Boolean, whether to check legacy member PIN or not
 bonus_stamps       No          Integer, bonus points given to target user's membership
 new_password       Yes         User password

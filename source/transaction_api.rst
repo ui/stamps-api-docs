@@ -65,7 +65,7 @@ Here's an example of how the API call might look like in JSON format:
        "number_of_people": 8,
        "tax": 5000,
        "channel": 1,
-       "require_email_notification": False,
+       "require_email_notification": false,
        "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
@@ -85,7 +85,7 @@ Here's an example of how the API call might look like in JSON format:
              "quantity": 4,
              "subtotal": 5000,
              "stamps_subtotal": 4,
-             "eligible_for_stamps": False
+             "eligible_for_stamps": false
           }
        ],
        "payments": [
@@ -284,7 +284,7 @@ Here's an example of how the API call might look like in JSON format:
        "number_of_people": 8,
        "tax": 5000,
        "channel": 1,
-       "require_email_notification": False,
+       "require_email_notification": false,
        "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
@@ -304,7 +304,7 @@ Here's an example of how the API call might look like in JSON format:
              "quantity": 4,
              "subtotal": 5000,
              "stamps_subtotal": 4,
-             "eligible_for_stamps": False
+             "eligible_for_stamps": false
           }
        ],
        "payments": [
@@ -1078,7 +1078,7 @@ Here's an example of how the API call might look like in JSON format:
              "quantity": 4,
              "subtotal": 5000,
              "stamps_subtotal": 4,
-             "eligible_for_stamps": False
+             "eligible_for_stamps": false
           }
        ]
     }

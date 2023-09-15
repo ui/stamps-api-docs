@@ -1029,9 +1029,9 @@ On successful get Transactions:
   }
 
 
-8. Complete Transaction Details
+8. Add or Update Transaction
 ===============================
-| URL endpoint: https://stamps.co.id/api/v2/transactions/complete-detail
+| URL endpoint: https://stamps.co.id/api/v2/transactions/add-or-update
 | Allowed method: POST
 | Requires authentication: Yes
 
@@ -1039,7 +1039,11 @@ On successful get Transactions:
 A. Request
 -----------------------------
 
-You can complete a transaction items details later after :ref:`adding a transaction <1. Adding a Transaction>` previously.
+You can use this API to add a transaction or complete a transaction items details later after adding a transaction previously.
+
+The payload for adding is identical to :ref:`Adding a Transaction API <1. Adding a Transaction>`.
+
+The payload for updating a transaction has fewer required fields and `items` field is required, but otherwise compatible with Adding a Transaciton API payload:
 
 =========================== =========== =======================
 Parameter                   Required    Description
@@ -1051,7 +1055,7 @@ invoice_number              Yes         POS transaction number (must be unique d
 items                       Yes         List of :ref:`item objects <Item Object>`, but the subtotal/price is required, and must match original transaction value
 =========================== =========== =======================
 
-This API can also accept the same payload as :ref:`Adding a Transaction API <1. Adding a Transaction>`. Which can be utilized to add a transaction if the transaction does not exists.
+So it is possible to use Adding a Transaction API payload format for both the purpose of adding and updating transaction.
 
 
 Here's an example of how the API call might look like in JSON format:

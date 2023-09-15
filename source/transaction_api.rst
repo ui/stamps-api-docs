@@ -35,11 +35,7 @@ service_charge              No          A number indicating service charge (in R
 tax                         No          A number indicating transaction tax (in Rp.)
 channel                     No          Channel of a transaction. See :ref:`channel mapping <Channel Mapping>` for more details.
 type                        No          The type of prepared transactions.  See :ref:`type mapping <Type Mapping>` for more details.
-items                       No          List of items containing product name, quantity, subtotal,
-                                        stamps_subtotal (optional) & eligible_for_stamps (optional).
-                                        ``price`` is the combined price of products (qty * unit price),
-                                        ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
-                                        this field is optional.
+items                       No          List of :ref:`item objects <Item Object>`
                                         ``eligible_for_stamps`` is boolean value to determine whether the item should be included in Stamps Calculation. Defaults to ``true``.
 payments                    No          List of payments object containing value, payment_method, and
                                         eligible_for_membership(optional).
@@ -69,7 +65,7 @@ Here's an example of how the API call might look like in JSON format:
        "number_of_people": 8,
        "tax": 5000,
        "channel": 1,
-       "require_email_notification": False,
+       "require_email_notification": false,
        "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
@@ -89,7 +85,7 @@ Here's an example of how the API call might look like in JSON format:
              "quantity": 4,
              "subtotal": 5000,
              "stamps_subtotal": 4,
-             "eligible_for_stamps": False
+             "eligible_for_stamps": false
           }
        ],
        "payments": [
@@ -126,7 +122,7 @@ transaction         Stamps transaction information
 customer            Customer information after successful
                     transaction. Contains id, mobile_phone, stamps_remaining, balance and status.
 detail              Description of error (if any)
-validation_errors   Errors encountered when parsing data (if any)
+errors              Errors encountered when parsing data (if any)
 =================== ==================
 
 Depending on the request, responses may return these status codes:
@@ -288,7 +284,7 @@ Here's an example of how the API call might look like in JSON format:
        "number_of_people": 8,
        "tax": 5000,
        "channel": 1,
-       "require_email_notification": False,
+       "require_email_notification": false,
        "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
@@ -308,7 +304,7 @@ Here's an example of how the API call might look like in JSON format:
              "quantity": 4,
              "subtotal": 5000,
              "stamps_subtotal": 4,
-             "eligible_for_stamps": False
+             "eligible_for_stamps": false
           }
        ],
        "payments": [
@@ -376,7 +372,7 @@ membership          Contains membership data.
                     Contains ``tags``, ``status``, ``status_text``, ``stamps``, ``balance``,
                     ``is_blocked``, ``referral_code``, ``start_date``, and ``created``
 detail              Description of error (if any)
-validation_errors   Errors encountered when parsing data (if any)
+errors              Errors encountered when parsing data (if any)
 =================== ==================
 
 Depending on the request, responses may return these status codes:
@@ -1033,6 +1029,163 @@ On successful get Transactions:
   }
 
 
+8. Add or Update Transaction
+===============================
+| URL endpoint: https://stamps.co.id/api/v2/transactions/add-or-update
+| Allowed method: POST
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+You can use this API to add a transaction or complete a transaction items details later after adding a transaction previously.
+
+The payload for adding is identical to :ref:`Adding a Transaction API <1. Adding a Transaction>`.
+
+The payload for updating a transaction has fewer required fields and `items` field is required, but otherwise compatible with Adding a Transaciton API payload:
+
+=========================== =========== =======================
+Parameter                   Required    Description
+=========================== =========== =======================
+token                       Yes         Authentication string
+store                       Yes         A number (id) indicating store where transaction
+                                        is created
+invoice_number              Yes         POS transaction number (must be unique daily)
+items                       Yes         List of :ref:`item objects <Item Object>`, but the subtotal/price is required, and must match original transaction value
+=========================== =========== =======================
+
+So it is possible to use Adding a Transaction API payload format for both the purpose of adding and updating transaction.
+
+
+Here's an example of how the API call might look like in JSON format:
+
+.. code-block:: javascript
+
+    {
+       "token": "secret",
+       "store": 32,
+       "invoice_number": "my_invoice_number",
+       "items": [
+          {
+             "product_name": "Cappucino",
+             "quantity": 2,
+             "subtotal": 10000,
+             "stamps_subtotal": 4
+          },
+          {
+             "product_name": "Iced Tea",
+             "quantity": 4,
+             "subtotal": 5000,
+             "stamps_subtotal": 4,
+             "eligible_for_stamps": false
+          }
+       ]
+    }
+
+
+Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/complete-detail -i -d '{ "token": "secret", "store": 422, "invoice_number": "invoice_1", "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}] }'
+
+B. Response
+-----------------------------
+
+In response to this API call, Stamps will reply with the following data in JSON:
+
+=================== ==================
+Variable            Description
+=================== ==================
+transaction         Stamps transaction information
+                    that is successfully created.
+                    Contains id, value, number_of_people, discount and stamps_earned.
+customer            Customer information after successful
+                    transaction. Contains id, mobile_phone, stamps_remaining, balance and status.
+detail              Description of error (if any)
+errors              Errors encountered when parsing data (if any)
+=================== ==================
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Something went wrong on Stamps' server
+=================== ==============================
+
+Below are a few examples responses on successful API calls.
+
+
+If transaction is successful:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "customer": {
+        "status": "Blue",
+        "balance": 150000,
+        "mobile_phone": "+6281314811365",
+        "id": 8120,
+        "stamps_remaining": 401
+      },
+      "transaction": {
+        "stamps_earned": 5,
+        "id": 2374815,
+        "value": 50000.0,
+        "number_of_people": 8,
+        "discount": 5000.0
+      }
+    }
+
+
+When some fields don't validate:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "detail": "Your transaction cannot be completed due to the following error(s)",
+      "errors": [
+        {
+          "invoice_number": "This Transaction's detail is already complete."
+        }
+      ]
+    }
+
+
+If provided items price does not sum up to original transaction value:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+    {
+      "error_code": "invalid_total_item_price",
+      "detail": "Total item price need to equal transaction value"
+    }
+
 
 Miscellaneous
 ------------------------------
@@ -1076,3 +1229,17 @@ Code                Description
 2                   Canceled
 3                   Open
 =================== ===========
+
+
+Item Object
+^^^^^^^^^^^
+==================== ========= ===========
+Parameter            Required  Description
+==================== ========= ===========
+product_name         Yes       Product name
+quantity             Yes       Item quantity
+subtotal/price       No        Combined price of products (qty * unit price)
+stamps_subtotal      No        Combined stamps of products (qty * unit stamps)
+eligible_for_stamps  No        Boolean value to determine whether the item should be included in Stamps Calculation. Defaults to ``true``
+extra_data           No        Additional data for further processing
+==================== ========= ===========

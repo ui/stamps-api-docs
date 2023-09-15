@@ -1216,6 +1216,7 @@ user          Yes         A string indicating customer's email, Member ID, mobil
 level         Yes         A level numerical value
 upgrade_only  No          A boolean value, default to false. If set to true, ``level`` must be higher than user's current level
 end_date      No          If set, ``level`` will only be set until the specified date. Must not be earlier than today.
+                          If not set, will be set for 365 days (this period is customizable)
 ============= =========== =========================
 
 Example of API call request using cURL:

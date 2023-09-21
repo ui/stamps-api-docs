@@ -333,30 +333,35 @@ C. Example Response
 A. Request
 -----------------------------
 
-================== =========== =========================
-Parameter          Required    Description
-================== =========== =========================
-token              Yes         Authentication string
-user               Yes         A string indicating legacy member's ID, mobile number or email
-name               Yes         Name
-email              No          Email
-mobile_number      No          Mobile number
-gender             No          Gender
-address            No          Address
-district           No          District ID
-password           Yes         User password
-pin                Yes         User pin
-confirm_pin        Yes         User pin confirmation
-legacy_member      No          Legacy member identifier to merge with
-legacy_merchant_id No          Legacy member merchant ID
-================== =========== =========================
+========================= =========== =========================
+Parameter                 Required    Description
+========================= =========== =========================
+token                     Yes         Authentication string
+name                      Yes         Name
+email                     No          Email
+mobile_number             No          Mobile number
+gender                    No          Gender
+address                   No          Address
+birthday                  No          Birthday
+store                     No          Registering store ID
+referral_code             No          Referral code if any
+generate_default_password No          Generate default password for user
+registering_employee_code No          Registering employee code
+district                  No          District ID
+marital_status            No          User's marital status
+password                  Yes         User password
+pin                       Yes         User pin
+confirm_pin               Yes         User pin confirmation
+legacy_member             No          Legacy member identifier to merge with
+legacy_merchant_id        No          Legacy member merchant ID
+========================= =========== =========================
 
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/memberships/register -i -d '{ "token": "secret", "user": 12, "password": "password", "pin": "123123", "confirm_pin": "123123" }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/memberships/register -i -d '{ "token": "secret", "password": "password", "pin": "123123", "confirm_pin": "123123" }'
 
 
 B. Response

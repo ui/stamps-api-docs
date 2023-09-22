@@ -333,30 +333,35 @@ C. Example Response
 A. Request
 -----------------------------
 
-================== =========== =========================
-Parameter          Required    Description
-================== =========== =========================
-token              Yes         Authentication string
-user               Yes         A string indicating legacy member's ID, mobile number or email
-name               Yes         Name
-email              No          Email
-mobile_number      No          Mobile number
-gender             No          Gender
-address            No          Address
-district           No          District ID
-password           Yes         User password
-pin                Yes         User pin
-confirm_pin        Yes         User pin confirmation
-legacy_member      No          Legacy member identifier to merge with
-legacy_merchant_id No          Legacy member merchant ID
-================== =========== =========================
+========================= =========== =========================
+Parameter                 Required    Description
+========================= =========== =========================
+token                     Yes         Authentication string
+name                      Yes         Name
+email                     No          Email
+mobile_number             No          Mobile number
+gender                    No          Gender ("male" or "female")
+address                   No          Address
+birthday                  No          Birthday (with format YYYY-MM-DD)
+store                     No          Registering store ID
+referral_code             No          Referal code used to register customer
+generate_default_password No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+registering_employee_code No          String indicating employee code, will create a new employee if not exists
+district                  No          District ID
+marital_status            No          Marital status mapping can be seen :ref:`here <Marital Status Mapping>`
+password                  Yes         User password
+pin                       Yes         User pin
+confirm_pin               Yes         User pin confirmation
+legacy_member             No          Legacy member identifier to merge with
+legacy_merchant_id        No          Legacy member merchant ID
+========================= =========== =========================
 
 
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/memberships/register -i -d '{ "token": "secret", "user": 12, "password": "password", "pin": "123123", "confirm_pin": "123123" }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/memberships/register -i -d '{ "token": "secret", "password": "password", "pin": "123123", "confirm_pin": "123123" }'
 
 
 B. Response
@@ -367,9 +372,7 @@ In response to this API call, Stamps will return response with the following dat
 =================== ==============================
 Variable            Description
 =================== ==============================
-user                Customer profile data
-membership          Various information about active membership
-errors              Errors encountered when processing request (if any)
+customer            Various customer data
 =================== ==============================
 
 
@@ -385,40 +388,67 @@ C. Example Response
     [Redacted Header]
 
     {
-      "user": {
-        "id": "123",
-        "name": "Customer",
-        "gender": "m",
-        "address": "Jl MK raya",
+        "id": "620",
+        "name": "John Doe",
+        "gender": "male",
+        "address": "Jalan Anggrek No. 1",
         "is_active": true,
-        "email": "customer@stamps.co.id",
-        "phone": "+62812398712",
+        "email": "johndoe@example.com",
         "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
-        "birthday": "1989-10-1",
-        "has_incorrect_email": false,
-        "has_incorrect_phone": false,
-        "has_incorrect_wa_number": false,
-        "phone_is_verified": true,
-        "email_is_verified": true,
-        "referral_code": "ABCDEF",
-        "registration_status": "Full"
-      },
-      "membership": {
-        "level": 1,
-        "level_text": "Blue",
-        "stamps": 100,
-        "balance": 0,
-        "is_blocked": false,
-        "referral_code": "abc123",
-        "start_date": "2022-01-01",
-        "created": "2022-01-01",
-        "primary_card": {
-          "id": 1,
-          "number": "RRR123456",
-          "is_active": true,
-          "activated_time": "2022-01-20 10:00:00"
-        }
-      }
+        "birthday": "1993-05-30",
+        "phone": "+6285567146065",
+        "postal_code": "10310",
+        "protected_redemption": false,
+        "has_incorrect_email": true,
+        "marital_status": 1,
+        "religion": 1,
+        "wedding_date": null,
+        "id_number": null,
+        "id_card_file_name": "",
+        "phone_is_verified": false,
+        "email_is_verified": false,
+        "is_anonymized": false,
+        "has_pin": false,
+        "pin_is_blocked": false,
+        "has_password": true,
+        "notes": "",
+        "referral_code": "GYHTLIY9",
+        "registration_status": "Full",
+        "location": {
+            "district": {
+                "id": 1,
+                "name": "Kebayoran Baru"
+            },
+            "regency": {
+                "id": 1,
+                "name": "Jakarta Selatan"
+            },
+            "province": {
+                "id": 1,
+                "name": "DKI Jakarta"
+            }
+        },
+        "membership": {
+            "tags": [],
+            "status": 0,
+            "status_text": "Silver",
+            "level": 0,
+            "level_text": "Silver",
+            "member_status": "Active",
+            "stamps": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "7J133",
+            "start_date": "2022-11-24",
+            "created": "2022-11-24",
+            "primary_card": {
+                "id": 231,
+                "number": "RRRB1AKUT0",
+                "is_active": true,
+                "activated_time": "2022-01-20 10:00:00"
+            }
+        },
+        "registering_employee_code": "EMP001"
     }
 
 
@@ -1186,57 +1216,6 @@ Python code example:
         return hmac.compare_digest(signature, signed_payload.hexdigest())
 
 
-Miscellaneous
-------------------------------
-
-Payment Object
-^^^^^^^^^^^^^^
-============================== =========== ===================================================================
-Parameter                      Required    Description
-============================== =========== ===================================================================
-payment_method                 Yes         Payment method code
-value                          Yes         Nominal of payment, must be negative
-voucher_code                   No          Will issue a new voucher with corresponding `value`
-============================== =========== ===================================================================
-
-Item Object
-^^^^^^^^^^^
-============================== =========== ===================================================================
-Parameter                      Required    Description
-============================== =========== ===================================================================
-product_name                   Yes         Product name of the item
-quantity                       Yes         Returned quantity, must be negative
-subtotal                       Yes         Returned subtotal, must be negative
-============================== =========== ===================================================================
-
-Modification Object
-^^^^^^^^^^^^^^^^^^^
-============================== =========== =============================================================================================
-Parameter                      Type        Description
-============================== =========== =============================================================================================
-id                             int         Modification ID
-created                        int         Created time of modification in Unix Timestamp format
-stamps_delta                   int         Stamps delta between previous and latest transaction, from default calculation
-stamps_delta_override          int         Stamps delta between previous and latest transaction, from stamps_to_add or stamps_to_deduct
-stamps_refund_from_payments    int         Refunded stamps from the defined refundable payment methods
-total_stamps_delta             int         Total stamps delta from stamps_delta + stamps_delta_override + stamps_refund_from_payments
-subtotal_delta                 float       Subtotal delta between previous and latest transaction
-grand_total_delta              float       Grand total delta between previous and latest transaction
-============================== =========== =============================================================================================
-
-Channel Mapping
-^^^^^^^^^^^^^^^
-=========== ======
-Channel     Value
-=========== ======
-POS         2
-Kiosk       3
-Web         4
-Android     5
-iOS         6
-=========== ======
-
-
 8. Adding a Transaction with Redemptions
 =======================
 | URL endpoint: https://stamps.co.id/api/klg/transactions/add-with-redemptions
@@ -1510,3 +1489,67 @@ If missing or wrong authentication token:
      [Redacted Header]
 
     {"detail": "Authentication credentials were not provided."}
+
+
+
+Miscellaneous
+------------------------------
+
+Payment Object
+^^^^^^^^^^^^^^
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+payment_method                 Yes         Payment method code
+value                          Yes         Nominal of payment, must be negative
+voucher_code                   No          Will issue a new voucher with corresponding `value`
+============================== =========== ===================================================================
+
+Item Object
+^^^^^^^^^^^
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+product_name                   Yes         Product name of the item
+quantity                       Yes         Returned quantity, must be negative
+subtotal                       Yes         Returned subtotal, must be negative
+============================== =========== ===================================================================
+
+Modification Object
+^^^^^^^^^^^^^^^^^^^
+============================== =========== =============================================================================================
+Parameter                      Type        Description
+============================== =========== =============================================================================================
+id                             int         Modification ID
+created                        int         Created time of modification in Unix Timestamp format
+stamps_delta                   int         Stamps delta between previous and latest transaction, from default calculation
+stamps_delta_override          int         Stamps delta between previous and latest transaction, from stamps_to_add or stamps_to_deduct
+stamps_refund_from_payments    int         Refunded stamps from the defined refundable payment methods
+total_stamps_delta             int         Total stamps delta from stamps_delta + stamps_delta_override + stamps_refund_from_payments
+subtotal_delta                 float       Subtotal delta between previous and latest transaction
+grand_total_delta              float       Grand total delta between previous and latest transaction
+============================== =========== =============================================================================================
+
+Channel Mapping
+^^^^^^^^^^^^^^^
+====== ============
+Code   Description
+====== ============
+2      POS
+3      Kiosk
+4      Web
+5      Android
+6      iOS
+====== ============
+
+Marital Status Mapping
+^^^^^^^^^^^^^^^^^^^^^^
+====== ============
+Code   Description
+====== ============
+1      Single
+2      Married
+3      Divorced
+4      Widowed
+5      Others
+====== ============

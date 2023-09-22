@@ -296,7 +296,6 @@ containing an automatically generated password.
 Parameter                    Required    Description
 ============================ =========== =========================
 token                        Yes         Authentication string
-merchant                     Yes         Integer indicating merchant ID
 name                         Yes         Customer's name
 email                        Yes         Customer's email
 mobile_number                Yes         Customer's mobile number

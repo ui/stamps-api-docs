@@ -337,18 +337,19 @@ A. Request
 Parameter                 Required    Description
 ========================= =========== =========================
 token                     Yes         Authentication string
+merchant                  Yes         Integer indicating merchant ID
 name                      Yes         Name
 email                     No          Email
 mobile_number             No          Mobile number
-gender                    No          Gender
+gender                    No          Gender ("male" or "female")
 address                   No          Address
-birthday                  No          Birthday
+birthday                  No          Birthday (with format YYYY-MM-DD)
 store                     No          Registering store ID
-referral_code             No          Referral code if any
-generate_default_password No          Generate default password for user
-registering_employee_code No          Registering employee code
+referral_code             No          Referal code used to register customer
+generate_default_password No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+registering_employee_code No          String indicating employee code, will create a new employee if not exists
 district                  No          District ID
-marital_status            No          User's marital status
+marital_status            No          Marital status mapping can be seen :ref:`here <Marital Status Mapping>`
 password                  Yes         User password
 pin                       Yes         User pin
 confirm_pin               Yes         User pin confirmation
@@ -1191,57 +1192,6 @@ Python code example:
         return hmac.compare_digest(signature, signed_payload.hexdigest())
 
 
-Miscellaneous
-------------------------------
-
-Payment Object
-^^^^^^^^^^^^^^
-============================== =========== ===================================================================
-Parameter                      Required    Description
-============================== =========== ===================================================================
-payment_method                 Yes         Payment method code
-value                          Yes         Nominal of payment, must be negative
-voucher_code                   No          Will issue a new voucher with corresponding `value`
-============================== =========== ===================================================================
-
-Item Object
-^^^^^^^^^^^
-============================== =========== ===================================================================
-Parameter                      Required    Description
-============================== =========== ===================================================================
-product_name                   Yes         Product name of the item
-quantity                       Yes         Returned quantity, must be negative
-subtotal                       Yes         Returned subtotal, must be negative
-============================== =========== ===================================================================
-
-Modification Object
-^^^^^^^^^^^^^^^^^^^
-============================== =========== =============================================================================================
-Parameter                      Type        Description
-============================== =========== =============================================================================================
-id                             int         Modification ID
-created                        int         Created time of modification in Unix Timestamp format
-stamps_delta                   int         Stamps delta between previous and latest transaction, from default calculation
-stamps_delta_override          int         Stamps delta between previous and latest transaction, from stamps_to_add or stamps_to_deduct
-stamps_refund_from_payments    int         Refunded stamps from the defined refundable payment methods
-total_stamps_delta             int         Total stamps delta from stamps_delta + stamps_delta_override + stamps_refund_from_payments
-subtotal_delta                 float       Subtotal delta between previous and latest transaction
-grand_total_delta              float       Grand total delta between previous and latest transaction
-============================== =========== =============================================================================================
-
-Channel Mapping
-^^^^^^^^^^^^^^^
-=========== ======
-Channel     Value
-=========== ======
-POS         2
-Kiosk       3
-Web         4
-Android     5
-iOS         6
-=========== ======
-
-
 8. Adding a Transaction with Redemptions
 =======================
 | URL endpoint: https://stamps.co.id/api/klg/transactions/add-with-redemptions
@@ -1515,3 +1465,67 @@ If missing or wrong authentication token:
      [Redacted Header]
 
     {"detail": "Authentication credentials were not provided."}
+
+
+
+Miscellaneous
+------------------------------
+
+Payment Object
+^^^^^^^^^^^^^^
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+payment_method                 Yes         Payment method code
+value                          Yes         Nominal of payment, must be negative
+voucher_code                   No          Will issue a new voucher with corresponding `value`
+============================== =========== ===================================================================
+
+Item Object
+^^^^^^^^^^^
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+product_name                   Yes         Product name of the item
+quantity                       Yes         Returned quantity, must be negative
+subtotal                       Yes         Returned subtotal, must be negative
+============================== =========== ===================================================================
+
+Modification Object
+^^^^^^^^^^^^^^^^^^^
+============================== =========== =============================================================================================
+Parameter                      Type        Description
+============================== =========== =============================================================================================
+id                             int         Modification ID
+created                        int         Created time of modification in Unix Timestamp format
+stamps_delta                   int         Stamps delta between previous and latest transaction, from default calculation
+stamps_delta_override          int         Stamps delta between previous and latest transaction, from stamps_to_add or stamps_to_deduct
+stamps_refund_from_payments    int         Refunded stamps from the defined refundable payment methods
+total_stamps_delta             int         Total stamps delta from stamps_delta + stamps_delta_override + stamps_refund_from_payments
+subtotal_delta                 float       Subtotal delta between previous and latest transaction
+grand_total_delta              float       Grand total delta between previous and latest transaction
+============================== =========== =============================================================================================
+
+Channel Mapping
+^^^^^^^^^^^^^^^
+====== ============
+Code   Description
+====== ============
+2      POS
+3      Kiosk
+4      Web
+5      Android
+6      iOS
+====== ============
+
+Marital Status Mapping
+^^^^^^^^^^^^^^^^^^^^^^
+====== ============
+Code   Description
+====== ============
+1      Single
+2      Married
+3      Divorced
+4      Widowed
+5      Others
+====== ============

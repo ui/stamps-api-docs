@@ -312,7 +312,7 @@ referral_code                No          Referal code used to register customer
 is_active                    No          Customer's registration status
 religion                     No          Customer's religion
 marital_status               No          Customer's marital status
-wedding_date                 No          Customer's weidding date
+wedding_date                 No          Customer's wedding date
 extra_data                   No          Extra data related to customer
 registration_method          No          :ref:`Registration method <Registration Method>` code, defaults to `API`
 registering_employee_code    No          String indicating employee code, will create a new employee if not exists

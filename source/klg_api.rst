@@ -533,7 +533,7 @@ original_transaction  Information about the previous transaction
 modified_transaction  Information about the new transaction after return happens
 modication            Information about the :ref:`modified data <Modification Object>` of the original transaction
 returnable_vouchers   Information about what vouchers will be returned
-allow_partial_refunds Whether the transaction can be returned partially or not
+allow_partial_returns Whether the transaction can be returned partially or not
 ===================== ==============================================================================================
 
 

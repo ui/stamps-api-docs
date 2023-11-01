@@ -102,15 +102,16 @@ A. Request
 -----------------------------
 You can add issue a voucher by calling the API with these parameters.
 
-============     =========== =========================
-Parameter        Required    Description
-============     =========== =========================
-token            Yes         Authentication token in string
-voucher_code     Yes         A string indicating voucher code
-merchant         Yes         Integer indicating the voucher template ID
-store            Yes         Integer indicating store ID to be queried for reward
-user             No          User identifier, will validate voucher owner if provided
-============     =========== =========================
+==================  =========== =========================
+Parameter           Required    Description
+==================  =========== =========================
+token               Yes         Authentication token in string
+voucher_code        Yes         A string indicating voucher code
+merchant            Yes         Integer indicating the voucher template ID
+store               Yes         Integer indicating store ID to be queried for reward
+user                No          User identifier, will validate voucher owner if provided
+transaction_value   No          Transaction value that will be used for redemption
+==================  =========== =========================
 
 
 Example of API call request using cURL

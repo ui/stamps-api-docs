@@ -494,7 +494,6 @@ Parameter                      Required    Description
 ============================== =========== =============================================================================
 root_invoice_number            Yes         Invoice number of the first original transaction
 root_transaction_store         Yes         Store's id or code where the the first transaction happens
-root_invoice_date              Yes         First transaction creation date in YYY-mm-dd format(e.g: 2022-08-30)
 return_invoice_number          Yes         Invoice number for return transaction
 return_created_datetime        No          When the return happens in ISO 8601 format(e.g: 2013-01-15T20:01:01+07).
                                            Default to now
@@ -526,7 +525,6 @@ Example of API call request using cURL
     --data-raw ' {
                 "root_invoice_number": "6288988812712621",
                 "root_transaction_store": 3,
-                "root_invoice_date": "2022-08-30",
                 "return_invoice_number": "6288988812712621.1",
                 "total_value_delta": -15000,
                 "return_store": 3,
@@ -770,7 +768,6 @@ Parameter                      Required    Description
 ============================== =========== ==================================================================================================================
 root_invoice_number            Yes         Invoice number of the first original transaction
 root_transaction_store         Yes         Store's id or code where the the first transaction happens
-root_invoice_date              Yes         First transaction creation date in YYY-mm-dd format(e.g: 2022-08-30)
 return_invoice_number          Yes         Invoice number for return transaction
 return_created_datetime        No          When the return happens in ISO 8601 format(e.g: 2013-01-15T20:01:01+07).
                                            Default to now
@@ -799,7 +796,6 @@ Example of API call request using cURL
     --data-raw ' {
                 "root_invoice_number": "6288988812712621",
                 "root_transaction_store": 3,
-                "root_invoice_date": "2022-08-30",
                 "return_invoice_number": "6288988812712621.1",
                 "total_value_delta": -15000,
                 "return_store": 3,

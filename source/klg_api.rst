@@ -69,6 +69,16 @@ C. Example Response
           "merchant": 2,
           "status": 1
         },
+      ],
+      "merged_legacy_members": [
+        {
+          "member_id": "377142",
+          "email": "legacy_member3@stamps.com",
+          "mobile_number": "+62851111222555",
+          "merchant": 1,
+          "status": 1,
+          "duplicate_id": "1234"
+        }
       ]
     }
 

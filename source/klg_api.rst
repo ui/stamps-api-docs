@@ -60,15 +60,27 @@ C. Example Response
           "email": "legacy_member@stamps.com",
           "mobile_number": "+62851111222333",
           "merchant": 1,
-          "status": 1
+          "status": 2,
+          "duplicate_id": "1234"
         },
         {
           "member_id": "63414",
           "email": "duplicate_member2@stamps.com",
           "mobile_number": "+62851111222444",
           "merchant": 2,
-          "status": 1
+          "status": 2,
+          "duplicate_id": "1234"
         },
+      ],
+      "merged_legacy_members": [
+        {
+          "member_id": "377142",
+          "email": "legacy_member3@stamps.com",
+          "mobile_number": "+62851111222555",
+          "merchant": 1,
+          "status": 1,
+          "duplicate_id": "1234"
+        }
       ]
     }
 

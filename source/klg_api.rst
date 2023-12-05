@@ -1185,7 +1185,92 @@ On successful redemption:
     }
 
 
-9. Webhook Security
+9. Adding User Card
+======================
+
+| URL endpoint: https://stamps.co.id/api/klg/cards/add
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can generate and assign a new card to a certain member using ODI user ID.
+
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+rrr_id          Yes       Target member's card number
+user_id_odi     Yes       ODI user ID that will be used to generate a new card
+=============== ========= =========================
+
+API call example:
+
+.. code-block :: bash
+
+    $ curl --location --request POST 'https://stamps.co.id/api/klg/redemptions/odi-redeem-voucher' \
+    --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxOTMwNjg2LCJpYXQiOjE2NjE4NDQyODYsImp0aSI6IjZlM2U0ZGU0MzZkYzRjNDZhNGJhMjRkZWE2MjM0N2VjIiwidXNlcl9pZCI6MSwibWVyY2hhbnRfaWQiOjF9.brgNBzeuPmOV6ECP5WpwJJlQ6MQZ1zACHYx1YiW33AM' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "token": "abc",
+        "rrr_id": "RRR123456",
+        "user_id_odi": "999"
+    }'
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+card                Various information about the newly created card
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+    {
+       "card": {
+            "id": 2,
+            "number": "UIODI-999",
+            "is_active": True,
+            "activated_time": "2023-01-11 10:00:00"
+        }
+    }
+
+
+10. Webhook Security
 =======================
 Webhook from STAMPS will return the siganture inside X-Stamps-Signature header.
 
@@ -1256,7 +1341,7 @@ Python code example:
         return hmac.compare_digest(signature, signed_payload.hexdigest())
 
 
-8. Adding a Transaction with Redemptions
+11. Adding a Transaction with Redemptions
 =======================
 | URL endpoint: https://stamps.co.id/api/klg/transactions/add-with-redemptions
 | Allowed method: POST

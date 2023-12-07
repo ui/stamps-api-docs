@@ -1629,7 +1629,7 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-12. Adding Payment on Transaction with Partial Payment
+12. Adding Payments
 =======================
 | URL endpoint: https://stamps.co.id/api/klg/transactions/add-payments
 | Allowed method: POST

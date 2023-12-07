@@ -1393,6 +1393,7 @@ extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
 original_invoice_number     No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
+payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see table below
 =========================== =========== =======================
 
 Channel Mapping
@@ -1426,6 +1427,15 @@ Code                Description
 =================== ===========
 
 
+Payment Status
+
+=================== ===========
+Code                Description
+=================== ===========
+1                   Full
+5                   Partial
+=================== ===========
+
 
 Here's an example of how the API call might look like in JSON format:
 
@@ -1446,6 +1456,7 @@ Here's an example of how the API call might look like in JSON format:
        "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
+       "payment_status": 1,
        "extra_data": {
           "employee_name": "Stamps Employee",
           "order_number": "order_number"
@@ -1617,6 +1628,182 @@ If missing or wrong authentication token:
 
     {"detail": "Authentication credentials were not provided."}
 
+
+12. Adding Payment on Transaction with Partial Payment
+=======================
+| URL endpoint: https://stamps.co.id/api/klg/transactions/add-payments
+| Allowed method: POST
+| Requires authentication: Yes
+
+
+A. Request
+-----------------------------
+
+Adding a payment on transaction with partial payment requires you to send a POST request to the endpoint with the following parameters:
+
+=========================== =========== =======================
+Parameter                   Required    Description
+=========================== =========== =======================
+token                       Yes         Authentication string
+store                       Yes         A number (id) indicating store where transaction
+                                        is created
+invoice_number              Yes         POS transaction number (must be unique daily)
+payments                    Yes         List of payments object containing value, payment_method, and
+                                        eligible_for_membership(optional).
+                                        ``value`` is the amount of payment
+                                        ``payment_method`` is the method used for payment
+                                        ``eligible_for_membership`` whether this payment is used for member's status/level changes.
+                                        This field is optional. Default to true if not provided(can be configured later).
+reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
+voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
+payment_status              Yes         Payment status of the transaction, for payment status mapping, see table below
+=========================== =========== =======================
+
+
+Payment Status
+
+=================== ===========
+Code                Description
+=================== ===========
+1                   Full
+5                   Partial
+=================== ===========
+
+
+Here's an example of how the API call might look like in JSON format:
+
+.. code-block:: javascript
+
+    {
+       "token": "secret",
+       "store": 32,
+       "invoice_number": "my_invoice_number",
+       "payment_status": 2,
+       "payments": [
+          {
+            "value": 30000,
+            "payment_method": 10
+          },
+          {
+            "value": 20000,
+            "payment_method": 43,
+            "eligible_for_membership": false
+          }
+       ],
+       "reward_redemptions": [
+          {
+            "request_id": "request-id-1",
+            "reward": 1
+          },
+          {
+            "request_id": "request-id-1",
+            "reward": "REWARDCODE"
+          },
+          {
+            "request_id": "request-id-1",
+            "reward": 1,
+            "stamps": 10,
+          }
+          {
+            "request_id": "request-id-1",
+            "reward": "REWARDCODE",
+            "stamps": 10,
+          }
+       ],
+       "voucher_redemptions": [
+          {
+            "request_id": "request-id-1",
+            "voucher_code": "VOUCHERCODE"
+          }
+       ],
+    }
+
+
+Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, please specify "Expect:" as a header.
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/klg/transactions/add-payments -i -d '{ "token": "secret", "store": 422, "invoice_number": "invoice_1", "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ] }'
+
+B. Response
+-----------------------------
+
+In response to this API call, Stamps will reply with the following data in JSON:
+
+=================== ==================
+Variable            Description
+=================== ==================
+transaction         Stamps transaction information
+                    that is successfully created.
+                    Contains id, value, number_of_people, discount and stamps_earned.
+membership          Contains membership data.
+                    Contains ``tags``, ``status``, ``status_text``, ``stamps``, ``balance``,
+                    ``is_blocked``, ``referral_code``, ``start_date``, and ``created``
+detail              Description of error (if any)
+validation_errors   Errors encountered when parsing data (if any)
+=================== ==================
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request, usually missing a required parameter
+401                 Unauthorized, usually missing or wrong authentication token
+403                 Forbidden – You do not have permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Something went wrong on Stamps' server
+=================== ==============================
+
+Below are a few examples responses on successful API calls.
+
+
+If transaction is successful(JSON):
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "membership": {
+        "tags": [],
+        "status": 10,
+        "status_text": "Blue",
+        "stamps": 10,
+        "balance": 20,
+        "is_blocked": false,
+        "referral_code": "asd",
+        "start_date": "2020-01-01",
+        "created": "2020-01-01",
+      },
+      "transaction": {
+        "stamps_earned": 5,
+        "id": 2374815,
+        "value": 50000.0,
+        "number_of_people": 8,
+        "discount": 5000.0,
+        "payment_status": 1
+      }
+    }
+
+
+When some fields don't validate (JSON):
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+
+
+    {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"subtotal": "This field is required."}, {"invoice_number": "Store does not exist"}]}
 
 
 Miscellaneous

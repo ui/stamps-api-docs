@@ -1372,8 +1372,8 @@ sub_total                   No          A number indicating transaction subtotal
 discount                    No          A number indicating transaction discount (in Rp.)
 service_charge              No          A number indicating service charge (in Rp.)
 tax                         No          A number indicating transaction tax (in Rp.)
-channel                     No          Channel of a transaction, for channel mapping, see table below
-type                        No          The type of prepared transactions, for type mapping, see table below
+channel                     No          Channel of a transaction, for channel mapping, see :ref:`Table <Channel Mapping>`.
+type                        No          The type of prepared transactions, for type mapping, see :ref:`Table <Type Mapping>`.
 items                       No          List of items containing product name, quantity, subtotal,
                                         stamps_subtotal (optional) & eligible_for_stamps (optional).
                                         ``price`` is the combined price of products (qty * unit price),
@@ -1395,36 +1395,6 @@ voucher_redemptions         No          List of voucher objects that want to be 
 original_invoice_number     No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
 payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see :ref:`Table <Payment Status>`.
 =========================== =========== =======================
-
-Channel Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile App
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS
-7                   Call Center
-8                   GrabFood
-9                   GoFood
-=================== ===========
-
-
-
-Type Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Delivery
-2                   Dine-in
-3                   Take out
-4                   E-Commerce
-5                   Pickup
-=================== ===========
 
 
 Here's an example of how the API call might look like in JSON format:
@@ -1848,7 +1818,6 @@ Code   Description
 5      Others
 ====== ============
 
-
 Payment Status
 ^^^^^^^^^^^^^^
 =================== ===========
@@ -1856,4 +1825,16 @@ Code                Description
 =================== ===========
 1                   Full
 5                   Partial
+=================== ===========
+
+Type Mapping
+^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Delivery
+2                   Dine-in
+3                   Take out
+4                   E-Commerce
+5                   Pickup
 =================== ===========

@@ -1393,7 +1393,7 @@ extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
 original_invoice_number     No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
-payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see `Table <Payment Status>`
+payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see :ref:`Table <Payment Status>`.
 =========================== =========== =======================
 
 Channel Mapping
@@ -1646,7 +1646,7 @@ payments                    Yes         List of payments object containing value
                                         This field is optional. Default to true if not provided(can be configured later).
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
-payment_status              Yes         Payment status of the transaction, for payment status mapping, see :ref:`Table <Payment Status>. 
+payment_status              Yes         Payment status of the transaction, for payment status mapping, see :ref:`Table <Payment Status>`. 
 =========================== =========== =======================
 
 

@@ -518,7 +518,7 @@ payments                       No          Must be provided if original transact
 stamps_to_add                  No          Stamps to be added by this transaction. If specified, this overrides system's calculation of the number of Stamps that will be added or deducted from this transaction.
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
-items                          Yes         Which items are returned. Items are list of :ref:`item objects<Item Object>`
+items                          Yes         Which items are returned. Items are list of :ref:`return item objects<Return Item Object>`
 stamps_to_add                  No          Stamps to be added by this transaction. If specified, this overrides system's calculation of the number of Stamps that will be added or deducted from this transaction.
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
@@ -791,7 +791,7 @@ subtotal_delta                 No          Must be provided if the original tran
 total_value_delta              Yes         The delta value of transaction's grand total after returned
 payments                       No          Must be provided if original transaction has payments.
                                            Payments are list of :ref:`payment objects <Payment Object>`
-items                          Yes         Which items are returned. Items are list of :ref:`item objects<Item Object>`
+items                          Yes         Which items are returned. Items are list of :ref:`return item objects<Return Item Object>`
 stamps_to_add                  No          Stamps to be added by this transaction. If specified, this overrides system's calculation of the number of Stamps that will be added or deducted from this transaction.
 stamps_to_deduct               No          Stamps to be deducted manually. If specified, this overrides the number of Stamps that will be deducted from this return.
                                            Can't be sent alongside stamps_to_add.
@@ -1756,6 +1756,172 @@ When some fields don't validate (JSON):
     {"detail": "Your transaction cannot be completed due to the following error(s)", "errors": [{"subtotal": "This field is required."}, {"invoice_number": "Store does not exist"}]}
 
 
+13. Modify Items
+=======================================
+| URL endpoint: https://stamps.co.id/api/klg/transactions/modify-items
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+Preview a return from a transaction.
+
+============================== =========== =============================================================================
+Parameter                      Required    Description
+============================== =========== =============================================================================
+original_invoice_number        Yes         Transaction's invoice number which will be modified
+invoice_number                 Yes         New invoice number for replacement
+items                          No          List of :ref:`items<Item Object>` for the new invoice number
+============================== =========== =============================================================================
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    curl --location --request POST 'https://stamps.co.id/api/klg/modify-items' \
+    --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxOTMwNjg2LCJpYXQiOjE2NjE4NDQyODYsImp0aSI6IjZlM2U0ZGU0MzZkYzRjNDZhNGJhMjRkZWE2MjM0N2VjIiwidXNlcl9pZCI6MSwibWVyY2hhbnRfaWQiOjF9.brgNBzeuPmOV6ECP5WpwJJlQ6MQZ1zACHYx1YiW33AM' \
+    --header 'Content-Type: application/json' \
+    --header 'Cookie: csrftoken=FAc0E8TCQSCqCKhNNH62Pr3KTFgfemz2DMPWkjdSkD68VJYKda38emJi8GykuSgd; sessionid=sl07y2ektnrikw4bddkr4kndr482qms4' \
+    --data-raw ' {
+                "original_invoice_number": "Impale1418",
+                "invoice_number": "Impale1418-1",
+                "items": [
+                    {
+                        "product_name": "Tea",
+                        "quantity": 1,
+                        "subtotal": 15000
+                    },
+                    {
+                        "product_name": "Milk",
+                        "quantity": 2,
+                        "subtotal": 20000
+                    }
+                ],
+            }'
+
+B. Response Data
+----------------
+
+Stamps responds to this API call with the following data (in JSON):
+
+===================== ==============================================================================================
+Variable              Description
+===================== ==============================================================================================
+modification          Modification done for the transaction
+transaction           Transaction after modification
+===================== ==============================================================================================
+
+
+C. Response Headers
+-------------------
+
+=================== =======================================================================
+Code                Description
+=================== =======================================================================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== =======================================================================
+
+
+D. Examples
+-----------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    {
+        "modification": {
+            "id": 230,
+            "original_invoice_number": "Impale1418",
+            "invoice_number": "Impale1418-1",
+            "created": 1701115200,
+            "stamps_delta": 0,
+            "subtotal_delta": 0,
+            "stamps_delta_override": 0,
+            "stamps_refund_from_payments": 0,
+            "total_stamps_delta": 0,
+            "grand_total_delta": 0
+        },
+        "transaction": {
+            "id": 209,
+            "value": 35000,
+            "stamps_earned": 70,
+            "number_of_people": null,
+            "discount": null,
+            "subtotal": 35000,
+            "invoice_number": "Impale1418-1",
+            "status": 1,
+            "created": 1701115200,
+            "payment_status": 1,
+            "items": [
+                {
+                    "id": 1038,
+                    "quantity": 1,
+                    "subtotal": 10000,
+                    "price_per_unit": null,
+                    "product": {
+                        "id": 411,
+                        "name": "Milk"
+                    }
+                },
+                {
+                    "id": 1039,
+                    "quantity": 1,
+                    "subtotal": 15000,
+                    "price_per_unit": null,
+                    "product": {
+                        "id": 410,
+                        "name": "Tea"
+                    }
+                },
+                {
+                    "id": 1040,
+                    "quantity": 0,
+                    "subtotal": 0,
+                    "price_per_unit": null,
+                    "product": {
+                        "id": 412,
+                        "name": "sprite"
+                    }
+                },
+                {
+                    "id": 1041,
+                    "quantity": 1,
+                    "subtotal": 10000,
+                    "price_per_unit": null,
+                    "product": {
+                        "id": 411,
+                        "name": "Milk"
+                    }
+                },
+            ],
+            "payments": []
+        }
+    }
+
+On an invalid request:
+
+.. code-block :: bash
+
+    {
+        "detail": "original_invoice_number: Transaction not found",
+        "error_message": "original_invoice_number: Transaction not found",
+        "error_code": "invalid_transaction",
+        "errors": {
+            "original_invoice_number": "Transaction not found"
+        }
+    }
+
 Miscellaneous
 ------------------------------
 
@@ -1769,7 +1935,7 @@ value                          Yes         Nominal of payment, must be negative
 voucher_code                   No          Will issue a new voucher with corresponding `value`
 ============================== =========== ===================================================================
 
-Item Object
+Return Item Object
 ^^^^^^^^^^^
 ============================== =========== ===================================================================
 Parameter                      Required    Description
@@ -1778,6 +1944,17 @@ product_name                   Yes         Product name of the item
 quantity                       Yes         Returned quantity, must be negative
 subtotal                       Yes         Returned subtotal, must be negative
 ============================== =========== ===================================================================
+
+Item Object
+^^^^^^^^^^^
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+product_name                   Yes         Product name of the item
+quantity                       Yes         Item's quantity
+subtotal                       Yes         Item's subtotal
+============================== =========== ===================================================================
+
 
 Modification Object
 ^^^^^^^^^^^^^^^^^^^

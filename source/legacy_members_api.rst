@@ -425,7 +425,9 @@ token                        Yes         Authentication string
 user                         Yes         A string indicating legacy member's ID, mobile number or email
 merchant_id                  Yes         Merchant ID the legacy member is associated with
 pin                          Yes         Legacy member's pin
+store                        No          Store ID or name the legacy member is being activated from
 bonus_stamps                 No          Integer, bonus points given to target user's membership
+employee_code                No          Employee code
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 ============================ =========== =========================
 

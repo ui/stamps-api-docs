@@ -1933,7 +1933,7 @@ Parameter                      Required    Description
 ============================== =========== ===================================================================
 payment_method                 Yes         Payment method code
 value                          Yes         Nominal of payment, must be negative
-voucher_code                   No          Will issue a new voucher with corresponding `value`
+voucher_code                   No          Will issue a new voucher or stamps with corresponding `value`
 ============================== =========== ===================================================================
 
 Return Item Object

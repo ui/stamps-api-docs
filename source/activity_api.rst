@@ -73,6 +73,8 @@ Below is an example response on successful API call.
                 },
                 "transaction": {
                     "stamps": 20,
+                    "base_stamps": 10,
+                    "bonus_stamps": 10,
                     "name": "Transaction #493",
                     "status": 2,
                     "invoice_number": "INV-17",

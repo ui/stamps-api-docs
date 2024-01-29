@@ -256,8 +256,8 @@ passkey            No          Legacy member's PIN, required when `with_passkey`
 with_passkey       Yes         Boolean, whether to check legacy member PIN or not
 bonus_stamps       No          Integer, bonus points given to target user's membership
 new_password       Yes         User password
-pin                Yes         User pin
-confirm_pin        Yes         User pin confirmation
+pin                No          User pin
+confirm_pin        No          User pin confirmation, required when `pin` is filled
 email              No          Email
 mobile_number      No          Mobile number
 gender             No          Gender
@@ -391,8 +391,8 @@ registering_employee_code No          String indicating employee code, will crea
 district                  No          District ID
 marital_status            No          Marital status mapping can be seen :ref:`here <Marital Status Mapping>`
 password                  Yes         User password
-pin                       Yes         User pin
-confirm_pin               Yes         User pin confirmation
+pin                       No          User pin
+confirm_pin               No          User pin confirmation, required when `pin` is filled
 legacy_member             No          Legacy member identifier to merge with
 legacy_merchant_id        No          Legacy member merchant ID
 ========================= =========== =========================

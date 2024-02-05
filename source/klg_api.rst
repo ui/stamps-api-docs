@@ -262,6 +262,7 @@ email              No          Email
 mobile_number      No          Mobile number
 gender             No          Gender
 address            No          Address
+birthday           No          Birthday (with format YYYY-MM-DD)
 district           No          District ID
 phone_is_verified  No          Boolean
 email_is_verified  No          Boolean

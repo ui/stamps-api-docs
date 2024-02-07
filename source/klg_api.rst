@@ -262,6 +262,7 @@ email              No          Email
 mobile_number      No          Mobile number
 gender             No          Gender
 address            No          Address
+birthday           No          Birthday (with format YYYY-MM-DD)
 district           No          District ID
 phone_is_verified  No          Boolean
 email_is_verified  No          Boolean
@@ -272,7 +273,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/legacy/members/activate -i -d '{ "token": "secret", "user": 12, "merchant_id": 1, "bonus_stamps": 10, "passkey": "", "with_passkey": false, "new_password": "password", "pin": "123123", "confirm_pin": "123123" }'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/klg/legacy/members/activate -i -d '{ "token": "secret", "user": 12, "merchant_id": 1, "bonus_stamps": 10, "passkey": "", "with_passkey": false, "new_password": "password", "pin": "123123", "confirm_pin": "123123", "birthday": "1993-05-30" }'
 
 
 B. Response

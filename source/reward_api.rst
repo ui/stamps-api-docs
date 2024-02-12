@@ -49,7 +49,7 @@ rewards             List of rewards available for redemption.
                     Contains id, name, stamps_required, extra_data, image_url, is_visible,
                     :ref:`type <Reward Type>` and redeemable(If user is provided)
 vouchers            List of rewards available for redemption by user.
-                    Contains  id, name, type, quantity, image_url, extra_data
+                    Contains id, name, type (contains voucher template ID), quantity, image_url, extra_data
                     landscape_url, expires_on and constraint :ref:`channels <Channel Type>`.
 detail              Description of error (if any)
 errors              Errors encountered when parsing

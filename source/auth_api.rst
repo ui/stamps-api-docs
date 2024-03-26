@@ -871,3 +871,71 @@ Invalid Mobile Number:
         "error_code": "invalid_mobile_number",
         "error_message": "mobile_number: Please enter a valid mobile phone number."
     }
+
+
+11. Reset OTP Limit
+===============
+| URL endpoint: https://stamps.co.id/api/auth/reset-otp-limit
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+----------
+
+==================== ======== ===========
+Parameter            Required Description
+==================== ======== ===========
+token                Yes      Authentication string
+user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+==================== ======== ===========
+
+Example of API call request using cURL:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/reset-otp-limit -i -d '{ "token": "secret", "user": "081234567890" }'
+
+B. Response Data
+----------------
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+status              Returns ``ok`` if successful
+=================== ==============================
+
+C. Examples
+-----------
+
+A successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST
+    [Redacted Header]
+
+    {
+        "status": "ok"
+    }
+
+Invalid User:
+
+.. code-block :: bash
+
+    HTTP/1.0 400 BAD REQUEST
+    Vary: Accept
+    Content-Type: application/json
+    [Redacted Header]
+
+    {
+        "status": "invalid",
+        "detail": "user: Please enter a valid mobile phone number.",
+        "errors": {
+            "user": "Please enter a valid mobile phone number."
+        },
+        "error_code": "invalid_user",
+        "error_message": "user: Please enter a valid mobile phone number."
+    }

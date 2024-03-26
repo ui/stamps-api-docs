@@ -886,7 +886,7 @@ A. Request
 Parameter            Required Description
 ==================== ======== ===========
 token                Yes      Authentication string
-user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+user                 Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 ==================== ======== ===========
 
 Example of API call request using cURL:

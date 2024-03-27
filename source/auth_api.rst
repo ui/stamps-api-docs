@@ -805,7 +805,7 @@ Invalid OTP:
     }
 
 
-10. Validate Mobile Number
+13. Validate Mobile Number
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/validate-mobile-number
 | Allowed Method: POST
@@ -873,7 +873,7 @@ Invalid Mobile Number:
     }
 
 
-11. Reset OTP Limit
+14. Reset OTP Limit
 ===============
 | URL endpoint: https://stamps.co.id/api/auth/reset-otp-limit
 | Allowed Method: POST

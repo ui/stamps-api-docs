@@ -115,6 +115,19 @@ Below is an example response on successful API call.
                 }
             },
             {
+                "id": 25909601,
+                "type": 5
+                "created": 1607049764,
+                "notes": "Upgraded to Silver",
+                "stamps": 0
+            },
+            {
+                "id": 25909602,
+                "type": 6
+                "created": 1607049764,
+                "notes": "Downgraded to Blue",
+            },
+            {
                 "id": 2590961,
                 "type": 7,
                 "created": 1607049764,
@@ -232,8 +245,10 @@ Below is an example response on successful API call.
             },
             {
                 "id": 2590967,
-                "type": 12
-                "notes": "",
+                "type": 12,
+                "created": 1607049764,
+                "notes": "Overriden to Gold",
+                "stamps": 0
             },
             {
                 "id": 2590968,
@@ -408,6 +423,8 @@ Code                Description
 0                   Transaction
 1                   Redemption
 2                   Awarded Stamps
+5                   Membership Upgrade
+6                   Membership Downgrade
 7                   Change Balance
 8                   Survey Submission
 9                   Completed Registration

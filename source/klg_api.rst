@@ -1924,6 +1924,142 @@ On an invalid request:
         }
     }
 
+
+14. Redemption Refund
+=======================================
+| URL endpoint: https://stamps.co.id/api/klg/redemptions/refund
+| Allowed Method: POST
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+Refund redemption's stamps to customer.
+
+============================== =========== =============================================================================
+Parameter                      Required    Description
+============================== =========== =============================================================================
+redemption                     Yes         ID of refunded redemption
+value                          Yes         Stamps to be refunded
+============================== =========== =============================================================================
+
+Example of API call request using cURL
+
+.. code-block :: bash
+
+    curl --location --request POST 'https://stamps.co.id/api/klg/redemptions/refund' \
+    --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxOTMwNjg2LCJpYXQiOjE2NjE4NDQyODYsImp0aSI6IjZlM2U0ZGU0MzZkYzRjNDZhNGJhMjRkZWE2MjM0N2VjIiwidXNlcl9pZCI6MSwibWVyY2hhbnRfaWQiOjF9.brgNBzeuPmOV6ECP5WpwJJlQ6MQZ1zACHYx1YiW33AM' \
+    --header 'Content-Type: application/json' \
+    --data-raw ' {
+                "redemption": 100,
+                "value": 10000
+            }'
+
+B. Response Data
+----------------
+
+Stamps responds to this API call with the following data (in JSON):
+
+===================== ==============================================================================================
+Variable              Description
+===================== ==============================================================================================
+redemption            Object of the refunded redemption
+membership            Membership object
+refunded_stamps       Stamps refunded by API
+===================== ==============================================================================================
+
+
+C. Response Headers
+-------------------
+
+=================== =======================================================================
+Code                Description
+=================== =======================================================================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed - The
+                    requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is
+                    wrong on Stamps' end
+=================== =======================================================================
+
+
+D. Examples
+-----------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    {
+        "redemption": {
+            "id": 4746,
+            "code": "X738ZK",
+            "reward": "Pay With Coin",
+            "stamps_used": 0,
+            "extra_data": {
+                "vouchers": {
+                    "A574": 100000
+                }
+            },
+            "created": 1698117417.91183,
+            "input_method": 2,
+            "monetary_value": null,
+            "notes": "",
+            "channel": 4,
+            "transaction_id": null,
+            "order_type": null,
+            "merchant_invoice_number": ""
+        },
+        "user": {
+            "id": 6889592,
+            "name": "Cacala",
+            "gender": "f",
+            "is_active": true,
+            "email": "cacala@gmail.com",
+            "birthday": "2001-02-24",
+            "picture_url": null,
+            "phone": "+6281272236037",
+            "has_incorrect_email": false,
+            "has_incorrect_phone": false,
+            "has_incorrect_wa_number": false,
+            "phone_is_verified": true,
+            "email_is_verified": true,
+            "referral_code": "CACAL5UD",
+            "registration_status": "Full"
+        },
+        "membership": {
+            "level": 0,
+            "level_text": "Silver",
+            "stamps": 367000,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "ZK989636",
+            "start_date": "2023-10-24",
+            "created": "2023-10-24",
+            "status": "Active"
+        },
+        "refunded_stamps": 10000
+    }
+
+On an invalid request:
+
+.. code-block :: bash
+
+    {
+        "detail": "redemption: Redemption not found",
+        "error_message": "redemption: Redemption not found",
+        "error_code": "invalid_redemption",
+        "errors": {
+            "redemption": "Redemption not found"
+        }
+    }
+
+
 Miscellaneous
 ------------------------------
 

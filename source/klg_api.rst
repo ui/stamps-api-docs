@@ -1964,6 +1964,7 @@ Variable              Description
 ===================== ==============================================================================================
 redemption            Object of the refunded redemption
 membership            Membership object
+user                  User object
 refunded_stamps       Stamps refunded by API
 ===================== ==============================================================================================
 

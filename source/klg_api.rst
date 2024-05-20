@@ -1966,6 +1966,7 @@ redemption            Object of the refunded redemption
 membership            Membership object
 user                  User object
 refunded_stamps       Stamps refunded by API
+activity              Activity object
 ===================== ==============================================================================================
 
 
@@ -2044,7 +2045,13 @@ On a successful API call:
             "created": "2023-10-24",
             "status": "Active"
         },
-        "refunded_stamps": 10000
+        "refunded_stamps": 10000,
+        "activity": {
+            "id": 2590959,
+            "type": 1,
+            "created": 1607049764,
+            "notes": ""
+        }
     }
 
 On an invalid request:

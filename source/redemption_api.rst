@@ -21,7 +21,7 @@ user            Yes       A string indicating customer's email or Member ID
 reward          Yes       A number indicating the reward's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
-channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
+channel         No        Channel of a transaction, see :ref:`channel mapping <Channel Mapping>`
 stamps          No        Integer value indicating the stamps required for a flexible reward
 extra_data      No        JSON object containing any additional data
 qty             No        A number indicating quantity for reward value
@@ -167,7 +167,7 @@ user            Yes       A string indicating customer's email or Member ID
 voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
-channel         No        ``2`` for POS, ``3`` for kiosk, ``4`` for web, ``5`` for Android or ``6`` for iOS
+channel         No        Channel of a transaction, see :ref:`channel mapping <Channel Mapping>`
 request_id      No        This field is needed if PIN authorization is enabled
 extra_data      No        JSON object containing any additional data
 =============== ========= =========================
@@ -368,7 +368,129 @@ On successful redemption:
         }
     }
 
-4. Canceling a Redemption
+
+4. Adding Promo Code Redemption
+======================
+
+| URL endpoint: https://stamps.co.id/api/v3/redemptions/redeem-promo-code
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can initiate a promo code redemption by calling the API with these parameters.
+
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+user            Yes       A string indicating customer's email or Member ID
+promo_code      Yes       Promo Code's code
+store           Yes       Merchant's store id where redemption is initiated
+invoice_number  Yes       POS invoice number
+channel         No        Channel of a transaction, see :ref:`channel mapping <Channel Mapping>`
+request_id      No        This field is needed if PIN authorization is enabled
+=============== ========= =========================
+
+Here's an example of how the API call might look like in JSON format with specified promo code.
+
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "user": "customer@stamps.co.id",
+        "store": 32,
+        "promo_code": "PROMOCODE",
+        "invoice_number": "POS-1020123"
+    }
+
+API call example:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "promo_code": 12 }' https://stamps.co.id/api/v3/redemptions/redeem-promo-code
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+redemption          Redemption information which is successfully created.
+                    Contains id, reward, and stamps_used
+user                User information
+membership          Customer information after successful
+                    redemption. Contains id and stamps_remaining.
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+    {
+       "redemption": {
+            "id": 2,
+            "reward": "Discount Rp 100,000",
+            "stamps_used": 0,
+            "extra_data": {
+                "discount": "10%"
+            }
+        },
+        "user": {
+            "id": "123",
+            "name": "Customer",
+            "gender": "male",
+            "address": "Jl MK raya",
+            "is_active": true,
+            "email": "customer@stamps.co.id",
+            "phone": "+62812398712",
+            "picture_url": "https://media.stamps.co.id/thumb/profile_photos/2014/4/17/483ccddd-9aea-44d2-bbc4-6aa71f51fb2a_size_80.png",
+            "birthday": "1989-10-1",
+        },
+        "membership": {
+            "tags": [],
+            "level": 100,
+            "stamps": 250,
+            "balance": 0,
+            "referral_code": "9121682",
+            "start_date": "2016-07-25",
+            "created": "2016-07-25"
+        }
+    }
+
+
+5. Canceling a Redemption
 =========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/cancel
@@ -464,7 +586,7 @@ If redemption is successfully canceled:
     }
 
 
-5. Authorize Redemption
+6. Authorize Redemption
 =======================
 | URL endpoint: https://stamps.co.id/api/redemptions/authorize
 | Allowed Method: POST
@@ -537,7 +659,7 @@ Invalid PIN:
         "error_message": "pin: Invalid PIN, 2 attempt(s) left"
     }
 
-6. Multiple Reward Redemption
+7. Multiple Reward Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards
@@ -556,24 +678,8 @@ user            Yes       A string indicating customer's email or Member ID
 rewards         Yes       List of reward objects that want to be redeemed. Contains request_id, code, and stamps (required if reward type is flexible reward).
 store           Yes       Merchant's store id where redemption is initiated
 invoice_number  No        POS invoice number
-channel         No        Channel of a transaction, for channel mapping, see table below
+channel         No        Channel of a transaction, see :ref:`channel mapping <Channel Mapping>`
 =============== ========= =========================
-
-Channel Mapping
-
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile App
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS
-7                   Call Center
-8                   GrabFood
-9                   GoFood
-=================== ===========
 
 Here's an example of how the API call might look like in JSON format with specified reward
 

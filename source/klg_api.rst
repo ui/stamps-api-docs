@@ -1394,6 +1394,7 @@ employee_code               No          Employee code of sender employee
 extra_data                  No          Additional data for further processing
 reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
 voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
+promo_code_redemptions      No          List of promo code objects that want to be redeemed. Contains ``request_id`` and ``promo_code``
 original_invoice_number     No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
 payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see :ref:`Table <Payment Status>`.
 =========================== =========== =======================
@@ -1475,6 +1476,12 @@ Here's an example of how the API call might look like in JSON format:
             "voucher_code": "VOUCHERCODE"
           }
        ],
+       "promo_code_redemptions": [
+          {
+            "request_id": "request-id-1",
+            "promo_code": "PROMOCODE"
+          }
+       ],
        "original_invoice_number": "original_invoice_number"
     }
 
@@ -1483,7 +1490,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/klg/transactions/add-with-redemptions -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ], "original_invoice_number": "original_invoice_number" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/klg/transactions/add-with-redemptions -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ], "promo_code_redemptions": [ { "request_id": "request-id-1", "promo_code": "PROMOCODE" } ], "original_invoice_number": "original_invoice_number" }'
 
 B. Response
 -----------------------------

@@ -316,6 +316,8 @@ extra_data                   No          Extra data related to customer
 registration_method          No          :ref:`Registration method <Registration Method>` code, defaults to `API`
 registering_employee_code    No          String indicating employee code, will create a new employee if not exists
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+allow_whatsapp_marketing     No          Boolean, whether to allow whatsapp marketing, defaults to `true`
+allow_newsletters            No          Boolean, whether to allow newsletters, defaults to `true`
 ============================ =========== =========================
 
 Example of API call request using cURL:

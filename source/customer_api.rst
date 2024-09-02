@@ -478,13 +478,15 @@ notes                        No          String to give custom notes to this use
 marital_status               No          Customer's marital status
 wedding_date                 No          Customer's weidding date
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
+allow_whatsapp_marketing     No          Boolean, whether to allow whatsapp marketing
+allow_newsletters            No          Boolean, whether to allow newsletters
 ============================ =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note"}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note", "allow_whatsapp_marketing": false, "allow_newsletters": false}'
 
 
 B. Response Data
@@ -547,6 +549,23 @@ A successful API call:
         "marital_status": 1,
         "wedding_date": null,
         "is_anonymized": true,
+        "membership": {
+            "tags": [],
+            "status": 100,
+            "status_text": "Blue",
+            "level": 100,
+            "level_text": "Blue",
+            "member_status": "Active",
+            "stamps": 500,
+            "stamps_owed": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "7JJ17",
+            "start_date": "2024-08-27",
+            "created": "2024-08-27",
+            "allow_newsletters": false,
+            "allow_whatsapp_marketing": false
+        },
     }
 
 

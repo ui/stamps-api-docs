@@ -1416,11 +1416,12 @@ Here's an example of how the API call might look like in JSON format:
        "number_of_people": 8,
        "tax": 5000,
        "channel": 1,
-       "require_email_notification": False,
+       "require_email_notification": false,
        "employee_code": "employee_code",
        "type": 2,
        "created": "2013-02-15T13:01:01+07",
        "payment_status": 1,
+       "use_tax_invoice": true,
        "extra_data": {
           "employee_name": "Stamps Employee",
           "order_number": "order_number"
@@ -1437,7 +1438,7 @@ Here's an example of how the API call might look like in JSON format:
              "quantity": 4,
              "subtotal": 5000,
              "stamps_subtotal": 4,
-             "eligible_for_stamps": False
+             "eligible_for_stamps": false
           }
        ],
        "payments": [
@@ -1554,7 +1555,8 @@ If transaction is successful(JSON):
         "id": 2374815,
         "value": 50000.0,
         "number_of_people": 8,
-        "discount": 5000.0
+        "discount": 5000.0,
+        "use_tax_invoice": true
       }
     }
 

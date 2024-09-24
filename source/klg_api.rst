@@ -1397,6 +1397,7 @@ voucher_redemptions         No          List of voucher objects that want to be 
 promo_code_redemptions      No          List of promo code objects that want to be redeemed. Contains ``request_id`` and ``promo_code``
 original_invoice_number     No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
 payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see :ref:`Table <Payment Status>`.
+use_tax_invoice             No          A boolean indicating whether customer will pay for transaction taxes on their own. `stamps` will be ignored if true.
 =========================== =========== =======================
 
 

@@ -18,6 +18,7 @@ Parameter     Required    Description
 ============= =========== =========================
 token         Yes         Authentication string
 number        Yes         Card number
+store         No          Integer indiciating store where the card is activated
 ============= =========== =========================
 
 Example of API call request using cURL:

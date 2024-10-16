@@ -2,7 +2,7 @@
 Messages API
 ************************************
 
-1. Add Child
+1. Send Message
 ===============
 | URL endpoint: https://stamps.co.id/api/messages/send
 | Allowed Method: POST

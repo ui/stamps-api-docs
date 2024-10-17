@@ -44,3 +44,22 @@ debug whether your application is sending the right data. For example:
        "origin": "24.127.96.129",
        "url": "http://httpbin.org/get"
     }
+
+
+.. _response-codes:
+
+Response Codes
+=============
+
+The API uses standard HTTP response codes to indicate the success or failure of requests. Below is a comprehensive list of possible response codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a required parameter
+401                 Unauthorized - Often missing or wrong authentication token
+403                 Forbidden - You do not have permission for this request
+405                 HTTP method not allowed - The requested resources cannot be called with the specified HTTP method
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================

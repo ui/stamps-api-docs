@@ -28,9 +28,11 @@ Example of API call request using cURL:
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/cards/create -i -d '{ "token": "secret", "number": "ABC123456", "store": 1}'
 
 
-B. Response Data
+B. Response
 ----------------
-Stamps responds to this API call with the following data:
+Please see :ref:`response-codes` for a complete list of API response codes.
+
+On a successful API call, Stamps will respond with the following data:
 
 =================== ==============================
 Variable            Description
@@ -38,28 +40,7 @@ Variable            Description
 number              Created card number
 =================== ==============================
 
-
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:
@@ -105,9 +86,11 @@ Example of API call request using cURL:
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/cards/assign-card -i -d '{ "token": "secret", "user": "1", "store": "1", "number": "ABC123456"}'
 
 
-B. Response Data
+B. Response
 ----------------
-Stamps responds to this API call with the following data:
+Please see :ref:`response-codes` for a complete list of API response codes.
+
+On a successful API call, Stamps will respond with the following data:
 
 =================== ==============================
 Variable            Description
@@ -115,28 +98,7 @@ Variable            Description
 card                Various card data
 =================== ==============================
 
-
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:

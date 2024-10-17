@@ -29,9 +29,11 @@ Example of API call request using cURL:
     $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/messages/send -i -d '{ "token": "secret", "template": "otp_wa", "recipient": "+628123456789", "context": {"otp": "123123"}}'
 
 
-B. Response Data
+B. Response
 ----------------
-Stamps responds to this API call with the following data:
+Please see :ref:`response-codes` for a complete list of API response codes.
+
+On a successful API call, Stamps will respond with the following data:
 
 =================== ==============================
 Variable            Description
@@ -40,27 +42,7 @@ status              status
 =================== ==============================
 
 
-C. Response Codes
------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-
-D. Examples
+C. Examples
 -----------
 
 A successful API call:

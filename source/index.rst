@@ -31,4 +31,6 @@ Contents
    pet_api.rst
    hobbies_api.rst
    survey_api.rst
+   cards_api.rst
+   messages_api.rst
    testing.rst

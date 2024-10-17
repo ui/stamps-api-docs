@@ -17,7 +17,7 @@ You can use this API to send a templated message. A message template can be an S
 Parameter     Required    Description
 ============= =========== =========================
 token         Yes         Authentication string
-template      Yes         String indicating the messaget template code
+template      Yes         String indicating the message template code
 recipient     Yes         Target mobile number for the message
 context       Yes         JSON object specifying context for message template
 ============= =========== =========================

@@ -75,7 +75,7 @@ Parameter     Required    Description
 ============= =========== =========================
 token         Yes         Authentication string
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-store         Yes         Integer indiciating store where the card is activated
+store         Yes         Integer indicating store where the card is activated
 number        Yes         Card number
 ============= =========== =========================
 

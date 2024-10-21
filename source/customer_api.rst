@@ -80,8 +80,6 @@ On a successful API call:
     {
         "membership": {
             "tags": [],
-            "status": 100,
-            "status_text": "Blue",
             "level": 0,
             "level_text": "Silver",
             "member_status": "Active",

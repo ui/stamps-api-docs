@@ -79,16 +79,22 @@ On a successful API call:
 
     {
         "membership": {
-            "balance": 0,
-            "created": "2022-10-18",
-            "is_blocked": false,
+            "tags": [],
+            "status": 100,
+            "status_text": "Blue",
             "level": 0,
             "level_text": "Silver",
             "member_status": "Active",
-            "referral_code": "7J2K1",
             "stamps": 0,
+            "stamps_owed": 0,
+            "balance": 0,
+            "is_blocked": false,
+            "referral_code": "7J2K1",
             "start_date": "2022-10-18",
-            "tags": [],
+            "created": "2022-10-18",
+            "allow_newsletters": true,
+            "allow_whatsapp_marketing": true,
+            "redemption_allowed": true,
             "primary_card": {
                 "id": 7,
                 "number": "A5MHG",

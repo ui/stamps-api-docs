@@ -37,8 +37,10 @@ Example of API call request using cURL
     $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1channel=2'
 
 
-B. Response Data
+B. Response
 ----------------
+Please see :ref:`response-codes` for a complete list of API response codes.
+
 Stamps responds to this API call with the following data (in JSON):
 
 =================== ==============================
@@ -56,28 +58,7 @@ errors              Errors encountered when parsing
                     data (if any)
 =================== ==============================
 
-
-C. Response Headers
--------------------
-
-=================== ==============================
-Code                Description
-=================== ==============================
-200                 Everything worked as expected
-400                 Bad Request - Often missing a
-                    required parameter
-401                 Unauthorized – Often missing or
-                    wrong authentication token
-403                 Forbidden – You do not have
-                    permission for this request
-405                 HTTP method not allowed - The
-                    requested resources cannot be called with the specified HTTP method
-500, 502, 503, 504  Server Errors - something is
-                    wrong on Stamps' end
-=================== ==============================
-
-
-D. Examples
+C. Examples
 -----------
 
 On a successful API call:
@@ -232,22 +213,6 @@ If missing or wrong authentication token:
     {"detail": "Authentication credentials were not provided."}
 
 
-Miscellaneous
-------------------------------
-
-Channel Type
-^^^^^^^^^^^^
-=================== ===========
-Code                Description
-=================== ===========
-1                   Mobile app
-2                   POS
-3                   Kiosk
-4                   Web
-5                   Android
-6                   iOS
-=================== ===========
-
 2. Get Reward Detail
 =======================================
 | URL endpoint: https://stamps.co.id/api/rewards/{reward_code}
@@ -273,8 +238,10 @@ Example of API call request using cURL
     $ curl 'https://stamps.co.id/api/rewards/ABCDE1?token=abc'
 
 
-B. Response Data
+B. Response
 ----------------
+Please see :ref:`response-codes` for a complete list of API response codes.
+
 Stamps responds to this API call with the following data (in JSON):
 
 =================== ==============================
@@ -286,7 +253,7 @@ errors              Errors encountered when parsing
 =================== ==============================
 
 
-c. Examples
+C. Examples
 -----------
 
 On a successful API call:
@@ -316,6 +283,79 @@ On a successful API call:
     }
 
 
+3. Rewards by Merchant Group
+=======================================
+| URL endpoint: https://stamps.co.id/api/rewards/by-merchant-group
+| Allowed Method: GET
+| Require Authentication: Yes
+
+A. Request
+-----------------------------
+
+You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
+
+============================== =========== ===================================================================
+Parameter                      Required    Description
+============================== =========== ===================================================================
+token                          Yes         Authentication string
+user                           No          A string indicating customer's email or Member ID
+channel                        No          Integer indicating :ref:`channel <Channel Type>` number to be queried for reward.
+type                           No          Integer indicating :ref:`reward <Reward Type>` type to be queried.
+last_reward_id                 No          Integer, Specifies the ID of the last reward from which the API should start retrieving rewards.
+per_page                       No          Integer, Determines the number of records to be returned per API call.
+============================== =========== ===================================================================
+
+B. Response
+----------------
+Please see :ref:`response-codes` for a complete list of API response codes.
+
+Stamps responds to this API call with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+rewards             List of rewards available for redemption.
+errors              Errors encountered when parsing data (if any)
+=================== ==============================
+
+C. Examples
+-----------
+
+On a successful API call:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+    [Redacted Header]
+
+    {
+      "rewards": [
+        {
+          "stamps_to_redeem": 20,
+          "image_url": "http://foo.com",
+          "landscape_url": null,
+          "id": 6,
+          "membership": "Blue",
+          "name": "Mee Goreng",
+          "description": "reward description",
+          "price": null,
+          "extra_data": {
+             "SKU": "A001SKU"
+          },
+          "merchant_code": null,
+          "redeemable": true,
+          "is_visible": true,
+          "terms": "",
+          "code": "A001",
+          "type": 3
+        },
+      ]
+    }
+
+
 Miscellaneous
 ------------------------------
 
@@ -328,4 +368,17 @@ Code                Description
 3                   Benefit
 4                   Voucher
 5                   Flexible Reward
+=================== ===========
+
+Channel Type
+^^^^^^^^^^^^
+=================== ===========
+Code                Description
+=================== ===========
+1                   Mobile app
+2                   POS
+3                   Kiosk
+4                   Web
+5                   Android
+6                   iOS
 =================== ===========

@@ -1950,6 +1950,7 @@ Parameter                      Required    Description
 ============================== =========== =============================================================================
 redemption                     Yes         ID of refunded redemption
 value                          Yes         Stamps to be refunded
+status                         No          Refund payment status. Expected values are `paid` or `unpaid`. Defaults to `paid`
 ============================== =========== =============================================================================
 
 Example of API call request using cURL

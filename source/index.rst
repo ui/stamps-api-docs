@@ -32,5 +32,6 @@ Contents
    hobbies_api.rst
    survey_api.rst
    cards_api.rst
+   merchant_api.rst
    messages_api.rst
    testing.rst

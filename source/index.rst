@@ -33,4 +33,5 @@ Contents
    survey_api.rst
    cards_api.rst
    messages_api.rst
+   store_api.rst
    testing.rst

@@ -4,6 +4,9 @@
 # Required
 version: 2
 
+sphinx:
+  configuration: source/conf.py
+
 # Set the OS, Python version and other tools you might need
 build:
   os: ubuntu-22.04

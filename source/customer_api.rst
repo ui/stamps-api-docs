@@ -454,7 +454,7 @@ Legacy endpoint's documentation is available at `Legacy Membership API <http://d
 
 
 
-1. Change Member Info
+4. Change Member Info
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/change-profile
 | Allowed Method: POST

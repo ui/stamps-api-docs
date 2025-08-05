@@ -322,6 +322,10 @@ registering_employee_code    No          String indicating employee code, will c
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 allow_whatsapp_marketing     No          Boolean, whether to allow whatsapp marketing, defaults to `true`
 allow_newsletters            No          Boolean, whether to allow newsletters, defaults to `true`
+phone_is_verified            No          Boolean, whether to mark the customer's phone number as verified upon registration.
+email_is_verified            No          Boolean, whether to mark the customer's email as verified upon registration.
+pin                          No          Customer's pin
+confirm_pin                  No          Customer's pin confirmation
 ============================ =========== =========================
 
 Example of API call request using cURL:
@@ -450,7 +454,7 @@ Legacy endpoint's documentation is available at `Legacy Membership API <http://d
 
 
 
-4. Change Member Info
+1. Change Member Info
 ===============
 | URL endpoint: https://stamps.co.id/api/v2/memberships/change-profile
 | Allowed Method: POST

@@ -91,6 +91,7 @@ On a successful API call:
             "start_date": "2022-10-18",
             "created": "2022-10-18",
             "allow_newsletters": true,
+            "allow_sms_marketing": true,
             "allow_whatsapp_marketing": true,
             "redemption_allowed": true,
             "primary_card": {
@@ -321,6 +322,7 @@ registration_method          No          :ref:`Registration method <Registration
 registering_employee_code    No          String indicating employee code, will create a new employee if not exists
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 allow_whatsapp_marketing     No          Boolean, whether to allow whatsapp marketing, defaults to `true`
+allow_sms_marketing          No          Boolean, whether to allow SMS marketing, defaults to `true`
 allow_newsletters            No          Boolean, whether to allow newsletters, defaults to `true`
 ============================ =========== =========================
 
@@ -483,6 +485,7 @@ marital_status               No          Customer's marital status
 wedding_date                 No          Customer's weidding date
 generate_default_password    No          Boolean, whether to generate a random, default password for the member, defaults to `true`
 allow_whatsapp_marketing     No          Boolean, whether to allow whatsapp marketing
+allow_sms_marketing          No          Boolean, whether to allow SMS marketing
 allow_newsletters            No          Boolean, whether to allow newsletters
 ============================ =========== =========================
 
@@ -490,7 +493,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note", "allow_whatsapp_marketing": false, "allow_newsletters": false}'
+    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note", "allow_whatsapp_marketing": false, "allow_sms_marketing": false, "allow_newsletters": false}'
 
 
 B. Response Data
@@ -568,6 +571,7 @@ A successful API call:
             "start_date": "2024-08-27",
             "created": "2024-08-27",
             "allow_newsletters": false,
+            "allow_sms_marketing": false,
             "allow_whatsapp_marketing": false
         },
     }

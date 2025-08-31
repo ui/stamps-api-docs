@@ -272,7 +272,7 @@ Legacy endpoint's documentation is available at `Legacy redemption API <http://d
 3. Adding Redemption by Voucher Code
 ======================
 
-| URL endpoint: https://stamps.co.id/api/redemptions/by-voucher-code
+| URL endpoint: https://stamps.co.id/api/vouchers/redeem
 | Allowed method: POST
 | Require authentication: Yes
 
@@ -286,7 +286,6 @@ Parameter       Required  Description
 token           Yes       Authentication string
 identifier      Yes       A string indicating customer's email or phone
 voucher_code    Yes       An string that indicating a voucher code
-voucher_template Yes      An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
 =============== ========= =========================
 
@@ -298,7 +297,6 @@ Here's an example of how the API call might look like in JSON format with specif
         "token": "abc",
         "identifier": "customer@stamps.co.id",
         "voucher_code": "ABCD100k",
-        "voucher_template": 12,
         "store": 32
     }
 
@@ -306,7 +304,7 @@ API call example:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "voucher_code": "ABCD100k", "voucher_template": 12, "store": 32}' https://stamps.co.id/api/redemptions/by-voucher-code
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "voucher_code": "ABCD100k", "store": 32}' https://stamps.co.id/api/vouchers/redeem
 
 
 B. Response
@@ -320,8 +318,8 @@ Variable            Description
 redemption          Redemption information which is
                     successfully created.
                     Contains id, reward, and stamps_used
-customer            Customer information after successful
-                    redemption. Contains id, membership status, and stamps_remaining.
+voucher             Voucher information after successful
+                    redemption. Contains voucher name, and voucher extra data.
 errors              Errors encountered when processing request (if any)
 =================== ==============================
 
@@ -361,10 +359,13 @@ On successful redemption:
         "id": 199061,
         "status": "Created"
         },
-        "customer": {
+        "voucher": {
         "id": 401791,
-        "status": "Blue",
-        "stamps_remaining": 0
+        "name": "Voucher Sign Up",
+        "extra_data": {
+        "Voucher": "10000"
+        }
+        }
         }
     }
 

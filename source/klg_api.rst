@@ -1356,9 +1356,9 @@ A. Request
 Adding a transaction with redemptions requires you to send a POST request to the endpoint with the following parameters:
 NOTE: This endpoint also accept blocked membership but won't get any stamps and can not add any redemptions.
 
-===========================   =========== =======================
+============================= =========== =======================
 Parameter                     Required    Description
-===========================   =========== =======================
+============================= =========== =======================
 token                         Yes         Authentication string
 user                          No          Email address / Member ID indicating customer.
                                           Leaving this empty creates an ``open`` transaction.

@@ -157,7 +157,7 @@ Legacy endpoint's documentation is available at `Legacy redemption API <http://d
 
 A. Parameters
 -------------
-You can initiate a reward redemption by calling the API with these parameters.
+You can initiate a voucher redemption by calling the API with these parameters.
 
 =============== ========= =========================
 Parameter       Required  Description
@@ -269,7 +269,126 @@ E. Legacy Endpoint
 ------------------
 Legacy endpoint's documentation is available at `Legacy redemption API <http://docs.stamps.co.id/en/latest/legacy_redemption_api.html>`_
 
-3. Adding Redemption by Voucher Code
+3. Deduct Voucher Value
+======================
+
+| URL endpoint: https://stamps.co.id/api/vouchers/deduct-value
+| Allowed method: POST
+| Require authentication: Yes
+
+A. Parameters
+-------------
+You can deduct the value from a voucher with dynamic value by calling the API with these parameters.
+
+=============== ========= =========================
+Parameter       Required  Description
+=============== ========= =========================
+token           Yes       Authentication string
+user            Yes       A string indicating customer's email or Member ID
+voucher         Yes       An integer indicating the voucher's ID
+store           Yes       Merchant's store id where redemption is initiated
+invoice_number  No        POS invoice number
+channel         No        Channel of a transaction, see :ref:`channel mapping <Channel Mapping>`
+request_id      No        This field is needed if PIN authorization is enabled
+extra_data      No        JSON object containing any additional data
+value           Yes       Value to deduct from voucher
+=============== ========= =========================
+
+Here's an example of how the API call might look like in JSON format with specified voucher.
+
+.. code-block :: bash
+
+    {
+        "token": "abc",
+        "user": "customer@stamps.co.id",
+        "store": 32,
+        "voucher": 1,
+        "invoice_number": "POS-1020123",
+        "value": 1000
+    }
+
+API call example:
+
+.. code-block :: bash
+
+    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12, "extra_data": { "discount": "10%" }, "value": 1000 }' https://stamps.co.id/api/vouchers/deduct-value
+
+
+B. Response
+-----------
+
+In response to this API call, Stamps will return response with the following data (in JSON):
+
+=================== ==============================
+Variable            Description
+=================== ==============================
+redemption          Redemption information which is
+                    successfully created.
+                    Contains id, reward, and stamps_used
+membership          Customer information after successful
+                    redemption. Contains id and stamps_remaining.
+voucher             Voucher used in redemption
+errors              Errors encountered when processing request (if any)
+=================== ==============================
+
+C. Response Headers
+-------------------
+
+Depending on the request, responses may return these status codes:
+
+=================== ==============================
+Code                Description
+=================== ==============================
+200                 Everything worked as expected
+400                 Bad Request - Often missing a
+                    required parameter
+401                 Unauthorized – Often missing or
+                    wrong authentication token
+403                 Forbidden – You do not have
+                    permission for this request
+405                 HTTP method not allowed
+500, 502, 503, 504  Server Errors - something is wrong on Stamps' end
+=================== ==============================
+
+D. Example Response
+-------------------
+
+On successful redemption:
+
+.. code-block :: bash
+
+    HTTP/1.0 200 OK
+    Vary: Accept
+    Content-Type: application/json
+    Allow: POST, OPTIONS
+     [Redacted Header]
+    {
+       "redemption": {
+            "id": 2,
+            "reward": "Discount Rp 100,000",
+            "stamps_used": 0,
+            "extra_data": {
+                "discount": "10%"
+            }
+        },
+        "membership": {
+            "tags": [],
+            "status": 100,
+            "stamps": 250,
+            "balance": 0,
+            "referral_code": "9121682",
+            "start_date": "2016-07-25",
+            "created": "2016-07-25"
+        },
+        "voucher": {
+            "id": 4,
+            "name": "Discount Rp 100,000",
+            "code": "PZ633ECV",
+            "type": "voucher"
+        }
+    }
+
+4. Adding Redemption by Voucher Code
 ======================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/by-voucher-code
@@ -369,7 +488,7 @@ On successful redemption:
     }
 
 
-4. Adding Promo Code Redemption
+5. Adding Promo Code Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/v3/redemptions/redeem-promo-code
@@ -490,7 +609,7 @@ On successful redemption:
     }
 
 
-5. Canceling a Redemption
+6. Canceling a Redemption
 =========================
 
 | URL endpoint: https://stamps.co.id/api/redemptions/cancel
@@ -586,7 +705,7 @@ If redemption is successfully canceled:
     }
 
 
-6. Authorize Redemption
+7. Authorize Redemption
 =======================
 | URL endpoint: https://stamps.co.id/api/redemptions/authorize
 | Allowed Method: POST
@@ -659,7 +778,7 @@ Invalid PIN:
         "error_message": "pin: Invalid PIN, 2 attempt(s) left"
     }
 
-7. Multiple Reward Redemption
+8. Multiple Reward Redemption
 ======================
 
 | URL endpoint: https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards

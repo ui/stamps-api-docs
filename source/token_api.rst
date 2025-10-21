@@ -119,5 +119,5 @@ Here's an example of an API call using cURL.
     
     curl --request POST \
     --url http://127.0.0.1:8000/api/ping \
-    --header 'authorization: token <token>' \
+    --header 'authorization: Token <token>' \
     --header 'content-type: application/json'

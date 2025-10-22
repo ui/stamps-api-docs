@@ -14,7 +14,6 @@ A. Request
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 password    Yes         User's password
 =========== =========== =========================
@@ -24,7 +23,6 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "secret",
         "user": "customer@stamps.co.id",
         "password": "secret123"
     }
@@ -33,7 +31,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "password": "secret123"}' https://stamps.co.id/api/auth/validate-password
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{"user": "customer@stamps.co.id", "password": "secret123"}' https://stamps.co.id/api/auth/validate-password
 
 
 B. Response Data
@@ -80,7 +78,6 @@ Set customer's PIN for the first time.
 =========== ======== ===========
 Parameter   Required Description
 =========== ======== ===========
-token       Yes      Authentication string
 user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 pin         Yes      6 digit string
 confirm_pin Yes      6 digit string that needs to be the same as ``pin`` parameter
@@ -90,7 +87,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/set -i -d '{ "token": "secret", "user": 123, "pin": "123456", "confirm_pin": "123456" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>"  https://stamps.co.id/api/pin/set -i -d '{ "secret", "user": 123, "pin": "123456", "confirm_pin": "123456" }'
 
 B. Response Data
 ----------------
@@ -149,7 +146,6 @@ A. Request
 =============== ======== ===========
 Parameter       Required Description
 =============== ======== ===========
-token           Yes      Authentication string
 user            Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 current_pin     Yes      Customer's previously set 6 digit string PIN
 new_pin         Yes      6 digit string
@@ -160,7 +156,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/change -i -d '{ "token": "secret", "user": 123, "current_pin": "123456", "new_pin": "654321", "confirm_new_pin", "654321" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>"  https://stamps.co.id/api/pin/change -i -d '{ "user": 123, "current_pin": "123456", "new_pin": "654321", "confirm_new_pin", "654321" }'
 
 B. Response Data
 ----------------
@@ -239,7 +235,6 @@ Customer's PIN will be blocked in case of repeated failed validation. Failures c
 ========= ======== ===========
 Parameter Required Description
 ========= ======== ===========
-token     Yes      Authentication string
 user      Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 pin       Yes      6 digit string
 ========= ======== ===========
@@ -248,7 +243,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/validate -i -d '{ "token": "secret", "user": 123, "pin": "123456" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pin/validate -i -d '{ "user": 123, "pin": "123456" }'
 
 B. Response Data
 ----------------

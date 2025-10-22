@@ -18,7 +18,6 @@ You can query a user's activity list by calling the API with these parameters. O
 Parameter           Required    Description
 =================== =========== =======================
 user                Yes         Email/mobile number identifying the member
-token               Yes         Merchant's Authentication token
 older_than          No          Activity ID. 20 activities will be returned that are older than this ID. If not provided, will return the latest 20 activities.
 =================== =========== =======================
 
@@ -26,7 +25,7 @@ Here's an example of a Activity List API call using cURL.
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/v3/activities?token=abc&user=customer@stamps.co.id'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/v3/activities?user=customer@stamps.co.id'
 
 B. Response
 -----------
@@ -324,7 +323,6 @@ Returns 20 activities per API call.
 Parameter           Required    Description
 =================== =========== =======================
 user                Yes         Email/mobile number identifying the member
-token               Yes         Merchant's Authentication token
 merchant_id         No          An array of merchant IDs to filter activities.
 older_than          No          Activity ID. 20 activities will be returned that are older than this ID. If not provided, will return the latest 20 activities.
 =================== =========== =======================
@@ -333,7 +331,7 @@ Here's an example of a Activity List API call using cURL.
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/v3/activities/by-merchant-group?token=abc&user=customer@stamps.co.id'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/v3/activities/by-merchant-group?user=customer@stamps.co.id'
 
 B. Response
 -----------

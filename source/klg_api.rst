@@ -1356,49 +1356,51 @@ A. Request
 Adding a transaction with redemptions requires you to send a POST request to the endpoint with the following parameters:
 NOTE: This endpoint also accept blocked membership but won't get any stamps and can not add any redemptions.
 
-=========================== =========== =======================
-Parameter                   Required    Description
-=========================== =========== =======================
-token                       Yes         Authentication string
-user                        No          Email address / Member ID indicating customer.
-                                        Leaving this empty creates an ``open`` transaction.
-store                       Yes         A number (id) indicating store where transaction
-                                        is created
-invoice_number              Yes         POS transaction number (must be unique daily)
-total_value                 Yes         A number indicating transaction's grand total
-number_of_people            Yes         An integer indicating the number of people involved in transaction
-created                     Yes         ISO 8601 date time format to indicate transaction's
-                                        created date
-                                        (e.g. 2013-02-15T13:01:01+07)
-sub_total                   No          A number indicating transaction subtotal
-discount                    No          A number indicating transaction discount (in Rp.)
-service_charge              No          A number indicating service charge (in Rp.)
-tax                         No          A number indicating transaction tax (in Rp.)
-channel                     No          Channel of a transaction, for channel mapping, see :ref:`Table <Channel Mapping>`.
-type                        No          The type of prepared transactions, for type mapping, see :ref:`Table <Type Mapping>`.
-items                       No          List of items containing product name, quantity, subtotal,
-                                        stamps_subtotal (optional) & eligible_for_stamps (optional).
-                                        ``price`` is the combined price of products (qty * unit price),
-                                        ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
-                                        this field is optional.
-                                        ``eligible_for_stamps`` is boolean value to determine whether the item should be included in Stamps Calculation. Defaults to ``true``.
-payments                    No          List of payments object containing value, payment_method, and
-                                        eligible_for_membership(optional).
-                                        ``value`` is the amount of payment
-                                        ``payment_method`` is the method used for payment
-                                        ``eligible_for_membership`` whether this payment is used for member's status/level changes.
-                                        This field is optional. Default to true if not provided(can be configured later).
-stamps                      No          A number indicating custom stamps
-require_email_notification  No          A boolean indicating send transaction to email if customer can retrieve email
-employee_code               No          Employee code of sender employee
-extra_data                  No          Additional data for further processing
-reward_redemptions          No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
-voucher_redemptions         No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
-promo_code_redemptions      No          List of promo code objects that want to be redeemed. Contains ``request_id`` and ``promo_code``
-original_invoice_number     No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
-payment_status              No          Payment status of the transaction, default is Full. For payment status mapping, see :ref:`Table <Payment Status>`.
-use_tax_invoice             No          A boolean indicating whether customer will pay for transaction taxes on their own. User will not receive any stamps or bonuses if set to true.
-=========================== =========== =======================
+============================= =========== =======================
+Parameter                     Required    Description
+============================= =========== =======================
+token                         Yes         Authentication string
+user                          No          Email address / Member ID indicating customer.
+                                          Leaving this empty creates an ``open`` transaction.
+store                         Yes         A number (id) indicating store where transaction
+                                          is created
+invoice_number                Yes         POS transaction number (must be unique daily)
+total_value                   Yes         A number indicating transaction's grand total
+number_of_people              Yes         An integer indicating the number of people involved in transaction
+created                       Yes         ISO 8601 date time format to indicate transaction's
+                                          created date
+                                          (e.g. 2013-02-15T13:01:01+07)
+sub_total                     No          A number indicating transaction subtotal
+discount                      No          A number indicating transaction discount (in Rp.)
+service_charge                No          A number indicating service charge (in Rp.)
+tax                           No          A number indicating transaction tax (in Rp.)
+channel                       No          Channel of a transaction, for channel mapping, see :ref:`Table <Channel Mapping>`.
+type                          No          The type of prepared transactions, for type mapping, see :ref:`Table <Type Mapping>`.
+items                         No          List of items containing product name, quantity, subtotal,
+                                          stamps_subtotal (optional) & eligible_for_stamps (optional).
+                                          ``price`` is the combined price of products (qty * unit price),
+                                          ``stamps_subtotal`` is the combined stamps of products (qty * unit stamps),
+                                          this field is optional.
+                                          ``eligible_for_stamps`` is boolean value to determine whether the item should be included in Stamps Calculation. Defaults to ``true``.
+payments                      No          List of payments object containing value, payment_method, and
+                                          eligible_for_membership(optional).
+                                          ``value`` is the amount of payment
+                                          ``payment_method`` is the method used for payment
+                                          ``eligible_for_membership`` whether this payment is used for member's status/level changes.
+                                          This field is optional. Default to true if not provided(can be configured later).
+stamps                        No          A number indicating custom stamps
+require_email_notification    No          A boolean indicating send transaction to email if customer can retrieve email
+employee_code                 No          Employee code of sender employee
+extra_data                    No          Additional data for further processing
+reward_redemptions            No          List of reward objects that want to be redeemed. Contains ``request_id``, ``reward``, and ``stamps`` (required if reward type is flexible reward). ``reward`` field can be filled with either reward ID (integer, i.e. ``1``) or reward code (string, i.e. ``REWARD1``)
+voucher_redemptions           No          List of voucher objects that want to be redeemed. Contains ``request_id`` and ``voucher_code``
+promo_code_redemptions        No          List of promo code objects that want to be redeemed. Contains ``request_id`` and ``promo_code``
+original_invoice_number       No          POS transaction number of the canceled original transaction, if provided will be used as a reference for stamps and bonus calculation.
+payment_status                No          Payment status of the transaction, default is Full. For payment status mapping, see :ref:`Table <Payment Status>`.
+use_tax_invoice               No          A boolean indicating whether customer will pay for transaction taxes on their own. User will not receive any stamps or bonuses if set to true.
+allow_stamps_for_tax_invoice  No          A boolean indicating whether customer is allowed to gain stamps on transaction when `use_tax_invoice` is set to `true`. This parameter won't have any effect if `use_tax_invoice` is not present or `false`.
+allow_bonus_for_tax_invoice   No          A boolean indicating whether customer is allowed to gain transaction or product bonuses when `use_tax_invoice` is set to `true`. This parameter won't have any effect if `use_tax_invoice` is not present or `false`.
+============================= =========== =======================
 
 
 Here's an example of how the API call might look like in JSON format:
@@ -1422,6 +1424,8 @@ Here's an example of how the API call might look like in JSON format:
        "created": "2013-02-15T13:01:01+07",
        "payment_status": 1,
        "use_tax_invoice": true,
+       "allow_stamps_for_tax_invoice": false,
+       "allow_bonus_for_tax_invoice": true,
        "extra_data": {
           "employee_name": "Stamps Employee",
           "order_number": "order_number"

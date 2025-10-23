@@ -2,15 +2,19 @@
 Access Token Authentication
 *********************************************
 
-1. Get a Token
-=======================
+1. JWT Token
+=============================
+| A JWT token is a time-limited authentication credential that expires after 24 hours. To maintain access, you must request a new token before the current one expires. 
+
+1.1. Getting a Token
+-----------------------------
 | URL endpoint: https://stamps.co.id/api/auth/get-access-token/
 | Allowed method: POST
 | Requires authentication: 
 
 
 A. Request
------------------------------
+^^^^^^^^^^^^^
 
 You can get a new token by calling the API with the these data
 
@@ -34,7 +38,7 @@ Here's an example of an API call using cURL.
     https://stamps.co.id/api/auth/get-access-token/
 
 B. Response
------------
+^^^^^^^^^^^^^
 
 Stamps will give you a time limited JWT token that can be used to access our other APIs.
 
@@ -56,8 +60,8 @@ Example of access token is below:
 
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MzMyNjE2LCJpYXQiOjE2NTcyNDYyMTYsImp0aSI6IjRlYWRjNDAxNGQwZDRkNzc4NjkxYjg0ZDU3MGE2ZGFmIiwidXNlcl9pZCI6NTg3MCwibWVyY2hhbnRfaWQiOjF9.b_TiGJEO7mKMT0BFTrF9VjPHjoGrt5Be8FPSgvn-4bY
 
-2. Access Token Verification
-=============================
+1.2. Access Token Verification
+-----------------------------
 | URL endpoint: https://stamps.co.id/api/auth/verify-token/
 | Allowed method: POST
 | Requires authentication: Yes
@@ -65,7 +69,7 @@ Example of access token is below:
 | You can verify whether your access token is valid via this API end point.
 
 A. Request
------------------------------
+^^^^^^^^^^^^^
 
 You can verify a token by calling the API with this header
 
@@ -90,7 +94,7 @@ Here's an example of an API call using cURL.
 
 
 B. Response
------------
+^^^^^^^^^^^^^
 This will return the payload of JWT Token:
 
 .. code-block:: javascript
@@ -103,3 +107,17 @@ This will return the payload of JWT Token:
         "user_id": 5870,
         "merchant_id": 1
     }
+
+
+2. Static Token
+=============================
+| A static token is a permanent authentication credential that never expires. Simply include the static token in the Authorization header of your API requests.
+
+Here's an example of an API call using cURL.
+
+.. code-block:: bash
+    
+    curl --request POST \
+    --url http://127.0.0.1:8000/api/ping \
+    --header 'authorization: Token <token>' \
+    --header 'content-type: application/json'

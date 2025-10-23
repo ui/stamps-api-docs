@@ -16,7 +16,6 @@ You can initiate a reward redemption by calling the API with these parameters.
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
 reward          Yes       A number indicating the reward's ID
 store           Yes       Merchant's store id where redemption is initiated
@@ -33,7 +32,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
         "reward": 1,
@@ -49,7 +47,7 @@ Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12, "stamps": 20, "qty": 1}' https://stamps.co.id/api/v2/redemptions/redeem-reward
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "reward": 12, "stamps": 20, "qty": 1}' https://stamps.co.id/api/v2/redemptions/redeem-reward
 
 
 B. Response
@@ -162,7 +160,6 @@ You can initiate a voucher redemption by calling the API with these parameters.
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
 voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
@@ -177,7 +174,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
         "voucher": 1,
@@ -188,7 +184,7 @@ API call example:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12, "extra_data": { "discount": "10%" } }' https://stamps.co.id/api/v2/redemptions/redeem-voucher
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "voucher": 12, "extra_data": { "discount": "10%" } }' https://stamps.co.id/api/v2/redemptions/redeem-voucher
 
 
 B. Response
@@ -283,7 +279,6 @@ You can deduct the value from a voucher with dynamic value by calling the API wi
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
 voucher         Yes       An integer indicating the voucher's ID
 store           Yes       Merchant's store id where redemption is initiated
@@ -299,7 +294,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
         "voucher": 1,
@@ -311,7 +305,7 @@ API call example:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "voucher": 12, "extra_data": { "discount": "10%" }, "value": 1000 }' https://stamps.co.id/api/vouchers/deduct-value
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "voucher": 12, "extra_data": { "discount": "10%" }, "value": 1000 }' https://stamps.co.id/api/vouchers/deduct-value
 
 
 B. Response
@@ -402,7 +396,6 @@ You can initiate a reward redemption by calling the API with these parameters.
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 identifier      Yes       A string indicating customer's email or phone
 voucher_code    Yes       An string that indicating a voucher code
 voucher_template Yes      An integer indicating the voucher's ID
@@ -414,7 +407,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "identifier": "customer@stamps.co.id",
         "voucher_code": "ABCD100k",
         "voucher_template": 12,
@@ -425,7 +417,7 @@ API call example:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "voucher_code": "ABCD100k", "voucher_template": 12, "store": 32}' https://stamps.co.id/api/redemptions/by-voucher-code
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "voucher_code": "ABCD100k", "voucher_template": 12, "store": 32}' https://stamps.co.id/api/redemptions/by-voucher-code
 
 
 B. Response
@@ -502,7 +494,6 @@ You can initiate a promo code redemption by calling the API with these parameter
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
 promo_code      Yes       Promo Code's code
 store           Yes       Merchant's store id where redemption is initiated
@@ -516,7 +507,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
         "promo_code": "PROMOCODE",
@@ -527,7 +517,7 @@ API call example:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "promo_code": 12 }' https://stamps.co.id/api/v3/redemptions/redeem-promo-code
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "promo_code": 12 }' https://stamps.co.id/api/v3/redemptions/redeem-promo-code
 
 
 B. Response
@@ -623,7 +613,6 @@ You can cancel a redemption by calling the API with these parameters.
 ========================== =========== =========================
 Parameter                  Required    Description
 ========================== =========== =========================
-token                      Yes         Authentication string
 id                         Yes         Redemption ID
 create_replacement_voucher No          Boolean indicating whether to create a replacement voucher, default to False
 ========================== =========== =========================
@@ -633,7 +622,6 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "secret",
         "id": 1
     }
 
@@ -641,7 +629,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "id": 1 }' https://stamps.co.id/api/redemptions/cancel
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "id": 1 }' https://stamps.co.id/api/redemptions/cancel
 
 B. Response
 -----------
@@ -719,7 +707,6 @@ You can use this API to authorize reward or voucher redemption if redemption set
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 pin           Yes         6 digit string
 request_id    Yes         A string indicating the Request ID to be authorized
@@ -730,7 +717,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/redemptions/authorize -i -d '{ "token": "secret", "user": 123, "pin": "123456", "request_id": "abcdefgh", "timeout": 900}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/redemptions/authorize -i -d '{ "user": 123, "pin": "123456", "request_id": "abcdefgh", "timeout": 900}'
 
 
 B. Response Data
@@ -792,7 +779,6 @@ You can initiate a reward redemption by calling the API with these parameters.
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
 rewards         Yes       List of reward objects that want to be redeemed. Contains request_id, code, and stamps (required if reward type is flexible reward).
 store           Yes       Merchant's store id where redemption is initiated
@@ -805,7 +791,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-    "token": "abc",
     "user": "customer@stamps.co.id",
     "store": 32,
     "rewards": [
@@ -830,7 +815,7 @@ Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "rewards": [{ "code": 1, "qty": 1, "stamps": 1 }, { "code": 1, "qty": 1 }, { "code": 1, qty": 1 }], "invoice_number": "POS-1020123" }' https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "rewards": [{ "code": 1, "qty": 1, "stamps": 1 }, { "code": 1, "qty": 1 }, { "code": 1, qty": 1 }], "invoice_number": "POS-1020123" }' https://stamps.co.id/api/v2/redemptions/redeem-multiple-rewards
 
 
 B. Response

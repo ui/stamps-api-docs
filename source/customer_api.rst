@@ -16,7 +16,6 @@ You can query for a customer's data on Stamps .
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 user        Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 merchant    Yes         Integer indicating merchant ID
 verbose     No          Boolean on whether to include membership's upgrade requirements
@@ -27,7 +26,7 @@ Example of API call request using cURL
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/v2/memberships/details?token=abc&user=customer@stamps.co.id&merchant=14'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/v2/memberships/details?user=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data
@@ -196,7 +195,6 @@ characters, this API returns a list of possible member matches.
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 query       Yes         A string indicating query
                         to be processed for the suggestions API
 merchant    Yes         Integer indicating merchant ID
@@ -206,7 +204,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve&merchant=14'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/memberships/suggestions?query=steve&merchant=14'
 
 
 B. Response Data
@@ -300,7 +298,6 @@ containing an automatically generated password.
 ============================ =========== =========================
 Parameter                    Required    Description
 ============================ =========== =========================
-token                        Yes         Authentication string
 name                         Yes         Customer's name
 email                        Yes         Customer's email
 mobile_number                Yes         Customer's mobile number
@@ -334,7 +331,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/register -i -d '{"token": "secreet", "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true, "registering_employee_code": "EMP001"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/register -i -d '{ "name": "customer", "email": "customer@stamps.co.id", "mobile_number": "+6281314822365", "birthday": "1991-10-19", "gender": "female", "merchant": 788, "address": "221b Baker Street", "store": 412, "is_active": true, "registering_employee_code": "EMP001"}'
 
 
 B. Response Data
@@ -472,7 +469,6 @@ or other websites.
 Parameter                    Required    Description
 ============================ =========== =========================
 user                         Yes         Customer's integer primary key or Card number
-token                        Yes         Authentication string
 merchant                     Yes         Integer indicating merchant ID
 name                         Yes         Customer's name
 birthday                     No          Customer's birthday (with format YYYY-MM-DD)
@@ -497,7 +493,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "token": "secret", "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note", "allow_whatsapp_marketing": false, "allow_sms_marketing": false, "allow_newsletters": false}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/change-profile -i -d '{ "user": 123, "name": "me", "email": "me@mail.com", "mobile_number": "+62215600010", "birthday": "1991-10-19", "gender": "female", "merchant": 14, "address": "221b Baker Street" "phone_is_verified": true, "notes": "A note", "allow_whatsapp_marketing": false, "allow_sms_marketing": false, "allow_newsletters": false}'
 
 
 B. Response Data
@@ -604,14 +600,13 @@ You can use this API to get your full customer's profile.
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-token         Yes         Authentication string
 ============= =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X GET -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/full-profile -i -d '{ "token": "secret", "user": 123}'
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/full-profile -i -d '{ "user": 123}'
 
 
 B. Response Data
@@ -778,14 +773,13 @@ You can use this API to get your customer's upgrade requirement.
 Parameter   Required    Description
 =========== =========== =========================
 user        Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-token       Yes         Authentication string
 =========== =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/memberships/upgrade-requirement?token=secret&user=me@mail.com'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/memberships/upgrade-requirement?user=me@mail.com'
 
 
 B. Response Data
@@ -861,7 +855,6 @@ You can use this API to add a tag to your customer's membership.
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         Customer's integer primary key or Card number
-token         Yes         Authentication string
 merchant      Yes         Integer indicating merchant ID
 key           Yes         Tag key name
 value         Yes         Tag value name
@@ -871,7 +864,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/add-key-value-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "key": "category", "value": "vvip"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/add-key-value-tag -i -d '{ "user": 123, "merchant": 14, "key": "category", "value": "vvip"}'
 
 
 B. Response Data
@@ -946,7 +939,6 @@ You can use this API to add a tag to your customer's membership.
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         Customer's integer primary key or Card number
-token         Yes         Authentication string
 merchant      Yes         Integer indicating merchant ID
 key           Yes         Tag key name
 value         Yes         Tag value name
@@ -956,7 +948,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "token": "secret", "user": 123, "merchant": 14, "key": "category", "value": "vvip"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/remove-tag -i -d '{ "user": 123, "merchant": 14, "key": "category", "value": "vvip"}'
 
 
 B. Response Data
@@ -1022,7 +1014,6 @@ You can use this API to set customer's social media profile.
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         Customer's integer primary key or Card number
-token         Yes         Authentication string
 facebook      No          String, field will be unchanged if not supplied
 twitter       No          String, field will be unchanged if not supplied
 instagram     No          String, field will be unchanged if not supplied
@@ -1032,7 +1023,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-social-media-profile -i -d '{ "token": "secret", "user": 123, "instagram": "", "twitter": "@test"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/set-social-media-profile -i -d '{ "user": 123, "instagram": "", "twitter": "@test"}'
 
 
 B. Response Data
@@ -1106,7 +1097,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/anonymize -i -d '{ "token": "secret", "identifier": 123}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/anonymize -i -d '{ "identifier": 123}'
 
 
 B. Response Data
@@ -1178,7 +1169,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-pending-anonymization -i -d '{ "token": "secret", "identifier": 123}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/set-pending-anonymization -i -d '{ "identifier": 123}'
 
 
 B. Response Data
@@ -1243,7 +1234,6 @@ You can use this API to override customer's level.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 level         Yes         A level numerical value
 upgrade_only  No          A boolean value, default to false. If set to true, ``level`` must be higher than user's current level
@@ -1255,7 +1245,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/memberships/set-level -i -d '{ "token": "secret", "user": 123, "level": 200, "end_date": "2023-12-31", "store": 412}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/memberships/set-level -i -d '{ "user": 123, "level": 200, "end_date": "2023-12-31", "store": 412}'
 
 
 B. Response Data
@@ -1344,7 +1334,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-change-mobile-number-otp -i -d '{ "token": "secret", "identifier": 123, "type": "sms", "template_code": "OTP_1"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/accounts/request-change-mobile-number-otp -i -d '{ "identifier": 123, "type": "sms", "template_code": "OTP_1"}'
 
 
 B. Response Data
@@ -1454,7 +1444,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/change-mobile-number -i -d '{ "token": "secret", "identifier": 123, "new_number": "+628123454321", "otp": "1234"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/accounts/change-mobile-number -i -d '{ "identifier": 123, "new_number": "+628123454321", "otp": "1234"}'
 
 
 B. Response Data
@@ -1527,7 +1517,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/request-otp-for-email -i -d '{ "token": "secret", "new_email": "alice@stamps.co.id", "template_code": "OTP_1"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/accounts/request-otp-for-email -i -d '{ "new_email": "alice@stamps.co.id", "template_code": "OTP_1"}'
 
 
 B. Response Data
@@ -1600,7 +1590,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/accounts/change-email -i -d '{ "token": "secret", "user": 123, "new_email": "alice@stamps.co.id", "otp": "123456"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/accounts/change-email -i -d '{ "user": 123, "new_email": "alice@stamps.co.id", "otp": "123456"}'
 
 
 B. Response Data
@@ -1663,7 +1653,6 @@ You can use this API to register your customer
 ============================ =========== =========================
 Parameter                    Required    Description
 ============================ =========== =========================
-token                        Yes         Authentication string
 user                         Yes         Member's email or mobile number
 send_registration_message    No          Default True
 registering_employee_code    No          A string indicating
@@ -1674,7 +1663,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v3/memberships/partial-registration -i -d '{"token": "secreet", "user": "partial1@mail.com"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v3/memberships/partial-registration -i -d '{ "user": "partial1@mail.com"}'
 
 
 B. Response Data

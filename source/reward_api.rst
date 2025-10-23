@@ -16,7 +16,6 @@ You can query for all available rewards on stamps with optional checking to user
 ============================== =========== ===================================================================
 Parameter                      Required    Description
 ============================== =========== ===================================================================
-token                          Yes         Authentication string
 user                           No          A string indicating customer's email or Member ID
 merchant                       Yes         Integer indicating merchant ID to be queried for reward
 store                          Yes         Integer indicating store ID to be queried for reward
@@ -34,7 +33,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/?token=abc&user=customer@stamps.co.id&merchant=14&store=1channel=2'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/rewards/?user=customer@stamps.co.id&merchant=14&store=1channel=2'
 
 
 B. Response
@@ -224,18 +223,11 @@ A. Request
 
 You can query for all available rewards on stamps with optional checking to user's capability to redeem the rewards.
 
-============================== =========== ===================================================================
-Parameter                      Required    Description
-============================== =========== ===================================================================
-token                          Yes         Authentication string
-============================== =========== ===================================================================
-
-
 Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/rewards/ABCDE1?token=abc'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/rewards/ABCDE1'
 
 
 B. Response
@@ -297,7 +289,6 @@ You can query for all available rewards on stamps with optional checking to user
 ============================== =========== ===================================================================
 Parameter                      Required    Description
 ============================== =========== ===================================================================
-token                          Yes         Authentication string
 user                           No          A string indicating customer's email or Member ID
 channel                        No          Integer indicating :ref:`channel <Channel Type>` number to be queried for reward.
 type                           No          Integer indicating :ref:`reward <Reward Type>` type to be queried.

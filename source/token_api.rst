@@ -2,9 +2,9 @@
 Access Token Authentication
 *********************************************
 
-1. Dynamic Token
+1. JWT Token
 =============================
-| A dynamic token is a time-limited authentication credential that expires after 24 hours. To maintain access, you must request a new token before the current one expires. 
+| A JWT token is a time-limited authentication credential that expires after 24 hours. To maintain access, you must request a new token before the current one expires. 
 
 1.1. Getting a Token
 -----------------------------

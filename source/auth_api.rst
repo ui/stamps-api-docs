@@ -87,7 +87,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>"  https://stamps.co.id/api/pin/set -i -d '{ "secret", "user": 123, "pin": "123456", "confirm_pin": "123456" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>"  https://stamps.co.id/api/pin/set -i -d '{ "user": 123, "pin": "123456", "confirm_pin": "123456" }'
 
 B. Response Data
 ----------------
@@ -304,7 +304,6 @@ Unblock customer's PIN blocked by repeated failed validation
 =========== ======== ===========
 Parameter   Required Description
 =========== ======== ===========
-token       Yes      Authentication string
 user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 =========== ======== ===========
 
@@ -312,7 +311,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/unblock -i -d '{ "token": "secret", "user": 123 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pin/unblock -i -d '{ "user": 123 }'
 
 B. Response Data
 ----------------
@@ -355,7 +354,6 @@ Request an OTP to reset customer's PIN. OTP will be send to customer's email if 
 ============= ======== ===========
 Parameter     Required Description
 ============= ======== ===========
-token         Yes      Authentication string
 user          Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 template_code No       A string indicating the template to be used to send the OTP
 ============= ======== ===========
@@ -364,7 +362,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/request-otp-for-reset -i -d '{ "token": "secret", "user": 123 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pin/request-otp-for-reset -i -d '{ "user": 123 }'
 
 B. Response Data
 ----------------
@@ -407,7 +405,6 @@ A. Request
 =========== ======== ===========
 Parameter   Required Description
 =========== ======== ===========
-token       Yes      Authentication string
 user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 otp         Yes      6 digit string OTP received from ``Requesting an OTP to Reset PIN`` API
 pin         Yes      6 digit string
@@ -418,7 +415,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/reset -i -d '{ "token": "secret", "user": 123, "otp": "123123", "pin": "654321", "confirm_pin", "654321" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pin/reset -i -d '{ "user": 123, "otp": "123123", "pin": "654321", "confirm_pin", "654321" }'
 
 B. Response Data
 ----------------
@@ -495,7 +492,6 @@ A. Request
 =========== ======== ===========
 Parameter   Required Description
 =========== ======== ===========
-token       Yes      Authentication string
 user        Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 password    Yes      User's password
 pin         Yes      6 digit string
@@ -506,7 +502,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pin/reset-with-password -i -d '{ "token": "secret", "user": 123, "password": "secret123", "pin": "654321", "confirm_pin", "654321" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pin/reset-with-password -i -d '{ "user": 123, "password": "secret123", "pin": "654321", "confirm_pin", "654321" }'
 
 B. Response Data
 ----------------
@@ -565,7 +561,6 @@ A. Request
 ====================== ======== ===========
 Parameter              Required Description
 ====================== ======== ===========
-token                  Yes      Authentication string
 user                   Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 old_password           Yes      Customer's current password
 new_password           Yes      New password
@@ -575,7 +570,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/change-password -i -d '{ "token": "secret", "user": "test@gmail.com", "old_password": "secure_password", "new_password": "new_secure_password" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/auth/change-password -i -d '{ "user": "test@gmail.com", "old_password": "secure_password", "new_password": "new_secure_password" }'
 
 B. Response Data
 ----------------
@@ -616,7 +611,6 @@ A. Request
 ====================== ======== ===========
 Parameter              Required Description
 ====================== ======== ===========
-token                  Yes      Authentication string
 email                  Yes      Customer's email
 new_password           Yes      New password
 ====================== ======== ===========
@@ -625,7 +619,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/set-password -i -d '{ "token": "secret", "email": "foo@bar.com", "new_password": "secure_password" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/auth/set-password -i -d '{ "email": "foo@bar.com", "new_password": "secure_password" }'
 
 B. Response Data
 ----------------
@@ -671,7 +665,6 @@ Request an OTP to reset customer's password. OTP will be send to customer's emai
 ============= ======== ===========
 Parameter     Required Description
 ============= ======== ===========
-token         Yes      Authentication string
 identifier    Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 type          Yes      A string for OTP sending method choice, supports ``email`` and ``sms``
 template_code No       A string indicating the template to be used to send the OTP
@@ -681,7 +674,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/request-otp-for-password-reset -i -d '{ "token": "secret", "identifier": 123, "type": "email" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/auth/request-otp-for-password-reset -i -d '{ "identifier": 123, "type": "email" }'
 
 B. Response Data
 ----------------
@@ -724,7 +717,6 @@ A. Request
 ==================== ======== ===========
 Parameter            Required Description
 ==================== ======== ===========
-token                Yes      Authentication string
 identifier           Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 otp                  Yes      6 digit string OTP received from ``Requesting an OTP to Reset Password`` API
 new_password         Yes      A secure password
@@ -735,7 +727,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/reset-password-with-otp -i -d '{ "token": "secret", "identifier": 123, "otp": "123123", "new_password": "securepassword123", "confirm_new_password", "securepassword123" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/auth/reset-password-with-otp -i -d '{ "identifier": 123, "otp": "123123", "new_password": "securepassword123", "confirm_new_password", "securepassword123" }'
 
 B. Response Data
 ----------------
@@ -812,7 +804,6 @@ A. Request
 ==================== ======== ===========
 Parameter            Required Description
 ==================== ======== ===========
-token                Yes      Authentication string
 mobile_number        Yes      A string indicating mobile number or phone to validate
 ==================== ======== ===========
 
@@ -820,7 +811,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/validate-mobile-number -i -d '{ "token": "secret", "mobile_number": "081234567890" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/auth/validate-mobile-number -i -d '{ "mobile_number": "081234567890" }'
 
 B. Response Data
 ----------------
@@ -880,7 +871,6 @@ A. Request
 ==================== ======== ===========
 Parameter            Required Description
 ==================== ======== ===========
-token                Yes      Authentication string
 user                 Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
 ==================== ======== ===========
 
@@ -888,7 +878,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/auth/reset-otp-limit -i -d '{ "token": "secret", "user": "081234567890" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/auth/reset-otp-limit -i -d '{ "user": "081234567890" }'
 
 B. Response Data
 ----------------

@@ -16,7 +16,6 @@ You can add a new store or update an existing store in Stamps using this API.
 ============================== =========== ===================================================================
 Parameter                      Required    Description
 ============================== =========== ===================================================================
-token                          Yes         Authentication string
 merchant_id                    Yes         Merchant ID indicated which merchant will the user access
 name                           Yes         Store name
 display_name                   Yes         Store display name
@@ -30,7 +29,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/stores/add-or-update -i -d '{ "token": "secret", "merchant_id": 1, "name": "TEST", "code": "CODE", "display_name": "Test Name", "is_active": true, "address": "New Street", "area": "Area" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/stores/add-or-update -i -d '{ "merchant_id": 1, "name": "TEST", "code": "CODE", "display_name": "Test Name", "is_active": true, "address": "New Street", "area": "Area" }'
 
 
 B. Response

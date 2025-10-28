@@ -18,7 +18,6 @@ You can add a new transaction on Stamps by calling the API with these parameters
 =================== =========== =======================
 Parameter           Required    Description
 =================== =========== =======================
-token               Yes         Authentication string
 user                Yes         Email address / Member ID indicating customer
 score               No          Integer (1 to 5) representing how happy the customer is with his experience.
                                 This field is required if content is left blank.
@@ -31,7 +30,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "user": "customer@stamps.co.id",
        "score": 5,
        "content": "Very happy with Stamps!"
@@ -42,7 +40,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "score": 5, "content": "Very happy with Stamps!"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -H "Expect:" https://stamps.co.id/api/feedbacks/add -i -d '{ "user": "customer@stamps.co.id", "score": 5, "content": "Very happy with Stamps!"}'
 
 
 B. Response

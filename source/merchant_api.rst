@@ -14,7 +14,6 @@ A. Request
 ============================== =========== ===================================================================
 Parameter                      Required    Description
 ============================== =========== ===================================================================
-token                          Yes         Authentication string
 code                           Yes         Payment method code
 name                           Yes         Payment method name
 eligible_for_points            Yes         Boolean whether transactions using this payment method can get stamps
@@ -24,7 +23,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/merchants/add-or-update-payment-method -i -d '{ "token": "secret", "name": "VISA", "code": "VISA", "eligible_for_points": true }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/merchants/add-or-update-payment-method -i -d '{ "name": "VISA", "code": "VISA", "eligible_for_points": true }'
 
 
 B. Response

@@ -211,7 +211,6 @@ Payload example in JSON:
 .. code-block :: bash
 
     {
-        "token": "secret",
         "user": 1865,
         "stamps": 1,
         "notes": "test"

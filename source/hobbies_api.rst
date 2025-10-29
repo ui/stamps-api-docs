@@ -24,7 +24,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/hobbies/set -i -d '{ "token": "secret", "user": 123, "hobbies": ["stuff", "things"]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/hobbies/set -i -d '{ "user": 123, "hobbies": ["stuff", "things"]}'
 
 
 B. Response Data

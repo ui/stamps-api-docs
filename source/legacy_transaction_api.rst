@@ -23,7 +23,6 @@ You can add a new transaction on Stamps by calling the API with these parameters
 =================== =========== =======================
 Parameter           Required    Description
 =================== =========== =======================
-token               Yes         Authentication string
 user                No          Email address / Member ID indicating customer.
                                 Leaving this empty creates an ``open`` transaction.
 store               Yes         A number (id) indicating store where transaction
@@ -50,7 +49,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "user": "customer@stamps.co.id",
        "store": 32,
        "invoice_number": "secret123456",
@@ -77,7 +75,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "token": "secret", "created": "2013-02-15T13:01:01+07", "user": "customer@stamps.co.id", "store": 2, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -H "Expect:" https://stamps.co.id/api/transactions/add -i -d '{ "created": "2013-02-15T13:01:01+07", "user": "customer@stamps.co.id", "store": 2, "number_of_people": 8, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "price": 10000}, {"product_name": "Iced Tea", "quantity": 4, "price": 5000}]}'
 
 
 B. Response
@@ -193,7 +191,6 @@ You can cancel a transaction on stamps by calling the API with these parameters
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 id                         Yes         Transaction ID
 cancel_related_redemptions No          When "true", cancels all redemptions registered in under
                                        this transaction's "invoice_number". Defaults to "false"
@@ -205,7 +202,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "id": 1
     }
 
@@ -214,7 +210,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "secret", "id": 1 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/transactions/cancel -i -d '{ "id": 1 }'
 
 
 B. Response

@@ -15,7 +15,6 @@ You can validate whether a legacy membership exists and check its status by call
 ================ =========== =========================
 Parameter        Required    Description
 ================ =========== =========================
-token            Yes         Authentication string
 merchant_id      Yes         Merchant ID the legacy member is associated with
 member_id        No          String indicating membership's ID. Required when mobile number and email are not provided
 mobile_number    No          Required together with email
@@ -27,7 +26,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/members/validate?token=123&merchant_id=1&member_id=322145'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/legacy/members/validate?merchant_id=1&member_id=322145'
 
 
 
@@ -81,7 +80,6 @@ You can validate whether a legacy membership exists and check its status by call
 ================ =========== =========================
 Parameter        Required    Description
 ================ =========== =========================
-token            Yes         Authentication string
 user             Yes         A string indicating legacy member's ID, mobile number or email
 pin              Yes         User's pin
 ================ =========== =========================
@@ -91,7 +89,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/validate-pin -i -d '{ "token": "secret", "user": "legacy_member@stamps.com", "pin": "123456"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/legacy/members/validate-pin -i -d '{ "user": "legacy_member@stamps.com", "pin": "123456"}'
 
 
 
@@ -136,7 +134,6 @@ You can get unmerged legacy memberships that are potentially duplicate to a lega
 ============     =========== =========================
 Parameter        Required    Description
 ============     =========== =========================
-token            Yes         Authentication token in string
 member_id        Yes         Legacy membership's ID
 ============     =========== =========================
 
@@ -145,7 +142,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/check-duplicates?token=123&member_id=612345'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/legacy/check-duplicates?member_id=612345'
 
 
 B. Response
@@ -218,7 +215,6 @@ You can search for legacy members using one or a combination of these identifier
 ======================= =========== =========================
 Parameter               Required    Description
 ======================= =========== =========================
-token                   Yes         Authentication token in string
 email                   No          Membership email. Required if other identifiers are empty.
 mobile_number           No          Membership mobile number. Required if other identifiers are empty.
 member_id               No          Membership member ID. Required if other identifiers are empty.
@@ -230,7 +226,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/members/search?token=123&email=test@stamps.co.id&mobile_number=+6285123123123'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/legacy/members/search?email=test@stamps.co.id&mobile_number=+6285123123123'
 
 
 B. Response
@@ -294,7 +290,6 @@ You can merge a legacy membership to a stamps membership with this API
 ================ =========== =========================
 Parameter        Required    Description
 ================ =========== =========================
-token            Yes         Authentication string
 target_user      Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 legacy_member    Yes         A string indicating legacy member's ID, mobile number or email
 pin              Yes         Legacy member's pin
@@ -307,7 +302,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/merge -i -d '{ "token": "secret", "target_user": 1, "legacy_member": 31245, "pin": "123456", "merchant_id": 1, "bonus_stamps": 10 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/legacy/members/merge -i -d '{ "target_user": 1, "legacy_member": 31245, "pin": "123456", "merchant_id": 1, "bonus_stamps": 10 }'
 
 
 
@@ -362,7 +357,6 @@ Send legacy member's pin by email or SMS
 ================ =========== =========================
 Parameter        Required    Description
 ================ =========== =========================
-token            Yes         Authentication string
 type             Yes         Type of pin request. Can be `email`, `whatsapp`` or `sms`
 user             Yes         A string indicating legacy member's ID, mobile number or email
 merchant_id      Yes         Merchant ID the legacy member is associated with
@@ -374,7 +368,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "token": "secret", "type": "email", "user": "test@example.com", "merchant_id": 1, "template_code": "1234" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/legacy/members/request-pin -i -d '{ "type": "email", "user": "test@example.com", "merchant_id": 1, "template_code": "1234" }'
 
 
 
@@ -421,7 +415,6 @@ This API turns a legacy member data into to an active membership.
 ============================ =========== =========================
 Parameter                    Required    Description
 ============================ =========== =========================
-token                        Yes         Authentication string
 user                         Yes         A string indicating legacy member's ID, mobile number or email
 merchant_id                  Yes         Merchant ID the legacy member is associated with
 pin                          Yes         Legacy member's pin
@@ -436,7 +429,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/legacy/members/activate -i -d '{ "token": "secret", "user": 12, "pin": "123456", "merchant_id": 1, "bonus_stamps": 10 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/legacy/members/activate -i -d '{ "user": 12, "pin": "123456", "merchant_id": 1, "bonus_stamps": 10 }'
 
 
 
@@ -509,7 +502,6 @@ Allows you to query for legacy members that have been merged into a user's membe
 ============     =========== =========================
 Parameter        Required    Description
 ============     =========== =========================
-token            Yes         Authentication token in string
 user             Yes         A string indicating customer's email, Member ID, mobile number or primary key ID.
                              This should be an active membership account.
 ============     =========== =========================
@@ -519,7 +511,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/legacy/get-merged-members?token=123&user=2'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/legacy/get-merged-members?user=2'
 
 
 B. Response

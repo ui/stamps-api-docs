@@ -16,7 +16,6 @@ You can use this API to send a templated message. A message template can be an S
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 template      Yes         String indicating the message template code
 recipient     Yes         Target mobile number for the message
 context       Yes         JSON object specifying context for message template
@@ -26,7 +25,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/messages/send -i -d '{ "token": "secret", "template": "otp_wa", "recipient": "+628123456789", "context": {"otp": "123123"}}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/messages/send -i -d '{ "template": "otp_wa", "recipient": "+628123456789", "context": {"otp": "123123"}}'
 
 
 B. Response

@@ -118,6 +118,6 @@ Here's an example of an API call using cURL.
 .. code-block:: bash
     
     curl --request POST \
-    --url http://127.0.0.1:8000/api/ping \
-    --header 'authorization: Token <token>' \
+    --url https://stamps.co.id/api/ping \
+    --header 'Authorization: Token <token>' \
     --header 'content-type: application/json'

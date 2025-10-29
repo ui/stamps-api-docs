@@ -16,17 +16,11 @@ A. Request
 
 You can query for a merchant's data on Stamps .
 
-=========== =========== =========================
-Parameter   Required    Description
-=========== =========== =========================
-token       Yes         Authentication string
-=========== =========== =========================
-
-This endpoint accepts a single ``token`` argument. Here's an example:
+Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/ping -i -d '{"token": "abc"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -H "Expect:" https://stamps.co.id/api/ping -i
 
 B. Response
 -----------------------------

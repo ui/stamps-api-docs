@@ -16,7 +16,6 @@ You can query for a customer's data on Stamps .
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 user        Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 merchant    Yes         Integer indicating merchant ID
 =========== =========== =========================
@@ -26,7 +25,7 @@ Example of API call request using cURL
 .. code-block :: bash
 
     # Please note that for cURL command you need to escape special characters
-    $ curl 'https://stamps.co.id/api/memberships/status?token=abc&user=customer@stamps.co.id&merchant=14'
+    $ curl -H "Authorization: <token_type> <token>" 'https://stamps.co.id/api/memberships/status?user=customer@stamps.co.id&merchant=14'
 
 
 B. Response Data
@@ -145,7 +144,6 @@ characters, this API returns a list of possible member matches.
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 query       Yes         A string indicating query
                         to be processed for the suggestions API
 merchant    Yes         Integer indicating merchant ID
@@ -155,7 +153,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/memberships/suggestions?token=abc&query=steve&merchant=14'
+    $ curl -H "Authorization: <token_type> <token>" 'https://stamps.co.id/api/memberships/suggestions?query=steve&merchant=14'
 
 
 B. Response Data
@@ -249,7 +247,6 @@ containing an automatically generated password.
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 merchant    Yes         Integer indicating merchant ID
 name        Yes         Customer's name
 email       Yes         Customer's email
@@ -265,7 +262,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/register -i -d '{ "token": "secret", "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street", "store": 2}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/memberships/register -i -d '{ "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street", "store": 2}'
 
 
 B. Response Data
@@ -343,7 +340,6 @@ or other websites.
 Parameter   Required    Description
 =========== =========== =========================
 id          Yes         Customer's integer primary key ID
-token       Yes         Authentication string
 merchant    Yes         Integer indicating merchant ID
 name        Yes         Customer's name
 birthday    Yes         Customer's birthday (with format YYYY-MM-DD)
@@ -358,7 +354,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/memberships/change -i -d '{ "token": "secret", "id": 123, "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/memberships/change -i -d '{ "id": 123, "name": "me", "email": "me@mail.com", "member_id": "123412341234", "phone": "+62215600010", "birthday": "1991-10-19", "gender": "Female", "merchant": 14, "address": "221b Baker Street"}'
 
 
 B. Response Data

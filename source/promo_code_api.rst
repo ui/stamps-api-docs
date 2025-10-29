@@ -15,7 +15,6 @@ A. Request
 ==================  =========== =========================
 Parameter           Required    Description
 ==================  =========== =========================
-token               Yes         Authentication token in string
 promo_code          Yes         Promo Code's code
 store               Yes         Integer indicating store ID
 channel             No          Channel of a transaction, see :ref:`channel mapping <Channel Mapping>`
@@ -28,7 +27,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/promo-codes/validate?token=123&promo_code=PROMO_CODE&store=123'
+    $ curl -H "Authorization: <token_type> <token>" 'https://stamps.co.id/api/promo-codes/validate?promo_code=PROMO_CODE&store=123'
 
 
 B. Response

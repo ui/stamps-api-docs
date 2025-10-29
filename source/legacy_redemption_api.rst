@@ -16,7 +16,6 @@ You can initiate a redemption by calling the API with these parameters.
 =============== ========= =========================
 Parameter       Required  Description
 =============== ========= =========================
-token           Yes       Authentication string
 user            Yes       A string indicating customer's email or Member ID
 store           Yes       Merchant's store id where redemption is initiated
 reward          Yes       A number indicating the reward's ID
@@ -30,7 +29,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
         "reward": 1
@@ -41,7 +39,6 @@ Here's an example of how the API call might look like in JSON format with specif
 .. code-block :: bash
 
     {
-        "token": "abc",
         "user": "customer@stamps.co.id",
         "store": 32,
         "reward_by_code": "100"
@@ -51,13 +48,13 @@ Example of API call request using cURL with specified reward
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/redemptions/add
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "reward": 12}' https://stamps.co.id/api/redemptions/add
 
 Example of API call request using cURL with specified reward_by_code
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "abc", "user": "customer@stamps.co.id", "store": 32, "reward_by_code": "100"}' https://stamps.co.id/api/redemptions/add
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "store": 32, "reward_by_code": "100"}' https://stamps.co.id/api/redemptions/add
 
 B. Response
 -----------

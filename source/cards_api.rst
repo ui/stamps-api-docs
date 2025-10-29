@@ -16,7 +16,6 @@ You can use this API to create a new card.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 number        Yes         Card number
 store         No          Integer indiciating store where the card is activated
 ============= =========== =========================
@@ -25,7 +24,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/cards/create -i -d '{ "token": "secret", "number": "ABC123456", "store": 1}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/cards/create -i -d '{ "number": "ABC123456", "store": 1}'
 
 
 B. Response
@@ -73,7 +72,6 @@ You can use this API to assign a card to a user.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
 store         Yes         Integer indicating store where the card is activated
 number        Yes         Card number
@@ -83,7 +81,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/cards/assign-card -i -d '{ "token": "secret", "user": "1", "store": "1", "number": "ABC123456"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/cards/assign-card -i -d '{ "user": "1", "store": "1", "number": "ABC123456"}'
 
 
 B. Response

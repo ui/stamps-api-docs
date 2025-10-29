@@ -184,7 +184,7 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "id": "123",
+        "id": "123"
     }
 
 Example of API call request using cURL

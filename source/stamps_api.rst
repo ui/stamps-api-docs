@@ -16,7 +16,6 @@ You can add customer's stamps amount with this API Call.
 ============================== =========== =========================
 Parameter                      Required    Description
 ============================== =========== =========================
-token                          Yes         Authentication string
 user                           Yes         A string indicating customer's email or Member ID
 store                          Yes         Integer indicating store ID
 number_of_stamps               Yes         Integer indicating amount of stamps to be added to customer
@@ -29,7 +28,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/stamps/add -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "number_of_stamps": 10, "notes": "bonus", "require_email_notification": false}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -H "Expect:" https://stamps.co.id/api/stamps/add -i -d '{ "user": "customer@stamps.co.id", "store": 2, "number_of_stamps": 10, "notes": "bonus", "require_email_notification": false}'
 
 
 B. Response Data
@@ -107,7 +106,6 @@ You can cancel the awarded stamps added through the API above with this API call
 ==================== =========== =========================
 Parameter            Required    Description
 ==================== =========== =========================
-token                Yes         Authentication string
 user                 Yes         A string indicating customer's email or Member ID
 id                   Yes         ID of the award to be cancelled
 ==================== =========== =========================
@@ -116,7 +114,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/stamps/cancel -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 2, "id": 1010}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -H "Expect:" https://stamps.co.id/api/stamps/cancel -i -d '{ "user": "customer@stamps.co.id", "store": 2, "id": 1010}'
 
 
 B. Response Data
@@ -195,7 +193,6 @@ You can deduct customer's stamps amount with this API Call.
 ==================== =========== =========================
 Parameter            Required    Description
 ==================== =========== =========================
-token                Yes         Authentication string
 user                 Yes         A string indicating customer's email or Member ID
 stamps               Yes         Integer indicating amount of stamps to be deducted from customer
 notes                Yes         Notes that explain why stamps are deducted
@@ -205,7 +202,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/memberships/deduct-stamps -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "stamps": 10, "notes": "Test deduct"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -H "Expect:" https://stamps.co.id/api/memberships/deduct-stamps -i -d '{ "user": "customer@stamps.co.id", "stamps": 10, "notes": "Test deduct"}'
 
 
 

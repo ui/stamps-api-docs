@@ -17,7 +17,6 @@ You can use this API to add child data to customer.
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-token         Yes         Authentication string
 name          Yes         string
 birthday      Yes         YYYY-MM-DD
 gender        Yes         "m" or "f"
@@ -27,7 +26,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/children/add -i -d '{ "token": "secret", "user": 123, "name": "child", "birthday": "1991-10-19", "gender": "f"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/children/add -i -d '{ "user": 123, "name": "child", "birthday": "1991-10-19", "gender": "f"}'
 
 
 B. Response Data
@@ -98,7 +97,6 @@ You can use this API to delete customer's child data.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 child         Yes         To be deleted child ID
 ============= =========== =========================
 
@@ -106,7 +104,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/children/delete -i -d '{ "token": "secret", "child": 123 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/children/delete -i -d '{ "child": 123 }'
 
 
 B. Response Data

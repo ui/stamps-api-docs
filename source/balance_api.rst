@@ -15,7 +15,6 @@ You can add an amount to a balance by calling the API with these parameters.
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating the amount to be added to customer's balance
 type        Yes         Balance type (available type: 'stamps')
@@ -28,7 +27,6 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "secret",
         "user": "customer@stamps.co.id",
         "amount": 1000,
         "type": "stamps",
@@ -40,7 +38,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 1000, "merchant": 14, "store": 3}' https://stamps.co.id/api/balances/credit
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "amount": 1000, "merchant": 14, "store": 3}' https://stamps.co.id/api/balances/credit
 
 
 B. Response
@@ -96,7 +94,6 @@ You can deduct an amount from a balance by calling the API with these parameters
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 user        Yes         A string indicating user's email address or member ID
 amount      Yes         A positive number indicating amount to be deducted from customer's balance
 type        Yes         Balance type (available type: 'stamps')
@@ -109,7 +106,6 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "secret",
         "user": "customer@stamps.co.id",
         "amount": 100,
         "type": "stamps",
@@ -121,7 +117,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "amount": 100, "merchant": 14, "store": 3}' https://stamps.co.id/api/balances/debit
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "amount": 100, "merchant": 14, "store": 3}' https://stamps.co.id/api/balances/debit
 
 
 B. Response
@@ -179,7 +175,6 @@ You can deduct an amount from a balance by calling the API with these parameters
 =========== =========== =========================
 Parameter   Required    Description
 =========== =========== =========================
-token       Yes         Authentication string
 id          Yes         ID of balance update to cancel
 =========== =========== =========================
 
@@ -189,7 +184,6 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "secret",
         "id": "123",
     }
 
@@ -197,7 +191,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "id": 123 }' https://stamps.co.id/api/balances/cancel
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "id": 123 }' https://stamps.co.id/api/balances/cancel
 
 
 C. Example Response

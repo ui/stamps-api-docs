@@ -17,7 +17,6 @@ You can use this API to add pet data to customer.
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-token         Yes         Authentication string
 name          Yes         string
 type          Yes         "cat" or "dog" or etc
 birthday      No          YYYY-MM-DD
@@ -29,7 +28,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pets/add -i -d '{ "token": "secret", "user": 123, "name": "Kat", "birthday": "1991-10-19", "type": "cat"}'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pets/add -i -d '{ "user": 123, "name": "Kat", "birthday": "1991-10-19", "type": "cat"}'
 
 
 B. Response Data
@@ -108,7 +107,6 @@ You can use this API to delete customer's pet data.
 ============= =========== =========================
 Parameter     Required    Description
 ============= =========== =========================
-token         Yes         Authentication string
 pet           Yes         To be deleted pet ID
 ============= =========== =========================
 
@@ -116,7 +114,7 @@ Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/pets/delete -i -d '{ "token": "secret", "pet": 123 }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/pets/delete -i -d '{ "pet": 123 }'
 
 
 B. Response Data

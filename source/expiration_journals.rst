@@ -18,7 +18,6 @@ You can get list of expiration journals for certain user by using this parameter
 ======================= =========== =======================
 Parameter               Required    Description
 ======================= =========== =======================
-token                   Yes         Authentication string
 user                    Yes         Email address / Member ID indicating customer
 minimum_expiration_date No          Minimum expiration date to be displayed.
                                     Will display all user's expiration journals if not defined.
@@ -31,7 +30,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "user": "customer@stamps.co.id",
        "minimum_expiration_date": "2022-06-25"
     }
@@ -41,7 +39,7 @@ Example of API call request using cURL.
 
 .. code-block:: bash
 
-    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/expiration-journals/?token=secret&user=customer@stamps.id&minimum_expiration_date=2022-06-25
+    $ curl --request GET -H "Content-Type: application/json" -H "Expect:" -H "Authorization: <token_type> <token>" 'https://stamps.co.id/api/v2/expiration-journals/?user=customer@stamps.id&minimum_expiration_date=2022-06-25'
 
 
 B. Response

@@ -18,7 +18,6 @@ You can add a new transaction on Stamps by calling the API with these parameters
 =========================== =========== =======================
 Parameter                   Required    Description
 =========================== =========== =======================
-token                       Yes         Authentication string
 user                        No          Email address / Member ID indicating customer.
                                         Leaving this empty creates an ``open`` transaction.
 store                       Yes         A number (id) indicating store where transaction
@@ -55,7 +54,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "user": "customer@stamps.co.id",
        "stamps": 10,
        "store": 32,
@@ -106,7 +104,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/transactions/add -i -d '{ "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
 
 B. Response
 -----------------------------
@@ -230,7 +228,6 @@ You can add a new transaction with redemptions on Stamps by calling the API with
 =========================== =========== =======================
 Parameter                   Required    Description
 =========================== =========== =======================
-token                       Yes         Authentication string
 user                        No          Email address / Member ID indicating customer.
                                         Leaving this empty creates an ``open`` transaction.
 store                       Yes         A number (id) indicating store where transaction
@@ -274,7 +271,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "user": "customer@stamps.co.id",
        "stamps": 10,
        "store": 32,
@@ -355,7 +351,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/add-with-redemptions -i -d '{ "token": "secret", "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ]'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/transactions/add-with-redemptions -i -d '{ "created": "2017-03-30T07:01:01+07", "user": "customer@stamps.co.id", "store": 422, "number_of_people": 8, "tax":5000, "channel":1, "type":2, "invoice_number": "invoice_1", "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}], "reward_redemptions": [ { "request_id": "request-id-1", "reward": 1 }, { "request_id": "request-id-1", "reward": "REWARDCODE" }, { "request_id": "request-id-1", "reward": 1, "stamps": 10, } { "request_id": "request-id-1", "reward": "REWARDCODE", "stamps": 10, } ], "voucher_redemptions": [ { "request_id": "request-id-1", "voucher_code": "VOUCHERCODE" } ]'
 
 B. Response
 -----------------------------
@@ -504,7 +500,6 @@ You can cancel a transaction on Stamps by calling the API with these parameters
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 invoice_number             Yes         The transaction's invoice number
 date                       Yes         Date when the transaction is executed, in YYYY-MM-DD format
 ========================== =========== =========================================================
@@ -515,7 +510,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "invoice_number": "ABCD123",
        "date": "2021-02-01"
     }
@@ -525,7 +519,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/v2/transactions/cancel -i -d '{ "token": "secret", "invoice_number": "ABCD123", "date": "2021-02-01" }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/transactions/cancel -i -d '{ "invoice_number": "ABCD123", "date": "2021-02-01" }'
 
 
 B. Response
@@ -634,7 +628,6 @@ You can modify transaction's value or items detail on stamps by calling the API 
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 id                         Yes         Transaction ID
 total_value                Yes         Total value that want to deduct from a transaction
 subtotal                   Yes         Sub total value that want to deduct from a transaction
@@ -647,7 +640,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "id": 1,
        "total_value": -4000,
        "subtotal": -3000,
@@ -664,7 +656,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" https://stamps.co.id/api/transactions/cancel -i -d '{ "token": "secret", "id": 1, "total_value": -4000,"subtotal": -3000,"items": [{"product_name": "AQUA","quantity": -1}]'
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/transactions/modify -i -d '{ "id": 1, "total_value": -4000,"subtotal": -3000,"items": [{"product_name": "AQUA","quantity": -1}]'
 
 
 B. Response
@@ -762,7 +754,6 @@ You can get transaction's detail data through this API.
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 transaction_id             Yes         Transaction ID
 ========================== =========== =========================================================
 
@@ -771,7 +762,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/transactions/details?token=abc&merchant=123&transaction_id=345'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/transactions/details?merchant=123&transaction_id=345'
 
 
 B. Response
@@ -852,7 +843,6 @@ You can preview transaction's earning data before creating a transaction through
 ==========================  =========== =========================================================
 Parameter                   Required    Description
 ==========================  =========== =========================================================
-token                       Yes         Authentication string
 user                        No          Email address / Member ID indicating customer.
                                         Leaving this empty creates an ``open`` transaction.
 store                       Yes         A number (id) indicating store where transaction
@@ -883,7 +873,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/preview-earnings -i -d '{ "token": "secret", "user": "customer@stamps.co.id", "store": 422, "tax":5000, "channel":1, "type":2, "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/transactions/preview-earnings -i -d '{ "user": "customer@stamps.co.id", "store": 422, "tax":5000, "channel":1, "type":2, "total_value": 50000, "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}]}, "payments": [{"value": 30000, "payment_method": 10}, {"value": 20000, "payment_method": 43, "eligible_for_membership": false}]'
 
 
 B. Response
@@ -931,7 +921,6 @@ You can query latest user transaction's list through this API.
 ==========================  =========== =========================================================
 Parameter                   Required    Description
 ==========================  =========== =========================================================
-token                       Yes         Authentication string
 user                        Yes         A string indicating customer's email, Member ID,
                                         mobile number or primary key ID
 last_transaction_id         No          An integer indicating customer transaction_id,
@@ -947,7 +936,7 @@ Example of API call request using cURL (JSON)
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/transactions/by-user?token=secret&user=123&merchant_id=2&merchant_id=3&channel=2&channel=4&end_date=2022-09-12'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/transactions/by-user?user=123&merchant_id=2&merchant_id=3&channel=2&channel=4&end_date=2022-09-12'
 
 
 B. Response
@@ -1048,7 +1037,6 @@ The payload for updating a transaction has fewer required fields and `items` fie
 =========================== =========== =======================
 Parameter                   Required    Description
 =========================== =========== =======================
-token                       Yes         Authentication string
 store                       Yes         A number (id) indicating store where transaction
                                         is created
 invoice_number              Yes         POS transaction number (must be unique daily)
@@ -1063,7 +1051,6 @@ Here's an example of how the API call might look like in JSON format:
 .. code-block:: javascript
 
     {
-       "token": "secret",
        "store": 32,
        "invoice_number": "my_invoice_number",
        "items": [
@@ -1088,7 +1075,7 @@ Example of API call request using cURL (JSON). To avoid HTTP 100 Continue, pleas
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" https://stamps.co.id/api/v2/transactions/complete-detail -i -d '{ "token": "secret", "store": 422, "invoice_number": "invoice_1", "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}] }'
+    $ curl -X POST -H "Content-Type: application/json" -H "Expect:" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/v2/transactions/add-or-update -i -d '{ "store": 422, "invoice_number": "invoice_1", "items": [{"product_name": "Cappucino", "quantity": 2, "subtotal": 10000}, {"product_name": "Iced Tea", "quantity": 4, "subtotal": 5000}] }'
 
 B. Response
 -----------------------------

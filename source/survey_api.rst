@@ -17,14 +17,13 @@ You can query for all available survey on customer on stamps
 Parameter     Required    Description
 ============= =========== =========================
 user          Yes         A string indicating customer's email, Member ID, mobile number or primary key ID
-token         Yes         Authentication string
 ============= =========== =========================
 
 Example of API call request using cURL:
 
 .. code-block :: bash
 
-    $ curl -X GET -H "Content-Type: application/json" https://stamps.co.id/api/surveys/ -i -d '{ "token": "secret", "user": 123}'
+    $ curl -X GET -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" https://stamps.co.id/api/surveys/ -i -d '{ "user": 123}'
 
 
 B. Response Data

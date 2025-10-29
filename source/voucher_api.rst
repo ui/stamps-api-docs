@@ -15,7 +15,6 @@ You can add issue a voucher by calling the API with these parameters.
 ================ =========== =========================
 Parameter        Required    Description
 ================ =========== =========================
-token            Yes         Authentication string
 user             Yes         A string indicating user's email address or member ID
 voucher_template Yes         Integer indicating the voucher template ID
 start_date       Yes         Date string to indicate voucher's valid start date (e.g. 2013-02-15)
@@ -31,7 +30,6 @@ Here's an example of how the API call might look like in JSON format
 .. code-block :: bash
 
     {
-        "token": "secret",
         "user": "customer@stamps.co.id",
         "voucher_template": 1,
         "start_date": "2013-02-15",
@@ -44,7 +42,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl -X POST -H "Content-Type: application/json" -d '{ "token": "secret", "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers", "value": "200"}' https://stamps.co.id/api/vouchers/issue
+    $ curl -X POST -H "Content-Type: application/json" -H "Authorization: <token_type> <token>" -d '{ "user": "customer@stamps.co.id", "voucher_template": 1, "start_date": "2013-02-15", "quantity": 1, "notes": "Special voucher for e-magazine readers", "value": "200"}' https://stamps.co.id/api/vouchers/issue
 
 
 B. Response
@@ -105,7 +103,6 @@ You can add issue a voucher by calling the API with these parameters.
 ==================  =========== =========================
 Parameter           Required    Description
 ==================  =========== =========================
-token               Yes         Authentication token in string
 voucher_code        Yes         A string indicating voucher code
 merchant            Yes         Integer indicating the voucher template ID
 store               Yes         Integer indicating store ID to be queried for reward
@@ -118,7 +115,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/vouchers/validate?token=123&merchant=123&voucher_code=VC-ABC&store=123'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/vouchers/validate?merchant=123&voucher_code=VC-ABC&store=123'
 
 
 B. Response
@@ -200,7 +197,6 @@ You can get user's vouchers in a merchant group by calling the API with these pa
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 image_size                 No          Voucher image size. Defaults to 200px x 200px
 landscape_image_size       No          Voucher image landscape size. Defaults to 545px x 300px
@@ -212,7 +208,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/vouchers/by-merchant-group?token=abc&user=customer@stamps.co.id&channel=2'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/vouchers/by-merchant-group?user=customer@stamps.co.id&channel=2'
 
 
 B. Response
@@ -308,7 +304,6 @@ You can get user's vouchers count in a merchant group by calling the API with th
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 ========================== =========== =========================================================
 
@@ -317,7 +312,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/vouchers/count-by-merchant-group?token=abc&user=customer@stamps.co.id'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/vouchers/count-by-merchant-group?user=customer@stamps.co.id'
 
 
 B. Response
@@ -364,7 +359,6 @@ Get user's voucher's details.
 ========================== =========== =========================================================
 Parameter                  Required    Description
 ========================== =========== =========================================================
-token                      Yes         Authentication string
 user                       Yes         A string indicating customer's email or Member ID
 code                       Yes         A string indicating voucher code
 image_size                 No          Voucher image size. Defaults to 200px x 200px
@@ -376,7 +370,7 @@ Example of API call request using cURL
 
 .. code-block :: bash
 
-    $ curl 'https://stamps.co.id/api/vouchers/details?token=abc&user=customer@stamps.co.id&code=ABCD123'
+    $ curl -H 'Authorization: <token_type> <token>' 'https://stamps.co.id/api/vouchers/details?user=customer@stamps.co.id&code=ABCD123'
 
 
 B. Response

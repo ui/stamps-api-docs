@@ -619,6 +619,8 @@ Legacy endpoint's documentation is available at `Legacy transaction API <http://
 | Requires authentication: Yes
 
 
+**Note:** You may modify a transaction's value or items. However, vouchers that were already issued from transaction bonuses or product bonuses are not automatically deactivated if the updated values no longer meet the bonus requirements.
+
 A. Request
 -----------------------------
 

@@ -349,12 +349,13 @@ A successful API call:
 A. Request
 ----------
 
-Request an OTP to reset customer's PIN. OTP will be send to customer's email if ``template_code`` parameter is provided.
+Request an OTP to reset customer's PIN. OTP will be send to customer's email or mobile phone if ``template_code`` parameter is provided.
 
 ============= ======== ===========
 Parameter     Required Description
 ============= ======== ===========
 user          Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
+type          No       A string for OTP sending method choice, supports ``email``, ``sms``, and ``whatsapp``
 template_code No       A string indicating the template to be used to send the OTP
 ============= ======== ===========
 
@@ -666,7 +667,7 @@ Request an OTP to reset customer's password. OTP will be send to customer's emai
 Parameter     Required Description
 ============= ======== ===========
 identifier    Yes      A string indicating customer's email, Member ID, mobile number or primary key ID
-type          Yes      A string for OTP sending method choice, supports ``email`` and ``sms``
+type          Yes      A string for OTP sending method choice, supports ``email``, ``sms``, and ``whatsapp``
 template_code No       A string indicating the template to be used to send the OTP
 ============= ======== ===========
 
